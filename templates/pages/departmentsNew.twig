@@ -1,0 +1,75 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-departments",
+                'title': "Create a new department"|trans,
+                'help': "Fill all information about the new department"|trans} %}
+
+{% block content %}
+
+{% if username != ADMIN_ACCOUNT %}
+
+{% if RIGHTS_LIST.CORE == "ADMIN" %}
+
+<div class="well">
+    <form class="form" id="form_data" method='post' action=''>
+        <fieldset>
+            <legend>General information</legend>
+            <div class="row-fluid">
+                <div class="span12">
+                    {{ forms.input('label', 'Department name'|trans, form_data.name, "Department name"|trans, null, null, false, "required") }}
+                    {{ forms.textarea('description', 'Description of the department'|trans, null, null, null, "textarea") }}
+                </div>  
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+                <input class="btn" type="button" value="{% trans %}Cancel{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function(){
+                    $("#form_data").validate({
+                            rules:{
+                                    name:{
+                                            required:true
+                                    },
+                                    description:{
+                                            required:true
+                                    }
+                            },
+                            errorClass: "help-inline",
+                            errorElement: "span",
+                            errorPlacement: function(error, element) {
+                                element.parent().after(error);
+                            },
+                            highlight:function(element, errorClass, validClass) {
+                                    $(element).parents('.control-group').removeClass('success');
+                                    $(element).parents('.control-group').addClass('error');
+                            },
+                            unhighlight: function(element, errorClass, validClass) {
+                                    $(element).parents('.control-group').removeClass('error');
+                                    $(element).parents('.control-group').addClass('success');
+                            }
+                    });
+            });
+    </script>
+
+{% else %}
+    {% set WIZZ = [ {'message': "Error, you don't have permission to access to this page", 'type': "error"} ] %}
+    {% trans %}Nothing to edit.{% endtrans %}
+
+{% endif %}{# RIGHTS_LIST.CORE == "ADMIN" #}
+
+{% else %}{# if username == ADMIN_ACCOUNT #}
+
+<div class="alert alert-error">
+     <strong>{% trans from "Module:core" %}Warning!{% endtrans %}</strong><br />
+             {% trans from "Module:core" %}You cannot create a customer or provider, please create an employee account before.{% endtrans %}<br /><br />
+     <button class="btn btn-danger" onclick="javascript:window.location.href='{{ url('employees_new') }}'">{% trans from "Module:core" %}Create an employee{% endtrans %}</button>
+</div>
+{% endif %}
+
+{% endblock %}

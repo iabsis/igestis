@@ -1,0 +1,153 @@
+<div id="debug-pannel">
+    
+    <a class="btn btn-danger pull-right" href="javascript:;" onclick="xdebugHidePannel();"><i class="icon-off icon-white"></i> Close debuger</a>
+    
+    <!-- List of errors -->
+    <div id="debug-errors-list">
+        <h1>List of errors messages</h1>
+        <table class="table table-striped table-bordered table-condensed">
+            <tr>
+                <th>Execution time</th>
+                <th>Error no.</th>
+                <th>Error message</th>
+                <th>File</th>
+            </tr>
+            {% set error_count = 0 %}
+            {% for event in DEBUGGING_VARS %}
+                {% if event.type == "error" %}
+                {% set error_count = error_count+1 %}
+                <tr>
+                    <td>{{ event.scriptDuration }}s</td>
+                    <td>{{ event.datas.errno }}</td>
+                    <td>{{ event.datas.message }}</td>
+                    <td>{{ event.datas.errfile }} (line {{ event.datas.errline }})</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+       </table>
+    </div>
+    
+    <!-- List of logs -->
+    <div id="debug-logs-list">
+        <h1>List of logs messages</h1>
+        <table class="table table-striped table-bordered table-condensed">
+            <tr>
+                <th>Execution time</th>
+                <th>Error message</th>
+            </tr>
+            {% set log_count = 0 %}
+            {% for event in DEBUGGING_VARS if event.type == "log" %}
+                {% set log_count = log_count+1 %}
+                <tr>
+                    <td>{{ event.scriptDuration }}s</td>
+                    <td>{{ event.datas.message }}</td>
+                </tr>
+            {% endfor %}
+       </table>
+    </div>
+    
+    
+    <!-- List of everything -->
+    <div id="debug-all-list">
+        <h1>Full history of code</h1>
+        <table class="table table-striped table-bordered table-condensed">
+            <tr>
+                <th>Execution time</th>
+                <th>Error no.</th>
+                <th>Message</th>
+                <th>File</th>
+            </tr>
+            {% set all_count = 0 %}
+            {% for event in DEBUGGING_VARS if event.type == "error" or event.type == "log" %}
+                {% set all_count = all_count+1 %}
+                <tr>
+                    <td>{{ event.scriptDuration }}s</td>
+                    <td>{{ event.datas.errno }}</td>
+                    <td>{{ event.datas.message }}</td>
+                    <td>{% if event.datas.errline %}{{ event.datas.errfile }} (line {{ event.datas.errline }}){% endif %}</td>
+                </tr>
+            {% endfor %}
+       </table>
+    </div>
+    
+    
+    <!-- List of dumps -->
+    <div id="debug-dumps-list">
+        <h1>Dumps</h1>
+            {% set dumps_count = 0 %}
+            {% for event in DEBUGGING_VARS if event.type == "dump" %}
+                {% set dumps_count = dumps_count+1 %}
+                <div>{{ event.datas.varname }}</div>
+                {{ event.datas.dump|raw }}
+            {% endfor %}
+    </div>
+    
+    
+    <!-- List of old dumps -->
+    <div id="debug-old-dumps-list">
+        <h1>Unshowed dumps</h1>
+            {% set old_dumps_count = 0 %}
+            {% for event in DEBUGGING_VARS if event.type == "old_dump" %}
+                {% set old_dumps_count = old_dumps_count+1 %}
+                <div>{{ event.datas.varname }}</div>
+                {{ event.datas.dump|raw }}
+            {% endfor %}
+    </div>
+    
+    
+    <!-- List of Doctrine debug -->
+    <div id="debug-doctrine-list">
+        <h1>Doctrine request</h1>
+            {% set doctrine_count = 0 %}
+            {% for event in DEBUGGING_VARS if event.type == "doctrine" %}
+                {% set doctrine_count = doctrine_count+1 %}
+                <div>Requete {{ doctrine_count }} (Execution time : {{ event.datas.executionTime|raw }}s)</div>
+                <pre>{{ event.datas.sql|raw }}</pre>
+                {{ event.datas.params|raw }}
+            {% endfor %}
+    </div>
+    
+    
+    <a class="btn btn-danger pull-right" href="javascript:;" onclick="xdebugHidePannel();"><i class="icon-off icon-white"></i> Close debuger</a>
+    
+</div>
+
+
+
+
+
+<div class="navbar navbar-fixed-top" id="igestis-debug-toolbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Debug toolbar</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="pull-right" onclick="xdebugShowErrors()">
+                <a href="javascript:;">Errors <span class="badge badge-warning" id="igestis-count-errors">{{ error_count }}</span></a>
+              </li> 
+              
+              <li class="pull-right" onclick="xdebugShowLogs()">
+                <a href="javascript:;">Logs <span class="badge badge-warning" id="igestis-count-logs">{{ log_count }}</span></a>
+              </li> 
+              
+              <li class="pull-right" onclick="xdebugShowDumps()">
+                <a href="javascript:;">Dumps <span class="badge badge-warning" id="igestis-count-dumps">{{ dumps_count }}</span></a>
+              </li>
+              
+              <li class="pull-right" onclick="xdebugShowOldDumps()">
+                <a href="javascript:;">Unshowed dumps <span class="badge badge-warning" id="igestis-count-old-dumps">{{ old_dumps_count }}</span></a>
+              </li>
+              
+              <li class="pull-right" onclick="xdebugShowDoctrine()">
+                <a href="javascript:;">Doctrine <span class="badge badge-warning" id="igestis-count-doctrine">{{ doctrine_count }}</span></a>
+              </li> 
+              
+              <li class="pull-right">
+                <a href="javascript:;" onclick="xdebugShowAll()">Execution time : {{ EXECUTION_TIME }} s</a>
+              </li> 
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+

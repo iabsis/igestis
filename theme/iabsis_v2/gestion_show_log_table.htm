@@ -1,0 +1,14 @@
+<table class="normal_table" width="790px">
+        <tr>
+                <th>{LANG_Log_file_lines}</th>
+        </tr>
+        <!-- IF LOG_FILE -->
+                <!-- BEGIN LOG_FILE -->
+                <tr class="{LOG_FILE.CLASS}">
+                        <td><!-- IF LOG_FILE.IS_LOADING --><img src="{TEMPLATE_URL}/images/loading.gif" /> {LANG_Loading}<!-- ELSE -->{LOG_FILE.line}<!-- ENDIF --></td>
+                </tr>
+                <!-- END LOG_FILE -->
+        <!-- ELSE -->
+                <tr class="ligne1"><td colspan="7">{LANG_No_records}</td></tr>
+        <!-- ENDIF LOG_FILE -->
+</table>

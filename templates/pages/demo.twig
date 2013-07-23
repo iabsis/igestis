@@ -1,0 +1,53 @@
+{% extends 'common.twig' %}
+
+{% set title = {'title': "About"|trans} %}
+
+
+{% block javascriptFiles %}
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ TEMPLATE_URL }}/js/jquery.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/jquery.cookie.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/bootstrap.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/jquery.validate.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/jquery.form.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/bootbox.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/jquery.datatables.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/scriptsv2.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/unserialize.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/select2.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/bootstrap-datepicker.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/bootstrap-datetimepicker.min.js?{{ CORE_VERSION }}"></script>
+<script src="{{ TEMPLATE_URL }}/js/jasny-bootstrap.js?{{ CORE_VERSION }}"></script>
+
+
+{% if DEBUG_MODE %}
+<script type="text/javascript" src="{{ TEMPLATE_URL }}/js/xdebug.js?{{ CORE_VERSION }}"></script>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="well">
+    <form action="" class="form-horizontal">
+      <fieldset>
+        <legend>{% trans %}Intervention informations{% endtrans %}</legend>
+          {{ forms.input('title1', 'Input demo'|trans, form_data.title) }}
+          {{ forms.symbol('title2', 'Symbol demo'|trans, form_data.title, "€") }}
+          {{ forms.date('title3', 'Date demo'|trans) }}
+          {{ forms.file('title4', 'File demo'|trans, form_data.title, null, null, "multiple", null, "required") }}
+          {{ forms.tagfield('title5', 'Tagfield demo', list_of_available_tags, selected_tags, data_original_title, data_content, state, max_tags) }}
+          {{ forms.textarea('title6', 'Textarea demo') }}
+          {{ forms.checkbox('title7', 'Checkbox demo') }}
+          {{ forms.switchbox('title8', 'Switchbox demo') }}
+          {{ forms.uploadimage('title9', 'File demo'|trans, form_data.title) }}
+      </fieldset>
+    </form>
+</div>
+
+
+{% endblock %}

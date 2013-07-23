@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{GENERAL_TITLE}</title>
+        <META NAME="Author" CONTENT="Gilles HEMMERLE, Iabsis Sarl" />
+        <META NAME="Copyright" CONTENT="Iabsis Sarl" />
+
+        
+        <!-- CSS pour jquery -->
+        <link rel="stylesheet" href="{TEMPLATE_URL}/jquery/jquery-ui-1.8.16.custom.css" type="text/css" />
+        <link href="{TEMPLATE_URL}/css/bootstrap.css" rel="stylesheet"/>
+        <link href="{TEMPLATE_URL}/css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="{TEMPLATE_URL}/stylesv2.css" rel="stylesheet"/>
+        
+        <link rel="stylesheet" href="{TEMPLATE_URL}/styles.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="{TEMPLATE_URL}/swfupload.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="{TEMPLATE_URL}/form-field-tooltip.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="{TEMPLATE_URL}/inettuts.css" type="text/css" />
+        
+        <link rel="icon" type="image/png" href="{TEMPLATE_URL}/images/favicon.png" />
+
+        <!--[if lt IE 6]>
+	<style type="text/css">
+	@import "{TEMPLATE_URL}/hacks_ie6plus.css";
+	<![endif]-->
+
+
+        <script type="text/javascript" src="{SERVER_ADDRESS}/includes/dhtml_suite/separate_files/dhtmlSuite-common.php"></script>
+        <script type="text/javascript">
+            DHTMLSuite.include("calendar");
+            DHTMLSuite.include("modalMessage");
+            DHTMLSuite.include("dynamicTooltip");	
+        </script>
+        <script type="text/javascript">
+            function show_hide_header() {
+                var header = document.getElementById("header");
+                var help_panel = document.getElementById("help_panel");
+
+                if(header) {
+                    if(header.className == "general_header") {
+                        header.className = "general_header_mini";
+                        if(help_panel) help_panel.className = "help_panel_mini";
+                        xajax_mini_header(1);
+                    }
+                    else {
+                        header.className = "general_header";
+                        if(help_panel) help_panel.className = "help_panel";
+                        xajax_mini_header(0);
+                    }
+                }
+            }
+        </script>
+        
+        
+        <script type="text/javascript" src="{TEMPLATE_URL}/scripts.js"></script>
+        <script type="text/javascript" src="{SERVER_ADDRESS}/includes/shortcuts/shortcut.js"></script>
+        <script type="text/javascript" src="{TEMPLATE_URL}/rounded-corners.js"></script>
+        <script type="text/javascript" src="{TEMPLATE_URL}/form-field-tooltip.js"></script>
+        <script type="text/javascript" src="{SERVER_ADDRESS}/includes/jquery/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="{SERVER_ADDRESS}/includes/jquery/jquery-ui-1.8.16.custom.min.js"></script>
+        <script src="{TEMPLATE_URL}/js/jquery.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-transition.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-alert.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-modal.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-dropdown.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-scrollspy.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-tab.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-tooltip.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-popover.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-button.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-collapse.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-carousel.js"></script>
+        <script src="{TEMPLATE_URL}/js/bootstrap-typeahead.js"></script>
+        <script src="{TEMPLATE_URL}/js/jquery.validate.js"></script>
+        <script src="{TEMPLATE_URL}/js/jquery.form.js"></script>
+        <script src="{TEMPLATE_URL}}/js/bootbox.js"></script>
+        <script src="{TEMPLATE_URL}/js/jquery.datatables.js"></script>
+        <script src="{TEMPLATE_URL}/scriptsv2.js"></script>
+        <script src="{TEMPLATE_URL}/js/unserialize.js"></script>
+        <!-- IF DEBUG --><script type="text/javascript" src="{TEMPLATE_URL}/js/xdebug.js"></script><!-- ENDIF DEBUG -->
+	{SCRIPT_AJAX}
+
+    </head>
+
+    <body id="home-page" {BODY_CLASS}>
+        <!-- IF DEBUG -->{IGESTISV2_DEBUG_TOOLBAR}<!-- ENDIF DEBUG -->
+        {IGESTISV2_MENU}
+
+          <!-- Full screen message --> 
+          <div id="fullscreen_contnair">
+            <div id="full_screen_background"></div>
+            <div id="full_screen_message"></div>
+        </div>
+
+        <!-- Waiting message -->
+        <div id="wainting_please"><img src="{TEMPLATE_URL}/images/loading.gif" /> {LANG_Loading}</div>
+
+
+        <!-- Warning message -->
+        <div id="warning_message"></div>
+        <!-- IF_MODULE_INSTALLED iShare -->
+        <script type="text/javascript">
+            xajax_ishare_save_want_start();
+            xajax_ishare_root_warning();	
+        </script>
+        <!-- END_MODULE -->
+
+        <!-- Use this div to display the autocompletion fields -->
+        <div id="autocompletion">
+        </div>
+
+        <div id="wrap">
+            <div id="inner_wrap">
+                <div id="header" class="general_header<!-- IF IS_MINI_HEADER -->_mini<!-- ENDIF -->"><img onclick="javascript:show_hide_header()" class="close_header_img" src="{TEMPLATE_URL}/images/full_header.gif" width="20px" height="20px" alt="[X]" />
+                    <div id="help_panel" class="help_panel<!-- IF IS_MINI_HEADER -->_mini<!-- ENDIF -->">
+                        <span>

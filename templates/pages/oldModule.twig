@@ -1,0 +1,19 @@
+{% extends 'commonOldModules.twig' %}
+
+{% set title = {'title': "Module"|trans, "help" : "Description du module"|trans} %}
+
+{% block content %}
+
+  <div class="well sidebar-nav span3" id="sidebarSpan3" style="display:none">
+        <ul class="nav nav-list">
+        <li class="nav-header">{% trans %}Navigation{% endtrans %}</li>
+        {% for item in SIDEBAR_MENU %}
+        <li {% if item.active %}class="active"{% endif %} ><a href="{{ item.link}}">{{ item.name }}</a></li>
+        {% endfor %}
+        </ul>
+  </div>
+  <div class="span12" id="pageContentSpan9">{{ PAGE_CONTENT | raw }}</div>
+
+
+
+{% endblock %}

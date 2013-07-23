@@ -1,0 +1,89 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-customers",
+                'title': "Import customer preview"|trans,
+                'help': "Check all data before real customer import"|trans} %}
+
+{% block content %}
+
+<form method="post" action="{{ url('customer_import_step3') }}" id="table_form">
+    
+<div class="row-fluid">
+	<button type="submit" class="btn btn-primary">{% trans %}Import the customers{% endtrans %}</button>
+	<input class="btn" type="button" value="{% trans %}Cancel{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+                <input type="hidden" id="form_data" name="form_data" value="" />
+</div>
+
+    <a href="javascript:;" onclick="javascript:TableImportResultCheckAll()">Check all</a> - <a href="javascript:;" onclick="javascript:TableImportResultUncheckAll()">Uncheck all</a>
+	<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-condensed table-striped" id="table_data">
+		<thead>
+	    {% for row in table_data %}
+	       	{%  if loop.first %}
+	        	<tr>
+	           		{% for field in row %}
+		      	<th>{{ field.name }}</th>
+	               	{% endfor %}
+	            </tr>
+	        </thead>
+	       	<tbody>
+	       	{% endif %}
+			{% if not loop.first %}
+		    	<tr>
+		    		<input type="hidden" data-id="{{ row.infos.lineId }}" name="import" value="{{ row.infos.lineId }}" />
+		        	{% for field in row.datas %}
+		            <td>{{ field }}</td>
+		            {% endfor %}
+		        </tr>
+	       	{% endif %}
+	    {% endfor %}
+	    </tbody>
+	</table>
+</form>
+
+<script type="text/javascript">
+    var oTableImportResult = null;
+    $(document).ready(function() {
+        /* Add/remove class to a row when clicked on */
+        $('#table_data tr').click( function() {
+            $(this).toggleClass('error');
+            var lineId = $(this).children("input").data();
+            var actualValue = $(this).children("input").val();
+                    if (actualValue == lineId.id) {
+                            $(this).children("input").val("-1");
+                    } else {
+                            $(this).children("input").val(lineId.id);
+                    }
+        } );
+
+        $("#table_form").submit(function() {
+            $("#form_data").val(oTableImportResult.$('input').serialize());
+        });
+
+        /* Init the table */
+        oTableImportResult = IgestisInitTable('{{ id|default('#table_data') }}');
+    } );
+
+    /*
+     * Check all lines on the table
+     */
+    function TableImportResultCheckAll() {
+        oTableImportResult.$('tr.error').each(function() { 
+            $(this).children("input").val( $(this).children("input").data("id") );
+            $(this).removeClass('error');
+        });
+    }
+    
+    /*
+     * Uncheck all lines on the table
+     */
+    function TableImportResultUncheckAll() {
+        oTableImportResult.$('tr').each(function() { 
+            $(this).children("input").val( -1 );
+            $(this).addClass('error');
+        });
+    }
+    
+
+</script>
+
+{% endblock %}

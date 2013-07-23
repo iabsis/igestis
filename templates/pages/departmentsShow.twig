@@ -1,0 +1,15 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-departments",
+                'title': "Show a department"|trans,
+                'help': "Show department details"|trans} %}
+
+{% block content %}
+    
+<h2>{{ show_data.name }}</h2>
+<p>
+    {{ show_data.description}}
+</p>
+
+<button onclick="javascript:window.history.go(-1);" class="btn btn-info">{% trans %}Back{% endtrans %}</button>
+{% endblock %}

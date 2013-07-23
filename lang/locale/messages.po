@@ -1,0 +1,2230 @@
+#: controllers/EmployeesController.php:29
+#: controllers/EmployeesController.php:128
+#: debian/igestis/usr/share/igestis/controllers/EmployeesController.php:29
+#: debian/igestis/usr/share/igestis/controllers/EmployeesController.php:128
+msgid "The employee has not been found"
+msgstr ""
+
+#: controllers/EmployeesController.php:98
+#: controllers/EmployeesController.php:227
+#: debian/igestis/usr/share/igestis/controllers/EmployeesController.php:98
+#: debian/igestis/usr/share/igestis/controllers/EmployeesController.php:227
+msgid "The employee data have been successfully saved"
+msgstr ""
+
+#: controllers/EmployeesController.php:153
+#: debian/igestis/usr/share/igestis/controllers/EmployeesController.php:153
+msgid "The employee has been successfully deleted"
+msgstr ""
+
+#: controllers/EmployeesController.php:255
+#: debian/igestis/usr/share/igestis/controllers/EmployeesController.php:255
+msgid "The Employee has not been found"
+msgstr ""
+
+#: controllers/CoreAjaxController.php:47
+#: debian/igestis/usr/share/igestis/controllers/CoreAjaxController.php:47
+msgid "The apc_fetch is not available"
+msgstr ""
+
+#: controllers/CustomersAjaxController.php:58
+#: debian/igestis/usr/share/igestis/controllers/CustomersAjaxController.php:58
+msgid "No post datas"
+msgstr ""
+
+#: controllers/CompaniesController.php:28
+#: controllers/CompaniesController.php:111
+#: debian/igestis/usr/share/igestis/controllers/CompaniesController.php:28
+#: debian/igestis/usr/share/igestis/controllers/CompaniesController.php:111
+msgid "The company name is a required field"
+msgstr ""
+
+#: controllers/CompaniesController.php:70
+#: controllers/CompaniesController.php:141
+#: debian/igestis/usr/share/igestis/controllers/CompaniesController.php:70
+#: debian/igestis/usr/share/igestis/controllers/CompaniesController.php:141
+msgid "The company data have been successfully saved"
+msgstr ""
+
+#: controllers/CompaniesController.php:99
+#: debian/igestis/usr/share/igestis/controllers/CompaniesController.php:99
+msgid "The company has been successfully deleted"
+msgstr ""
+
+#: controllers/DepartmentsController.php:28
+#: controllers/DepartmentsController.php:108
+#: debian/igestis/usr/share/igestis/controllers/DepartmentsController.php:28
+#: debian/igestis/usr/share/igestis/controllers/DepartmentsController.php:108
+msgid "The department name is a required field"
+msgstr ""
+
+#: controllers/DepartmentsController.php:64
+#: controllers/DepartmentsController.php:122
+#: debian/igestis/usr/share/igestis/controllers/DepartmentsController.php:64
+#: debian/igestis/usr/share/igestis/controllers/DepartmentsController.php:122
+msgid "The department data has been successfully saved"
+msgstr ""
+
+#: controllers/DepartmentsController.php:95
+#: debian/igestis/usr/share/igestis/controllers/DepartmentsController.php:95
+msgid "The department has been successfully deleted"
+msgstr ""
+
+#: controllers/CustomersController.php:34
+#: controllers/CustomersController.php:90
+#: controllers/CustomersController.php:186
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:34
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:90
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:186
+msgid "The customer has not been found"
+msgstr ""
+
+#: controllers/CustomersController.php:57
+#: controllers/CustomersController.php:154
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:57
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:154
+msgid "The customer data have been successfully saved"
+msgstr ""
+
+#: controllers/CustomersController.php:109
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:109
+msgid "The customer has been successfully deleted"
+msgstr ""
+
+#: controllers/CustomersController.php:268
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:268
+msgid "The file contains no usable datas"
+msgstr ""
+
+#: controllers/CustomersController.php:293
+#: debian/igestis/usr/share/igestis/controllers/CustomersController.php:293
+msgid "Thanks to select one or more entries from the table"
+msgstr ""
+
+#: controllers/AdminController.php:19 controllers/AdminController.php:24
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:19
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:24
+#, php-format
+msgid "Failed to create '%s' folder."
+msgstr ""
+
+#: controllers/AdminController.php:28
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:28
+#, php-format
+msgid "'%s' folder is not readable."
+msgstr ""
+
+#: controllers/AdminController.php:31
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:31
+#, php-format
+msgid ""
+"Igestis won't be able to write '%s' file. Its parent folder is not writable, "
+"custom stylesheet won't be saved."
+msgstr ""
+
+#: controllers/AdminController.php:34
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:34
+#, php-format
+msgid ""
+"'%s' folder is not readable. The custom stylesheet has not been retrieved"
+msgstr ""
+
+#: controllers/AdminController.php:42
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:42
+msgid "The twig cache has correctly been cleared."
+msgstr ""
+
+#: controllers/AdminController.php:49
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:49
+msgid "The lang cache has correctly been reloaded."
+msgstr ""
+
+#: controllers/AdminController.php:54
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:54
+msgid "Custom css successfuly saved."
+msgstr ""
+
+#: controllers/AdminController.php:57
+#: debian/igestis/usr/share/igestis/controllers/AdminController.php:57
+msgid "Unable to save the css file."
+msgstr ""
+
+#: controllers/SuppliersController.php:36
+#: controllers/SuppliersController.php:90
+#: controllers/SuppliersController.php:186
+#: debian/igestis/usr/share/igestis/controllers/SuppliersController.php:36
+#: debian/igestis/usr/share/igestis/controllers/SuppliersController.php:90
+#: debian/igestis/usr/share/igestis/controllers/SuppliersController.php:186
+msgid "The supplier has not been found"
+msgstr ""
+
+#: controllers/SuppliersController.php:60
+#: controllers/SuppliersController.php:154
+#: debian/igestis/usr/share/igestis/controllers/SuppliersController.php:60
+#: debian/igestis/usr/share/igestis/controllers/SuppliersController.php:154
+msgid "The supplier data have been successfully saved"
+msgstr ""
+
+#: controllers/SuppliersController.php:109
+#: debian/igestis/usr/share/igestis/controllers/SuppliersController.php:109
+msgid "The supplier has been successfully deleted"
+msgstr ""
+
+#: controllers/HomePageController.php:55
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:55
+msgid "Thanks to complete this form in order to reset your password"
+msgstr ""
+
+#: controllers/HomePageController.php:70
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:70
+msgid "User not known"
+msgstr ""
+
+#: controllers/HomePageController.php:88
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:88
+msgid "Password reset request"
+msgstr ""
+
+#: controllers/HomePageController.php:118
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:118
+msgid ""
+"This password reset key code is unknown. Thanks to try the process again"
+msgstr ""
+
+#: controllers/HomePageController.php:129
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:129
+msgid ""
+"The new password has been saved. You can try to login with your new password"
+msgstr ""
+
+#: controllers/HomePageController.php:183
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:183
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:25
+msgid "New feature request"
+msgstr ""
+
+#: controllers/HomePageController.php:200
+#: controllers/HomePageController.php:245
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:200
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:245
+msgid "Thanks for your request, an email will be sent to igestis developpers."
+msgstr ""
+
+#: controllers/HomePageController.php:228
+#: debian/igestis/usr/share/igestis/controllers/HomePageController.php:228
+msgid "New bug report"
+msgstr ""
+
+#: controllers/MyAccountController.php:33
+#: debian/igestis/usr/share/igestis/controllers/MyAccountController.php:33
+msgid "Data have been successfully saved"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/Oldaphp/LDAP.php:54
+#: includes/Oldaphp/LDAP.php:54
+#, php-format
+msgid "Connection to %s failed"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:462
+#: includes/common_librairie.php:462
+msgid "Unable to logon on the database"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:463
+#: includes/common_librairie.php:463
+msgid "Unable to connect to the database"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:781
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:783
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:785
+#: includes/common_librairie.php:781 includes/common_librairie.php:783
+#: includes/common_librairie.php:785
+msgid "Contacts"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:781
+#: includes/common_librairie.php:781
+msgid "Employees"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:783
+#: includes/common_librairie.php:783
+msgid "Customers"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:785
+#: includes/common_librairie.php:785
+msgid "Suppliers"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:786
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:787
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:788
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:789
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:850
+#: includes/common_librairie.php:786 includes/common_librairie.php:787
+#: includes/common_librairie.php:788 includes/common_librairie.php:789
+#: includes/common_librairie.php:850
+msgid "Administration"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:786
+#: includes/common_librairie.php:786
+msgid "My companies"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:787
+#: includes/common_librairie.php:787
+msgid "Departments"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:788
+#: tmp/7b/16/bdfb9245eedc209a2225cde60617.php:25
+#: includes/common_librairie.php:788
+msgid "Modules and addons"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:789
+#: includes/common_librairie.php:789
+msgid "Maintenance"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:882
+#: includes/common_librairie.php:882
+msgid "Module not found"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Core/ImportCsvCustomers.php:31
+#: includes/coreClasses/Core/ImportCsvCustomers.php:31
+msgid "Login column was not found"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Core/ImportCsvCustomers.php:47
+#: includes/coreClasses/Core/ImportCsvCustomers.php:47
+msgid "This login is already associated to an employee"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Core/ImportCsvCustomers.php:67
+#: includes/coreClasses/Core/ImportCsvCustomers.php:67
+msgid "Persisting the new user :"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Core/ImportCsvCustomers.php:96
+#: includes/coreClasses/Core/ImportCsvCustomers.php:96
+#, php-format
+msgid "%d added, %d updated, %d passed"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisErrors.php:27
+#: includes/coreClasses/IgestisErrors.php:27
+msgid ""
+"Unable to delete this row. It has some associated datas on the application"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisParseRequest.php:104
+#: includes/coreClasses/IgestisParseRequest.php:104
+msgid "Route not known for url :"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Apis/ImportCsvDatas.php:59
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Apis/ImportCsvDatas.php:227
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Apis/ImportCsvDatas.php:271
+#: includes/coreClasses/Apis/ImportCsvDatas.php:59
+#: includes/coreClasses/Apis/ImportCsvDatas.php:227
+#: includes/coreClasses/Apis/ImportCsvDatas.php:271
+msgid "The scriptName is required"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Apis/ImportCsvDatas.php:77
+#: includes/coreClasses/Apis/ImportCsvDatas.php:77
+msgid "The csv file does not exists or is not readable"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Utils/IgestisLdap.php:270
+#: includes/coreClasses/Utils/IgestisLdap.php:270
+msgid "There is not any company to import the user in"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Utils/IgestisLdap.php:278
+#: includes/coreClasses/Utils/IgestisLdap.php:278
+msgid "Unable to retrieve datas from the LDAP / Active directory server"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Ajax/AjaxResult.php:31
+#: includes/coreClasses/Ajax/AjaxResult.php:31
+msgid "A key is required to send a data to ajax script"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Ajax/AjaxResult.php:34
+#: includes/coreClasses/Ajax/AjaxResult.php:34
+msgid "successful and error are reserved keywords"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/Ajax/AjaxResult.php:55
+#: includes/coreClasses/Ajax/AjaxResult.php:55
+msgid "Error occured during ajax statement"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:85
+#: includes/coreClasses/IgestisSecurity.php:85
+msgid "Please specify a login and a password"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:128
+#: includes/coreClasses/IgestisSecurity.php:128
+msgid "Invalid username or password"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:372
+#: includes/coreClasses/IgestisSecurity.php:372
+msgid "None"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:372
+#: includes/coreClasses/IgestisSecurity.php:372
+msgid "No privileges"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:373
+#: includes/coreClasses/IgestisSecurity.php:373
+msgid "Administrator"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:373
+#: includes/coreClasses/IgestisSecurity.php:373
+msgid "Can do everything"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:374
+#: includes/coreClasses/IgestisSecurity.php:374
+msgid "Employee"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:374
+#: includes/coreClasses/IgestisSecurity.php:374
+msgid "Can edit customers and show employees"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/entities/CoreContacts.php:888
+#: entities/CoreContacts.php:888
+msgid "This person already exists in LDAP and it's not an employee"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/entities/CoreContacts.php:977
+#: debian/igestis/usr/share/igestis/entities/CoreContacts.php:1019
+#: entities/CoreContacts.php:977 entities/CoreContacts.php:1019
+msgid "This login already exists in LDAP as employee"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/entities/CoreContacts.php:1057
+#: entities/CoreContacts.php:1057
+#, php-format
+msgid "Warning : Unknown '%s' user type"
+msgstr ""
+
+#: debian/igestis/usr/share/igestis/entities/CoreContacts.php:1087
+#: entities/CoreContacts.php:1087
+msgid ""
+"Error : LDAP_USER_RDN cannot be set to true. Please set to false or a custom "
+"value"
+msgstr ""
+
+#: tmp/8f/8d/e1ef136ee106e10aa842332e0dd2.php:25
+#: tmp/83/f8/392e581be208cf711b6ed6d09662.php:25
+msgid "Error"
+msgstr ""
+
+#: tmp/8f/8d/e1ef136ee106e10aa842332e0dd2.php:37
+msgid "The page that you requested is not found."
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:25
+msgid "Edit a customer"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:25
+msgid "Modify the information about the selected customer"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:47
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:53
+msgid "Customer type"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:51
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:47
+msgid "Showed name"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:51
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:47
+msgid "Set the showed name"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:51
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:47
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:57
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:53
+msgid "The showed named is the company name in this case."
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:55
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:51
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:61
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:57
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:60
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:43
+msgid "Client ID"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:55
+msgid "Set the client ID"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:55
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:51
+msgid ""
+"This field can be used to set a customized identifier linked with an "
+"external software"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:59
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:130
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:332
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:55
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:67
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:97
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:63
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:84
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:135
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:67
+msgid "VAT number"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:63
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:59
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:71
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:67
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:67
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:50
+msgid "VAT billed"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:67
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:63
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:75
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:71
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:92
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:75
+msgid "Bank account number"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:72
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:267
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:132
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:68
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:162
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:271
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:131
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:64
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:158
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:128
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:129
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:173
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:60
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:32
+msgid "Save changes"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:76
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:61
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:271
+#: tmp/73/7c/050422cd08a46b193947b7dceb67.php:46
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:72
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:166
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:275
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:135
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:104
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:68
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:162
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:133
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:177
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:64
+#: tmp/c5/15/97e5dd60b62192e5fba4f70751c9.php:62
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:36
+msgid "Cancel"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:85
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:81
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:103
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:86
+msgid "Contacts list for"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:102
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:98
+msgid "Add new contact"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:126
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:122
+msgid "Are you sure that you want to delete this contact ?"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:130
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:40
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:119
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:163
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:174
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:185
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:196
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:207
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:218
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:229
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:240
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:251
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:262
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:273
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:284
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:306
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:317
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:328
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:339
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:350
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:361
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:390
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:126
+#: tmp/16/17/b8a6ecad012dd602006ff288b460.php:808
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:54
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:40
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:45
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:76
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:61
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:217
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:59
+msgid "No"
+msgstr ""
+
+#: tmp/19/f9/04a58d0e8b4bdf9f80bd0b8dc4f0.php:134
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:42
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:130
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:141
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:152
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:295
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:392
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:130
+#: tmp/16/17/b8a6ecad012dd602006ff288b460.php:798
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:56
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:42
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:47
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:72
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:63
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:219
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:55
+msgid "Yes"
+msgstr ""
+
+#: tmp/d2/21/c127265aa15b06700ace95769fb0.php:36
+msgid "Thank you for using iGestis"
+msgstr ""
+
+#: tmp/d2/21/c127265aa15b06700ace95769fb0.php:41
+msgid ""
+"You received this mail because you or somebody asked to reset your password. "
+"If you think this is an error, you can just delete this mail."
+msgstr ""
+
+#: tmp/d2/21/c127265aa15b06700ace95769fb0.php:45
+msgid ""
+"Follow the link under the login concerned, you may have several link in case "
+"of your mail is registered with multiple iGestis account."
+msgstr ""
+
+#: tmp/d2/21/c127265aa15b06700ace95769fb0.php:60
+msgid "For the login"
+msgstr ""
+
+#: tmp/d2/21/c127265aa15b06700ace95769fb0.php:64
+msgid "Account type is"
+msgstr ""
+
+#: tmp/61/43/4640a043458e7fbe7eb42ee2ac7a.php:31
+msgid "About iGestis"
+msgstr ""
+
+#: tmp/61/43/4640a043458e7fbe7eb42ee2ac7a.php:35
+msgid "Need help?"
+msgstr ""
+
+#: tmp/61/43/4640a043458e7fbe7eb42ee2ac7a.php:43
+msgid "Need new feature?"
+msgstr ""
+
+#: tmp/61/43/4640a043458e7fbe7eb42ee2ac7a.php:47
+msgid "Bug report"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:28
+msgid "General Admin"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:28
+msgid "Update general configuration of Igestis"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:58
+msgid "Caches"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:65
+msgid "Custom stylesheet"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:76
+msgid "Clean caches"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:80
+msgid "Clear templates cache"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:84
+msgid "Clear languages cache"
+msgstr ""
+
+#: tmp/f8/28/b7066a19f6c59dae58ad6d374d68.php:100
+msgid "Apply actions"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:25
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:213
+msgid "Companies management"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:25
+msgid ""
+"Add and remove the companies you are owning. This does not include the "
+"companies which are your customers."
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:38
+msgid "Are you sure that you want to delete this company ?"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:57
+msgid "Add new company"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:74
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:81
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:57
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:47
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:53
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:48
+msgid "Company name"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:78
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:125
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:104
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:425
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:85
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:135
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:126
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:67
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:131
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:92
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:105
+msgid "City"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:82
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:70
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:99
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:112
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:429
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:89
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:143
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:82
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:100
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:36
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:71
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:139
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:216
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:98
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:109
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:68
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:199
+msgid "Phone"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:86
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:120
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:433
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:93
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:151
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:86
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:40
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:147
+msgid "Mobile"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:90
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:437
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:97
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:90
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:87
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:44
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:155
+msgid "Actions"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:125
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:472
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:132
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:125
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:114
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:187
+msgid "View"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:134
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:481
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:141
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:137
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:123
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:87
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:193
+msgid "Edit"
+msgstr ""
+
+#: tmp/07/48/5f77dda0f88849d59241b5c176e2.php:143
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:490
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:150
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:146
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:132
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:96
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:202
+msgid "Delete"
+msgstr ""
+
+#: tmp/7b/16/bdfb9245eedc209a2225cde60617.php:25
+msgid "View all installed addons"
+msgstr ""
+
+#: tmp/7b/16/bdfb9245eedc209a2225cde60617.php:83
+msgid "Installed"
+msgstr ""
+
+#: tmp/7b/16/bdfb9245eedc209a2225cde60617.php:118
+msgid "Nothing to view."
+msgstr ""
+
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:25
+msgid "Please give us your idea"
+msgstr ""
+
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:41
+msgid ""
+"Please note that this request will not give an immediate result, we will "
+"take care about your remark, then we will probably contact you."
+msgstr ""
+
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:44
+msgid "What you would like to do?"
+msgstr ""
+
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:48
+msgid "Where do you want the new feature?"
+msgstr ""
+
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:52
+msgid "Email where we can contact you"
+msgstr ""
+
+#: tmp/96/82/0bff2cce2d826d5e41e70819daf3.php:57
+msgid "Send the bug"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:25
+msgid "Show a company"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:25
+msgid "Consult the company details"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:79
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:103
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:116
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:147
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:104
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:75
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:143
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:224
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:102
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:113
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:76
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:207
+msgid "Phone supplement"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:88
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:107
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:277
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:108
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:81
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:232
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:106
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:119
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:84
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:215
+msgid "Mobile phone"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:97
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:129
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:124
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:155
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:130
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:85
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:151
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:240
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:110
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:123
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:92
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:223
+msgid "Fax"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:108
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:91
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:84
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:113
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:92
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:89
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:109
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:202
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:122
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:127
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:102
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:185
+msgid "Email"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:117
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:93
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:131
+msgid "Web site"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:137
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:110
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:152
+msgid "Bank"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:144
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:114
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:156
+msgid "IBAN"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:151
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:160
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:161
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:120
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:162
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:111
+msgid "RIB"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:158
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:101
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:143
+msgid "RCS"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:165
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:124
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:166
+msgid "Money symbol"
+msgstr ""
+
+#: tmp/e8/9b/587e62a6d645c81d42d349662de9.php:173
+#: tmp/f4/7b/995a18b98b6dfe5dc4dffbbdf598.php:77
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:276
+#: tmp/d5/69/efad8febb075183804c33effd9e4.php:52
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:119
+#: tmp/dd/57/d2533c7c10d21beb28ab95b2df7c.php:47
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:259
+#: tmp/35/66/e5ac15626d932639755866c15805.php:51
+msgid "Back"
+msgstr ""
+
+#: tmp/a5/c8/22d6be5f0d996fef4c166753dfa7.php:25
+msgid "Login page"
+msgstr ""
+
+#: tmp/a5/c8/22d6be5f0d996fef4c166753dfa7.php:50
+msgid "Authentication"
+msgstr ""
+
+#: tmp/a5/c8/22d6be5f0d996fef4c166753dfa7.php:54
+msgid "Login"
+msgstr ""
+
+#: tmp/a5/c8/22d6be5f0d996fef4c166753dfa7.php:58
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:52
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:152
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:72
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:101
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:153
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:97
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:62
+msgid "Password"
+msgstr ""
+
+#: tmp/a5/c8/22d6be5f0d996fef4c166753dfa7.php:63
+msgid "Remember me"
+msgstr ""
+
+#: tmp/a5/c8/22d6be5f0d996fef4c166753dfa7.php:68
+msgid "Sign in"
+msgstr ""
+
+#: tmp/a5/c8/22d6be5f0d996fef4c166753dfa7.php:74
+msgid "Lost password"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:25
+msgid "Set new password"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:25
+#: tmp/12/2a/3cddf85d50337c3e2cdec6b91757.php:25
+msgid "Fill this form to reset your password"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:48
+msgid "Please choose a new password"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:56
+msgid "Confirm password"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:61
+msgid "Set the new password"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:67
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:116
+#: tmp/12/2a/3cddf85d50337c3e2cdec6b91757.php:57
+msgid "Back to home page"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:110
+msgid "Reset again a password"
+msgstr ""
+
+#: tmp/d4/d6/05e39d8a6a1f3839b904520a295b.php:122
+msgid "Error, the link is has expired or is invalid"
+msgstr ""
+
+#: tmp/12/2a/3cddf85d50337c3e2cdec6b91757.php:25
+msgid "Reset my password"
+msgstr ""
+
+#: tmp/12/2a/3cddf85d50337c3e2cdec6b91757.php:42
+msgid "Login or Email"
+msgstr ""
+
+#: tmp/12/2a/3cddf85d50337c3e2cdec6b91757.php:46
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:148
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:68
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:97
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:149
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:93
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:193
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:176
+msgid "Username"
+msgstr ""
+
+#: tmp/12/2a/3cddf85d50337c3e2cdec6b91757.php:51
+msgid "Request a new password"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:25
+msgid "Create a new employee"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:25
+msgid "Fill all information about the new employee"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:46
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:511
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:171
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:267
+#: tmp/39/7d/ca1653e7671b2a944168db55ee87.php:105
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:47
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:153
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:124
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:249
+msgid "Warning!"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:50
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:51
+msgid "You must first create at least one company before adding an employee."
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:56
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:55
+msgid "Create a company"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:73
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:40
+msgid "Personal information"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:79
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:80
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:109
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:80
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:105
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:46
+msgid "Civility"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:83
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:60
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:89
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:84
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:32
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:85
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:50
+msgid "First name"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:87
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:64
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:93
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:88
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:28
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:89
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:54
+msgid "Last name"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:95
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:96
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:74
+msgid "Company"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:113
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:121
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:114
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:55
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:117
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:80
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:93
+msgid "Postal address"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:117
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:127
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:118
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:59
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:123
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:84
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:97
+msgid "Postal address supplement"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:121
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:100
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:211
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:131
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:122
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:63
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:127
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:88
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:101
+msgid "Postal code"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:133
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:108
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:139
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:134
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:135
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:114
+msgid "Country"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:137
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:88
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:117
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:138
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:113
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:118
+msgid "Language"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:143
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:144
+msgid "Account information"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:148
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:149
+msgid "Choose a username"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:148
+msgid ""
+"Username must be in lower case, begin with a letter and not contain special "
+"caracter."
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:152
+msgid "Choose a password"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:152
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:101
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:105
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:153
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:97
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:101
+msgid "Please choose a good password, with a minimum of 5 caracters."
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:156
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:76
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:105
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:157
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:101
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:66
+msgid "Password confirmation"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:156
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:76
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:157
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:66
+msgid "Confirm the password"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:156
+msgid ""
+"Password confirmation just checks that you did not make an error when you "
+"typed the first password."
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:166
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:177
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:167
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:178
+msgid "Department"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:173
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:174
+msgid "Sel"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:181
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:110
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:182
+msgid "Description"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:223
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:225
+msgid "Application rights"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:349
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:350
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:174
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:234
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:104
+msgid "Error, you don't have permission to access to this page"
+msgstr ""
+
+#: tmp/ee/bf/aa0acd0edf95f420d38e66d22ea2.php:352
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:353
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:177
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:110
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:237
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:107
+msgid "Nothing to edit."
+msgstr ""
+
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:29
+msgid "Edit contact information"
+msgstr ""
+
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:48
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:54
+msgid "Set main contact"
+msgstr ""
+
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:72
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:101
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:105
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:153
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:97
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:101
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:62
+msgid "Change password"
+msgstr ""
+
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:72
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:62
+msgid ""
+"Let empty will keep the old password. If changed, please choose a good "
+"password, with a minimum of 5 caracters."
+msgstr ""
+
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:76
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:157
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:66
+msgid ""
+"Password confirmation just confirms that you make an error when you typed "
+"the first password."
+msgstr ""
+
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:92
+msgid "Address"
+msgstr ""
+
+#: tmp/48/0c/c977f0d65d65b1d1f56ae49c055c.php:96
+msgid "Address supplement"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:25
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:285
+msgid "Customers management"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:25
+msgid ""
+"Add and remove your customers. This also includes the companies which are "
+"your customers."
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:59
+msgid "Import customers data"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:73
+msgid "Select file source information"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:78
+msgid "Input text file"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:82
+msgid "Delimiter"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:82
+msgid "Field delimiter"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:82
+msgid "Delimiter is a caracter used to separate field."
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:86
+msgid "Enclosure"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:95
+msgid ""
+"The source file has to be in csv format and with utf8 encoding to avoid any "
+"special caracters issue."
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:102
+msgid "Field name"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:106
+#: tmp/16/17/b8a6ecad012dd602006ff288b460.php:138
+#: tmp/16/17/b8a6ecad012dd602006ff288b460.php:249
+#: tmp/16/17/b8a6ecad012dd602006ff288b460.php:359
+msgid "Required"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:123
+msgid "Contact civility, possible value"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:134
+msgid "Must be unique, example"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:145
+msgid "First contact first name, example"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:156
+msgid "First contact last name, example"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:167
+msgid "Email, example:"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:178
+msgid "Two first letter of user Language, example:"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:189
+msgid "Fist part of the postal address"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:200
+msgid "Second part of the postal address"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:222
+msgid "City name"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:233
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:244
+msgid "Two first letter of the country"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:255
+msgid "First contact phone"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:266
+msgid "Second contact phone"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:288
+msgid "Fax number"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:299
+msgid "Customer type, possible value"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:310
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:321
+msgid "Enterprise or collectivity name, empty for individual."
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:343
+msgid "Bolean, does the TVA billed for the customer, possible value"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:354
+msgid "Bank account information"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:365
+msgid "Custom user ID, usefull to be linked with external software"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:378
+msgid "Next step"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:388
+msgid "Are you sure that you want to delete this customer ?"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:407
+msgid "Add new customer"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:411
+msgid "Import customers"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:421
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:74
+msgid "Denomination"
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:515
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:175
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:271
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:157
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:128
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:253
+msgid ""
+"You cannot create a customer or provider, please create an employee account "
+"before."
+msgstr ""
+
+#: tmp/af/68/d8a6ec4700c2afa3ea0932542f95.php:521
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:181
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:277
+#: tmp/39/7d/ca1653e7671b2a944168db55ee87.php:115
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:163
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:134
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:259
+msgid "Create an employee"
+msgstr ""
+
+#: tmp/73/7c/050422cd08a46b193947b7dceb67.php:25
+msgid "Import customer preview"
+msgstr ""
+
+#: tmp/73/7c/050422cd08a46b193947b7dceb67.php:25
+msgid "Check all data before real customer import"
+msgstr ""
+
+#: tmp/73/7c/050422cd08a46b193947b7dceb67.php:42
+msgid "Import the customers"
+msgstr ""
+
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:25
+msgid "Edit a supplier"
+msgstr ""
+
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:25
+msgid "Modify the information about the selected supplier"
+msgstr ""
+
+#: tmp/31/96/cc9b103060889f43a8820d331225.php:51
+msgid "Set the supplier ID"
+msgstr ""
+
+#: tmp/75/9a/a13194ea346a95246da892b352e2.php:99
+#: tmp/39/7d/ca1653e7671b2a944168db55ee87.php:210
+#: tmp/29/0c/e878607e6face749286b51312572.php:262
+#: tmp/4a/c3/bb22452949389eaf125186e340ef.php:53
+msgid ""
+"Don't call this template directly, but extend this template from an other "
+"twig"
+msgstr ""
+
+#: tmp/16/17/b8a6ecad012dd602006ff288b460.php:390
+msgid "Browse"
+msgstr ""
+
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:25
+msgid "Suppliers management"
+msgstr ""
+
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:25
+msgid ""
+"Add and remove your suppliers. This also includes the companies which are "
+"your suppliers."
+msgstr ""
+
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:52
+msgid "Are you sure that you want to delete this supplier ?"
+msgstr ""
+
+#: tmp/6e/2d/c3898b564fe3536c780263174d4d.php:71
+msgid "Add a new supplier"
+msgstr ""
+
+#: tmp/f4/7b/995a18b98b6dfe5dc4dffbbdf598.php:25
+msgid "About"
+msgstr ""
+
+#: tmp/f4/7b/995a18b98b6dfe5dc4dffbbdf598.php:40
+msgid ""
+"iGestis is a free ERP software for small companies. It's licenced under GPL "
+"v3."
+msgstr ""
+
+#: tmp/f4/7b/995a18b98b6dfe5dc4dffbbdf598.php:47
+msgid "GPL V3 Licence page"
+msgstr ""
+
+#: tmp/f4/7b/995a18b98b6dfe5dc4dffbbdf598.php:51
+msgid "iGestis home page"
+msgstr ""
+
+#: tmp/f4/7b/995a18b98b6dfe5dc4dffbbdf598.php:58
+msgid "iGestis works with the following librairies."
+msgstr ""
+
+#: tmp/ce/08/05dbe648df54c289ddca6f79ebf9.php:25
+msgid "Home"
+msgstr ""
+
+#: tmp/d8/63/565fa8a76e8b5bbdd39fc254f64f.php:160
+msgid "Logged in as"
+msgstr ""
+
+#: tmp/d8/63/565fa8a76e8b5bbdd39fc254f64f.php:173
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:351
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:394
+msgid "My account"
+msgstr ""
+
+#: tmp/d8/63/565fa8a76e8b5bbdd39fc254f64f.php:179
+msgid "Logout"
+msgstr ""
+
+#: tmp/d8/63/565fa8a76e8b5bbdd39fc254f64f.php:191
+msgid "Not Logged in"
+msgstr ""
+
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:25
+msgid "Create a new customer"
+msgstr ""
+
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:25
+msgid "Fill all information about the new customer"
+msgstr ""
+
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:45
+msgid "Customer information"
+msgstr ""
+
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:57
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:53
+msgid "Define the showed name"
+msgstr ""
+
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:61
+msgid "Define the client ID"
+msgstr ""
+
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:61
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:57
+msgid ""
+"This field can be used to define a cusomized ID linked with an external "
+"software"
+msgstr ""
+
+#: tmp/4b/a1/d5392f9bfcfebd216aff3de1d73a.php:81
+msgid "Personnal information"
+msgstr ""
+
+#: tmp/39/7d/ca1653e7671b2a944168db55ee87.php:109
+msgid ""
+"You are using the root account, which is a system account. Thus, some "
+"fonctions will be disabled by default. Please create a new employee whose "
+"account will allow you to enjoy all the fonctions."
+msgstr ""
+
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:25
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:242
+msgid "Employees management"
+msgstr ""
+
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:25
+msgid "Add and remove your employees account and information"
+msgstr ""
+
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:38
+msgid "Are you sure that you want to delete this employee ?"
+msgstr ""
+
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:57
+msgid "Add new employee"
+msgstr ""
+
+#: tmp/01/35/65ccbfe2570953dcaa84a8699a32.php:78
+msgid "Mail"
+msgstr ""
+
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:25
+msgid "Edit an employee"
+msgstr ""
+
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:25
+msgid "Modify the information about the selected employee"
+msgstr ""
+
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:72
+msgid "Modification of"
+msgstr ""
+
+#: tmp/c6/9e/5dc836be65883a5745aa1be709b7.php:149
+msgid "Due to some constraints, the username is not editable."
+msgstr ""
+
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:25
+msgid "Departments management"
+msgstr ""
+
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:25
+msgid "Add and remove the departments you are owning."
+msgstr ""
+
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:43
+msgid "Are you sure that you want to delete this department ?"
+msgstr ""
+
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:62
+msgid "Add new department"
+msgstr ""
+
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:79
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:52
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:47
+msgid "Department name"
+msgstr ""
+
+#: tmp/71/4d/8927b932d91b519cc70259ecb7e6.php:83
+msgid "Department description"
+msgstr ""
+
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:24
+msgid "Def."
+msgstr ""
+
+#: tmp/71/ca/6658b470e82483849bb08df5cb50.php:60
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:166
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:149
+msgid "Main contact"
+msgstr ""
+
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:25
+msgid "Create a new company"
+msgstr ""
+
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:25
+msgid "Fill all information about the new company"
+msgstr ""
+
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:47
+msgid "Define the company name"
+msgstr ""
+
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:47
+msgid "Write here your complete company name in its legal form"
+msgstr ""
+
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:51
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:52
+msgid "Your logo"
+msgstr ""
+
+#: tmp/4e/b8/1022f410d2f06c74170abad1427a.php:51
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:52
+msgid "Select your logo"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:25
+msgid "Quick tour"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:40
+msgid "New menu style"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:44
+msgid ""
+"The menu has been now moved on the top of the screen and has been "
+"reorganised."
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:51
+msgid "Personal settings"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:55
+msgid ""
+"All personal information are available in <b>My account</b> submenu. Don't "
+"forgot to choose a good password !"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:68
+msgid "New clear forms"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:72
+msgid "All forms have on fly data check avoiding errors."
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:81
+msgid "Enter information"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:100
+msgid "Save"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:121
+msgid "New interractive tables"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:139
+msgid "Column 1"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:143
+msgid "Column 2"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:147
+msgid "Column 3"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:151
+msgid "Column 4"
+msgstr ""
+
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:169
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:173
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:177
+#: tmp/20/70/32ce7d31ef4a29c6e36648d2198e.php:181
+msgid "Row %row%"
+msgstr ""
+
+#: tmp/83/f8/392e581be208cf711b6ed6d09662.php:36
+msgid "You don't have autorisation to access to this page."
+msgstr ""
+
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:25
+msgid "Create a new department"
+msgstr ""
+
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:25
+msgid "Fill all information about the new department"
+msgstr ""
+
+#: tmp/6b/71/e77dfb870acb4fe54a3cfbc5495a.php:56
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:51
+msgid "Description of the department"
+msgstr ""
+
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:25
+msgid "Create a new supplier"
+msgstr ""
+
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:25
+msgid "Fill all information about the new supplier"
+msgstr ""
+
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:45
+msgid "Supplier information"
+msgstr ""
+
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:57
+msgid "Define the supplier ID"
+msgstr ""
+
+#: tmp/bc/3c/2252de26cfe855864412c787eee7.php:77
+msgid "Main contact information"
+msgstr ""
+
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:25
+msgid "Show a customer"
+msgstr ""
+
+#: tmp/81/9e/93eeba3c34215417cb7c8b29eb7b.php:25
+msgid "Consult the customer details"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:25
+msgid "Home page"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:59
+msgid "Are you sure that you want to restore the default page ?"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:86
+msgid "Error during ajax statement"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:113
+msgid "Edit the home page"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:136
+msgid "Edit this page"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:142
+msgid "Revert to original state"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:170
+msgid "Welcome to iGestis !!"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:174
+msgid ""
+"It seems this is the first time you log in iGestis. You can have a quick "
+"tour of what you can do with iGestis."
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:181
+msgid "See a quick tour"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:219
+msgid "Add a company"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:223
+msgid "View all companies"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:248
+msgid "Add an employee"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:252
+msgid "View all employees"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:291
+msgid "Add a customer"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:295
+msgid "View all customers"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:314
+msgid "Providers management"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:320
+msgid "Add a provider"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:324
+msgid "View all providers"
+msgstr ""
+
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:357
+#: tmp/de/ca/e89e7dc33666749753d35990b5a5.php:400
+msgid "Update my personnal details"
+msgstr ""
+
+#: tmp/f7/e8/04ecac1c148192dde647c24a136e.php:25
+msgid "Module"
+msgstr ""
+
+#: tmp/f7/e8/04ecac1c148192dde647c24a136e.php:25
+msgid "Description du module"
+msgstr ""
+
+#: tmp/f7/e8/04ecac1c148192dde647c24a136e.php:38
+msgid "Navigation"
+msgstr ""
+
+#: tmp/d5/69/efad8febb075183804c33effd9e4.php:25
+msgid "Error on form submit"
+msgstr ""
+
+#: tmp/d5/69/efad8febb075183804c33effd9e4.php:38
+msgid "Invalid form"
+msgstr ""
+
+#: tmp/d5/69/efad8febb075183804c33effd9e4.php:42
+msgid ""
+"The datas that you have just sent are invalid. Please go back to the form "
+"and fix the invalid datas (Check if javascript is activated to let you see "
+"the form errors)."
+msgstr ""
+
+#: tmp/d5/69/efad8febb075183804c33effd9e4.php:46
+msgid "Invoked reason"
+msgstr ""
+
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:58
+msgid "User name"
+msgstr ""
+
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:58
+msgid "Username not editable"
+msgstr ""
+
+#: tmp/26/e1/0ae7dc01ee64f0cb1fa232b6943a.php:58
+msgid ""
+"Due to some constraints and data depedencies with the employee, this field "
+"is not editable."
+msgstr ""
+
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:25
+msgid "Edit a company"
+msgstr ""
+
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:25
+msgid "Modify the information about the selected company"
+msgstr ""
+
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:48
+msgid "Place here your complete company name with legal form"
+msgstr ""
+
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:80
+msgid "Delete file"
+msgstr ""
+
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:139
+msgid "VAT rating"
+msgstr ""
+
+#: tmp/fd/64/afa7c7092e56a5bdb525913b9660.php:215
+msgid ""
+"Are you sure that you want to delete this image ? It will be deleted only if "
+"you validate the form."
+msgstr ""
+
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:25
+msgid "Show an employee"
+msgstr ""
+
+#: tmp/fd/7f/f38aa1c5862dbcb8dd70d9036dfa.php:25
+msgid "Consult the employee details"
+msgstr ""
+
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:25
+msgid "Edit a department"
+msgstr ""
+
+#: tmp/fd/ef/b2a73e9aad1a8b47630c2dda4dbf.php:25
+msgid "Modify the information about the selected department"
+msgstr ""
+
+#: tmp/c5/15/97e5dd60b62192e5fba4f70751c9.php:41
+msgid "What was you doing before the bug appears?"
+msgstr ""
+
+#: tmp/c5/15/97e5dd60b62192e5fba4f70751c9.php:45
+msgid "What was the expected result when the bug appears?"
+msgstr ""
+
+#: tmp/c5/15/97e5dd60b62192e5fba4f70751c9.php:49
+msgid "What happened instead of what you expected?"
+msgstr ""
+
+#: tmp/c5/15/97e5dd60b62192e5fba4f70751c9.php:53
+msgid "Email on which we can contact you"
+msgstr ""
+
+#: tmp/c5/15/97e5dd60b62192e5fba4f70751c9.php:58
+msgid "Send"
+msgstr ""
+
+#: tmp/dd/57/d2533c7c10d21beb28ab95b2df7c.php:25
+msgid "Show a department"
+msgstr ""
+
+#: tmp/dd/57/d2533c7c10d21beb28ab95b2df7c.php:25
+msgid "Show department details"
+msgstr ""
+
+#: tmp/4a/83/d56e690e5b8f44ad1dc51dd514b6.php:36
+msgid "An iGestis user reports a new feature request"
+msgstr ""
+
+#: tmp/4a/83/d56e690e5b8f44ad1dc51dd514b6.php:40
+#: tmp/9c/e8/36049a1d060dce4cad1eee87e8c8.php:22
+msgid "From:"
+msgstr ""
+
+#: tmp/4a/83/d56e690e5b8f44ad1dc51dd514b6.php:45
+msgid "User would like to do:"
+msgstr ""
+
+#: tmp/4a/83/d56e690e5b8f44ad1dc51dd514b6.php:51
+msgid "User would like at location:"
+msgstr ""
+
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:25
+msgid "Show a supplier"
+msgstr ""
+
+#: tmp/7c/03/b625b55754a7703b5b4be63bf95c.php:25
+msgid "Show supplier details"
+msgstr ""
+
+#: tmp/35/66/e5ac15626d932639755866c15805.php:25
+msgid "Help"
+msgstr ""
+
+#: tmp/35/66/e5ac15626d932639755866c15805.php:42
+msgid "See again the quick tour"
+msgstr ""
+
+#: tmp/35/66/e5ac15626d932639755866c15805.php:46
+msgid "iGestis support website"
+msgstr ""
+
+#: tmp/a6/aa/a423d9fbfaf60e16cc38815a8738.php:25
+msgid "Error message"
+msgstr ""
+
+#: tmp/a6/aa/a423d9fbfaf60e16cc38815a8738.php:37
+msgid "Iabsis encoutered an error!"
+msgstr ""
+
+#: tmp/9c/e8/36049a1d060dce4cad1eee87e8c8.php:27
+msgid "What the user was doing:"
+msgstr ""
+
+#: tmp/9c/e8/36049a1d060dce4cad1eee87e8c8.php:33
+msgid "What the user expected:"
+msgstr ""
+
+#: tmp/9c/e8/36049a1d060dce4cad1eee87e8c8.php:39
+msgid "What the user endured:"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:24
+msgid "Search"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:28
+msgid "Add"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:40
+msgid "No matching records found"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:44
+msgid "Processing"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:48
+msgid "Loading"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:52
+msgid "Showing"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:56
+msgid "to"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:60
+msgid "entries"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:64
+msgid "of"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:68
+msgid "Previous"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:72
+msgid "Next"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:76
+msgid "No data available in table"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:80
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:84
+msgid "_MENU_ records per page"
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:88
+msgid "This field is required."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:92
+msgid "Please fix this field."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:96
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:100
+msgid "Please enter a valid URL."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:104
+msgid "Please enter a valid date."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:108
+msgid "Please enter a valid date (ISO)."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:112
+msgid "Please enter a valid number."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:116
+msgid "Please enter only digits."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:120
+msgid "Please enter a valid credit card number."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:124
+msgid "Please enter the same value again."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:128
+msgid "Please enter a value with a valid extension."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:132
+msgid "Please enter no more than {0} characters."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:136
+msgid "Please enter at least {0} characters."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:140
+msgid "Please enter a value between {0} and {1} characters long."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:144
+msgid "Please enter a value between {0} and {1}."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:148
+msgid "Please enter a value less than or equal to {0}."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:152
+msgid "Please enter a value greater than or equal to {0}."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:156
+msgid "Please enter a correct value."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:160
+msgid "This login already exists."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:164
+msgid ""
+"The login must be in lower case, no special caracters, and not begin by a "
+"number."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:168
+msgid "Please enter an unique value."
+msgstr ""
+
+#: tmp/9c/fe/0d01943d19561e89f934c517133e.php:172
+msgid "Choose a value"
+msgstr ""

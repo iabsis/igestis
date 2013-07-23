@@ -1,0 +1,12 @@
+<script>
+/* Table initialisation */
+$(document).ready(function() {
+        $('#table_data').dataTable( {
+                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span5'i><'span7'p>>",
+                "sPaginationType": "bootstrap",
+                "oLanguage": {
+                        "sLengthMenu": translations.recordsperpage
+                }
+        } );
+} );
+</script>

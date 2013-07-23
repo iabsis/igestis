@@ -1,0 +1,7 @@
+dn: uid=root,ou=Users,dc=example,dc=local
+changetype: modify
+delete: shadowMax
+
+dn: uid=root,ou=Users,dc=example,dc=local
+changetype: modify
+delete: shadowLastChange

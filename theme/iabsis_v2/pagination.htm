@@ -1,0 +1,14 @@
+<!-- IF PAGINATION -->
+<div id="pagination-old-modules">
+    <div class="paging_bootstrap pagination">
+        <ul>
+            <li class="prev <!-- IF PREVIOUS_PAGE --><!-- ELSE -->disabled<!-- ENDIF -->"><a href="{PREVIOUS_PAGE}">← Précédent</a></li>
+            <!-- BEGIN PAGINATION -->
+            <li class="<!-- IF PAGINATION.selected -->active<!-- ENDIF -->"><a href="{PAGINATION.page_link}">{PAGINATION.link_name}</a></li>
+            <!-- END PAGINATION -->
+            <li class="next <!-- IF NEXT_PAGE --><!-- ELSE -->disabled<!-- ENDIF -->"><a href="{NEXT_PAGE}">Suivant → </a></li>
+        </ul>
+    </div>
+</div>
+<!-- ENDIF PAGINATION -->
+

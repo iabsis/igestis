@@ -1,0 +1,64 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+    
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                {% if username is defined %}
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                {% endif %}
+                
+                
+                <a href="{{ url("home_page") }}" class="brand">iGestis </a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        {% for menu_item in menu_top %}
+                            {% if menu_item.submenu is not defined %}
+                                {% set menu_name = menu_item.name %}                                
+                                <li {% if (menu_item.active == true or CURRENT_URL == menu_item.url) %}class="active"{% endif %}><a href="{{ menu_item.url }}">{% trans from "Module:core" menu_name %}</a></li>
+                            {% else %}
+                            {% set menu_name = menu_item.name %}
+                                <li class="dropdown {% if (menu_item.active == true) %}active{% endif %}">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    {% if menu_name == "Applications" %}<i class="icon-leaf icon-white"></i> {% endif %}
+                                    {% if menu_name == "Administration" %}<i class="icon-cog icon-white"></i> {% endif %}
+                                    {% if menu_name == "Contacts" %}<i class="icon-user icon-white"></i> {% endif %}
+                                    {% if menu_name == "Documents" %}<i class="icon-folder-open icon-white"></i> {% endif %}
+                                    {% if menu_name == "Communication" %}<i class="icon-envelope icon-white"></i> {% endif %}
+                                    {% if menu_name == "Commercial" %}<i class="icon-dollar icon-white"></i> {% endif %}
+                                    {% trans from "Module:core" menu_name %}
+                                    <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                    {% for submenu_item in menu_item.submenu %}
+                                        {% set submenu_name = submenu_item.name %}
+                                        <li {% if (submenu_item.active == true) %}class="active"{% endif %}><a href="{{ submenu_item.url }}">{% trans from "Module:core" submenu_name %}</a></li>
+                                    {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+
+                    {% if username is defined %}
+                        <ul class="nav pull-right">
+                            <li class="dropdown {% if  CURRENT_URL == url('my_account') %}active{% endif %}" >
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-lock icon-white"></i> {% trans from "Module:core" %}Logged in as {% endtrans %} {{ CONTACT.login }}<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li {% if  CURRENT_URL == url('my_account') %}class="active"{% endif %}><a href="{{ url('my_account') }}"><i class="icon-user"></i> {% trans from "Module:core" %}My account{% endtrans %}</a></li>
+                                    <li><a href="{{ url('login_form', {"Force" : 1}) }}"><i class="icon-off"></i> {% trans from "Module:core" %}Logout{% endtrans %}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle">{% trans from "Module:core" %}Not Logged in{% endtrans %}</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>

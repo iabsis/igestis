@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'header.twig' %}
+    {% block cssFiles %}
+        {% include 'css.twig' %}
+    {% endblock %}
+</head>
+{% include 'translations.twig' %}
+{% include 'script.twig' %}
+{% import "form.twig" as forms %}
+
+    <body  class="{% if DEBUG_MODE %}debug-mode{% endif %}">
+        
+            {% if DEBUG_MODE %}
+                {% include 'debugToolbar.twig' %}
+                <div class="menu">
+            {% endif %}
+                
+            {% include 'menu.twig' %}
+            {% if DEBUG_MODE %}
+                </div>
+            {% endif %}
+            <div class="header-spacer-iframe"></div>
+                <div class="row-fluid"  id="global-page-content">
+                    {% block content %}
+                        {% trans from "Module:core" %}Don't call this template directly, but extend this template from an other twig{% endtrans %}
+                    {% endblock %}
+                </div>
+
+    </body>
+</html>

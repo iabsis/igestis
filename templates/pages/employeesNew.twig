@@ -1,0 +1,222 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-people",
+                'title': "Create a new employee"|trans,
+                'help': "Fill all information about the new employee"|trans} %}
+ 
+{% block content %}
+    
+{% if RIGHTS_LIST.CORE == "ADMIN" %}
+    
+{% if companies_list is empty %}
+<div class="alert alert-error">
+  <strong>{% trans %}Warning!{% endtrans %}</strong><br />
+  {% trans %}You must first create at least one company before adding an employee.{% endtrans %}<br /><br />
+  <button class="btn btn-danger" onclick="javascript:window.location.href='{{ url('companies_new') }}'">{% trans %}Create a company{% endtrans %}</button>
+</div>
+<script>
+    $(function(){
+        $("form *").attr('disabled', '');
+    });
+</script>
+{% endif %}
+
+<div class="well">
+<form class="form" id="form_data" method='post' action=''>
+    <fieldset>
+        <legend>{% trans %}Personal information{% endtrans %}</legend>
+        <div class="row-fluid">
+            <div class="span4">
+                {{ forms.select('civilityCode', 'Civility'|trans, civilities_list, form_data.contacts.first.civilityCode, 'code', 'label') }}
+            </div>
+            <div class="span4">
+                {{ forms.input('firstname', 'First name'|trans, form_data.contacts.first.firstname, null, null, null, null, "required") }}
+            </div>
+            <div class="span4">
+                {{ forms.input('lastname', 'Last name'|trans, form_data.contacts.first.lastname, null, null, null, null, "required") }}
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                {{ forms.select('company', 'Company'|trans, companies_list, form_data.company.id, 'id', 'name', null, null, null, "required") }}
+            </div>
+            <div class="span6">
+                {{ forms.input('email', 'Email'|trans, form_data.contacts.first.email) }}
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span3">
+                {{ forms.input('phone1', 'Phone'|trans, form_data.contacts.first.phone1) }}
+            </div>
+            <div class="span3">
+                {{ forms.input('phone2', 'Phone supplement'|trans, form_data.contacts.first.phone2) }}
+            </div>
+            <div class="span3">
+                {{ forms.input('mobile', 'Mobile phone'|trans, form_data.contacts.first.mobile) }}
+            </div>
+            <div class="span3">
+                {{ forms.input('fax', 'Fax'|trans, form_data.contacts.first.fax) }}
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                {{ forms.input('address1', 'Postal address'|trans, form_data.contacts.first.address1) }}
+            </div>
+            <div class="span6">
+                {{ forms.input('address2', 'Postal address supplement'|trans, form_data.contacts.first.address2) }}
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span3">
+                {{ forms.input('postalCode', 'Postal code'|trans, form_data.contacts.first.postalCode) }}
+            </div>
+            <div class="span5">
+                {{ forms.input('city', 'City'|trans, form_data.contacts.first.city) }}
+            </div>
+            <div class="span4">
+                {{ forms.select('countryCode', 'Country'|trans, countries_list, form_data.contacts.first.countryCode, 'code', 'label', true) }}
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                {{ forms.select('languageCode', 'Language'|trans, languages_list, form_data.contacts.first.languageCode, 'code', 'label', true) }}
+            </div>
+            <div class="span6">
+                {{ forms.input('rib', 'RIB'|trans, form_data.contacts.first.rib) }}
+            </div>
+        </div>
+        <legend>{% trans %}Account information{% endtrans %}</legend>
+        <div class="row-fluid">
+            <div class="span4">
+                {{ forms.input('login', 'Username'|trans, form_data.contacts.first.login, "Choose a username"|trans, "Username must be in lower case, begin with a letter and not contain special caracter."|trans, null, "false", "required") }}
+            </div>
+            <div class="span4">
+                {{ forms.input('password', 'Password'|trans, "", "Choose a password"|trans, "Please choose a good password, with a minimum of 5 caracters."|trans, "password", "false", "required") }}
+            </div>
+            <div class="span4">
+                {{ forms.input('password2', 'Password confirmation'|trans, "", "Confirm the password"|trans, "Password confirmation just checks that you did not make an error when you typed the first password."|trans, "password", "false", "required") }}
+            </div>
+        </div>
+        
+        <legend>{% trans %}Department{% endtrans %}</legend>
+        <div class="row-fluid">
+            <table class="table table-bordered table-condensed table-striped">                    
+                <tr>
+                    <th>{% trans %}Sel{% endtrans %}</th>
+                    <th>{% trans %}Department{% endtrans %}</th>
+                    <th>{% trans %}Description{% endtrans %}</th>
+                </tr>
+                {% for department in departments_list %}
+                {% set selected = false %}
+                {% if department in form_data.departments %}{% set selected = true %}{% endif %}
+                <tr>
+                    <td>{{ forms.checkbox('departments[]', null , department.id, selected ) }}</td>
+                    <td>{{ department.label }}</td>
+                    <td>{{ department.description }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <legend>{% trans %}Application rights{% endtrans %}</legend>
+        <div class="row-fluid">
+                {% for module in all_modules_rights %}
+                    <div class="span4">
+                        {% set helpdoc %}
+                            {% for documentation in module.RIGHTS_LIST %}
+                               <b>{{ documentation.NAME }} :</b> {{ documentation.DESCRIPTION }}<br />
+                            {% endfor %}
+                        {% endset %}
+                    {{ forms.select(module.FIELD_NAME, module.MODULE_FULL_NAME, module.RIGHTS_LIST, 'SELECTED', 'CODE', 'NAME', false, module.MODULE_FULL_NAME, helpdoc, null, null, "Inherit from company rights"|trans) }}
+                    <small><p>{{ helpdoc }}</p></small>
+                    </div>
+                    {% if (loop.index % 3) == 0 %}
+                      </div>
+                      <br />
+                      <div class="row-fluid">
+                    {% endif %}
+                {% endfor %}
+        </div>
+        <div class="form-actions">
+                <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+                <input class="btn" type="button" value="{% trans %}Cancel{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+        </div>
+    </fieldset>
+</form>
+</div>
+    
+<script>
+$(document).ready(function(){
+        $("#form_data").validate({
+                ignore:"",
+                rules:{
+                        firstname:{
+                                required:true
+                        },
+                        lastname:{
+                                required:true
+                        },
+                        password: {
+                                required:true,
+				minlength: 5
+			},
+                        password2:{
+                                required:true,
+                                equalTo: "#id-password"
+                        },
+                        login:{
+                                regex: /^[a-z][-a-z0-9]*$/,
+                                required:true,
+                                LoginNotExists: $("#id-login").val()
+                        },
+                        email:{
+                                email: true
+                        },
+                        company:{
+                                required:true
+                        },
+                        phone1: {
+                            unique: true
+                        },
+                        phone2: {
+                            unique: true
+                        },
+                        mobile: {
+                            unique: true
+                        },
+                        address1: {
+                            unique: true
+                        },
+                        address2: {
+                            unique: true
+                        }
+                },
+                messages: {
+                    login: {
+                        regex: jQuery.format(translations.loginformat)
+                    }
+                },
+                errorClass: "help-inline",
+                errorElement: "span",
+                errorPlacement: function(error, element) {
+                        element.parent().after(error);
+                },
+                highlight:function(element, errorClass, validClass) {
+                        $(element).parents('.control-group').removeClass('success');
+                        $(element).parents('.control-group').addClass('error');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                        $(element).parents('.control-group').removeClass('error');
+                        $(element).parents('.control-group').addClass('success');
+                }
+        });
+});
+</script>
+{% else %}
+    {% set WIZZ = [ {'message': "Error, you don't have permission to access to this page"|trans, 'type': "error"} ] %}
+    {% trans %}Nothing to edit.{% endtrans %}
+
+{% endif %}{# RIGHTS_LIST.CORE == "ADMIN" #}
+    
+{% endblock %}
+    

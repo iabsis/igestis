@@ -1,0 +1,18 @@
+{% if title.help is defined %}
+
+{% set headtitle = title.title %}
+{% set help = title.help %}
+
+<div class="visible-phone" style="margin-top: 25px"></div>
+<h2 id="main-title">{% trans headtitle %}</h2>
+<div id="main-title-help" class="hidden-phone">
+{% trans help %}
+</div>
+
+{% else %}
+
+{% set headtitle = title.title %}
+
+<h2 style="margin-top: 25px">{% trans headtitle %}</h2>
+
+{% endif %}
