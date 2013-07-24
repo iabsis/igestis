@@ -244,6 +244,7 @@ class _readdir {
 
 }
 
+
 class Application {
 
     /**
@@ -316,7 +317,7 @@ class Application {
      */
     public static function getEntityMaanger() {
         if (self::$_entityManager === null) {
-            self::$_entityManager = self::config_doctrine();
+            self::$_entityManager = self::config_doctrine();            
         }
         return self::$_entityManager;
     }
@@ -411,8 +412,15 @@ class Application {
                 1002 => 'SET NAMES utf8'
             )
         );
+        
+        $entityManager = EntityManager::create($connectionOptions, $config);
+                
+        $hook = Igestis\Utils\Hook::getInstance();
+        $hookParameters = new \Igestis\Types\HookParameters();
+        $hookParameters->set('entityManager', $entityManager);
+        $hook->callHook("entityManagerInitialized", $hookParameters);
 
-        return EntityManager::create($connectionOptions, $config);
+        return $entityManager;
     }
 
     // ------------------------------------------------------
