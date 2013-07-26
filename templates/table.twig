@@ -1,7 +1,7 @@
 {% macro datatable(id, order, orderType) %}
 <script type="text/javascript">
     $(function() {
-       IgestisInitTable('{{ id|default('#table_data') }}', '{{ order|default('1') }}', '{{ orderType|default('asc') }}');
+       IgestisInitTable('{{ id|default('#table_data') }}', '{{ order|default('0') }}', '{{ orderType|default('asc') }}');
     });
 </script>
 
