@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: iGestis\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-07-26 17:54+0100\n"
+"PO-Revision-Date: 2013-07-26 17:58+0100\n"
 "Last-Translator: Olivier Bitsch <olivier.b@iabsis.com>\n"
 "Language-Team: Iabsis <info@iabsis.com>\n"
 "Language: fr_FR\n"
@@ -1027,7 +1027,7 @@ msgstr "Etes-vous sûr de vouloir supprimer ce département ?"
 
 #: tmp/d4/97/8ba332079eaecde8145370f4f839.php:62
 msgid "Add new department"
-msgstr "Ajouter une nouveau département"
+msgstr "Ajouter un nouveau département"
 
 #: tmp/d4/97/8ba332079eaecde8145370f4f839.php:79
 #: tmp/eb/f2/3282d177142a6dc55296ad7a2ec2.php:47
