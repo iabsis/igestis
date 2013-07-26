@@ -1,12 +1,14 @@
 igestis (2.3.10) squeeze; urgency=low
 
-  * Modification diverses en vue du nouveau module.
+  * Modification due to new modules.
+  * New full width mode better for big screen.
+  * Bug fixes.
 
  -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 23 Jul 2013 20:25:39 +0200
 
 igestis (2.3.9) squeeze; urgency=low
 
-  * Correction de la page d'administration.
+  * Administration page fixes.
 
  -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 18 Jun 2013 17:00:59 +0200
 
