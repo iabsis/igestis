@@ -653,7 +653,7 @@ function activateBootstrapDatepicker() {
     $('div.datepicker').datepicker();
 }
 
-function avtiveRadioButtons() {
+function activeRadioButtons() {
     $('div[data-toggle=buttons-radio]').each(function() {
         $(this).find("a.btn").unbind("click");
         $(this).find("a.btn").bind("click", function(e) {            
@@ -664,11 +664,21 @@ function avtiveRadioButtons() {
                $(this).removeClass("btn-success active");
             });
             $(this).addClass("btn-success active");
-            $(this).parents("div.controls").find("input").attr("checked", ($(this).data("value") === 1));
+            //$(this).parents("div.controls").find("input").attr("checked", ($(this).data("value") === 1));
+            $(this).parents("div.controls").find("input").val($(this).data("value"));
             $(this).parents("div.controls").find("input").trigger("change");
         });    
     });
 };
+
+/**
+ * Function to avoid bug in the different module after function name correction
+ * @returns {undefined}
+ * @deprecated Use the correct function name activeRadioButtons()
+ */
+function avtiveRadioButtons() {
+    activeRadioButtons();
+}
 
 $(function() {
     avtiveRadioButtons();

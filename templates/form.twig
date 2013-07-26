@@ -310,11 +310,11 @@
         <input style="display: none;" class="span9"
             {% if state == "disabled"%}disabled="true"{% endif %}
             {% if state == "uneditable"%}readonly="true"{% endif %}
-            type="checkbox"
+            type="hidden"
             name="{{ name }}"
-            value="{{ value }}"
-            {% if checked == true %}checked="checked"{% endif %}
-            id="id-{{ name }}" />
+            value="{{ checked ? value : "" }}"            
+            id="id-{{ name }}"
+            data-checked-value="{{ value }}" />
         <div class="btn-group" data-toggle="buttons-radio">
             <a class="btn {{ state }} {% if checked == true %}btn-success active{% endif %}" data-value="1" href="javascript:;">{{ true_label ? true_label : "Yes"|trans }}</a>
             <a class="btn {{ state }} {% if checked == false %}btn-success active{% endif %}" data-value="0" href="javascript:;">{{ false_label ? false_label : "No"|trans }}</i></a>
