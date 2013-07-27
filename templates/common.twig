@@ -41,15 +41,7 @@
         <div class="header-spacer"></div>
             <div class="content" id="global-page-content">
                 <div class="container-fluid" id="general-container">
-                    {% block modals %}
-        {% endblock %}
-                    {% if username == ADMIN_ACCOUNT %}
-                        <div class="alert alert-error">
-                            <strong>{% trans from "Module:core" %}Warning!{% endtrans %}</strong><br />
-                            {% trans from "Module:core" %}You are using the root account, which is a system account. Thus, some fonctions will be disabled by default. Please create a new employee whose account will allow you to enjoy all the fonctions.{% endtrans %}<br /><br />
-                            <button class="btn btn-danger" onclick="javascript:window.location.href='{{ url('employees_new') }}'">{% trans from "Module:core" %}Create an employee{% endtrans %}</button>
-                        </div>
-                    {% endif %}
+                    {% block modals %}{% endblock %}
     
                     {% include 'wizz.twig' %}
                     
