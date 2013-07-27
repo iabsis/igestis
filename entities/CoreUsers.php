@@ -566,7 +566,7 @@ class CoreUsersRepository extends Doctrine\ORM\EntityRepository {
         if(!$user) return null;
         
         $userCompany = \IgestisSecurity::init()->user->getCompany();
-        if($user->getCompany()->getId() != $userCompany->getId()) {
+        if(\IgestisSecurity::init()->contact->getLogin() != ConfigIgestisGlobalVars::IGESTIS_CORE_ADMIN && $user->getCompany()->getId() != $userCompany->getId()) {
             return null;
         }
         return $user;
