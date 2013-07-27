@@ -1,3 +1,15 @@
+igestis (2.3.10-2) squeeze; urgency=low
+
+  * Fix issue wizz about admin account.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Sat, 27 Jul 2013 09:48:30 +0200
+
+igestis (2.3.10-1) squeeze; urgency=low
+
+  * Fix issue with Administrator account.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Sat, 27 Jul 2013 09:32:00 +0200
+
 igestis (2.3.10) squeeze; urgency=low
 
   * Modification due to new modules.
