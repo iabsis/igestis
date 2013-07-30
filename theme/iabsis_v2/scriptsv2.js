@@ -208,7 +208,7 @@ var igestisWizz = function(msg, type, target, preserveWizzs) {
           '</div>'
     );
     
-    if(target !== undefined) {
+    if(target !== undefined && target !== null) {
         if(!preserveWizzs) $(target + " > .alert").remove();        
         $(target).prepend($msg);
     }
@@ -706,6 +706,15 @@ $(function() {
         fail: function(e, data) {
         },
         done: function (e, data) {
+            var message = $.parseJSON(data.jqXHR.responseText);
+            if(message.files) {
+                for(i = 0; i < message.files.length; i++) {
+                    if(message.files[i].error) {
+                        igestisWizz(message.files[i].name + " : " + message.files[i].error, "error", null, true);
+                    }
+                }
+            }
+            
             
             if(callback) {
                 var splitted = callback.split('.');
