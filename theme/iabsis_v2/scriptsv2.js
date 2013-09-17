@@ -8,6 +8,32 @@
  * Activate the autohide buttons in the tables (for big screens)
  */
 
+$.extend( $.fn.dataTableExt.oSort, {
+    "date-uk-pre": function ( a ) {
+        var ukDatea = a.split('/');
+        return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+    },
+ 
+    "date-uk-asc": function ( a, b ) {
+        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+    },
+ 
+    "date-uk-desc": function ( a, b ) {
+        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+    }
+} );
+
+$.fn.dataTableExt.aTypes.unshift(
+    function ( sData )
+    {
+        if (sData !== null && sData.match(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20|21)\d\d$/))
+        {
+            return 'date-uk';
+        }
+        return null;
+    }
+);
+
 /* API method to get paging information */
 $.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
 {
