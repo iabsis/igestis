@@ -8,7 +8,7 @@
 class AdminController extends IgestisController {
     public function generalAction() {
         
-        $companyId = $this->context->security->user->getCompany()->getId();            
+        //$companyId = $this->context->security->user->getCompany()->getId();            
         //$webRootFolder = ConfigIgestisGlobalVars::SERVER_FOLDER . "/" . ConfigIgestisGlobalVars::APPLI_FOLDER . "/web";
         //$cssFolder = $webRootFolder . "/" . $companyId;
         //$cssFile = $cssFolder . "/style.css";
