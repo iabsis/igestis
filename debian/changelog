@@ -1,4 +1,4 @@
-igestis (2.3.10-3) UNRELEASED; urgency=low
+igestis (2.3.10-3) squeeze; urgency=low
 
   * Fix issue when going in Maintenance page with administrator account.
 
