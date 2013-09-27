@@ -1,3 +1,9 @@
+igestis (2.3.10-3) UNRELEASED; urgency=low
+
+  * Fix issue when going in Maintenance page with administrator account.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 27 Sep 2013 14:59:29 +0200
+
 igestis (2.3.10-2) squeeze; urgency=low
 
   * Fix issue wizz about admin account.
