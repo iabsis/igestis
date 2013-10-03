@@ -286,6 +286,7 @@ class IgestisSecurity {
      * @return array
      */
     private function getCompanyRightsList($companyId) {
+        //if($this->user->getUserType() != CoreUsers::USER_TYPE_EMPLOYEE) return array();
         $company = $this->context->entityManager->find("CoreCompanies", $companyId);
         $rightsArray = array();
         
