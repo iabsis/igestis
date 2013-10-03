@@ -2,7 +2,7 @@ igestis (2.3.11) squeeze; urgency=low
 
   * Fix issue when a customer is login on igestis.
 
- -- Olivier Bitsch <olivierb@crouc.net>  Thu, 03 Oct 2013 09:30:38 +0200
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 03 Oct 2013 09:30:38 +0200
 
 igestis (2.3.10-3) squeeze; urgency=low
 
