@@ -579,7 +579,8 @@ class CoreUsersRepository extends Doctrine\ORM\EntityRepository {
             $qb->select("u")
                ->from("CoreUsers", "u")
                ->where("u.company = :company")
-               ->setParameter("company", $userCompany);
+               ->setParameter("company", $userCompany)
+               ->orderBy("u.userLabel");
             if(!$includeDisabledUsers) {
                 $qb->andWhere("u.isActive = 1");
             }
