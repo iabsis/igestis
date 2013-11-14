@@ -1170,12 +1170,31 @@ class CoreContacts
                 return false;
             }
             
+            $mode = "update";
+            if($deleteLdapEntry) $mode = "delete";
+            if($createLdapEntry) $mode = "create";
             
-            \Igestis\Utils\Hook::callHook("afterContactLdapSave", new \Igestis\Types\HookParameters(array(
-                "contact" => $this,
-                "ldap_array" => $ldap_array,
-                "ldap_object" => $ldap
-            )));
+            switch($mode) {
+                case "update" :
+                case "create" :
+                    \Igestis\Utils\Hook::callHook("afterContactLdapSave", new \Igestis\Types\HookParameters(array(
+                        "contact" => $this,
+                        "ldap_array" => $ldap_array,
+                        "ldap_object" => $ldap,
+                        "mode" => $mode
+                    )));
+                    break;
+                case "delete" :
+                    \Igestis\Utils\Hook::callHook("afterContactLdapDelete", new \Igestis\Types\HookParameters(array(
+                        "contact" => $this,
+                        "ldap_array" => $ldap_array,
+                        "ldap_object" => $ldap,
+                        "mode" => $mode
+                    )));
+                    break;
+                default:
+                    break;
+            }            
             
         }// END IF LDAP        
         
