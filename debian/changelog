@@ -1,4 +1,4 @@
-igestis (2.3.13) UNRELEASED; urgency=low
+igestis (2.3.13) squeeze; urgency=low
 
   * Fix #279 : fix deletion of a contact.
 
