@@ -1,3 +1,9 @@
+igestis (2.3.14) squeeze; urgency=medium
+
+  * Fix unicode issue with pad function.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 19 Dec 2013 15:58:14 +0100
+
 igestis (2.3.13) squeeze; urgency=low
 
   * Fix #279 : fix deletion of a contact.
