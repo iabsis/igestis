@@ -199,6 +199,38 @@ function api_auth_by_string($string) {
     unset($_COOKIE['sess_password']);
 }
 
+
+function pad_unicode($str, $pad_len, $pad_str = ' ', $dir = STR_PAD_RIGHT) {
+    $previousEncoding = mb_internal_encoding();
+    mb_internal_encoding("UTF-8");
+    $str_len = mb_strlen($str);
+    $pad_str_len = mb_strlen($pad_str);
+    if (!$str_len && ($dir == STR_PAD_RIGHT || $dir == STR_PAD_LEFT)) {
+        $str_len = 1; // @debug
+    }
+    if (!$pad_len || !$pad_str_len || $pad_len <= $str_len) {
+        return $str;
+    }
+
+    $result = null;
+    $repeat = ceil($str_len - $pad_str_len + $pad_len);
+    if ($dir == STR_PAD_RIGHT) {
+        $result = $str . str_repeat($pad_str, $repeat);
+        $result = mb_substr($result, 0, $pad_len);
+    } else if ($dir == STR_PAD_LEFT) {
+        $result = str_repeat($pad_str, $repeat) . $str;
+        $result = mb_substr($result, -$pad_len);
+    } else if ($dir == STR_PAD_BOTH) {
+        $length = ($pad_len - $str_len) / 2;
+        $repeat = ceil($length / $pad_str_len);
+        $result = mb_substr(str_repeat($pad_str, $repeat), 0, floor($length)) 
+                    . $str 
+                    . mb_substr(str_repeat($pad_str, $repeat), 0, ceil($length));
+    }
+    mb_internal_encoding($previousEncoding);
+    return $result;
+}
+
 function api_xml_error_die($error) {
     $xml = "<?php
       ml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -462,7 +494,7 @@ class Application {
         $this->twig_env->addExtension(new Twig_Extensions_Extension_I18nExtended());
         $this->twig_env->addExtension(new Twig_Extensions_Extension_Url());
         $this->twig_env->getExtension('core')->setNumberFormat(3, '.', "'");
-        $this->twig_env->addFunction(new Twig_SimpleFunction('pad', 'str_pad'));
+        $this->twig_env->addFunction(new Twig_SimpleFunction('pad', 'pad_unicode'));
         if (\ConfigIgestisGlobalVars::DEBUG_MODE) {
             $this->twig_env->addExtension(new Twig_Extension_Debug());
             $this->twig_env->clearCacheFiles();
