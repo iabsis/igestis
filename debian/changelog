@@ -1,3 +1,9 @@
+igestis (2.3.15) UNRELEASED; urgency=medium
+
+  * New bootstrap version.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 23 Jan 2014 14:44:10 +0100
+
 igestis (2.3.14) squeeze; urgency=medium
 
   * Fix unicode issue with pad function.
