@@ -12,7 +12,7 @@
     {% for item in client_type %}
         {% if item.code == show_data.clientTypeCode %}{{ item.label }}{% endif %}
     {% endfor %}<br />
-    {% if show_data.accountCode is not empty %}{% trans %}Client ID{% endtrans %} : {{ show_data.accountCode }}<br />{% endif %}
+    {% if show_data.accountCode is not empty %}{% trans %}Third party ID{% endtrans %} : {{ show_data.accountCode }}<br />{% endif %}
     {% trans %}VAT billed{% endtrans %} : 
         {% if show_data.tvaInvoice == true %}{% trans %}Yes{% endtrans %}
         {% else %}{% trans %}No{% endtrans %}
