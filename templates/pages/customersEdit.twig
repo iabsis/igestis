@@ -188,10 +188,8 @@
                         submitHandler: function(form) {                    
                             var url = "{{ url('ajax_edit_contact', {'UserId' : form_data.id, 'ContactId' : ''}) }}";
                             url += $("#CurrentContactId").val();
-                            console.log(url);
                             $.post(url, $(form).serialize())
                                     .success(function(data) {
-                                        console.log(data);
                                         var result = JSON.parse(data);
                                         if(result.error) {
                                             bootbox.alert(result.error);

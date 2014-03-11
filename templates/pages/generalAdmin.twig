@@ -52,11 +52,10 @@
 
     $("#form_data").validate({
        submitHandler: function(form) {
-           console.log(editor.getSession().getValue());
          $("#cssContent").val(editor.getSession().getValue());
          form.submit();
        }
-    })
+    });
 })();
 
 </script>

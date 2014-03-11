@@ -97,6 +97,14 @@
                 {{ forms.input('password2', 'Password confirmation'|trans, "", "Confirm the password"|trans, "Password confirmation just checks that you did not make an error when you typed the first password."|trans, "password", "false", "required") }}
             </div>
         </div>
+            
+        <legend>{% trans %}Informations to used in case of invoices to the employee{% endtrans %}</legend>
+        <div class="row-fluid">
+            <div class="span12">
+                {{ forms.input('accountCode', 'Client ID'|trans, form_data.accountCode, "Define the client ID"|trans, "This field can be used to define a cusomized ID linked with an external software"|trans) }}
+            </div>
+        </div> 
+
         
         <legend>{% trans %}Department{% endtrans %}</legend>
         <div class="row-fluid">
