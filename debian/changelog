@@ -1,3 +1,9 @@
+igestis (2.3.16) UNRELEASED; urgency=medium
+
+  * Anomalie #285 : new ID field for the employee.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 11 Mar 2014 10:17:43 +0100
+
 igestis (2.3.15) wheezy; urgency=medium
 
   * New bootstrap version.
