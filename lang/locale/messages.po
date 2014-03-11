@@ -188,73 +188,73 @@ msgstr ""
 msgid "Connection to %s failed"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:477
-#: includes/common_librairie.php:477
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:509
+#: includes/common_librairie.php:509
 msgid "Unable to logon on the database"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:478
-#: includes/common_librairie.php:478
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:510
+#: includes/common_librairie.php:510
 msgid "Unable to connect to the database"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:798
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:800
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:802
-#: includes/common_librairie.php:798 includes/common_librairie.php:800
-#: includes/common_librairie.php:802
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:830
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:832
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:834
+#: includes/common_librairie.php:830 includes/common_librairie.php:832
+#: includes/common_librairie.php:834
 msgid "Contacts"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:798
-#: includes/common_librairie.php:798
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:830
+#: includes/common_librairie.php:830
 msgid "Employees"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:800
-#: includes/common_librairie.php:800
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:832
+#: includes/common_librairie.php:832
 msgid "Customers"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:802
-#: includes/common_librairie.php:802
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:834
+#: includes/common_librairie.php:834
 msgid "Suppliers"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:803
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:804
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:805
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:806
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:867
-#: includes/common_librairie.php:803 includes/common_librairie.php:804
-#: includes/common_librairie.php:805 includes/common_librairie.php:806
-#: includes/common_librairie.php:867
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:835
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:836
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:837
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:838
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:899
+#: includes/common_librairie.php:835 includes/common_librairie.php:836
+#: includes/common_librairie.php:837 includes/common_librairie.php:838
+#: includes/common_librairie.php:899
 msgid "Administration"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:803
-#: includes/common_librairie.php:803
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:835
+#: includes/common_librairie.php:835
 msgid "My companies"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:804
-#: includes/common_librairie.php:804
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:836
+#: includes/common_librairie.php:836
 msgid "Departments"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:805
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:837
 #: tmp/2b/f4/08841a167f280bf916c0b911fceb.php:25
-#: includes/common_librairie.php:805
+#: includes/common_librairie.php:837
 msgid "Modules and addons"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:806
-#: includes/common_librairie.php:806
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:838
+#: includes/common_librairie.php:838
 msgid "Maintenance"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/common_librairie.php:899
-#: includes/common_librairie.php:899
+#: debian/igestis/usr/share/igestis/includes/common_librairie.php:931
+#: includes/common_librairie.php:931
 msgid "Module not found"
 msgstr ""
 
@@ -363,33 +363,33 @@ msgstr ""
 msgid "Invalid username or password"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:437
-#: includes/coreClasses/IgestisSecurity.php:437
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:438
+#: includes/coreClasses/IgestisSecurity.php:438
 msgid "None"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:437
-#: includes/coreClasses/IgestisSecurity.php:437
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:438
+#: includes/coreClasses/IgestisSecurity.php:438
 msgid "No privileges"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:438
-#: includes/coreClasses/IgestisSecurity.php:438
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:439
+#: includes/coreClasses/IgestisSecurity.php:439
 msgid "Administrator"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:438
-#: includes/coreClasses/IgestisSecurity.php:438
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:439
+#: includes/coreClasses/IgestisSecurity.php:439
 msgid "Can do everything"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:439
-#: includes/coreClasses/IgestisSecurity.php:439
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:440
+#: includes/coreClasses/IgestisSecurity.php:440
 msgid "Employee"
 msgstr ""
 
-#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:439
-#: includes/coreClasses/IgestisSecurity.php:439
+#: debian/igestis/usr/share/igestis/includes/coreClasses/IgestisSecurity.php:440
+#: includes/coreClasses/IgestisSecurity.php:440
 msgid "Can edit customers and show employees"
 msgstr ""
 
@@ -449,8 +449,8 @@ msgstr ""
 #: tmp/94/c8/a986467930056e9dba0496b4a673.php:76
 #: tmp/ca/68/374b4b441316b3e02be2623fa370.php:72
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:166
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:358
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:353
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:371
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:367
 #: tmp/fb/83/9c7cc31c25a54cf962b8ebc76a64.php:68
 #: tmp/18/e2/969f417a23a3d598d7d8d1e4d745.php:46
 msgid "Cancel"
@@ -864,8 +864,8 @@ msgstr ""
 #: tmp/94/c8/a986467930056e9dba0496b4a673.php:72
 #: tmp/ca/68/374b4b441316b3e02be2623fa370.php:68
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:162
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:354
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:349
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:367
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:363
 #: tmp/fb/83/9c7cc31c25a54cf962b8ebc76a64.php:64
 #: tmp/9c/7a/480d20dd8a96cc8eb18239585872.php:129
 msgid "Save changes"
@@ -991,7 +991,6 @@ msgid "Department description"
 msgstr ""
 
 #: tmp/d4/97/8ba332079eaecde8145370f4f839.php:153
-#: tmp/1f/f9/42e7948ef59e950d0306002056ae.php:107
 #: tmp/73/6b/42e966c8488b8e0f08f401057950.php:249
 #: tmp/cd/df/81668d2c0a3d5fa1017ed06dfbc6.php:171
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:267
@@ -1015,7 +1014,6 @@ msgid ""
 msgstr ""
 
 #: tmp/d4/97/8ba332079eaecde8145370f4f839.php:163
-#: tmp/1f/f9/42e7948ef59e950d0306002056ae.php:117
 #: tmp/73/6b/42e966c8488b8e0f08f401057950.php:259
 #: tmp/cd/df/81668d2c0a3d5fa1017ed06dfbc6.php:181
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:277
@@ -1059,15 +1057,7 @@ msgstr ""
 msgid "Back to home page"
 msgstr ""
 
-#: tmp/1f/f9/42e7948ef59e950d0306002056ae.php:111
-#: tmp/9c/7a/480d20dd8a96cc8eb18239585872.php:201
-msgid ""
-"You are using the root account, which is a system account. Thus, some "
-"fonctions will be disabled by default. Please create a new employee whose "
-"account will allow you to enjoy all the fonctions."
-msgstr ""
-
-#: tmp/1f/f9/42e7948ef59e950d0306002056ae.php:222
+#: tmp/1f/f9/42e7948ef59e950d0306002056ae.php:198
 #: tmp/d3/64/b58da541956396dc4ae792c3b885.php:262
 #: tmp/86/f8/09987e3aa694f6706861f914c8d6.php:53
 #: tmp/0d/0a/80951be540294ddb780ab749ebcf.php:99
@@ -1147,8 +1137,10 @@ msgstr ""
 #: tmp/94/c8/a986467930056e9dba0496b4a673.php:55
 #: tmp/ca/68/374b4b441316b3e02be2623fa370.php:51
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:61
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:218
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:216
 #: tmp/1d/47/767abc128f66d3ca4cb1fe7e4d82.php:43
-msgid "Client ID"
+msgid "Third party ID"
 msgstr ""
 
 #: tmp/73/6b/42e966c8488b8e0f08f401057950.php:57
@@ -1157,6 +1149,7 @@ msgstr ""
 
 #: tmp/73/6b/42e966c8488b8e0f08f401057950.php:57
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:61
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:216
 msgid ""
 "This field can be used to define a cusomized ID linked with an external "
 "software"
@@ -1335,24 +1328,23 @@ msgid "Default users rights"
 msgstr ""
 
 #: tmp/b0/bc/58f38567141fe56a0f60fd16317e.php:179
-#: tmp/d7/7e/ffca793d8e3e9b37e22892fa4562.php:186
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:319
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:332
 msgid "Inherit from default company rights"
 msgstr ""
 
 #: tmp/b0/bc/58f38567141fe56a0f60fd16317e.php:258
 #: tmp/eb/f2/3282d177142a6dc55296ad7a2ec2.php:104
 #: tmp/d7/7e/ffca793d8e3e9b37e22892fa4562.php:274
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:433
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:431
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:446
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:445
 msgid "Error, you don't have permission to access to this page"
 msgstr ""
 
 #: tmp/b0/bc/58f38567141fe56a0f60fd16317e.php:261
 #: tmp/eb/f2/3282d177142a6dc55296ad7a2ec2.php:107
 #: tmp/d7/7e/ffca793d8e3e9b37e22892fa4562.php:277
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:436
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:434
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:449
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:448
 #: tmp/fb/83/9c7cc31c25a54cf962b8ebc76a64.php:110
 msgid "Nothing to edit."
 msgstr ""
@@ -1767,7 +1759,7 @@ msgid "Set the showed name"
 msgstr ""
 
 #: tmp/94/c8/a986467930056e9dba0496b4a673.php:55
-msgid "Set the client ID"
+msgid "Set the third party ID"
 msgstr ""
 
 #: tmp/94/c8/a986467930056e9dba0496b4a673.php:55
@@ -1812,7 +1804,9 @@ msgid "Customer information"
 msgstr ""
 
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:61
-msgid "Define the client ID"
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:218
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:216
+msgid "Define the third party ID"
 msgstr ""
 
 #: tmp/6b/d5/04a0c7cff53afc55df2d14ec2aeb.php:81
@@ -1856,24 +1850,35 @@ msgid "Due to some constraints, the username is not editable."
 msgstr ""
 
 #: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:212
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:223
 #: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:210
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:221
+msgid "Other data"
+msgstr ""
+
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:218
+msgid ""
+"This field can be used to define a customized ID linked with an external "
+"software"
+msgstr ""
+
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:225
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:236
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:224
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:235
 msgid "Department"
 msgstr ""
 
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:219
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:217
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:232
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:231
 msgid "Sel"
 msgstr ""
 
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:227
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:225
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:240
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:239
 #: tmp/8c/bc/86dfdaae74c1a8959ba5d010c0bb.php:110
 msgid "Description"
 msgstr ""
 
-#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:270
+#: tmp/bc/ef/6785b2b12ae63b9804ff56506148.php:283
 msgid "Custom application rights"
 msgstr ""
 
@@ -1927,11 +1932,11 @@ msgid ""
 "typed the first password."
 msgstr ""
 
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:267
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:281
 msgid "Application rights"
 msgstr ""
 
-#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:314
+#: tmp/15/5d/b1d7527aeb0492a3dfe5cd1c4237.php:328
 msgid "Inherit from company rights"
 msgstr ""
 
@@ -2269,6 +2274,13 @@ msgstr ""
 
 #: tmp/9c/7a/480d20dd8a96cc8eb18239585872.php:182
 msgid "See a quick tour"
+msgstr ""
+
+#: tmp/9c/7a/480d20dd8a96cc8eb18239585872.php:201
+msgid ""
+"You are using the root account, which is a system account. Thus, some "
+"fonctions will be disabled by default. Please create a new employee whose "
+"account will allow you to enjoy all the fonctions."
 msgstr ""
 
 #: tmp/9c/7a/480d20dd8a96cc8eb18239585872.php:244
