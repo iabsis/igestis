@@ -1,4 +1,4 @@
-igestis (2.3.16) UNRELEASED; urgency=medium
+igestis (2.3.16) wheezy; urgency=medium
 
   * Anomalie #285 : new ID field for the employee.
 
