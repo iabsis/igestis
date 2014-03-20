@@ -1,3 +1,9 @@
+igestis (2.3.18) wheezy; urgency=medium
+
+  * Fixes for latest ubuntu.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 20 Mar 2014 14:56:26 +0100
+
 igestis (2.3.17) wheezy; urgency=medium
 
   * Fix for latest version of php5.
