@@ -260,8 +260,17 @@ case "$1" in
 
 	for webserver in $webservers; do
 		webserver=${webserver%,}
-		ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis
+		
+		if [ -d /etc/$webserver/conf.d/ ] ; then
+			ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis
+		fi
 
+		[ -e /etc/$webserver/conf.d/igestis ] && mv /etc/$webserver/conf.d/igestis /etc/$webserver/conf.d/igestis.conf
+		
+		if [ -e /etc/$webserver/mods-available/ ] ; then
+			ln -sf /etc/igestis/apache.conf /etc/$webserver/mods-available/igestis.conf
+		fi
+		
 		invoke-rc.d $webserver reload 3>/dev/null || true
 	done
 
