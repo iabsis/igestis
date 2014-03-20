@@ -1,3 +1,9 @@
+igestis (2.3.17) wheezy; urgency=medium
+
+  * Fix for latest version of php5.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 20 Mar 2014 14:36:00 +0100
+
 igestis (2.3.16) wheezy; urgency=medium
 
   * Anomalie #285 : new ID field for the employee.
