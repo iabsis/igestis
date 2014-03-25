@@ -1,4 +1,3 @@
-
 Table of content
 ================
 
@@ -29,11 +28,7 @@ Manual installation
 
 Please read information on http://www.igestis.org/installer-igestis/
 
-LDAP synchronisation
+Developement version
 ====================
 
-iGestis is able to synchronise the users informations with a LDAP service.
-This can be usefull to have a centralised password system and connect others
-third parties software.
-
-TODO : Complete how iGestis works with LDAP.
+Please use the version 2.3 for a production usage. This 3.0 branche is not finalized yet
