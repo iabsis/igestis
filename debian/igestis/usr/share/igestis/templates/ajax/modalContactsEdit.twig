@@ -1,0 +1,64 @@
+{% import "form.twig" as forms %}
+
+
+
+<form class="modal-form form-horizontal" id="contact_data" method='post' action=''>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>{% trans %}Edit contact information{% endtrans %}</h3>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" name="method" value="new" />
+        <input type="hidden" name="CurrentContactId" id="CurrentContactId" value="{{ form_data.id|default('0') }}" />
+        <input type="hidden" name="CurrentContactLogin" id="CurrentContactLogin" value="{{ form_data.login }}" />
+        <fieldset>
+            {% if form_data.mainContact == "1" %}
+                {{ forms.switchbox('mainContact', 'Set main contact'|trans, form_data.mainContact, false, "disabled") }}
+            {% else %}
+                {{ forms.switchbox('mainContact', 'Set main contact'|trans, form_data.mainContact, false) }}
+            {% endif %}
+            {{ forms.input('firstname', 'First name'|trans, form_data.firstname, null, null, null, null, "required") }}
+            {{ forms.input('lastname', 'Last name'|trans, form_data.lastname, null, null, null, null, "required") }}
+            {{ forms.input('login', 'Username'|trans, form_data.login, null, null, null, null, "required") }}
+            {{ forms.input('password', 'Password'|trans, null, "Change password"|trans, "Let empty will keep the old password. If changed, please choose a good password, with a minimum of 5 caracters."|trans, "password", "false") }}
+            {{ forms.input('password2', 'Password confirmation'|trans, null, "Confirm the password"|trans, "Password confirmation just confirms that you make an error when you typed the first password."|trans, "password", "false") }}
+            {{ forms.select('civilityCode', 'Civility'|trans, civilities_list, form_data.civilityCode, 'code', 'label') }}
+            {{ forms.input('email', 'Email'|trans, form_data.email) }}
+            {{ forms.select('languageCode', 'Language'|trans, languages_list, form_data.languageCode, 'code', 'label', true) }}
+            {{ forms.input('address1', 'Address'|trans, form_data.address1) }}
+            {{ forms.input('address2', 'Address supplement'|trans, form_data.address2) }}
+            {{ forms.input('postalCode', 'Postal code'|trans, form_data.postalCode) }}
+            {{ forms.input('city', 'City'|trans, form_data.city) }}
+            {{ forms.select('countryCode', 'Country'|trans, countries_list, form_data.countryCode, 'code', 'label', true) }}
+            {{ forms.input('phone1', 'Phone'|trans, form_data.phone1) }}
+            {{ forms.input('phone2', 'Phone supplement'|trans, form_data.phone2) }}
+            {{ forms.input('mobile', 'Mobile'|trans, form_data.mobile) }}
+            {{ forms.input('fax', 'Fax'|trans, form_data.fax) }}
+        </fieldset>
+        </div>
+    <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal" >Close</a>
+                <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+    </div>
+</form>
+
+<script>
+    /**
+ * Activate popover message for all concerned fields
+ * Needed here because the modal is runned after the scriptv2.js.
+ */
+$(function() {
+    $("span.btn").popover();
+    avtiveRadioButtons();
+});
+
+$(document).ready(function(){
+            $("#id-firstname").keyup(function(){
+                $("#id-login").val($("#id-firstname").val().toLowerCase().replace(/[^a-z]/gi, '') + $("#id-lastname").val().toLowerCase().replace(/[^a-z0-9]/gi, ''));
+            });
+            $("#id-lastname").keyup(function(){
+                $("#id-login").val($("#id-firstname").val().toLowerCase().replace(/[^a-z]/gi, '') + $("#id-lastname").val().toLowerCase().replace(/[^a-z0-9]/gi, ''));
+            });
+        });
+
+</script>

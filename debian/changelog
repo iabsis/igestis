@@ -1,56 +1,8 @@
-igestis (2.3.18) wheezy; urgency=medium
+igestis (3.0.0) wheezy; urgency=low
 
-  * Fixes for latest ubuntu.
+  * Initial release.
 
- -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 20 Mar 2014 14:56:26 +0100
-
-igestis (2.3.17) wheezy; urgency=medium
-
-  * Fix for latest version of php5.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 20 Mar 2014 14:36:00 +0100
-
-igestis (2.3.16) wheezy; urgency=medium
-
-  * Anomalie #285 : new ID field for the employee.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 11 Mar 2014 10:17:43 +0100
-
-igestis (2.3.15) wheezy; urgency=medium
-
-  * New bootstrap version.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 23 Jan 2014 14:44:10 +0100
-
-igestis (2.3.14) squeeze; urgency=medium
-
-  * Fix unicode issue with pad function.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 19 Dec 2013 15:58:14 +0100
-
-igestis (2.3.13) squeeze; urgency=low
-
-  * Fix #279 : fix deletion of a contact.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 14 Nov 2013 15:30:06 +0100
-
-igestis (2.3.12) squeeze; urgency=low
-
-  * Fix issue when a customer is login on igestis.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 03 Oct 2013 09:30:38 +0200
-
-igestis (2.3.11) squeeze; urgency=low
-
-  * Fix issue when going in Maintenance page with administrator account.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 27 Sep 2013 14:59:29 +0200
-
-igestis (2.3.10-3) squeeze; urgency=low
-
-  * Fix issue when going in Maintenance page with administrator account.
-
- -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 27 Sep 2013 14:59:29 +0200
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Mon, 05 Aug 2013 15:28:46 +0200
 
 igestis (2.3.10-2) squeeze; urgency=low
 

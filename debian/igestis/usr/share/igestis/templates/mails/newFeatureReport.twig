@@ -1,0 +1,12 @@
+{% extends "mail.twig" %}
+
+{% set title = {'title': "Password reset"} %}
+
+{% block content %}
+
+<h2>{% trans %}An iGestis user reports a new feature request{% endtrans %}</h2>
+{% trans %}From: {% endtrans %}{{ email }}<br />
+{% trans %}User would like to do:{% endtrans %} {{ requestdo }} <br />
+{% trans %}User would like at location:{% endtrans %} {{ requestwhere }}
+
+{% endblock %}

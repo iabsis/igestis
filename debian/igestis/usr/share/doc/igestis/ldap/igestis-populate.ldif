@@ -1,0 +1,37 @@
+dn: dc=example,dc=local
+objectClass: dcObject
+objectclass: organization
+o: iabsis
+dc: iabsis
+
+dn: ou=Users,dc=example,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Users
+
+dn: ou=Customers,dc=example,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Customers
+
+dn: ou=Suppliers,dc=example,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Suppliers
+
+dn: uid=root,ou=Users,dc=example,dc=local
+cn: root
+sn: root
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+gidNumber: 0
+uid: root
+uidNumber: 0
+homeDirectory: /home/root
+loginShell: /bin/false
+gecos: Netbios Domain Administrator
+

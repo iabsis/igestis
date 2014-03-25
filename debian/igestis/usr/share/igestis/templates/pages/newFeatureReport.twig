@@ -1,0 +1,57 @@
+{% extends "common.twig" %}
+
+{% set title = {'title': "New feature request"|trans,
+                'help': "Please give us your idea"|trans} %}
+
+{% block content %}
+
+
+<div class="well">
+    <form id="form_data" method='post' action=''>
+        <fieldset>
+            <legend>Your idea</legend>
+            <p>{% trans %}Please note that this request will not give an immediate result, we will take care about your remark, then we will probably contact you.{% endtrans %}
+                {{ forms.textarea('requestdo', 'What you would like to do?'|trans) }}
+                {{ forms.textarea('requestwhere', 'Where do you want the new feature?'|trans) }}
+                {{ forms.input('email', 'Email where we can contact you'|trans, form_data.contacts.first.email, null, null) }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">{% trans %}Send the bug{% endtrans %}</button>
+                    <input class="btn" type="button" value="{% trans %}Cancel{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+                </div>
+            </fieldset>
+        </form>
+</div>
+
+<script>
+$(document).ready(function(){
+                $("#form_data").validate({
+                        rules:{
+                        	requestdo:{
+                            	required:true
+                            },
+                            requestwhere:{
+                                	    required:true
+                            },
+                            email:{
+                                required:true,
+                                email:true
+                            }
+                        },
+                        errorClass: "help-inline",
+                        errorElement: "span",
+                        errorPlacement: function(error, element) {
+                            element.parent().after(error);
+                        },
+                        highlight:function(element, errorClass, validClass) {
+                                $(element).parents('.control-group').removeClass('success');
+                                $(element).parents('.control-group').addClass('error');
+                        },
+                        unhighlight: function(element, errorClass, validClass) {
+                                $(element).parents('.control-group').removeClass('error');
+                                $(element).parents('.control-group').addClass('success');
+                        }
+                });
+        });
+</script>
+
+{% endblock %}

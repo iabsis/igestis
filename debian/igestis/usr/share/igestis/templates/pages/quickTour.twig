@@ -1,0 +1,108 @@
+{% extends 'common.twig' %}
+
+{% set title = {'title': "Quick tour"|trans} %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row-fluid">
+        <div class="span4">
+            <h3>{% trans %}New menu style{% endtrans %}<i class="icon-arrow-up"></i></h3>
+            {% trans %}The menu has been now moved on the top of the screen and has been reorganised.{% endtrans %}
+        </div>
+
+        <div class="span4 pull-right offset4" style="text-align: right;">
+            <h3> {% trans %}Personal settings{% endtrans %}<i class="icon-arrow-up"></i></h3>
+            {% trans %}All personal information are available in <b>My account</b> submenu. Don't forgot to choose a good password !{% endtrans %}
+        </div>
+    </div>
+</div>
+
+<hr />
+
+
+<div class="row-fluid">
+    <div class="span2 offset2">
+        <h3>{% trans %}New clear forms{% endtrans %}<i class="icon-arrow-right"></i></h3>
+            {% trans %}All forms have on fly data check avoiding errors.{% endtrans %}
+    </div>
+    <div class="span6">
+        <div class="well">
+            <form class="form-horizontal allow-to-quit" id="form_data" method='post' action=''>
+                <fieldset>
+                    <legend>{% trans %}Enter information{% endtrans %}</legend>
+                    <div class="control-group error">
+                        <label class="control-label" for="inputError">Input with error</label>
+                        <div class="controls">
+                            <input type="text" id="inputError">
+                            <span class="help-inline">Please correct the error</span>
+                        </div>
+                    </div>
+                    <div class="control-group success">
+                        <label class="control-label" for="inputSuccess">Input with success</label>
+                        <div class="controls">
+                            <input type="text" id="inputSuccess">
+                            <span class="help-inline">Woohoo!</span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary">{% trans %}Save{% endtrans %}</button>
+                        <button class="btn">{% trans %}Cancel{% endtrans %}</button>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<hr />
+
+
+<div class="row-fluid">
+    <div class="span7">
+        <h3>{% trans %}New interractive tables{% endtrans %} <i class="icon-arrow-down"></i></h3>
+    </div>
+</div>
+<div class="well">
+
+	{% import "table.twig" as table %}
+	{{ table.datatable() }}
+	    <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-condensed table-striped" id="table_data">
+	        <thead>
+	            <tr>
+	                <th>{% trans %}Column 1{% endtrans %}</th>
+	                <th>{% trans %}Column 2{% endtrans %}</th>
+	                <th class="hidden-phone">{% trans %}Column 3{% endtrans %}</th>
+	                <th class="hidden-phone">{% trans %}Column 4{% endtrans %}</th>
+	                <th>{% trans %}Actions{% endtrans %}</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        {% for row in 0..50 %}
+	            <tr>
+	                <td>{% trans %}Row {{ row }}{% endtrans %}</td>
+	                <td>{% trans %}Row {{ row }}{% endtrans %}</td>  
+	                <td class="hidden-phone">{% trans %}Row {{ row }}{% endtrans %}</td> 
+	                <td class="hidden-phone">{% trans %}Row {{ row }}{% endtrans %}</td>
+	                <td>
+	                    <a class="btn btn-mini a-visible-line-on-over">
+	                        <i class="icon-eye-open"></i> {% trans %}View{% endtrans %}
+	                    </a>
+	                    <a class="btn btn-mini a-visible-line-on-over">
+	                        <i class="icon-edit"></i> {% trans %}Edit{% endtrans %}
+	                    </a>
+	                    <a href="javascript:delete_company('{{ row.id }}')" class="btn btn-danger btn-mini a-visible-line-on-over">
+	                        <i class="icon-trash icon-white"></i> {% trans %}Delete{% endtrans %}
+	                    </a>
+	                </td>
+	            </tr>
+	        {% endfor %}
+	        </tbody>
+	    </table>
+	    
+
+</div>
+
+{% endblock %}

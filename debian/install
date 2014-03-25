@@ -1,16 +1,13 @@
 *.php		usr/share/igestis
-*.html      usr/share/igestis
 
-fpdf		usr/share/igestis
 includes	usr/share/igestis
 lang		usr/share/igestis
 modules		usr/share/igestis
-plugins		usr/share/igestis
-theme		usr/share/igestis
 templates	usr/share/igestis
 config		usr/share/igestis
 entities	usr/share/igestis
 controllers	usr/share/igestis
+public		usr/share/igestis
 
 install/database/mysql/upgrade/*	usr/share/dbconfig-common/data/igestis/upgrade/mysql
 install/database/mysql/install/*	usr/share/dbconfig-common/data/igestis/install

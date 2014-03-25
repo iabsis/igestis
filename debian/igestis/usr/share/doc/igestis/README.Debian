@@ -1,0 +1,11 @@
+igestis for Debian
+------------------
+
+Thanks using the igestis package.
+
+This base package can be now be used alone as before it's need to have
+several others package to have igestis working.
+
+For more information about the install, please read the INSTALL file.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Mon, 15 Oct 2007 15:17:14 +0200
