@@ -1,1 +1,0 @@
-ALTER TABLE `CONTACTS` ADD `ssh_password` BLOB NOT NULL AFTER `password`;
