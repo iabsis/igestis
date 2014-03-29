@@ -68,6 +68,106 @@ class Application {
      * @var \Doctrine\ORM\EntityManager Helper for the entitymanager to access to the doctrine entities
      */
     public $entityManager;
+    
+        /**
+     * Constructor is private. Use getInstance to create the singleton
+     */
+    private function __construct() {
+        // Initialise application configuration
+        
+        $installScript = $this->checkInstallScript();
+        
+
+        // Initialize modules list
+        $oModulesList = IgestisModulesList::getInstance();
+        $this->modulesList = $oModulesList->get();
+
+        // Initialize default values
+        self::$doctrineLogger = null;
+        $this->debugger = Igestis\Utils\Debug::getInstance();
+        self::$_entityManager = self::configDoctrine();
+        $this->entityManager = self::$_entityManager;
+
+
+        $templateFoldersList = array(dirname(__FILE__) . "/../../templates/");
+        $modulesList = IgestisModulesList::getInstance();
+        foreach ($modulesList->get() as $module_name => $module) {
+            if ($module['igestisVersion'] == 2) {
+                if (is_dir($module['folder'] . "/templates/"))
+                    $templateFoldersList[] = $module['folder'] . "/templates/";
+            }
+        }
+
+        $twigLoader = new Twig_Loader_Filesystem($templateFoldersList);
+
+        //$this->twigEnv = new Twig_Extensions_Extension_I18n();
+
+        $this->twigEnv = new Twig_Environment($twigLoader, array(
+                    'cache' => \ConfigIgestisGlobalVars::debugMode() ? false : \ConfigIgestisGlobalVars::cacheFolder() . "/twig",
+                    'debug' => \ConfigIgestisGlobalVars::debugMode()
+                ));
+        $this->twigEnv->addExtension(new Twig_Extensions_Extension_I18nExtended());
+        $this->twigEnv->addExtension(new Twig_Extensions_Extension_Url());
+        $this->twigEnv->getExtension('core')->setNumberFormat(3, '.', "'");
+        $this->twigEnv->addFunction(new Twig_SimpleFunction('pad', 'str_pad'));
+        if (\ConfigIgestisGlobalVars::debugMode()) {
+            $this->twigEnv->addExtension(new Twig_Extension_Debug());
+            $this->twigEnv->clearCacheFiles();
+        }
+        
+        $this->stringTwigEnv = clone $this->twigEnv;
+        $this->stringTwigEnv->setLoader(new \Twig_Loader_String());
+        $this->stringTwigEnv->getExtension('core')->setNumberFormat(2, '.', "");
+
+
+        if(!$installScript) {
+            if (\ConfigIgestisGlobalVars::useLdap()) {
+                $this->security = \IgestisSecurityLdap::init($this);
+            } else {
+                $this->security = \IgestisSecurity::init($this);
+            }
+
+            $this->setLanguage($this->security->contact->getLanguageCode());
+        }
+        else {
+            $this->setLanguage("EN");
+        }
+        
+
+        self::$_instance = $this;
+    }
+    
+    private function checkInstallScript() {
+        // If install folder nor longer exist and we are on the install script, then we redirect to the login page
+        $installScript = false;
+        if(filter_input(INPUT_GET, "Page") == "install-check") {
+            $installScript = true;
+        }
+        
+        if(is_dir(__DIR__ . "/../../install")) {
+            $this->installScript();
+        }
+        else {
+            if($installScript) {
+                header("location:" . ConfigControllers::createUrl("home_page")); exit;
+            }
+        }
+        
+        
+        try {
+            ConfigIgestisGlobalVars::initFromIniFile();
+        } catch (Exception $ex) {
+            $this->installScript();
+        }
+
+        return $installScript;
+        
+    }
+    private function installScript() {
+        if(filter_input(INPUT_GET, "Page") != "install-check") {
+            header("location:?Page=install-check"); exit;
+        }
+    }
 
     /**
      * Set debug mode Set true to show debug bar and disable caches
@@ -119,7 +219,7 @@ class Application {
             $this->security->authenticate($login, $password);
         } else {
             $this->security->authenticate($login, $password);
-        };
+        }
 
         if ($this->security->is_loged()) {
             $this->is_loged = $this->security->is_loged();
@@ -188,88 +288,7 @@ class Application {
         return $entityManager;
     }
 
-    /**
-     * Constructor is private. Use getInstance to create the singleton
-     */
-    private function __construct() {
 
-        // Initialize modules list
-        $oModulesList = IgestisModulesList::getInstance();
-        $this->modulesList = $oModulesList->get();
-
-        // Initialize default values
-        self::$doctrineLogger = null;
-        $this->debugger = Igestis\Utils\Debug::getInstance();
-        self::$_entityManager = self::configDoctrine();
-        $this->entityManager = self::$_entityManager;
-
-
-        $templateFoldersList = array(dirname(__FILE__) . "/../../templates/");
-        $modulesList = IgestisModulesList::getInstance();
-        foreach ($modulesList->get() as $module_name => $module) {
-            if ($module['igestisVersion'] == 2) {
-                if (is_dir($module['folder'] . "/templates/"))
-                    $templateFoldersList[] = $module['folder'] . "/templates/";
-            }
-        }
-
-        $twigLoader = new Twig_Loader_Filesystem($templateFoldersList);
-
-        //$this->twigEnv = new Twig_Extensions_Extension_I18n();
-
-        $this->twigEnv = new Twig_Environment($twigLoader, array(
-                    'cache' => \ConfigIgestisGlobalVars::debugMode() ? false : \ConfigIgestisGlobalVars::cacheFolder() . "/twig",
-                    'debug' => \ConfigIgestisGlobalVars::debugMode()
-                ));
-        $this->twigEnv->addExtension(new Twig_Extensions_Extension_I18nExtended());
-        $this->twigEnv->addExtension(new Twig_Extensions_Extension_Url());
-        $this->twigEnv->getExtension('core')->setNumberFormat(3, '.', "'");
-        $this->twigEnv->addFunction(new Twig_SimpleFunction('pad', 'str_pad'));
-        if (\ConfigIgestisGlobalVars::debugMode()) {
-            $this->twigEnv->addExtension(new Twig_Extension_Debug());
-            $this->twigEnv->clearCacheFiles();
-        }
-        
-        $this->stringTwigEnv = clone $this->twigEnv;
-        $this->stringTwigEnv->setLoader(new \Twig_Loader_String());
-        $this->stringTwigEnv->getExtension('core')->setNumberFormat(2, '.', "");
-
-
-        if (\ConfigIgestisGlobalVars::useLdap()) {
-            $this->security = \IgestisSecurityLdap::init($this);
-        } else {
-            $this->security = \IgestisSecurity::init($this);
-        };
-
-
-        // This variable is set only to keep compatibility with the old module
-        if ($this->security->is_loged()) {
-            $company = $this->security->user->getCompany();
-            $this->userprefs = array(
-                "user_label" => $this->security->user->getUserLabel(),
-                "user_type" => $this->security->user->getUserType(),
-                "company_id" => ($company ? $company->getId() : 0),
-                "id" => $this->security->contact->getId(),
-                "contact_id" => $this->security->contact->getId(),
-                "user_id" => $this->security->user->getId(),
-                "id_user" => $this->security->user->getId(),
-                "login" => $this->security->contact->getLogin(),
-                "password" => $this->security->contact->getPassword(),
-                "ssh_password" => $this->security->contact->getSshPassword(),
-                "civility_code" => $this->security->contact->getCivilityCode(), 
-                "firstname" => $this->security->contact->getFirstname(),
-                "lastname" => $this->security->contact->getLastname(),
-                "email" => $this->security->contact->getEmail(),
-                "language_code" => $this->security->contact->getLanguageCode() 
-            );
-        }
-
-
-
-        $this->setLanguage($this->security->contact->getLanguageCode());
-
-        self::$_instance = $this;
-    }
 
     /**
      * Define the language to enable
@@ -332,7 +351,8 @@ class Application {
      * @return string
      */
     public static function getTemplateUrl() {
-        return \ConfigIgestisGlobalVars::serverAddress() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
+        return "theme/" . \ConfigIgestisGlobalVars::theme() . "/";
+        //return \ConfigIgestisGlobalVars::serverAddress() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
     }
 
     /**
@@ -631,6 +651,10 @@ class Application {
         //$controller = new HomePageController($this);
         //$controller->error404();
         exit;
+    }
+    
+    public function dieMessage($msg) {
+        die($msg);
     }
 
 }

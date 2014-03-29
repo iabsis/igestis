@@ -31,7 +31,7 @@ function iGestisErrorHandler($errno, $errstr, $errfile, $errline)
         \Igestis\Utils\Debug::FileLogger($message);
         if($application instanceof application) {
             if($objResponse instanceof objResponse) {                
-                $application->message_die($message);
+                $application->dieMessage($message);
             }
             else {
                 if($show_popup_error) new wizz(str_replace("<br />", "", $message), WIZZ_ERROR, $objResponse);

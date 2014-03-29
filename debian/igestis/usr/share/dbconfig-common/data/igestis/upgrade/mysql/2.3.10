@@ -1,2 +1,0 @@
-ALTER TABLE  `CORE_USERS` CHANGE  `tva_invoice`  `tva_invoice` TINYINT( 4 ) NULL DEFAULT  '1';
-UPDATE `CORE_USERS` SET `tva_invoice`= 1 WHERE user_type='employee';

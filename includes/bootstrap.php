@@ -44,5 +44,3 @@ Igestis\Utils\Debug::getInstance();
 require_once __DIR__ . "/coreClasses/Application.php";
 Igestis\Utils\Debug::addLog("Loading librairies completed");
 
-// Initialise application configuration
-ConfigIgestisGlobalVars::initFromIniFile();
