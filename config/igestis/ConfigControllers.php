@@ -12,6 +12,29 @@ class ConfigControllers extends IgestisConfigController {
         if(count(self::$routes)) return self::$routes;
         
         $routes = array(
+            
+            array(
+                "id" => "igestis_update_db",
+                "Parameters" => array(
+                    "Page" => "install-check",
+                    "Action" => "updatedb"
+                ),
+                "Controller" => "InstallController",
+                "Action" => "updateDbAction",
+                "Access" => array("EVERYONE")
+            ),
+            
+            array(
+                "id" => "igestis_install",
+                "Parameters" => array(
+                    "Page" => "install-check"
+                ),
+                "Controller" => "InstallController",
+                "Action" => "checkAction",
+                "Access" => array("EVERYONE")
+            ),
+            
+            
             /************* Script ajax **********************************/
             array(
                 "id" => "ajax_is_login_exist",

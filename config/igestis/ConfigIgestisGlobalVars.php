@@ -12,9 +12,8 @@ if(file_exists('/etc/igestis/debian-db.php')) {
   define("IGESTIS_CORE_MYSQL_DATABASE", $dbname);
 }
 
-//define("IGESTIS_CORE_SERVER_ADDRESS", (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] ."/igestis2.5");
 
-define("IGESTIS_CORE_VERSION", "2.2.7");
+define("IGESTIS_CORE_VERSION", file_get_contents(__DIR__ . "/../../version"));
 define("IGESTIS_CORE_TEXTDOMAIN", "igestis" .  IGESTIS_CORE_VERSION);
 
 
@@ -25,18 +24,54 @@ class ConfigIgestisGlobalVars {
         // No instanciation for this class
     }
     
+    public static function configFileFound() {
+        return is_file(__DIR__ . "/config.ini") && is_readable(__DIR__ . "/config.ini");
+    }
+    
+    private static function initPHPConfig() {
+        if(self::timeZone()) {
+            date_default_timezone_set(self::timeZone());
+        }
+    }
+    
+    private static function setDefaultValues() {
+        if(empty(self::$params['CACHE_FOLDER'])) {
+            self::$params['CACHE_FOLDER'] = __DIR__ . "/../../cache";
+        }
+        
+        if(empty(self::$params['DATA_FOLDER'])) {
+            self::$params['DATA_FOLDER'] = __DIR__ . "/../../documents";
+        }
+    }
+
     public static function initFromIniFile() {
         
-        self::$params = array_merge(
-            parse_ini_file(__DIR__ . "/default-config.ini"),
-            parse_ini_file(__DIR__ . "/custom-config.ini")
-        );
+        self::$params =  parse_ini_file(__DIR__ . "/default-config.ini");
+        $configFileNotFound = false;
+        if(!self::configFileFound()) {
+            $configFileNotFound = true;
+            
+        }
+        else {
+            self::$params = array_merge(
+                self::$params,
+                parse_ini_file(__DIR__ . "/config.ini")
+            );
+        }
         
         // Manage special mysql fields
         self::$params['MYSQL_HOST'] = isset(self::$params['MYSQL_HOST']) ? self::$params['MYSQL_HOST'] : IGESTIS_CORE_MYSQL_HOST;
         self::$params['MYSQL_LOGIN'] = isset(self::$params['MYSQL_LOGIN']) ? self::$params['MYSQL_LOGIN'] : IGESTIS_CORE_MYSQL_LOGIN;
         self::$params['MYSQL_PASSWORD'] = isset(self::$params['MYSQL_PASSWORD']) ? self::$params['MYSQL_PASSWORD'] : IGESTIS_CORE_MYSQL_PASSWORD;
         self::$params['MYSQL_DATABASE'] = isset(self::$params['MYSQL_DATABASE']) ? self::$params['MYSQL_DATABASE'] : IGESTIS_CORE_MYSQL_DATABASE;
+        
+        self::setDefaultValues();
+        self::initPHPConfig();
+        
+        if($configFileNotFound) {
+            
+            throw new Exception(\Igestis\I18n\Translate::_("The config.ini file is not found or not readable"));
+        }
     }
     
     public static function set($key, $value) {
@@ -181,6 +216,10 @@ class ConfigIgestisGlobalVars {
     
     public static function autoCsrfProtection() {
         return true;  // AUTO_CSRF_PROTECTION
+    }
+    
+    public static function timeZone() {
+        return self::$params['TIMEZONE'];
     }
 }
 
