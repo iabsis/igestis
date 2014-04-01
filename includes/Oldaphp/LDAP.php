@@ -46,19 +46,19 @@ class LDAP extends LDAPNode {
 	 * @param integer $pv rotocol version (optional)
 	 */
 	public function __construct($url, $basedn=null, $pv = 3){
-		parent::__construct(null,null,$basedn);
-		$this->lfd = @ldap_connect($url);
-		$this->state = self::OBSOLETE;
-		
-		if(!$this->lfd){
-			throw new LDAPException(sprintf(_("Connection to %s failed"), $url));
-		}
-                
-		if($pv != null) {
-            @ldap_set_option($this->lfd, LDAP_OPT_PROTOCOL_VERSION, $pv);
-        }
-        
-        @ldap_set_option($this->lfd, LDAP_OPT_REFERRALS, 0);
+            parent::__construct(null,null,$basedn);
+            $this->lfd = @ldap_connect($url);
+            $this->state = self::OBSOLETE;
+
+            if(!$this->lfd){
+                    throw new LDAPException(sprintf(_("Connection to %s failed"), $url));
+            }
+
+            if($pv != null) {
+                @ldap_set_option($this->lfd, LDAP_OPT_PROTOCOL_VERSION, $pv);
+            }
+
+            @ldap_set_option($this->lfd, LDAP_OPT_REFERRALS, 0);
 	}
 	
 	/**
@@ -141,5 +141,3 @@ class LDAP extends LDAPNode {
 	const MD5 = 1;
 	const SSHA = 2;
 }
-
-?>

@@ -58,15 +58,15 @@ function iGestisErrorHandler($errno, $errstr, $errfile, $errline)
 
 
 class igestis_error {
-	
-	private $error_message;
-	
-	function __construct($err_msg) {
-		$this->error_message = $err_msg;
-	}
-	
-	function get_message() {
-		return $this->error_message;
-	}
+    
+    private $error_message;
+    
+    function __construct($err_msg) {
+        $this->error_message = $err_msg;
+    }
+    
+    function get_message() {
+        return $this->error_message;
+    }
 }
 
