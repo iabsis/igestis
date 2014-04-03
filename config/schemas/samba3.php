@@ -6,7 +6,6 @@
 
 return array(
     "objectClass" => array("top", "sambaSamAccount"),
-    "homeDirectory" => "/home/" . $contact->contact->getLogin(),
     "sambaAcctFlags" => "[U]",
     "sambaHomeDrive" => ConfigModuleVars::homeDrive,
     "sambaHomePath" => $homePath,
