@@ -258,6 +258,18 @@ class ConfigIgestisGlobalVars {
         return self::$params['LDAP_SUPPLIER_RDN'];
     }
     
+    public static function ldapGroupSchema() {
+        return self::$params['LDAP_GROUP_SCHEMA'];
+    }
+    
+    public static function ldapGroupDn() {
+        return self::$params['LDAP_GROUP_DN'];
+    }
+    
+    public static function ldapGroupRdn() {
+        return self::$params['LDAP_GROUP_RDN'];
+    }
+    
     
 }
 
