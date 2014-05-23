@@ -221,5 +221,55 @@ class ConfigIgestisGlobalVars {
     public static function timeZone() {
         return self::$params['TIMEZONE'];
     }
+    
+    public static function ldapEmployeeSchema() {
+        return self::$params['LDAP_EMPLOYEE_SCHEMA'];
+    }
+    
+    public static function ldapEmployeeDn() {
+        return self::$params['LDAP_EMPLOYEE_DN'];
+    }
+    
+    public static function ldapEmployeeRdn() {
+        return self::$params['LDAP_EMPLOYEE_RDN'];
+    }
+    
+    public static function ldapCustomerSchema() {
+        return self::$params['LDAP_CUSTOMER_SCHEMA'];
+    }
+    
+    public static function ldapCustomerDn() {
+        return self::$params['LDAP_CUSTOMER_DN'];
+    }
+    
+    public static function ldapCustomerRdn() {
+        return self::$params['LDAP_CUSTOMER_RDN'];
+    }
+    
+    public static function ldapSupplierSchema() {
+        return self::$params['LDAP_SUPPLIER_SCHEMA'];
+    }
+    
+    public static function ldapSupplierDn() {
+        return self::$params['LDAP_SUPPLIER_DN'];
+    }
+    
+    public static function ldapSupplierRdn() {
+        return self::$params['LDAP_SUPPLIER_RDN'];
+    }
+    
+    public static function ldapGroupSchema() {
+        return self::$params['LDAP_GROUP_SCHEMA'];
+    }
+    
+    public static function ldapGroupDn() {
+        return self::$params['LDAP_GROUP_DN'];
+    }
+    
+    public static function ldapGroupRdn() {
+        return self::$params['LDAP_GROUP_RDN'];
+    }
+    
+    
 }
 
