@@ -20,8 +20,14 @@ define("IGESTIS_CORE_TEXTDOMAIN", "igestis" .  IGESTIS_CORE_VERSION);
 class ConfigIgestisGlobalVars {
     private static $params;
     
-    private function __construct() {
-        // No instanciation for this class
+    public function __construct() {
+        if(empty(static::$params)) {
+            self::initFromIniFile();
+        }
+    }
+    
+    public function _get($configName) {
+        return self::$params[$configName];
     }
     
     public static function configFileFound() {
@@ -220,6 +226,10 @@ class ConfigIgestisGlobalVars {
     
     public static function timeZone() {
         return self::$params['TIMEZONE'];
+    }
+    
+    public static function usernameFormat() {
+        return self::$params['USERNAME_FORMAT'];
     }
 }
 

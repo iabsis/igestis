@@ -896,7 +896,7 @@ class CoreContacts
                 }
                 
                 $userCompany = NULL;
-                if($this->login == CORE_ADMIN) return true;
+                if($this->login == \ConfigIgestisGlobalVars::igestisCoreAdmin()) return true;
                 
                 // Is the row already exists on LDAP ?
                 $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomFind()));
@@ -1306,9 +1306,9 @@ class CoreContactsRepository extends Doctrine\ORM\EntityRepository {
             }
             $qb->andWhere("u.userType = 'employee'")
                ->andWhere("COALESCE(c.login, :empty) != :admin")
-               ->setParameter("admin", CORE_ADMIN)
+               ->setParameter("admin", \ConfigIgestisGlobalVars::igestisCoreAdmin())
                ->setParameter("empty", "");
-            if(IgestisSecurity::init()->contact->getLogin() != CORE_ADMIN) {
+            if(IgestisSecurity::init()->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
                 $qb->andWhere("u.company = :company")
                    ->setParameter("company", $userCompany);
             }

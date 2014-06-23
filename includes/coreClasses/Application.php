@@ -110,6 +110,7 @@ class Application {
         $this->twigEnv->addExtension(new Twig_Extensions_Extension_Url());
         $this->twigEnv->getExtension('core')->setNumberFormat(3, '.', "'");
         $this->twigEnv->addFunction(new Twig_SimpleFunction('pad', 'str_pad'));
+        $this->twigEnv->addGlobal("igestisConfig", new ConfigIgestisGlobalVars());
         if (\ConfigIgestisGlobalVars::debugMode()) {
             $this->twigEnv->addExtension(new Twig_Extension_Debug());
             $this->twigEnv->clearCacheFiles();
@@ -397,9 +398,9 @@ class Application {
         if ($this->security->user->getUserType() == "employee" && ($user_rights == "ADMIN" || $user_rights == "TECH")) {
             // Affichage de l'onglet contacts pour les employés Admin ou Tech
             $menu->addItem(_("Contacts"), _("Employees"), "employees_list");
-            if ($this->security->contact->getLogin() != CORE_ADMIN)
+            if ($this->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin())
                 $menu->addItem(_("Contacts"), _("Customers"), "customers_list");
-            if ($this->security->contact->getLogin() != CORE_ADMIN)
+            if ($this->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin())
                 $menu->addItem(_("Contacts"), _("Suppliers"), "suppliers_list");
             $menu->addItem(_("Administration"), _("My companies"), "companies_list");
             $menu->addItem(_("Administration"), _("Departments"), "departments_list");
@@ -534,7 +535,7 @@ class Application {
         $replacement['SERVER_ADDRESS'] = \ConfigIgestisGlobalVars::serverAddress();
         $replacement['USER'] = $this->security->user;
         $replacement['CONTACT'] = $this->security->contact;
-        $replacement['ADMIN_ACCOUNT'] = strtolower(CORE_ADMIN);
+        $replacement['ADMIN_ACCOUNT'] = strtolower(\ConfigIgestisGlobalVars::igestisCoreAdmin());
 
         $newWizz = wizz::show_twig_messages();
         if (is_array($newWizz) && count($newWizz)) {

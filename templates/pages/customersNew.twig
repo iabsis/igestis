@@ -103,7 +103,7 @@
                             equalTo: "#id-password"
                     },
                     login:{
-                            regex: /^[a-z][-a-z0-9]*$/,
+                            regex: /{{ igestisConfig.get("USERNAME_FORMAT") }}/,
                             required:true
                     },
                     email:{

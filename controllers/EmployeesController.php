@@ -25,7 +25,7 @@ class EmployeesController extends IgestisController {
         // If the form has been received, manage the form...
         $employee = $this->context->entityManager->getRepository("CoreUsers")->find($Id);    
         
-        if(!$employee || $employee->getUserType() != "employee" || ($this->context->security->contact->getLogin() != CORE_ADMIN && $employee->getCompany() != $this->context->security->user->getCompany())) {
+        if(!$employee || $employee->getUserType() != "employee" || ($this->context->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin() && $employee->getCompany() != $this->context->security->user->getCompany())) {
             new wizz(_("The employee has not been found"), wizz::$WIZZ_ERROR);
             $this->redirect(ConfigControllers::createUrl("employees_list"));
         }
@@ -124,7 +124,7 @@ class EmployeesController extends IgestisController {
      */
     public function deleteAction($Id) {
         $user = $this->context->entityManager->getRepository("CoreUsers")->find($Id);
-        if(!$user || $user->getUserType() != "employee" || ($this->context->security->contact->getLogin() != CORE_ADMIN && $user->getCompany() != $this->context->security->user->getCompany())) {
+        if(!$user || $user->getUserType() != "employee" || ($this->context->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin() && $user->getCompany() != $this->context->security->user->getCompany())) {
             new wizz(_("The employee has not been found"), wizz::$WIZZ_ERROR);
             $this->redirect(ConfigControllers::createUrl("employees_list"));
         }
@@ -251,7 +251,7 @@ class EmployeesController extends IgestisController {
      */
     public function showAction($Id) {
         $employee = $this->context->entityManager->getRepository("CoreUsers")->find($Id);
-        if(!$employee || $employee->getUserType() != "employee" ||  ($this->context->security->contact->getLogin() != CORE_ADMIN && $employee->getCompany() != $this->context->security->user->getCompany())) {
+        if(!$employee || $employee->getUserType() != "employee" ||  ($this->context->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin() && $employee->getCompany() != $this->context->security->user->getCompany())) {
             new wizz(_("The Employee has not been found"), wizz::$WIZZ_ERROR);
             $this->redirect(ConfigControllers::createUrl("employees_list"));
         }

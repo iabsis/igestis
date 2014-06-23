@@ -11,7 +11,7 @@ class SuppliersController extends IgestisController {
      */
     public function indexAction() {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -26,7 +26,7 @@ class SuppliersController extends IgestisController {
      * Get a form to edit or validate it if the form is received
      */
     public function editAction($Id) {
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -81,7 +81,7 @@ class SuppliersController extends IgestisController {
      */
     public function deleteAction($Id) {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -117,7 +117,7 @@ class SuppliersController extends IgestisController {
      */
     public function newAction() {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -176,7 +176,7 @@ class SuppliersController extends IgestisController {
      */
     public function showAction($Id) {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
