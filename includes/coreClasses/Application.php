@@ -138,6 +138,24 @@ class Application {
         self::$_instance = $this;
     }
     
+    /**
+     * Get template local folder
+     * @return type
+     */
+    function getTemplateFolder() {
+        return \ConfigIgestisGlobalVars::serverFolder() . "/" . \ConfigIgestisGlobalVars::appliFolder() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
+    }
+    
+    /**
+     * Return puvlic url of the theme
+     * @return string
+     */
+    public static function getTemplateUrl() {
+        return "theme/" . \ConfigIgestisGlobalVars::theme() . "/";
+        //return \ConfigIgestisGlobalVars::serverAddress() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
+    }
+
+    
     private function checkInstallScript() {
         // If install folder nor longer exist and we are on the install script, then we redirect to the login page
         $installScript = false;
@@ -182,8 +200,17 @@ class Application {
     /**
      * Get the single entityManager
      * @return EntityManager
+     * @deprecated since version 2.5 User the getEntityManager() function instead (fixed typo error)
      */
     public static function getEntityMaanger() {
+        return getEntityManager();
+    }
+    
+    /**
+     * Get the single entityManager
+     * @return EntityManager
+     */
+    public static function getEntityManager() {
         if (self::$_entityManager === null) {
             self::$_entityManager = self::configDoctrine();
         }
@@ -250,6 +277,10 @@ class Application {
      * @return \Doctrine\ORM\EntityManager
      */
     public static function configDoctrine() {
+        if(self::$_entityManager) {
+            self::$doctrineLogger = self::$_entityManager->getConfiguration()->getSQLLogger();
+            return self::$_entityManager;
+        }
         if (\ConfigIgestisGlobalVars::debugMode() == true) {
             $cache = new \Doctrine\Common\Cache\ArrayCache;
         } else {
@@ -340,23 +371,6 @@ class Application {
     }
 
     /**
-     * Get template local folder
-     * @return type
-     */
-    function getTemplateFolder() {
-        return \ConfigIgestisGlobalVars::serverFolder() . "/" . \ConfigIgestisGlobalVars::appliFolder() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
-    }
-    
-    /**
-     * Return puvlic url of the theme
-     * @return string
-     */
-    public static function getTemplateUrl() {
-        return "theme/" . \ConfigIgestisGlobalVars::theme() . "/";
-        //return \ConfigIgestisGlobalVars::serverAddress() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
-    }
-
-    /**
      * Show an error with the incorrect form content
      * @param string $reason
      */
@@ -392,7 +406,7 @@ class Application {
     private function getMenu() {
         if (!$this->security || !$this->security->isLoged())
             return "";
-        $user_rights = $this->security->module_access("CORE", $this->security->user->getId());
+        $user_rights = $this->security->module_access("CORE");
 
         $menu = new IgestisMenu($this);
         if ($this->security->user->getUserType() == "employee" && ($user_rights == "ADMIN" || $user_rights == "TECH")) {
@@ -567,17 +581,19 @@ class Application {
         $sidebar = $this->getSidebar();        
         if ($sidebar) $replacement['MODULE_SIDEBAR'] = $sidebar;
 
-        if ($this->is_loged)
-            $replacement['username'] = strtolower($this->userprefs['login']);
-
+        if ($this->security->isLoged()) {
+            $replacement['username'] = strtolower($this->security->contact->getLogin());
+        }
 
         if ($forceDebugToolbar || preg_match("/debugToolbar.twig/", $twigFile) || $return == false) {
-            if (\ConfigIgestisGlobalVars::debugMode()) {
+            if (self::$doctrineLogger && \ConfigIgestisGlobalVars::debugMode()) {
+                
                 foreach (self::$doctrineLogger->queries as $query) {
                     $this->debugger->addDoctrineLog(
                             $query['sql'], $query['params'], $query['types'], $query['executionMS']
                     );
                 }
+                
 
                 $this->debugger->addDump($_GET, "_GET");
                 $this->debugger->addDump($_POST, "_POST");

@@ -67,7 +67,7 @@ class GetTextCaching {
                     mkdir($cacheCurrentFolder . "/LC_MESSAGES");
                 }                
 
-                $cacheCurrentFile = $cacheCurrentFolder . "/LC_MESSAGES/" . $configClass::textDomain() . ".mo";
+                $cacheCurrentFile = $cacheCurrentFolder . "/LC_MESSAGES/" . (method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain) . ".mo";
                 if(!is_file($cacheCurrentFile)) {
                     
                     if($module == "CORE") {

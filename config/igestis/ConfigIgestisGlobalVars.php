@@ -184,16 +184,16 @@ class ConfigIgestisGlobalVars {
         return self::$params['MIN_UID_NUMBER'];
     }
     
+    /**
+     * 
+     * @return Template folder
+     * @deprecated since version 2.5
+     */
     public static function theme() {
-        return self::$params['THEME'];
+        return "";
     }
-    
-    public static function serverFolder() {
-        return self::$params['SERVER_FOLDER'];
-    }
-    
     public static function appliFolder() {
-        return self::$params['APPLI_FOLDER'];
+        return realpath(dirname(__FILE__) . "/../../");
     }
     
     public static function dataFolder() {
@@ -209,7 +209,7 @@ class ConfigIgestisGlobalVars {
     }    
     
     public static function rootFolder() {
-        return self::$params['ROOT_FOLDER'];
+        return realpath(dirname(__FILE__) . "/../../");
     }
     
     public static function textDomain() {

@@ -199,13 +199,19 @@ class IgestisSecurity {
     /**
      *
      * @param string $module_name
-     * @param Integer $user_id
+     * @param Integer $for_user_id
      * @return mixed String Right code for the passed module_name
      */
-    public function module_access($module_name, $user_id=NULL) {// Return the module access for the user in param2 (for the current user if $id_user is null)
-        if ($user_id === NULL)  $user_id = $this->user->getId ();
-        $rights_list = $this->get_rights_list($user_id, ($user_id != NULL)); //, $this->context);
-        return strtoupper($rights_list[strtoupper($module_name)]);
+    public function module_access($module_name, $for_user_id=NULL) {// Return the module access for the user in param2 (for the current user if $id_user is null)
+
+        if ($for_user_id === NULL)  {
+            $user_id = $this->user->getId ();
+        }
+        else {
+            $user_id = $for_user_id;
+        }
+        $rights_list = $this->get_rights_list($user_id, ($for_user_id != NULL)); //, $this->context);
+        return empty($rights_list[strtoupper($module_name)]) ? "" : strtoupper($rights_list[strtoupper($module_name)]);
     }
 
     /**
@@ -475,7 +481,7 @@ class IgestisSecurity {
                     if(!preg_match("/^[A-Za-z0-9_]+\:[A-Za-z0-9_]+$/", $actualRoute)) continue;
                     if($this->user == null) continue;
                     list($module, $right) = explode(":", $actualRoute);
-                    if($this->module_access($module, $this->user->getId()) == strtoupper($right)) return true;
+                    if($this->module_access($module) == strtoupper($right)) return true;
                     break;
             }
         }

@@ -49,7 +49,7 @@ class IgestisModulesList {
      */
     private function createList() {
         if(count($this->modulesList)) return $this->modulesList;        
-        $directory_to_search = \ConfigIgestisGlobalVars::serverFolder() . "/" . \ConfigIgestisGlobalVars::appliFolder() . "/modules/";
+        $directory_to_search = \ConfigIgestisGlobalVars::appliFolder() . "/modules/";
         $dir = opendir($directory_to_search);
         while ($module_name = readdir($dir)) {
             if ($module_name == "." || $module_name == ".."){

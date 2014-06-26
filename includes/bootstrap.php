@@ -7,7 +7,7 @@ function messageOnError()
     ob_start();
     var_dump(error_get_last());
     $ErrorContent = "<pre>" . ob_get_clean() . "</pre>";
-    if(!defined('DEBUG_MODE') || !DEBUG_MODE) $ErrorContent = "";
+    //if(!defined('DEBUG_MODE') || !DEBUG_MODE) $ErrorContent = "";
 
     $html = file_get_contents(__DIR__ . "/../public/error500.html");
     $html = str_replace("{ErrorContent}", $ErrorContent, $html);

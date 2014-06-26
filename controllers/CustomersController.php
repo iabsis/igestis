@@ -139,7 +139,6 @@ class CustomersController extends IgestisController {
             $contact->setMainContact(true);
             // Associate the contact to the user
             $customer->AddOrEditContact($contact);
-
             
             // Save the employee into the database
             try {

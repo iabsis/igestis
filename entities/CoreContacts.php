@@ -1312,6 +1312,7 @@ class CoreContactsRepository extends Doctrine\ORM\EntityRepository {
                 $qb->andWhere("u.company = :company")
                    ->setParameter("company", $userCompany);
             }
+            
             if($arrayMode) return $qb->getQuery()->getArrayResult();
             else return $qb->getQuery ()->getResult ();
         } catch (Exception $e) {
