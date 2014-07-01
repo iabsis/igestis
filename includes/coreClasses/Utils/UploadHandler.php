@@ -599,11 +599,17 @@ class UploadHandler
                         FILE_APPEND
                     );
                 } else {                    
-                    move_uploaded_file($uploaded_file, $file_path);
-                    if($this->uploadCallback()) {
-                        $callback = $this->uploadCallback();
-                        $callback($file->name);
+                    try {
+                        move_uploaded_file($uploaded_file, $file_path);
+                        if($this->uploadCallback()) {
+                            $callback = $this->uploadCallback();
+                            $callback($file->name);
+                        }
+                    } catch (\Igestis\Exceptions\UploadException $ex) {
+                        $file->error = $this->get_error_message($ex->getMessage());
+                        $file->errorButton = $ex->getDetails();
                     }
+                    
                 }
             } else {
                 // Non-multipart uploads (PUT method support)

@@ -23,7 +23,7 @@ class InstallController extends IgestisController {
         $dbDatabaseFound = false;
         $dbTablesFound = false;
         try {
-            $em = $this->context->getEntityMaanger();
+            $em = $this->context->getEntityManager();
             $connexion = $em->getConnection()->connect();
             $dbCredentialsOk = true;
             if(!$em->getConnection()->getDatabase()) {

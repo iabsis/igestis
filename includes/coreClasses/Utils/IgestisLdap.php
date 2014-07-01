@@ -220,7 +220,7 @@ class IgestisLdap {
     
     
     public static function importUser($login, $plainPassword) {
-        $entityManager = \Application::getEntityMaanger();
+        $entityManager = \Application::getEntityManager();
         if (!\ConfigIgestisGlobalVars::useLdap())
             return true;
         try {

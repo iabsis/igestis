@@ -203,7 +203,7 @@ class Application {
      * @deprecated since version 2.5 User the getEntityManager() function instead (fixed typo error)
      */
     public static function getEntityMaanger() {
-        return getEntityManager();
+        return self::getEntityManager();
     }
     
     /**

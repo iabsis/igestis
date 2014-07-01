@@ -5,12 +5,29 @@ function messageOnError()
 
   if(!headers_sent() && error_get_last() !== NULL) {
     ob_start();
-    var_dump(error_get_last());
-    $ErrorContent = "<pre>" . ob_get_clean() . "</pre>";
+    $errorMessage = error_get_last();
+    var_dump($errorMessage);
+    $errorMessage = ob_get_clean();
+    $ErrorContent = "<pre>" . $errorMessage . "</pre>";
     //if(!defined('DEBUG_MODE') || !DEBUG_MODE) $ErrorContent = "";
 
     $html = file_get_contents(__DIR__ . "/../public/error500.html");
     $html = str_replace("{ErrorContent}", $ErrorContent, $html);
+    
+    
+    if(method_exists('ConfigIgestisGlobalVars', "logFile")) {
+        $logFile = ConfigIgestisGlobalVars::logFile();
+    }
+    else {
+        $logFile = '/var/log/igestis/igestis.log';
+    }
+    if(method_exists('\Igestis\Utils\Debug', 'FileLogger')) {
+        \Igestis\Utils\Debug::FileLogger($errorMessage, $logFile);
+    }
+    elseif(is_file($logFile) && is_writable($logFile)) {
+        file_put_contents($logFile, date("Y-m-d H:i:s") . " - System - " . $errorMessage . "\n", FILE_APPEND);
+    }
+    
     die($html);
   }
 }

@@ -166,16 +166,21 @@ class Debug {
         );
     }
     
-    public static function FileLogger($log) {
+    public static function FileLogger($log, $logFile = null) {
         $application = \Application::getInstance();
         
         $login = "Unknown";
-        if (isset($application->security->contact))
+        if (isset($application->security->contact)) {
             $login = $application->security->contact->getLogin();
-        else
+        }
+        else {
             $login = "Anonymous";
+        }
         
-        if (\ConfigIgestisGlobalVars::logFile()) {
+        if($logFile !== null) {
+            @file_put_contents($logFile, date("Y-m-d H:i:s") . " - " . $login . " - " . $log . "\n", FILE_APPEND);
+        }
+        elseif (\ConfigIgestisGlobalVars::logFile()) {
             @file_put_contents(\ConfigIgestisGlobalVars::logFile(), date("Y-m-d H:i:s") . " - " . $login . " - " . $log . "\n", FILE_APPEND);
         }
     }
