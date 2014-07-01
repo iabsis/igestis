@@ -519,10 +519,11 @@ class Application {
         if ($ctype == "application/force-download") {
             header("Content-Description: File Transfer");
             $header = "Content-Disposition: attachment; filename=" . $filename . ";";
+            header($header);
         }
 
         //Force the download
-        header($header);
+        
         header("Content-Transfer-Encoding: binary");
         header("Content-Length: " . $len);
         @readfile($file);

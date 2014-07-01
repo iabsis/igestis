@@ -234,7 +234,6 @@ var igestisWizz = function(msg, type, target, preserveWizzs) {
 };
 
 var igestisParseJsonAjaxResult = function(jsonData) {
-    igestisDebug.log(jsonData);
     if (!jsonData) {
         igestisWizz("An error occurred during the ajax form validation", "error");
     }
@@ -742,7 +741,6 @@ $(function() {
             },
             always: function(e, data) {
                 $progressBar.fadeOut();
-                igestisDebug.log("Upload result", data);
             },
             progressall: function(e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
