@@ -145,7 +145,6 @@ class IgestisParseRequest {
                     }
                 }
             }
-            
             switch (count($route['var_list'])) {
                 case 0: $controller->$route['Action']();
                     break;

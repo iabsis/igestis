@@ -28,6 +28,7 @@ class IgestisFormParser {
         }
         
         $this->entityManager = Application::getEntityManager();
+        
     }
     
     /**

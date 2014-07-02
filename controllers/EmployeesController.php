@@ -55,7 +55,6 @@ class EmployeesController extends IgestisController {
             $employee->setCompany($company);
             $contact = $employee->getContacts()->get(0);
             $contact = $parser->FillEntityFromForm($contact, $_POST);
-
             $employee->setUserLabel($contact->getFirstName() . " " . $contact->getLastName());
             $employee->updateContact($contact);
             

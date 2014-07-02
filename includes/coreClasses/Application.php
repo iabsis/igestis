@@ -136,6 +136,7 @@ class Application {
         
 
         self::$_instance = $this;
+        
     }
     
     /**
@@ -225,6 +226,7 @@ class Application {
         if (self::$_instance === null) {
             self::$_instance = new self;
         }
+        
         return self::$_instance;
     }
 

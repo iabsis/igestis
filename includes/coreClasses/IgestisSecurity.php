@@ -109,6 +109,7 @@ class IgestisSecurity {
                     $this->contact->setSshPassword($encrypted_password);
                     $this->context->entityManager->persist($this->contact);
                     $this->context->entityManager->flush();
+                    
 
                     if ($_POST['use_cookie']) {// If we are requesting a persistant connexion :
                         setcookie("sess_login", $_SESSION['sess_login'], time() + 5000000);
@@ -147,7 +148,6 @@ class IgestisSecurity {
                 $_SESSION['sess_login'] = $_SESSION['sess_password'] = "";
             }
         }
-        
     }
 
     /**
@@ -167,7 +167,7 @@ class IgestisSecurity {
             $password = md5($password);
         }
         
-
+        
         $user = $this->context->entityManager->getRepository("CoreContacts")->getFromLoginAndPassword($login, $password);
         if($user) {
            

@@ -680,10 +680,10 @@ class CoreContacts
     /**
      * Set civilityCode
      *
-     * @param CoreCivilities $civilityCode
+     * @param string $civilityCode
      * @return CoreContacts
      */
-    public function setCivilityCode(\CoreCivilities $civilityCode = null)
+    public function setCivilityCode( $civilityCode = null)
     {
         $this->civilityCode = $civilityCode;
         return $this;
@@ -692,7 +692,7 @@ class CoreContacts
     /**
      * Get civilityCode
      *
-     * @return CoreCivilities 
+     * @return string 
      */
     public function getCivilityCode()
     {
@@ -702,10 +702,10 @@ class CoreContacts
     /**
      * Set countryCode
      *
-     * @param CoreCountries $countryCode
+     * @param string $countryCode
      * @return CoreContacts
      */
-    public function setCountryCode(\CoreCountries $countryCode = null)
+    public function setCountryCode( $countryCode = null)
     {
         $this->countryCode = $countryCode;
         return $this;
@@ -714,7 +714,7 @@ class CoreContacts
     /**
      * Get countryCode
      *
-     * @return CoreCountries 
+     * @return string 
      */
     public function getCountryCode()
     {
@@ -724,10 +724,10 @@ class CoreContacts
     /**
      * Set languageCode
      *
-     * @param CoreLanguages $languageCode
+     * @param string $languageCode
      * @return CoreContacts
      */
-    public function setLanguageCode(\CoreLanguages $languageCode = null)
+    public function setLanguageCode( $languageCode = null)
     {
         $this->languageCode = $languageCode;
         return $this;
@@ -736,7 +736,7 @@ class CoreContacts
     /**
      * Get languageCode
      *
-     * @return CoreLanguages 
+     * @return string 
      */
     public function getLanguageCode()
     {
