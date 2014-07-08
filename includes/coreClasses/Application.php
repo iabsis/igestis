@@ -339,8 +339,8 @@ class Application {
         // This is used by getext from Twig plugin
         // Set language to French
         $langString = strtolower($lang) . "_" . strtoupper($lang);
-        putenv("LC_ALL=$langString");
-        setlocale(LC_ALL, $langString);
+        putenv("LC_ALL=$langString.utf8");
+        setlocale(LC_ALL, $langString . ".utf8");
         setlocale(LC_CTYPE, $langString . '.utf8');
         setlocale(LC_COLLATE, $langString . '.utf8');
         setlocale(LC_MESSAGES, $langString . '.utf8');
@@ -363,13 +363,11 @@ class Application {
                 bind_textdomain_codeset($configClass::textDomain, 'UTF-8');
             }
         }
-
         // Specify the location of the translation tables
         bindtextdomain(\ConfigIgestisGlobalVars::textDomain(), \ConfigIgestisGlobalVars::cacheFolder() . '/lang/locale');
         bind_textdomain_codeset(\ConfigIgestisGlobalVars::textDomain(), 'UTF-8');
         // Choose domain
         textdomain(\ConfigIgestisGlobalVars::textDomain());
-
     }
 
     /**

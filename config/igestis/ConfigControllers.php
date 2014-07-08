@@ -621,6 +621,29 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "indexAction",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),       
+            
+            array(
+                "id" => "suppliers_import_step2",
+                "Parameters" => array(
+                    "Page" => "suppliers_import",
+                    "Action" => "step2",
+                ),
+                "Controller" => "SuppliersController",
+                "Action" => "showImportResult",
+                "Access" => array("CORE:ADMIN", "CORE:TECH")
+            ),
+            
+            array(
+                "id" => "suppliers_import_step3",
+                "Parameters" => array(
+                    "Page" => "suppliers_import",
+                    "Action" => "step3",
+                ),
+                "Controller" => "SuppliersController",
+                "Action" => "validImport",
+                "Access" => array("CORE:ADMIN", "CORE:TECH")
+            ),
+            
             // ------------------------------------------------------
             /** Page = old_module_with_only_admin **/
             array(
