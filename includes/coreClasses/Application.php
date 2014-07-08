@@ -582,7 +582,7 @@ class Application {
         $sidebar = $this->getSidebar();        
         if ($sidebar) $replacement['MODULE_SIDEBAR'] = $sidebar;
 
-        if ($this->security->isLoged()) {
+        if ($this->security && $this->security->isLoged()) {
             $replacement['username'] = strtolower($this->security->contact->getLogin());
         }
 
