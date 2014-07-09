@@ -10,12 +10,11 @@ class InstallController extends IgestisController {
         
         // Disable cache to avoid issue during install (if user has not set the write yet)
         $this->context->getTwigEnvironnement()->setCache(false);
-        
-        $requestUri = filter_input(INPUT_SERVER, "REQUEST_URI");
+        $requestUri = $_SERVER['REQUEST_URI'];
         if(preg_match("#/public/#", $requestUri)) {
             new wizz(\Igestis\I18n\Translate::_("iGestis has detected the '/public/' prefix in the current url. This is not safe, you should create a virtualhost that point directly into the '/public' folder to disallow the access to the rest of the application from the browser."), wizz::WIZZ_WARNING);
         }
-        
+
         \Igestis\Utils\DBUpdater::init($this->_em);
         
         $databaseWork = true;
@@ -23,14 +22,15 @@ class InstallController extends IgestisController {
         $dbDatabaseFound = false;
         $dbTablesFound = false;
         try {
+            
             $em = $this->context->getEntityManager();
+            
             $connexion = $em->getConnection()->connect();
             $dbCredentialsOk = true;
             if(!$em->getConnection()->getDatabase()) {
                 throw new Exception("Invalid database");
             }
             $dbDatabaseFound = true;
-            
             // Check if tables exist
             if(!\Igestis\Utils\DBUpdater::initialTablesExist()) {
                 throw new Exception("Database empty");
@@ -40,7 +40,6 @@ class InstallController extends IgestisController {
         } catch (Exception $ex) {
             $databaseWork = false;
         }
-        
         
         $this->context->render("pages/checkInstall.twig", array(
             "configFileFound" => ConfigIgestisGlobalVars::configFileFound(),

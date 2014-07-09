@@ -11,6 +11,12 @@ if(file_exists('/etc/igestis/debian-db.php')) {
   define("IGESTIS_CORE_MYSQL_PASSWORD", $dbpass);
   define("IGESTIS_CORE_MYSQL_DATABASE", $dbname);
 }
+else {
+    define("IGESTIS_CORE_MYSQL_HOST", '');
+  define("IGESTIS_CORE_MYSQL_LOGIN", '');
+  define("IGESTIS_CORE_MYSQL_PASSWORD", '');
+  define("IGESTIS_CORE_MYSQL_DATABASE", '');
+}
 
 
 define("IGESTIS_CORE_VERSION", file_get_contents(__DIR__ . "/../../version"));
