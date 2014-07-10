@@ -186,6 +186,10 @@ class ConfigIgestisGlobalVars {
         return self::$params['CACHE_FOLDER'];
     }      
     
+    public static function doctrineProxyFolder() {
+        return self::cacheFolder() . "/proxies";
+    }
+    
     public static function minUidNumber() {
         return self::$params['MIN_UID_NUMBER'];
     }

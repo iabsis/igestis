@@ -292,6 +292,11 @@ class Application {
 
         $config = Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../entities"), \ConfigIgestisGlobalVars::debugMode());
         $config->setAutoGenerateProxyClasses(true);
+        if(!is_dir(ConfigIgestisGlobalVars::doctrineProxyFolder())) {
+            mkdir(ConfigIgestisGlobalVars::doctrineProxyFolder());
+        }
+        $config->setProxyDir(ConfigIgestisGlobalVars::doctrineProxyFolder());
+        
         //$logger = new \Doctrine\DBAL\Logging\EchoSQLLogger;
 
         if (\ConfigIgestisGlobalVars::debugMode() == true) {

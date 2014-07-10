@@ -8,7 +8,7 @@
 class AdminController extends IgestisController {
     public function generalAction() {
         
-        $companyId = $this->context->security->user->getCompany()->getId();            
+        //$companyId = $this->context->security->user->getCompany()->getId();            
         //$webRootFolder = ConfigIgestisGlobalVars::serverFolder() . "/" . ConfigIgestisGlobalVars::appliFolder() . "/web";
         //$cssFolder = $webRootFolder . "/" . $companyId;
         //$cssFile = $cssFolder . "/style.css";
@@ -60,7 +60,7 @@ class AdminController extends IgestisController {
         }
         
         $this->context->render("pages/generalAdmin.twig", array(
-            "cssContent" => is_file($cssFile) ? file_get_contents($cssFile) : ''
+            "cssContent" => !empty($cssFile) && is_file($cssFile) ? file_get_contents($cssFile) : ''
         ));
         
     }
