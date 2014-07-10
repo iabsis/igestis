@@ -28,10 +28,17 @@ function messageOnError()
         file_put_contents($logFile, date("Y-m-d H:i:s") . " - System - " . $errorMessage . "\n", FILE_APPEND);
     }
     
-    die($html);
+    if(php_sapi_name() != "cli") {
+        die($html);
+    }
+    else {
+        die($errorMessage);
+    }
   }
 }
+
 register_shutdown_function('messageOnError');
+
 
 error_reporting(0);
 

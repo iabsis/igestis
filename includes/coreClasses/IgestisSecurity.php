@@ -86,6 +86,10 @@ class IgestisSecurity {
             }
         }
         
+        if(empty($_SESSION['sess_login']) || empty($_SESSION['sess_password'])) {
+            return;
+        }
+        
         if (!$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
             // Connexion ...
             if (isset($_POST['sess_login']) && isset($_POST['sess_password']) && $_POST['sess_login'] && $_POST['sess_password']) {
@@ -154,10 +158,16 @@ class IgestisSecurity {
      * Delete the cookie that allows to persist the authentication
      */
     public static function unset_cookie() {
-        setcookie("sess_login", $_SESSION['sess_login'], time() - 1000);
-        unset($_COOKIE['sess_login']);
-        setcookie("sess_password", $_SESSION['sess_password'], time() - 1000);
-        unset($_COOKIE['sess_password']);
+        if(!empty($_COOKIE['sess_login'])) {
+            setcookie("sess_login", $_SESSION['sess_login'], time() - 1000);
+            unset($_COOKIE['sess_login']);
+        }
+        if(!empty($_SESSION['sess_password'])) {
+            setcookie("sess_password", $_SESSION['sess_password'], time() - 1000);
+            unset($_COOKIE['sess_password']);
+        }
+        
+        
 
     }
 

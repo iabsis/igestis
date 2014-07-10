@@ -8,28 +8,15 @@ namespace Igestis\Bash;
  */
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class IgestisScripts extends Command {
     protected function configure()
     {
         $this
-            ->setName('demo:greet')
-            ->setDescription('Greet someone')
-            ->addArgument(
-                'name',
-                InputArgument::OPTIONAL,
-                'Who do you want to greet?'
-            )
-            ->addOption(
-               'yell',
-               null,
-               InputOption::VALUE_NONE,
-               'If set, the task will yell in uppercase letters'
-            )
+            ->setName('databases:update')
+            ->setDescription('Update igestis database')
         ;
         
         
@@ -37,19 +24,14 @@ class IgestisScripts extends Command {
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $name = $input->getArgument('name');
-        if ($name) {
-            $text = 'Hello '.$name;
-        } else {
-            $text = 'Hello';
+        \Igestis\Utils\DBUpdater::init(\Application::getEntityManager());
+        $importStatus = \Igestis\Utils\DBUpdater::startUpdate();
+        if($importStatus) {
+            $output->writeln(\Igestis\I18n\Translate::_("The mysql database has been successfully imported"));
         }
-
-        if ($input->getOption('yell')) {
-            $text = strtoupper($text);
+        else {
+            $output->writeln(\Igestis\I18n\Translate::_("An error has occured during the import process. Try to import the sql file manually."));
         }
-
-        $output->writeln($text);
+        
     }
 }
-
-?>

@@ -81,14 +81,14 @@ class Application {
         // Initialize modules list
         $oModulesList = IgestisModulesList::getInstance();
         $this->modulesList = $oModulesList->get();
-
+        
         // Initialize default values
         self::$doctrineLogger = null;
         $this->debugger = Igestis\Utils\Debug::getInstance();
         self::$_entityManager = self::configDoctrine();
         $this->entityManager = self::$_entityManager;
 
-
+        
         $templateFoldersList = array(dirname(__FILE__) . "/../../templates/");
         $modulesList = IgestisModulesList::getInstance();
         foreach ($modulesList->get() as $module_name => $module) {
@@ -97,7 +97,7 @@ class Application {
                     $templateFoldersList[] = $module['folder'] . "/templates/";
             }
         }
-
+        
         $twigLoader = new Twig_Loader_Filesystem($templateFoldersList);
 
         //$this->twigEnv = new Twig_Extensions_Extension_I18n();
@@ -226,7 +226,6 @@ class Application {
         if (self::$_instance === null) {
             self::$_instance = new self;
         }
-        
         return self::$_instance;
     }
 
@@ -288,15 +287,13 @@ class Application {
         } else {
             $cache = new \Doctrine\Common\Cache\ApcCache;
         }
-
-
         $config = Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../entities"), \ConfigIgestisGlobalVars::debugMode());
         $config->setAutoGenerateProxyClasses(true);
+        
         if(!is_dir(ConfigIgestisGlobalVars::doctrineProxyFolder())) {
             mkdir(ConfigIgestisGlobalVars::doctrineProxyFolder());
         }
         $config->setProxyDir(ConfigIgestisGlobalVars::doctrineProxyFolder());
-        
         //$logger = new \Doctrine\DBAL\Logging\EchoSQLLogger;
 
         if (\ConfigIgestisGlobalVars::debugMode() == true) {
@@ -305,7 +302,7 @@ class Application {
         }
 
 
-        $connectionOptions = array(
+        $connectionOptions = array( 
             'dbname' => \ConfigIgestisGlobalVars::mysqlDatabase(),
             'user' => \ConfigIgestisGlobalVars::mysqlLogin(),
             'password' => \ConfigIgestisGlobalVars::mysqlPassword(),
@@ -336,9 +333,16 @@ class Application {
     function setLanguage($lang) {
 
         if (isset($lang) == false || $lang == "") {
-            $langs = explode(",", $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-            list($http_lang, $country) = explode("-", $langs[0]);
-            $lang = strtoupper($http_lang);
+            
+            if(!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+                $langs = explode(",", $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                list($http_lang, $country) = explode("-", $langs[0]);
+                $lang = strtoupper($http_lang);
+            }
+            else {
+                $lang = "EN";
+            }
+            
         }
 
         // This is used by getext from Twig plugin
