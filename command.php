@@ -6,8 +6,10 @@ require_once __DIR__ . "/includes/bootstrap.php";
 
 $igestisInstance = Application::getInstance();
 $application = new Symfony\Component\Console\Application();
-$application->add(new Igestis\Bash\IgestisScripts);
+$application->add(new Igestis\Bash\DatabaseUpdater);
+$application->add(new Igestis\Bash\i18n());
 $hookListener = \Igestis\Utils\Hook::getInstance();
+
 $hookListener->callHook(
     "command",
     new Igestis\Types\HookParameters(array(

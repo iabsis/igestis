@@ -44,11 +44,43 @@ class IgestisModulesList {
     }
     
     /**
+     * Check if a module exists nor not
+     * @param string $moduleName
+     * @return boolean
+     */
+    public function moduleExists($moduleName) {
+        if(isset($this->modulesList[$moduleName])) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Get the module true folder
+     * @param string $moduleName Module name
+     * @return string Module folder or null if module does not exist
+     */
+    public function getFolder($moduleName) {
+        if($moduleName == "core") {
+            return (__DIR__ . "/../../");
+        }
+        
+        if(!$this->moduleExists($moduleName)) {
+            return null;
+        }
+        
+        return $this->modulesList[$moduleName]['folder'];
+    }
+    
+    /**
      * 
      * @return Array List of modules
      */
     private function createList() {
-        if(count($this->modulesList)) return $this->modulesList;        
+        if(count($this->modulesList)) {
+            return $this->modulesList;  
+        }
+        
         $directory_to_search = \ConfigIgestisGlobalVars::appliFolder() . "/modules/";
         $dir = opendir($directory_to_search);
         while ($module_name = readdir($dir)) {
@@ -66,7 +98,9 @@ class IgestisModulesList {
             );            
         }
         
-        if($dir) closedir($dir);
+        if($dir) {
+            closedir($dir);
+        }
         
         return $this->modulesList;
     }
