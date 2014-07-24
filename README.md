@@ -31,7 +31,7 @@ Please read information on http://www.igestis.org/installer-igestis/
 LDAP synchronisation
 ====================
 
-iGestis is able to synchronise the users informations with a LDAP service.
+iGestis is able to synchronise the users information with a LDAP service.
 This can be usefull to have a centralised password system and connect others
 third parties software.
 
