@@ -113,5 +113,3 @@ directory.
 
 * **LDAP\_USER\_RDN** by default, iGestis create an employee with "uid=%username%". 
 But Active Directory use the convention "cn=%username%".
-
-
