@@ -50,8 +50,6 @@ if [ "${AUTHENTICATION}" = "Samba4" ] ; then
 	db_set igestis/directory/uris "ldapi://%2Fvar%2Flib%2Fsamba%2Fprivate%2Fldapi"
 fi
 
-
-
 }
 
 get_authentication_info()
@@ -159,6 +157,7 @@ if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/config.ini" ] 
 					exit 1
 				;;
 				"Ignore")
+					db_set igestis/directory/wrong "Ignore"
 					break
 				;;
 				"Change settings")
