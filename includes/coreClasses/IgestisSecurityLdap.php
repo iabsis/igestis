@@ -16,7 +16,7 @@ class IgestisSecurityLdap extends IgestisSecurity {
         if (isset($_POST['sess_login']) && isset($_POST['sess_password']) && trim($_POST['sess_login']) && trim($_POST['sess_password'])) {
             $contact = $this->context->entityManager->getRepository("CoreContacts")->findOneBy(array("login" => $_POST['sess_login']));            
             if (!$contact) {
-                if(\ConfigIgestisGlobalVars::LDAP_AUTO_IMPORT_USER) {
+                if(\ConfigIgestisGlobalVars::ldapAutoImportUser()) {
                     // Search user on LDAP, and try to import data from ldap
                     if(!Igestis\Utils\IgestisLdap::importUser($_POST['sess_login'], $_POST['sess_password'])) return false;
                     $contact = $this->context->entityManager->getRepository("CoreContacts")->findOneBy(array("login" => $_POST['sess_login']));

@@ -680,10 +680,10 @@ class CoreContacts
     /**
      * Set civilityCode
      *
-     * @param CoreCivilities $civilityCode
+     * @param string $civilityCode
      * @return CoreContacts
      */
-    public function setCivilityCode(\CoreCivilities $civilityCode = null)
+    public function setCivilityCode( $civilityCode = null)
     {
         $this->civilityCode = $civilityCode;
         return $this;
@@ -692,7 +692,7 @@ class CoreContacts
     /**
      * Get civilityCode
      *
-     * @return CoreCivilities 
+     * @return string 
      */
     public function getCivilityCode()
     {
@@ -702,10 +702,10 @@ class CoreContacts
     /**
      * Set countryCode
      *
-     * @param CoreCountries $countryCode
+     * @param string $countryCode
      * @return CoreContacts
      */
-    public function setCountryCode(\CoreCountries $countryCode = null)
+    public function setCountryCode( $countryCode = null)
     {
         $this->countryCode = $countryCode;
         return $this;
@@ -714,7 +714,7 @@ class CoreContacts
     /**
      * Get countryCode
      *
-     * @return CoreCountries 
+     * @return string 
      */
     public function getCountryCode()
     {
@@ -724,10 +724,10 @@ class CoreContacts
     /**
      * Set languageCode
      *
-     * @param CoreLanguages $languageCode
+     * @param string $languageCode
      * @return CoreContacts
      */
-    public function setLanguageCode(\CoreLanguages $languageCode = null)
+    public function setLanguageCode( $languageCode = null)
     {
         $this->languageCode = $languageCode;
         return $this;
@@ -736,7 +736,7 @@ class CoreContacts
     /**
      * Get languageCode
      *
-     * @return CoreLanguages 
+     * @return string 
      */
     public function getLanguageCode()
     {
@@ -816,18 +816,18 @@ class CoreContacts
             }
         }
         
-        if(\ConfigIgestisGlobalVars::USE_LDAP && \ConfigIgestisGlobalVars::LDAP_AD_MODE) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::LDAP_URIS, \ConfigIgestisGlobalVars::LDAP_BASE, \ConfigIgestisGlobalVars::LDAP_VERSION);
-            if(\ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND) {
-                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND), \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+        if(\ConfigIgestisGlobalVars::useLdap() && \ConfigIgestisGlobalVars::ldapAdMode()) {
+            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
+            if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
+                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
             }
             else {
-                $ldap->bind(\ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+                $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
             }
             
             if(!$this->adSid) {
                 // If the AD Sid has not already been set
-                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::LDAP_CUSTOM_FIND));
+                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomFind()));
                 foreach($nodesList as $dn =>$entry){ // For each entry
                     foreach($entry as $attr => $values){ // For each attribute
                         foreach($values as $value){// For each value
@@ -872,14 +872,14 @@ class CoreContacts
     public function PostPersist() {
         if($this->postPersistDisabled) return;
         
-        if(\ConfigIgestisGlobalVars::USE_LDAP) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::LDAP_URIS, \ConfigIgestisGlobalVars::LDAP_BASE, \ConfigIgestisGlobalVars::LDAP_VERSION);
+        if(\ConfigIgestisGlobalVars::useLdap()) {
+            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
             
-            if(\ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND) {
-                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND), \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+            if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
+                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
             }
             else {
-                $ldap->bind(\ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+                $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
             }
             
             $createLdapEntry = false;
@@ -887,7 +887,7 @@ class CoreContacts
 
             if ($this->user->getUserType() == "employee") { ////////////////// Manage employee on LDAP
                 
-                $ldapOu =  \ConfigIgestisGlobalVars::LDAP_USERS_OU;
+                $ldapOu =  \ConfigIgestisGlobalVars::ldapUsersOu();
                 
                 $nodesList = $ldap->find("(&(!(objectClass=posixAccount))(uid=" . $this->initialLogin . "))");
                 if(count($nodesList)) {
@@ -896,10 +896,10 @@ class CoreContacts
                 }
                 
                 $userCompany = NULL;
-                if($this->login == CORE_ADMIN) return true;
+                if($this->login == \ConfigIgestisGlobalVars::igestisCoreAdmin()) return true;
                 
                 // Is the row already exists on LDAP ?
-                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::LDAP_CUSTOM_FIND));
+                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomFind()));
                 $createLdapEntry = !count($nodesList);
                 if($this->active == 0) {
                     $this->login = null;
@@ -907,7 +907,7 @@ class CoreContacts
                     $createLdapEntry = false;
                 }
                 
-                if(\ConfigIgestisGlobalVars::LDAP_AD_MODE) {
+                if(\ConfigIgestisGlobalVars::ldapAdMode()) {
                   // Include here, the fields to add for an active directory user
                   
                     $newPassword = "\"" . $this->clearPassword . "\"";
@@ -925,7 +925,7 @@ class CoreContacts
                     $ldap_array["sAMAccountName"] = $this->initialLogin;
                     if($this->clearPassword) $ldap_array["unicodePwd"] = $newPassw;
                     $ldap_array["userAccountControl"] = "544"; 
-                    $ldap_array["userPrincipalName"] = str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND); 
+                    $ldap_array["userPrincipalName"] = str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomBind()); 
                     $ldap_array['l'] = $this->city;
                     $ldap_array['o'] = $userCompany;
                     $ldap_array['telephoneNumber'] = $this->phone1;
@@ -976,7 +976,7 @@ class CoreContacts
                 
             } elseif ($this->user->getUserType() == "client") { ///////////////////// Manage customers in LDAP
                 
-                $ldapOu =  \ConfigIgestisGlobalVars::LDAP_CUSTOMERS_OU;
+                $ldapOu =  \ConfigIgestisGlobalVars::ldapCUstomersOu();
                 
                 $nodesList = $ldap->find("(&(objectClass=posixAccount)(uid=" . $this->login . "))");
                 if(count($nodesList)) {
@@ -992,7 +992,7 @@ class CoreContacts
                     $createLdapEntry = false;
                 }
 
-                if(\ConfigIgestisGlobalVars::LDAP_AD_MODE) {
+                if(\ConfigIgestisGlobalVars::ldapAdMode()) {
                     $ldap_array = array(
                         'objectClass'           => array("top", "inetOrgPerson", "organizationalPerson"),
                         'cn'                    => $this->firstname . " " . $this->lastname,
@@ -1033,7 +1033,7 @@ class CoreContacts
             } 
             elseif ($this->user->getUserType() == "supplier") { ///////////////////// Manage suppliers in LDAP
                 
-                $ldapOu =  \ConfigIgestisGlobalVars::LDAP_SUPPLIERS_OU;
+                $ldapOu =  \ConfigIgestisGlobalVars::ldapSuppliersOu();
                 
                 $nodesList = $ldap->find("(&(objectClass=posixAccount)(uid=" . $this->login . "))");
                 if(count($nodesList)) {
@@ -1049,7 +1049,7 @@ class CoreContacts
                     $createLdapEntry = false;
                 }
                 
-                if(\ConfigIgestisGlobalVars::LDAP_AD_MODE) {
+                if(\ConfigIgestisGlobalVars::ldapAdMode()) {
                     $ldap_array = array(
                         'objectClass'           => array("top", "inetOrgPerson", "organizationalPerson"),
                         'cn'                    => $this->firstname . " " . $this->lastname,
@@ -1116,9 +1116,9 @@ class CoreContacts
                         $ldap->deleteNode($dn);
                     }
 
-                    if(defined("\ConfigIgestisGlobalVars::LDAP_USER_RDN") && \ConfigIgestisGlobalVars::LDAP_USER_RDN !== false) {
+                    if(defined("\ConfigIgestisGlobalVars::ldapUserRdn()") && \ConfigIgestisGlobalVars::ldapUserRdn() !== false) {
                         // If LDAP_USER_RDN is defined and not false
-                        if(\ConfigIgestisGlobalVars::LDAP_USER_RDN === true) {
+                        if(\ConfigIgestisGlobalVars::ldapUserRdn() === true) {
                             // LDAP_USER_RDN shouldn't have the value : true
                             throw new Exception(_("Error : LDAP_USER_RDN cannot be set to true. Please set to false or a custom value"));
                             return false;
@@ -1132,14 +1132,14 @@ class CoreContacts
                                                array($this->login,
                                                      $this->firstname,
                                                      $this->lastname),
-                                               \ConfigIgestisGlobalVars::LDAP_USER_RDN);
+                                               \ConfigIgestisGlobalVars::ldapUserRdn());
                             list($param, $paramValue) = explode("=", $rdn);
                             $ldap_array[$param] = $paramValue;
                             $ldap->addNode($rdn . "," . $ldapOu, $ldap_array);
                         }
                     } else {
                         // LDAP_USER_RDN is false or undefined, use the default value
-                        if(\ConfigIgestisGlobalVars::LDAP_AD_MODE) {
+                        if(\ConfigIgestisGlobalVars::ldapAdMode()) {
                             $cn = \Igestis\Utils\IgestisLdap::createCn($this->firstname . " " . $this->lastname);
                             $ldap_array['cn'] = $cn;
                             $ldap->addNode("cn=" . $cn . "," . $ldapOu, $ldap_array);
@@ -1152,7 +1152,7 @@ class CoreContacts
                 }
                 else { // Edit on LDAP
                     foreach ($nodesList as $dn => $node) {
-                        if(\ConfigIgestisGlobalVars::LDAP_AD_MODE) {
+                        if(\ConfigIgestisGlobalVars::ldapAdMode()) {
                             $node->modify($ldap_array);
                         }
                         else {
@@ -1170,31 +1170,12 @@ class CoreContacts
                 return false;
             }
             
-            $mode = "update";
-            if($deleteLdapEntry) $mode = "delete";
-            if($createLdapEntry) $mode = "create";
             
-            switch($mode) {
-                case "update" :
-                case "create" :
-                    \Igestis\Utils\Hook::callHook("afterContactLdapSave", new \Igestis\Types\HookParameters(array(
-                        "contact" => $this,
-                        "ldap_array" => $ldap_array,
-                        "ldap_object" => $ldap,
-                        "mode" => $mode
-                    )));
-                    break;
-                case "delete" :
-                    \Igestis\Utils\Hook::callHook("afterContactLdapDelete", new \Igestis\Types\HookParameters(array(
-                        "contact" => $this,
-                        "ldap_array" => $ldap_array,
-                        "ldap_object" => $ldap,
-                        "mode" => $mode
-                    )));
-                    break;
-                default:
-                    break;
-            }            
+            \Igestis\Utils\Hook::callHook("afterContactLdapSave", new \Igestis\Types\HookParameters(array(
+                "contact" => $this,
+                "ldap_array" => $ldap_array,
+                "ldap_object" => $ldap
+            )));
             
         }// END IF LDAP        
         
@@ -1206,14 +1187,14 @@ class CoreContacts
      */
     public function postRemove() {
         /*
-        if (\ConfigIgestisGlobalVars::USE_LDAP) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::LDAP_URIS, \ConfigIgestisGlobalVars::LDAP_BASE);
-            $ldap->bind(\ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+        if (\ConfigIgestisGlobalVars::useLdap()) {
+            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase());
+            $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
 
             if ($this->user->getUserType() == "employee") {
-                $ldapOu = \ConfigIgestisGlobalVars::LDAP_USERS_OU;
+                $ldapOu = \ConfigIgestisGlobalVars::ldapUsersOu();
             } else {
-                $ldapOu = \ConfigIgestisGlobalVars::LDAP_CUSTOMERS_OU;
+                $ldapOu = \ConfigIgestisGlobalVars::ldapCUstomersOu();
             }
 
             try {
@@ -1325,12 +1306,13 @@ class CoreContactsRepository extends Doctrine\ORM\EntityRepository {
             }
             $qb->andWhere("u.userType = 'employee'")
                ->andWhere("COALESCE(c.login, :empty) != :admin")
-               ->setParameter("admin", CORE_ADMIN)
+               ->setParameter("admin", \ConfigIgestisGlobalVars::igestisCoreAdmin())
                ->setParameter("empty", "");
-            if(IgestisSecurity::init()->contact->getLogin() != CORE_ADMIN) {
+            if(IgestisSecurity::init()->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
                 $qb->andWhere("u.company = :company")
                    ->setParameter("company", $userCompany);
             }
+            
             if($arrayMode) return $qb->getQuery()->getArrayResult();
             else return $qb->getQuery ()->getResult ();
         } catch (Exception $e) {

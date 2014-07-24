@@ -24,20 +24,41 @@ $_SESSION['WIZZ_AJAX_MODE'] = false;
 class wizz {
     /**
      * @var string Show a red alert
+     * @deprecated since version 3.0, use the const instead
      */
     public static $WIZZ_ERROR = "WIZZ_ERROR";
     /**
      * @var string Show a blue alert
+     * @deprecated since version 3.0, use the const instead
      */
     public static $WIZZ_INFO = "WIZZ_INFO";
     /**
      * @var string Show a green alert
+     * @deprecated since version 3.0, use the const instead
      */
     public static $WIZZ_SUCCESS = "WIZZ_SUCCESS";
     /**
      * @var string Show a yellow alert
+     * @deprecated since version 3.0, use the const instead
      */
     public static $WIZZ_WARNING = "WIZZ_WARNING";
+    
+    /**
+     * @var string Show a red alert
+     */
+    const WIZZ_ERROR = "WIZZ_ERROR";
+    /**
+     * @var string Show a blue alert
+     */
+    const WIZZ_INFO = "WIZZ_INFO";
+    /**
+     * @var string Show a green alert
+     */
+    const WIZZ_SUCCESS = "WIZZ_SUCCESS";
+    /**
+     * @var string Show a yellow alert
+     */
+    const WIZZ_WARNING = "WIZZ_WARNING";
 
 
     /**
@@ -60,7 +81,7 @@ class wizz {
                         "show_wizz(" .
                         "'" . str_replace("'", "\\'", $message) . "'," .
                         "'" . $type . "'," .
-                        "'" . $application->get_template_url() . "'," .
+                        "'" . $application->getTemplateUrl() . "'," .
                         "'" . $time . "');");
             }
         }

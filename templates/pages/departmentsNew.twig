@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if username != ADMIN_ACCOUNT %}
+{% if CONTACT.login != ADMIN_ACCOUNT %}
 
 {% if RIGHTS_LIST.CORE == "ADMIN" %}
 
@@ -63,7 +63,7 @@
 
 {% endif %}{# RIGHTS_LIST.CORE == "ADMIN" #}
 
-{% else %}{# if username == ADMIN_ACCOUNT #}
+{% else %}{# if CONTACT.login == ADMIN_ACCOUNT #}
 
 <div class="alert alert-error">
      <strong>{% trans from "Module:core" %}Warning!{% endtrans %}</strong><br />

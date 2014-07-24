@@ -50,8 +50,6 @@ if [ "${AUTHENTICATION}" = "Samba4" ] ; then
 	db_set igestis/directory/uris "ldapi://%2Fvar%2Flib%2Fsamba%2Fprivate%2Fldapi"
 fi
 
-
-
 }
 
 get_authentication_info()
@@ -105,7 +103,7 @@ if [ -f /usr/share/dbconfig-common/dpkg/config.mysql ]; then
 fi
 
 # New iGestis password assistant for the root account.
-if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/ConfigIgestisGlobalVars.php" ] ) || [ "$1" = "reconfigure" ]; then
+if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/config.ini" ] ) || [ "$1" = "reconfigure" ]; then
 
 	# Let user choose his prefered directory.
 	db_input high igestis/authentication || true
@@ -132,11 +130,18 @@ if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/ConfigIgestisG
 
 		get_authentication_info
 
-		unset ERROR
-		if [ "$(which ldapsearch)" ] ; then
-		      LDAP_OUTPUT=$(ldapsearch -H "${LDAP_URIS}" -b "${LDAP_BASE}" -cxD "${LDAP_ADMIN}" -w "${LDAP_PASS}" "(none=)" 2>&1 ) || ERROR=true
-		      LDAP_OUTPUT=$(echo $LDAP_OUTPUT | head -n 1 )
-        fi
+		db_get igestis/directory/wrong
+		action="${RET}"
+		
+		if [ ! "${action}" = "Ignore" ] ; then
+			unset ERROR
+			if [ "$(which ldapsearch)" ] ; then
+			      LDAP_OUTPUT=$(ldapsearch -H "${LDAP_URIS}" -b "${LDAP_BASE}" -cxD "${LDAP_ADMIN}" -w "${LDAP_PASS}" "(none=)" 2>&1 ) || ERROR=true
+			      LDAP_OUTPUT=$(echo $LDAP_OUTPUT | head -n 1 )
+	        fi
+        else
+        	ERROR=false
+    	fi
 
 		if [ "${ERROR}" = true ] ; then
 
@@ -152,6 +157,7 @@ if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/ConfigIgestisG
 					exit 1
 				;;
 				"Ignore")
+					db_set igestis/directory/wrong "Ignore"
 					break
 				;;
 				"Change settings")

@@ -97,14 +97,6 @@
                 {{ forms.input('password2', 'Password confirmation'|trans, "", "Confirm the password"|trans, "Password confirmation just checks that you did not make an error when you typed the first password."|trans, "password", "false", "required") }}
             </div>
         </div>
-            
-        <legend>{% trans %}Other data{% endtrans %}</legend>
-        <div class="row-fluid">
-            <div class="span12">
-                {{ forms.input('accountCode', 'Third party ID'|trans, form_data.accountCode, "Define the third party ID"|trans, "This field can be used to define a cusomized ID linked with an external software"|trans) }}
-            </div>
-        </div> 
-
         
         <legend>{% trans %}Department{% endtrans %}</legend>
         <div class="row-fluid">
@@ -173,7 +165,7 @@ $(document).ready(function(){
                                 equalTo: "#id-password"
                         },
                         login:{
-                                regex: /^[a-z][-a-z0-9]*$/,
+                                regex: /{{ igestisConfig.get("USERNAME_FORMAT") }}/,
                                 required:true,
                                 LoginNotExists: $("#id-login").val()
                         },

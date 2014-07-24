@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if username != ADMIN_ACCOUNT %}
+{% if CONTACT.login != ADMIN_ACCOUNT %}
 
 {% import "table.twig" as table %}
 {{ table.datatable() }}
@@ -104,11 +104,6 @@
                 	                <td>{% trans %}Two first letter of the country{% endtrans %}</td>
                 	            </tr>
                 	            <tr>
-                	                <td><b>countryCode</b></td>
-                	                <td>{% trans %}No{% endtrans %}</td>  
-                	                <td>{% trans %}Two first letter of the country{% endtrans %}</td>
-                	            </tr>
-                	            <tr>
                 	                <td><b>phone1</b></td>
                 	                <td>{% trans %}No{% endtrans %}</td>  
                 	                <td>{% trans %}First contact phone{% endtrans %}</td>
@@ -135,11 +130,6 @@
                 	            </tr>
                 	            <tr>
                 	                <td><b>userLabel</b></td>
-                	                <td>{% trans %}No{% endtrans %}</td>  
-                	                <td>{% trans %}Enterprise or collectivity name, empty for individual.{% endtrans %}</td>
-                	            </tr>
-                	            <tr>
-                	                <td><b>userType</b></td>
                 	                <td>{% trans %}No{% endtrans %}</td>  
                 	                <td>{% trans %}Enterprise or collectivity name, empty for individual.{% endtrans %}</td>
                 	            </tr>
@@ -184,7 +174,7 @@
     }
 </script>
 
-<div class="row-fluid" align="right">
+<div class="container" align="right">
         <a href="{{ url('customers_new') }}" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> {% trans %}Add new customer{% endtrans %}</a>
         <a data-toggle="modal" href="#import_contact" class="btn btn-small hidden-phone hidden-tablet"><i class="icon-share"></i> {% trans %}Import customers{% endtrans %}</a>
 </div>
@@ -223,7 +213,7 @@
             </tbody>
         </table>
 
-{% else %}{# if username == ADMIN_ACCOUNT #}
+{% else %}{# if CONTACT.login == ADMIN_ACCOUNT #}
 
 <div class="alert alert-error">
      <strong>{% trans from "Module:core" %}Warning!{% endtrans %}</strong><br />

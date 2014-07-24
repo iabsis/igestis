@@ -52,7 +52,7 @@ class AjaxResult {
      */
     public function setError($errorString, $debugInfos=null) {
         
-        if(\ConfigIgestisGlobalVars::DEBUG_MODE && $debugInfos) {
+        if(\ConfigIgestisGlobalVars::debugMode() && $debugInfos) {
             $errorString .= "<br>" . $debugInfos;
         }
         if(!trim($errorString)) {

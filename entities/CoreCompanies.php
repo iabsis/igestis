@@ -595,7 +595,7 @@ class CoreCompanies
      * @throws Exception If not able to create the folder
      */
     public function getLogoFolder() {
-        $folder = \ConfigIgestisGlobalVars::DATA_FOLDER . "/companies_logo/";
+        $folder = \ConfigIgestisGlobalVars::dataFolder() . "/companies_logo/";
         
         try {
             if (!is_dir($folder))
@@ -616,6 +616,10 @@ class CoreCompanies
             "imgWidth" => "30",
             "imagHeight" => "30"
         );
+    }
+    
+    public function __toString() {
+        return $this->name;
     }
 }
 

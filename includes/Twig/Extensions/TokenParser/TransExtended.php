@@ -76,14 +76,14 @@ class Twig_Extensions_TokenParser_TransExtended extends Twig_Extensions_TokenPar
             switch(strtolower($matches[1])) {
                 case "core" :
                     // Core  textdomain
-                    $domain = \ConfigIgestisGlobalVars::textDomain;
+                    $domain = \ConfigIgestisGlobalVars::textDomain();
                     break;
                 case "this":
                     // Current module textdomain
                     $activeRoute = IgestisParseRequest::getActiveRoute();
                     $matches[1] = $activeRoute['Module'];  
                     if(strtolower($activeRoute['Module']) == "core") {
-                        $domain = \ConfigIgestisGlobalVars::textDomain;
+                        $domain = \ConfigIgestisGlobalVars::textDomain();
                         break;
                     }
                 default :

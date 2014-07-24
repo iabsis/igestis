@@ -20,7 +20,7 @@ class GetTextCaching {
         if($module ==  "CORE") {
             $moduleDatas = array(
                 "name" => "igestis",
-                "folder" => \ConfigIgestisGlobalVars::ROOT_FOLDER
+                "folder" => \ConfigIgestisGlobalVars::rootFolder()
             );
             $configClass = "\ConfigIgestisGlobalVars";
         }
@@ -29,12 +29,12 @@ class GetTextCaching {
             $configClass = "\\Igestis\\Modules\\" . $moduleDatas['name'] . "\\ConfigModuleVars";
         }
         
-        $cacheLangDir = \ConfigIgestisGlobalVars::CACHE_FOLDER . "/lang";
+        $cacheLangDir = \ConfigIgestisGlobalVars::cacheFolder() . "/lang";
         
-        if(!is_dir(\ConfigIgestisGlobalVars::CACHE_FOLDER . "/lang")) {
+        if(!is_dir(\ConfigIgestisGlobalVars::cacheFolder() . "/lang")) {
             try {
-                mkdir(\ConfigIgestisGlobalVars::CACHE_FOLDER . "/lang");
-                mkdir(\ConfigIgestisGlobalVars::CACHE_FOLDER . "/lang/locale");
+                mkdir(\ConfigIgestisGlobalVars::cacheFolder() . "/lang");
+                mkdir(\ConfigIgestisGlobalVars::cacheFolder() . "/lang/locale");
             }
             catch (Exception $e) {
                 die($e);
@@ -67,7 +67,7 @@ class GetTextCaching {
                     mkdir($cacheCurrentFolder . "/LC_MESSAGES");
                 }                
 
-                $cacheCurrentFile = $cacheCurrentFolder . "/LC_MESSAGES/" . $configClass::textDomain . ".mo";
+                $cacheCurrentFile = $cacheCurrentFolder . "/LC_MESSAGES/" . (method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain) . ".mo";
                 if(!is_file($cacheCurrentFile)) {
                     
                     if($module == "CORE") {

@@ -168,7 +168,7 @@ class smb {
                     if(!$hide_errors) new wizz("SMB4PHP a renvoyé l'erreur suivante : <br />" . $regs[1], WIZZ_ERROR, $objResponse);
                     else $info['error'] = $regs[1];
                     pclose($output);
-                    igestis_logger($regs[1] . " (" . $line . ")");
+                    \Igestis\Utils\Debug::FileLogger($regs[1] . " (" . $line . ")");
                     return $info;
                     break;
                 default :

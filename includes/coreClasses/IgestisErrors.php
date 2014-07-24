@@ -16,7 +16,7 @@ class IgestisErrors
      */
     public static function createWizz(Exception $e, $type=self::TYPE_MYSQL, $debugOffMessage ='An error has occured') {
         
-        if(\ConfigIgestisGlobalVars::DEBUG_MODE == false) {
+        if(\ConfigIgestisGlobalVars::debugMode() == false) {
             new wizz($debugOffMessage, wizz::$WIZZ_ERROR);
             return;
         }

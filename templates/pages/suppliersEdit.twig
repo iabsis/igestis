@@ -15,7 +15,7 @@
         <fieldset>
             <legend>General information</legend>
         {{ forms.input('userLabel', 'Showed name'|trans, form_data.userLabel, "Set the showed name"|trans, "The showed named is the company name in this case."|trans, null, null, "required") }}
-        {{ forms.input('accountCode', 'Third party ID'|trans, form_data.accountCode, "Set the supplier ID"|trans, "This field can be used to set a customized identifier linked with an external software"|trans) }}
+        {{ forms.input('accountCode', 'Client ID'|trans, form_data.accountCode, "Set the supplier ID"|trans, "This field can be used to set a customized identifier linked with an external software"|trans) }}
         {{ forms.input('tvaNumber', 'VAT number'|trans, form_data.tvaNumber) }}
         {{ forms.switchbox('tvaInvoice', 'VAT billed'|trans, form_data.tvaInvoice, null, null, "checkbox") }}
         {{ forms.input('rib', 'Bank account number'|trans, form_data.rib) }}
@@ -126,7 +126,7 @@
                                 equalTo: "#id-password"
                             },
                             login:{
-                                regex: /^[a-z][-a-z0-9]*$/,
+                                regex: /{{ igestisConfig.get("USERNAME_FORMAT") }}/,
                                 required:true,
                                 LoginNotExists: $("#id-login").val()
                             },

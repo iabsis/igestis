@@ -7,40 +7,21 @@
 . /usr/share/dbconfig-common/dpkg/postinst.mysql
 
 # We set some var specific for igestis
-CONFFILE=/etc/igestis/config.php
-GLOBALVARS=/etc/igestis/ConfigIgestisGlobalVars.php
+GLOBALVARS=/etc/igestis/config.ini
 CACHE_FOLDER="/var/cache/igestis/"
 LOG_FILE="/var/log/igestis/igestis.log"
 
-replace_value_config()
-{
-
-sed -i "s#^[[:space:]]*[dD][eE][fF][iI][nN][eE][[:space:]]*([[:space:]]*\"$1\".*#define(\"$1\", $2);#g" $CONFFILE
-sed_return_value=$?
-
-if [ ! "$sed_return_value" = 0 ] ; then
-	echo "error : the variable $1 was not found in the file $CONFFILE"
-fi
-
-}
-
-get_config_value()
-{
-
-grep "^[[:space:]]*[dD][eE][fF][iI][nN][eE][[:space:]]*([[:space:]]*\"$1" $CONFFILE | \
-  sed "s#^[[:space:]]*[dD][eE][fF][iI][nN][eE][[:space:]]*([[:space:]]*\"$1\",[[:space:]]*##" | \
-  sed "s#[[:space:]]*)[[:space:]]*;##g"
-
-}
 
 replace_value_global_vars()
 {
 
-sed -i "s#const[[:space:]]*$1.*#const $1 = $2;#g" $GLOBALVARS
-sed_return_value=$?
+sed -i "s#$1[[:space:]]*=.*#$1 = $2#g" $GLOBALVARS
+sed_return_value=$(grep "^$1[[:space:]]*=.*" $GLOBALVARS | \
+  cut -d= -f 2 | \
+  cut -d" " -f 2)
 
-if [ ! "$sed_return_value" = 0 ] ; then
-    echo "error : the variable $1 was not found in the file $GLOBALVARS"
+if [ -z "$sed_return_value" ] ; then
+    echo "$1 = $2" >> $GLOBALVARS
 fi
 
 }
@@ -48,9 +29,9 @@ fi
 get_value_global_vars()
 {
 
-grep "^[[:space:]]*const[[:space:]]*$1" $GLOBALVARS | \
-  sed "s#^[[:space:]]*const[[:space:]]$1[[:space:]]=[[:space:]]##g" | \
-  sed 's/[ ;][[:space:]]*$//g'
+grep "^$1[[:space:]]*=.*" $GLOBALVARS | \
+  cut -d= -f 2 | \
+  cut -d" " -f 2
 
 }
 
@@ -76,27 +57,14 @@ case "$1" in
 
 
 	# Config file creation from template.
-	if [ -e "$GLOBALVARS" ] ; then
-
-		# Backup of old config file-
-		mkdir -p /var/backup/igestis/ && chmod 700 /var/backup/igestis/
-		cp $GLOBALVARS /var/backup/igestis/ConfigIgestisGlobalVars-$(date "+%Y%M%d_%H%M").php.backup
-
-		# Probably useless as the script always modify this file.
-		# ucf --debconf-ok /usr/share/igestis/config/igestis/ConfigIgestisGlobalVars-template.php $GLOBALVARS
-
-	else
-
+	if [ ! -e "$GLOBALVARS" ] ; then
 		FIRST_INSTALL=true
-		cp /usr/share/igestis/config/igestis/ConfigIgestisGlobalVars-template.php $GLOBALVARS
-		
+		touch $GLOBALVARS
+		ln -sf $GLOBALVARS /usr/share/igestis/config/igestis/custom-config.ini
 	fi
 	
-	# To avoid config missing, we need to create a symbolic link
-	ln -sf $GLOBALVARS /usr/share/igestis/config/igestis/ConfigIgestisGlobalVars.php
-
 	# We generate a random encrypt key.
-	if [ "$(get_value_global_vars ENCRYPT_KEY)" = \"\" ] && [ -e "$GLOBALVARS" ] ; then
+	if [ -z "$(get_value_global_vars ENCRYPT_KEY)" ] ; then
 		replace_value_global_vars ENCRYPT_KEY \"$(generate_random_key)\"
 	fi
 
@@ -138,6 +106,14 @@ case "$1" in
 
 	db_get igestis/directory/admin
 	LDAP_ADMIN="${RET}"
+	
+	if [ -z "$(get_value_global_vars LDAP_PASSWORD)" ] ; then
+		db_fset igestis/directory/password seen false
+		db_input high igestis/directory/password || true
+		db_go
+		db_get igestis/directory/password
+		LDAP_PASS="${RET}"
+	fi
 
 	db_get igestis/directory/password
 	LDAP_PASSWORD="${RET}"
@@ -159,13 +135,8 @@ case "$1" in
 		AUTO_IMPORT="true"
 	fi
 
-	# Replace the DEBUG_MODE
-	replace_value_global_vars DEBUG_MODE DEBUG_MODE
-
 	# Retrive right values
 	LDAP_LOGIN=$(echo ${LDAP_ADMIN} | cut -d'@' -f1)
-
-
 
 	case "$AUTHENTICATION" in
 
@@ -260,30 +231,10 @@ case "$1" in
 
 	for webserver in $webservers; do
 		webserver=${webserver%,}
-		
-		if [ -d /etc/$webserver/conf.d/ ] ; then
-			ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis
-		fi
+		ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis
 
-		[ -e /etc/$webserver/conf.d/igestis ] && mv /etc/$webserver/conf.d/igestis /etc/$webserver/conf.d/igestis.conf
-		
-		if [ -e /etc/$webserver/mods-available/ ] ; then
-			ln -sf /etc/igestis/apache.conf /etc/$webserver/mods-available/igestis.conf
-		fi
-		
 		invoke-rc.d $webserver reload 3>/dev/null || true
 	done
-
-
-	# We need to get the good version of igestis and override it in config file.
-	CONFFILE=/usr/share/igestis/config/igestis/ConfigIgestisGlobalVars-template.php
-	VERSION="$(get_config_value IGESTIS_CORE_VERSION)"
-	CONFFILE=/etc/igestis/ConfigIgestisGlobalVars.php
-	replace_value_config IGESTIS_CORE_VERSION ${VERSION}
-
-
-	# Probably useless.
-	# ucfr igestis "$GLOBALVARS"
 
 	;;
 

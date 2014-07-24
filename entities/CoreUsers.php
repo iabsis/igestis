@@ -81,7 +81,7 @@ class CoreUsers
 
     /**
      * @JoinColumn(name="company_id", referencedColumnName="id")
-     * @OneToOne(targetEntity="CoreCompanies")
+     * @ManyToOne(targetEntity="CoreCompanies")
      * @var CoreCompanies
      */
     private $company;
@@ -503,7 +503,6 @@ class CoreUsers
                 $this->company  = $userCompany;
             }
         }
-        
         //$mainContact = $this->getMainContact();
         
         /*if($this->getUserType() == "client" && $this->getClientTypeCode() == "PART") {
@@ -566,7 +565,7 @@ class CoreUsersRepository extends Doctrine\ORM\EntityRepository {
         if(!$user) return null;
         
         $userCompany = \IgestisSecurity::init()->user->getCompany();
-        if(\IgestisSecurity::init()->contact->getLogin() != CORE_ADMIN && $user->getCompany()->getId() != $userCompany->getId()) {
+        if(\IgestisSecurity::init()->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin() && $user->getCompany()->getId() != $userCompany->getId()) {
             return null;
         }
         return $user;
@@ -579,8 +578,7 @@ class CoreUsersRepository extends Doctrine\ORM\EntityRepository {
             $qb->select("u")
                ->from("CoreUsers", "u")
                ->where("u.company = :company")
-               ->setParameter("company", $userCompany)
-               ->orderBy("u.userLabel");
+               ->setParameter("company", $userCompany);
             if(!$includeDisabledUsers) {
                 $qb->andWhere("u.isActive = 1");
             }

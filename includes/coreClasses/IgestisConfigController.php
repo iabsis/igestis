@@ -15,7 +15,7 @@ class IgestisConfigController {
             if($controller['id'] == $controller_id) {
                 $url = "";
                 if(is_array($controller['Parameters'])) {
-                    if(ConfigIgestisGlobalVars::AUTO_CSRF_PROTECTION && isset($controller['CsrfProtection']) && $controller['CsrfProtection'] == true) {
+                    if(ConfigIgestisGlobalVars::autoCsrfProtection() && isset($controller['CsrfProtection']) && $controller['CsrfProtection'] == true) {
                         \Igestis\Utils\CsrfProtection::generateToken($controller['id']);
                         $url .= "&CsrfProtection=" . \Igestis\Utils\CsrfProtection::getTokenValue($controller['id']);
                     }
@@ -32,7 +32,7 @@ class IgestisConfigController {
                     }
                     $url = "?" . substr($url, 1);
                 }
-                $url = SERVER_ADDRESS . "/index.php" . $url;
+                $url = $_SERVER['SCRIPT_NAME'] . $url;
             }
         }
         

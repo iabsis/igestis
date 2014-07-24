@@ -4,8 +4,8 @@ $_SESSION['IGESTIS_ERRORS'] = array();
 
 function iGestisErrorHandler($errno, $errstr, $errfile, $errline)
 {
-    if(\ConfigIgestisGlobalVars::DEBUG_MODE == true) {
-        igestis_logger("[$errno] $errstr - Erreur fatale sur la ligne $errline dans le fichier $errfile");
+    if(\ConfigIgestisGlobalVars::debugMode() == true) {
+        \Igestis\Utils\Debug::FileLogger("[$errno] $errstr - Erreur fatale sur la ligne $errline dans le fichier $errfile");
         $debugger = Igestis\Utils\Debug::getInstance();
         $debugger->addError($errno, $errstr, $errfile, $errline);        
         return true;
@@ -28,10 +28,10 @@ function iGestisErrorHandler($errno, $errstr, $errfile, $errline)
                     "  Erreur fatale sur la ligne $errline dans le fichier $errfile" .
                     ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
 
-        igestis_logger($message);
+        \Igestis\Utils\Debug::FileLogger($message);
         if($application instanceof application) {
             if($objResponse instanceof objResponse) {                
-                $application->message_die($message);
+                $application->dieMessage($message);
             }
             else {
                 if($show_popup_error) new wizz(str_replace("<br />", "", $message), WIZZ_ERROR, $objResponse);
@@ -51,22 +51,22 @@ function iGestisErrorHandler($errno, $errstr, $errfile, $errline)
     default:    
         break;
     }
-    igestis_logger("[$errno] $errstr - Erreur fatale sur la ligne $errline dans le fichier $errfile");
+    \Igestis\Utils\Debug::FileLogger("[$errno] $errstr - Erreur fatale sur la ligne $errline dans le fichier $errfile");
     /* Ne pas exécuter le gestionnaire interne de PHP */
     return true;
 }
 
 
 class igestis_error {
-	
-	private $error_message;
-	
-	function __construct($err_msg) {
-		$this->error_message = $err_msg;
-	}
-	
-	function get_message() {
-		return $this->error_message;
-	}
+    
+    private $error_message;
+    
+    function __construct($err_msg) {
+        $this->error_message = $err_msg;
+    }
+    
+    function get_message() {
+        return $this->error_message;
+    }
 }
 

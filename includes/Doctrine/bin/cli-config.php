@@ -24,7 +24,7 @@ $connectionOptions = array(
     'dbname' => "tmp",
     'user' => 'root',
     'password' => '********',
-    'host' => \ConfigIgestisGlobalVars::MYSQL_HOST,
+    'host' => \ConfigIgestisGlobalVars::mysqlHost(),
     'driver' => 'pdo_mysql',
 );
 

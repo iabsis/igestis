@@ -12,18 +12,18 @@ class IgestisLdap {
      * @return string Next LDAP UID
      */
     public static function getNextUid() {
-        $ldap = new \LDAP(\ConfigIgestisGlobalVars::LDAP_URIS, \ConfigIgestisGlobalVars::LDAP_BASE, \ConfigIgestisGlobalVars::LDAP_VERSION);
+        $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
         
-        if(\ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND) {
-            $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND), \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+        if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
+            $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
         }
         else {
-            $ldap->bind(\ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+            $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
         }
         
-        $maxUidNumber = \ConfigIgestisGlobalVars::MIN_UID_NUMBER;
+        $maxUidNumber = \ConfigIgestisGlobalVars::minUidNumber();
         
-        if(\ConfigIgestisGlobalVars::LDAP_AD_MODE != true) {
+        if(\ConfigIgestisGlobalVars::ldapAdMode() != true) {
             $result = $ldap->find("(uidNumber=*)", array("uidNumber"));
             
             try {
@@ -37,7 +37,7 @@ class IgestisLdap {
                 
                 return $maxUidNumber + 1;
             }catch(\Exception $e){
-                if(\ConfigIgestisGlobalVars::DEBUG_MODE) {
+                if(\ConfigIgestisGlobalVars::debugMode()) {
                     new wizz($e->getMessage()."\n".$e->getTraceAsString());
                     return false;
                 }else{
@@ -62,7 +62,7 @@ class IgestisLdap {
                 }
                 return $maxUidNumber + 1;
             }catch(\Exception $e){
-                if(\ConfigIgestisGlobalVars::DEBUG_MODE) {
+                if(\ConfigIgestisGlobalVars::debugMode()) {
                     new wizz($e->getMessage()."\n".$e->getTraceAsString());
                     return false;
                 }else{
@@ -83,24 +83,24 @@ class IgestisLdap {
      * @return boolean
      */
     public static function ldapSynchDatas(\CoreContacts &$contact, $plainPassword) {
-        if (!\ConfigIgestisGlobalVars::USE_LDAP)  return false;        
+        if (!\ConfigIgestisGlobalVars::useLdap())  return false;        
         switch ($contact->getUser()->getUserType()) {
             case "client" :
                 return true;
                 break;
             case "employee" :
                 try {
-                    $ldap = new \LDAP(\ConfigIgestisGlobalVars::LDAP_URIS, \ConfigIgestisGlobalVars::LDAP_BASE, \ConfigIgestisGlobalVars::LDAP_VERSION);
+                    $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
                     
-                    if(\ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND) {
-                        $ldap->bind(str_replace("%u", $contact->getLogin(), \ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND), $plainPassword);
+                    if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
+                        $ldap->bind(str_replace("%u", $contact->getLogin(), \ConfigIgestisGlobalVars::ldapCustomBind()), $plainPassword);
                     }
                     else {
-                        $ldap->bind("uid=" . $contact->getLogin() . "," . \ConfigIgestisGlobalVars::LDAP_USERS_OU, $plainPassword);  
+                        $ldap->bind("uid=" . $contact->getLogin() . "," . \ConfigIgestisGlobalVars::ldapUsersOu(), $plainPassword);  
                     }
                     
-                    if(\ConfigIgestisGlobalVars::LDAP_AUTO_IMPORT_USER) {
-                        $nodesList = $ldap->find(str_replace("%u", $contact->getLogin(), \ConfigIgestisGlobalVars::LDAP_CUSTOM_FIND));
+                    if(\ConfigIgestisGlobalVars::ldapAutoImportUser()) {
+                        $nodesList = $ldap->find(str_replace("%u", $contact->getLogin(), \ConfigIgestisGlobalVars::ldapCustomFind()));
                     if(count($nodesList) < 1) return false;
                         $address = '';
                         $contact->setLastname('')
@@ -166,7 +166,7 @@ class IgestisLdap {
                     }
                     
                 } catch(\Exception $e){
-                    if (\ConfigIgestisGlobalVars::DEBUG_MODE) {
+                    if (\ConfigIgestisGlobalVars::debugMode()) {
                         new \wizz($e->getMessage() . "\n" . $e->getTraceAsString()); 
                         return false;
                     } else {
@@ -220,21 +220,21 @@ class IgestisLdap {
     
     
     public static function importUser($login, $plainPassword) {
-        $entityManager = \Application::getEntityMaanger();
-        if (!\ConfigIgestisGlobalVars::USE_LDAP)
+        $entityManager = \Application::getEntityManager();
+        if (!\ConfigIgestisGlobalVars::useLdap())
             return true;
         try {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::LDAP_URIS, \ConfigIgestisGlobalVars::LDAP_BASE, \ConfigIgestisGlobalVars::LDAP_VERSION);
+            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
             
 
-            if (\ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND) {
-                $ldap->bind(str_replace("%u", $login, \ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND), $plainPassword);
+            if (\ConfigIgestisGlobalVars::ldapCustomBind()) {
+                $ldap->bind(str_replace("%u", $login, \ConfigIgestisGlobalVars::ldapCustomBind()), $plainPassword);
             } else {
-                $ldap->bind("uid=" . $login . "," . \ConfigIgestisGlobalVars::LDAP_USERS_OU, $plainPassword);
+                $ldap->bind("uid=" . $login . "," . \ConfigIgestisGlobalVars::ldapUsersOu(), $plainPassword);
             }
             
             
-            $nodesList = $ldap->find(str_replace("%u", $login, \ConfigIgestisGlobalVars::LDAP_CUSTOM_FIND));
+            $nodesList = $ldap->find(str_replace("%u", $login, \ConfigIgestisGlobalVars::ldapCustomFind()));
             if(count($nodesList) < 1) return false;
             
             $employee = \CoreUsers::newEmployee();
@@ -283,13 +283,13 @@ class IgestisLdap {
     public static function createCn($cn) {        
         
         try {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::LDAP_URIS, \ConfigIgestisGlobalVars::LDAP_BASE, \ConfigIgestisGlobalVars::LDAP_VERSION);
+            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
 
-            if(\ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND) {
-                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_CUSTOM_BIND), \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+            if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
+                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
             }
             else {
-                $ldap->bind(\ConfigIgestisGlobalVars::LDAP_ADMIN, \ConfigIgestisGlobalVars::LDAP_PASSWORD);
+                $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
             }
             
             $count = 0;

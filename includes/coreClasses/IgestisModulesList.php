@@ -18,7 +18,10 @@ class IgestisModulesList {
      */
     private static $_instance;
 
-    
+    /**
+     * 
+     * @return self
+     */
     public static function getInstance() {
         if(self::$_instance == null) {
             self::$_instance = new self;
@@ -41,12 +44,44 @@ class IgestisModulesList {
     }
     
     /**
+     * Check if a module exists nor not
+     * @param string $moduleName
+     * @return boolean
+     */
+    public function moduleExists($moduleName) {
+        if(isset($this->modulesList[$moduleName])) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Get the module true folder
+     * @param string $moduleName Module name
+     * @return string Module folder or null if module does not exist
+     */
+    public function getFolder($moduleName) {
+        if($moduleName == "core") {
+            return (__DIR__ . "/../../");
+        }
+        
+        if(!$this->moduleExists($moduleName)) {
+            return null;
+        }
+        
+        return $this->modulesList[$moduleName]['folder'];
+    }
+    
+    /**
      * 
      * @return Array List of modules
      */
     private function createList() {
-        if(count($this->modulesList)) return $this->modulesList;        
-        $directory_to_search = SERVER_FOLDER . "/" . APPLI_FOLDER . "/modules/";
+        if(count($this->modulesList)) {
+            return $this->modulesList;  
+        }
+        
+        $directory_to_search = \ConfigIgestisGlobalVars::appliFolder() . "/modules/";
         $dir = opendir($directory_to_search);
         while ($module_name = readdir($dir)) {
             if ($module_name == "." || $module_name == ".."){
@@ -54,19 +89,18 @@ class IgestisModulesList {
             }
             
             if (!is_file($directory_to_search . $module_name . "/config/ConfigModuleVars.php")) {
-                $version = 1;
-            }
-            else {
-                $version = 2;
+                continue;
             }
             $this->modulesList[$module_name] = array(
                 "name" => $module_name,
                 "folder" => $directory_to_search . $module_name,
-                "igestisVersion" => $version
+                "igestisVersion" => 2
             );            
         }
         
-        closedir($dir);
+        if($dir) {
+            closedir($dir);
+        }
         
         return $this->modulesList;
     }

@@ -7,6 +7,7 @@
  */
 class IgestisFormParser {
     private $authorizedFieldsName;
+    private $entityManager;
     /**
      * Allow to specifiy a list of authorized fields, if nothing's passed, all fields are allowed
      * 
@@ -25,6 +26,9 @@ class IgestisFormParser {
         if(is_array($authorizedFieldsName)) {
             $this->authorizedFieldsName = $authorizedFieldsName;            
         }
+        
+        $this->entityManager = Application::getEntityManager();
+        
     }
     
     /**
@@ -42,6 +46,30 @@ class IgestisFormParser {
             $action = "set" . $key;
             if(method_exists($entity, $action)) {
                 if($value == "") $value = null;
+                
+                $reflector = new ReflectionClass(get_class($entity));
+                if($reflector) {
+                    $parameters = $reflector->getMethod($action)->getParameters();
+                    if(count($parameters) == 1) {
+                        $firstParameterClassName = $parameters[0]->getClass();
+                        if($firstParameterClassName) {
+                            $parameterType = $firstParameterClassName->name;
+                            try {
+                                $repository = $this->entityManager->getRepository($parameterType);
+                                if($repository) {
+                                    $entityValue = $repository->find($value);
+                                    $value = $entityValue;
+                                }
+                                
+                            } catch (\Exception $ex) {
+                                // $value remain the previous one.
+                            }
+                        }
+                        
+                    }
+                    
+                }
+                
                 $entity->$action($value);
             }
         }

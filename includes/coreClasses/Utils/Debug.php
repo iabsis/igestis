@@ -41,7 +41,7 @@ class Debug {
     }
     
     public function __destruct() {
-        if(\ConfigIgestisGlobalVars::DEBUG_MODE == false) return;
+        if(\ConfigIgestisGlobalVars::debugMode() == false) return;
         
         if(self::$showed == false) {
             $_SESSION['DEBUG_DUMPS'] = self::getDumps();
@@ -100,7 +100,7 @@ class Debug {
      * @param type $errline
      */
     public function addError($errno, $errstr, $errfile, $errline) {        
-        if(\ConfigIgestisGlobalVars::DEBUG_MODE == false) return;
+        if(\ConfigIgestisGlobalVars::debugMode() == false) return;
         self::$eventsList[] = array(
             "type" => "error", 
             "scriptDuration" => self::getScriptTime(),
@@ -121,7 +121,7 @@ class Debug {
      * @param float $time
      */
     public static function addDoctrineLog($sql, $params, $types, $time) {     
-        if(\ConfigIgestisGlobalVars::DEBUG_MODE == false) return;
+        if(\ConfigIgestisGlobalVars::debugMode() == false) return;
         self::$eventsList[] = array(
             "type" => "doctrine",
             "scriptDuration" => self::getScriptTime(),
@@ -140,7 +140,7 @@ class Debug {
      * @param Int $depth Depth of the dump (for arrays)
      */
     public static function addDump($var, $varname=null, $depth=2) {      
-        if(\ConfigIgestisGlobalVars::DEBUG_MODE == false) return;
+        if(\ConfigIgestisGlobalVars::debugMode() == false) return;
         self::$eventsList[] = array(
             "type" => "dump",
             "scriptDuration" => self::getScriptTime(),
@@ -156,7 +156,7 @@ class Debug {
      * @param type $msg
      */
     public static function addLog($msg) {
-        if(\ConfigIgestisGlobalVars::DEBUG_MODE == false) return;
+        if(\ConfigIgestisGlobalVars::debugMode() == false) return;
         self::$eventsList[] = array(
             "type" => "log",
             "scriptDuration" => self::getScriptTime(),
@@ -166,6 +166,26 @@ class Debug {
         );
     }
     
+    public static function FileLogger($log, $logFile = null) {
+        $application = \Application::getInstance();
+        
+        $login = "Unknown";
+        if (isset($application->security->contact)) {
+            $login = $application->security->contact->getLogin();
+        }
+        else {
+            $login = "Anonymous";
+        }
+        
+        if($logFile !== null) {
+            @file_put_contents($logFile, date("Y-m-d H:i:s") . " - " . $login . " - " . $log . "\n", FILE_APPEND);
+        }
+        elseif (\ConfigIgestisGlobalVars::logFile()) {
+            @file_put_contents(\ConfigIgestisGlobalVars::logFile(), date("Y-m-d H:i:s") . " - " . $login . " - " . $log . "\n", FILE_APPEND);
+        }
+    }
+
+
     /**
      * Return the printable text of the object
      * @return String How to show the object

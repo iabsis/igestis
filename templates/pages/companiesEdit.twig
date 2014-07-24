@@ -58,7 +58,7 @@
                                <b>{{ documentation.NAME }} :</b> {{ documentation.DESCRIPTION }}<br />
                             {% endfor %}
                         {% endset %}
-                    {{ forms.select(module.FIELD_NAME, module.MODULE_FULL_NAME, module.RIGHTS_LIST, 'SELECTED', 'CODE', 'NAME', false, module.MODULE_FULL_NAME, helpdoc, null, null) }}
+                    {{ forms.select(module.FIELD_NAME, module.MODULE_FULL_NAME, module.RIGHTS_LIST, 'SELECTED', 'CODE', 'NAME', false, module.MODULE_FULL_NAME, helpdoc, null, null, "Inherit from default company rights"|trans) }}
                     <small><p>{{ helpdoc }}</p></small>
                     </div>
                     {% if (loop.index % 2) == 0 %}

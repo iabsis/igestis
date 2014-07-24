@@ -37,7 +37,7 @@ class Translate {
                 }
             }
             
-            return dgettext(\ConfigIgestisGlobalVars::textDomain, $text);
+            return dgettext(\ConfigIgestisGlobalVars::textDomain(), $text);
         }
     }
 

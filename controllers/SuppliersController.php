@@ -11,7 +11,7 @@ class SuppliersController extends IgestisController {
      */
     public function indexAction() {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -26,7 +26,7 @@ class SuppliersController extends IgestisController {
      * Get a form to edit or validate it if the form is received
      */
     public function editAction($Id) {
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -81,7 +81,7 @@ class SuppliersController extends IgestisController {
      */
     public function deleteAction($Id) {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -117,7 +117,7 @@ class SuppliersController extends IgestisController {
      */
     public function newAction() {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -176,7 +176,7 @@ class SuppliersController extends IgestisController {
      */
     public function showAction($Id) {
         
-        if($this->context->security->contact->getLogin() == CORE_ADMIN) {
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
             $this->context->throw403error();
         }
         
@@ -199,6 +199,111 @@ class SuppliersController extends IgestisController {
             'civilities_list' => $civilities_list,
             'countries_list' => $countries_list)
         );
+    }
+    
+    /**
+     * Get the import form and put the csv file into the temporary database before to show it to the user.
+     * @throws Exception
+     */
+    public function showImportResult() {
+        
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
+            $this->context->throw403error();
+        }
+        
+
+        // Start to parse the csv file and import datas to the database. Show a wizz if any errors
+        try {
+            if ($this->request->IsPost()) {
+                $importFile = new \Igestis\Core\ImportCsvSuppliers("suppliersImport", $_FILES['csvFile']['tmp_name'], $_POST['delimiter'], $_POST['enclosure']);
+
+                // Configure the csv authorized columns
+                $importFile->addColumn("civilityCode", "CoreContacts");
+                $importFile->addColumn("login", "CoreContacts", true);
+                $importFile->addColumn("firstname", "CoreContacts", true);
+                $importFile->addColumn("lastname", "CoreContacts", true);
+                $importFile->addColumn("email", "CoreContacts");
+                $importFile->addColumn("languageCode", "CoreContacts");
+                $importFile->addColumn("address1", "CoreContacts");
+                $importFile->addColumn("address2", "CoreContacts");
+                $importFile->addColumn("postalCode", "CoreContacts");
+                $importFile->addColumn("city", "CoreContacts");
+                $importFile->addColumn("countryCode", "CoreContacts");
+                $importFile->addColumn("phone1", "CoreContacts");
+                $importFile->addColumn("phone2", "CoreContacts");
+                $importFile->addColumn("mobile", "CoreContacts");
+                $importFile->addColumn("fax", "CoreContacts");
+                $importFile->addColumn("companyId", "CoreUsers");
+                $importFile->addColumn("userLabel", "CoreUsers");
+                $importFile->addColumn("userType", "CoreUsers");
+                $importFile->addColumn("tvaNumber", "CoreUsers");
+                $importFile->addColumn("tvaInvoice", "CoreUsers");
+                $importFile->addColumn("rib", "CoreUsers");
+                $importFile->addColumn("accountCode", "CoreUsers");
+                // Launch import
+                $importFile->startParsing();
+            }            
+        } catch (Exception $e) {
+            \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY, $e->getMessage());
+        }
+        
+        $aImportedDatas = \Igestis\Core\ImportCsvSuppliers::datasToArray("suppliersImport");
+        if(!is_array($aImportedDatas) || count($aImportedDatas) < 1) {
+            new wizz(_("The file contains no usable datas"), wizz::$WIZZ_ERROR);
+            $this->redirect(IgestisConfigController::createUrl("suppliers_list"));
+        }
+        
+        // Render the page
+        $this->context->render("pages/supplierImportResult.twig", array(
+                'table_data' => $aImportedDatas
+            )
+        );
+    }
+    
+    // ------------------------------------------------------
+
+    public function validImport() {
+        
+        if($this->context->security->contact->getLogin() == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
+            $this->context->throw403error();
+        }
+        
+        // Render the page
+        
+        try {
+            // Format the datas received from the datatable
+            $datas = array();
+            if(!$this->request->IsPost() || !isset($_POST["form_data"])) {
+                throw new Exception(_("Thanks to select one or more entries from the table"));
+            }
+            $list = explode("&", $_POST["form_data"]);
+            foreach ($list as $value) {
+                list($varName, $varValue) = explode("=", $value);
+                if (isset($datas[$varName])) {
+                    if (is_array($datas[$varName])) {
+                        $datas[$varName][] = $varValue;
+                    }                 
+                    else {
+                        $datas[$varName] = array($datas[$varName]);
+                        $datas[$varName][] = $varValue;
+                    }
+                }
+                else {
+                    $datas[$varName] = $varValue;
+                }
+            }
+            
+            \Igestis\Core\ImportCsvSuppliers::valideDatas("suppliersImport", $datas['import']);
+            
+        } catch (Exception $e) {
+            \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
+            $this->redirect(IgestisConfigController::createUrl("supplier_import_step2"));
+        }
+
+        new wizz(\Igestis\Core\ImportCsvSuppliers::report(), wizz::$WIZZ_SUCCESS);
+        $this->redirect(IgestisConfigController::createUrl("suppliers_list"));
+
+        exit;
     }
 
 }

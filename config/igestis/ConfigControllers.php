@@ -12,6 +12,29 @@ class ConfigControllers extends IgestisConfigController {
         if(count(self::$routes)) return self::$routes;
         
         $routes = array(
+            
+            array(
+                "id" => "igestis_update_db",
+                "Parameters" => array(
+                    "Page" => "install-check",
+                    "Action" => "updatedb"
+                ),
+                "Controller" => "InstallController",
+                "Action" => "updateDbAction",
+                "Access" => array("EVERYONE")
+            ),
+            
+            array(
+                "id" => "igestis_install",
+                "Parameters" => array(
+                    "Page" => "install-check"
+                ),
+                "Controller" => "InstallController",
+                "Action" => "checkAction",
+                "Access" => array("EVERYONE")
+            ),
+            
+            
             /************* Script ajax **********************************/
             array(
                 "id" => "ajax_is_login_exist",
@@ -598,6 +621,29 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "indexAction",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),       
+            
+            array(
+                "id" => "suppliers_import_step2",
+                "Parameters" => array(
+                    "Page" => "suppliers_import",
+                    "Action" => "step2",
+                ),
+                "Controller" => "SuppliersController",
+                "Action" => "showImportResult",
+                "Access" => array("CORE:ADMIN", "CORE:TECH")
+            ),
+            
+            array(
+                "id" => "suppliers_import_step3",
+                "Parameters" => array(
+                    "Page" => "suppliers_import",
+                    "Action" => "step3",
+                ),
+                "Controller" => "SuppliersController",
+                "Action" => "validImport",
+                "Access" => array("CORE:ADMIN", "CORE:TECH")
+            ),
+            
             // ------------------------------------------------------
             /** Page = old_module_with_only_admin **/
             array(

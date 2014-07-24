@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if username != ADMIN_ACCOUNT %}
+{% if CONTACT.login != ADMIN_ACCOUNT %}
 
 <script type="text/javascript">
     function delete_department(id) {
@@ -53,7 +53,7 @@
             </tbody>
         </table>
 
-{% else %}{# if username == ADMIN_ACCOUNT #}
+{% else %}{# if CONTACT.login == ADMIN_ACCOUNT #}
 
 <div class="alert alert-error">
      <strong>{% trans from "Module:core" %}Warning!{% endtrans %}</strong><br />

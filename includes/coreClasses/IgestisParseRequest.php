@@ -27,6 +27,7 @@ class IgestisParseRequest {
         $this->LaunchAction();  
     }
     
+    
     public static function getActiveRoute() {
         $config = ConfigControllers::get();
         if (is_array($config)) {
@@ -106,9 +107,8 @@ class IgestisParseRequest {
         // Another hack to permitt the launch old plugin format
         if(!$route) return;
         Igestis\Utils\Debug::addLog("Route found, check now rights to access this route ...");
-
         // Gestion des droits
-        if(!$this->context->security->hasAccess($route)) {
+        if(!in_array("EVERYONE", $route['Access']) && !$this->context->security->hasAccess($route)) {
             //new wizz(_("You have not the rights to access this page. You can login again with another account below."), wizz::$WIZZ_ERROR);
             $_SESSION['sess_page_redirect'] = $_SERVER['REQUEST_URI'];
             if($this->context->security->isLoged()) {                
@@ -128,24 +128,23 @@ class IgestisParseRequest {
         if ($route) {
             Igestis\Utils\Debug::addDump($route, "Actual route");
             if (!class_exists($route['Controller'])) {
-                $this->context->message_die("Controller " . $route['Controller'] . " does not exist");
+                $this->context->dieMessage("Controller " . $route['Controller'] . " does not exist");
             }            
             
 
             $controller = new $route['Controller']($this->context);
             
-            if(ConfigIgestisGlobalVars::AUTO_CSRF_PROTECTION) {
+            if(ConfigIgestisGlobalVars::autoCsrfProtection()) {
                 if(!empty($route['CsrfProtection']) && $route['CsrfProtection']) {
                     if(\Igestis\Utils\CsrfProtection::getTokenValue($route['id']) != IgestisFormRequest::getFromPostOrGet("CsrfProtection")) {
                         if($_SERVER['HTTP_REFERER']) {
                             new \wizz("The token is invalid", \wizz::$WIZZ_ERROR);
                             header("location:" . $_SERVER['HTTP_REFERER']); exit;
                         }
-                        $this->context->message_die("The token is invalid");
+                        $this->context->dieMessage("The token is invalid");
                     }
                 }
             }
-            
             switch (count($route['var_list'])) {
                 case 0: $controller->$route['Action']();
                     break;

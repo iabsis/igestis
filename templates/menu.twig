@@ -12,7 +12,7 @@
                 
                 
                 <a href="{{ url("home_page") }}" class="brand">iGestis </a>
-                <div class="nav-collapse collapse">
+                <div class="nav-collapse">
                     <ul class="nav">
                         {% for menu_item in menu_top %}
                             {% if menu_item.submenu is not defined %}
@@ -41,7 +41,7 @@
                         {% endfor %}
                     </ul>
 
-                    {% if username is defined %}
+                    {% if CONTACT.login %}
                         <ul class="nav pull-right">
                             <li class="dropdown {% if  CURRENT_URL == url('my_account') %}active{% endif %}" >
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-lock icon-white"></i> {% trans from "Module:core" %}Logged in as {% endtrans %} {{ CONTACT.login }}<b class="caret"></b></a>

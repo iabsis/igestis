@@ -86,6 +86,10 @@ class IgestisSecurity {
             }
         }
         
+        if(empty($_SESSION['sess_login']) || empty($_SESSION['sess_password'])) {
+            return;
+        }
+        
         if (!$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
             // Connexion ...
             if (isset($_POST['sess_login']) && isset($_POST['sess_password']) && $_POST['sess_login'] && $_POST['sess_password']) {
@@ -109,6 +113,7 @@ class IgestisSecurity {
                     $this->contact->setSshPassword($encrypted_password);
                     $this->context->entityManager->persist($this->contact);
                     $this->context->entityManager->flush();
+                    
 
                     if ($_POST['use_cookie']) {// If we are requesting a persistant connexion :
                         setcookie("sess_login", $_SESSION['sess_login'], time() + 5000000);
@@ -133,11 +138,11 @@ class IgestisSecurity {
                     $hook->callHook("loginFailed", $hookParameters);
                 }
 
-                if ($_SESSION['sess_page_redirect'] && $this->context->is_redirectable($_SESSION['sess_page_redirect'])) {
+                if ($_SESSION['sess_page_redirect']) {
                     
                     header("location:" . $_SESSION['sess_page_redirect']);
                 } else {
-                    header("location:index.php");
+                    header("location:" . $_SERVER['SCRIPT_NAME']);
                     exit;
                 }
 
@@ -147,17 +152,22 @@ class IgestisSecurity {
                 $_SESSION['sess_login'] = $_SESSION['sess_password'] = "";
             }
         }
-        
     }
 
     /**
      * Delete the cookie that allows to persist the authentication
      */
     public static function unset_cookie() {
-        setcookie("sess_login", $_SESSION['sess_login'], time() - 1000);
-        unset($_COOKIE['sess_login']);
-        setcookie("sess_password", $_SESSION['sess_password'], time() - 1000);
-        unset($_COOKIE['sess_password']);
+        if(!empty($_COOKIE['sess_login'])) {
+            setcookie("sess_login", $_SESSION['sess_login'], time() - 1000);
+            unset($_COOKIE['sess_login']);
+        }
+        if(!empty($_SESSION['sess_password'])) {
+            setcookie("sess_password", $_SESSION['sess_password'], time() - 1000);
+            unset($_COOKIE['sess_password']);
+        }
+        
+        
 
     }
 
@@ -167,7 +177,7 @@ class IgestisSecurity {
             $password = md5($password);
         }
         
-
+        
         $user = $this->context->entityManager->getRepository("CoreContacts")->getFromLoginAndPassword($login, $password);
         if($user) {
            
@@ -199,13 +209,19 @@ class IgestisSecurity {
     /**
      *
      * @param string $module_name
-     * @param Integer $user_id
+     * @param Integer $for_user_id
      * @return mixed String Right code for the passed module_name
      */
-    public function module_access($module_name, $user_id=NULL) {// Return the module access for the user in param2 (for the current user if $id_user is null)
-        if ($user_id === NULL)  $user_id = $this->user->getId ();
-        $rights_list = $this->get_rights_list($user_id, ($user_id != NULL)); //, $this->context);
-        return strtoupper($rights_list[strtoupper($module_name)]);
+    public function module_access($module_name, $for_user_id=NULL) {// Return the module access for the user in param2 (for the current user if $id_user is null)
+
+        if ($for_user_id === NULL)  {
+            $user_id = $this->user->getId ();
+        }
+        else {
+            $user_id = $for_user_id;
+        }
+        $rights_list = $this->get_rights_list($user_id, ($for_user_id != NULL)); //, $this->context);
+        return empty($rights_list[strtoupper($module_name)]) ? "" : strtoupper($rights_list[strtoupper($module_name)]);
     }
 
     /**
@@ -286,7 +302,6 @@ class IgestisSecurity {
      * @return array
      */
     private function getCompanyRightsList($companyId) {
-        if($this->user->getUserType() != CoreUsers::USER_TYPE_EMPLOYEE) return array();
         $company = $this->context->entityManager->find("CoreCompanies", $companyId);
         $rightsArray = array();
         
@@ -476,7 +491,7 @@ class IgestisSecurity {
                     if(!preg_match("/^[A-Za-z0-9_]+\:[A-Za-z0-9_]+$/", $actualRoute)) continue;
                     if($this->user == null) continue;
                     list($module, $right) = explode(":", $actualRoute);
-                    if($this->module_access($module, $this->user->getId()) == strtoupper($right)) return true;
+                    if($this->module_access($module) == strtoupper($right)) return true;
                     break;
             }
         }
