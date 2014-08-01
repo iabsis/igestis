@@ -21,6 +21,11 @@ class InstallController extends IgestisController {
         $dbCredentialsOk = false;
         $dbDatabaseFound = false;
         $dbTablesFound = false;
+
+        $usersOuError = \Igestis\I18n\Translate::_("Failed");
+        $customersOuError = \Igestis\I18n\Translate::_("Failed");
+        $suppliersOuError = \Igestis\I18n\Translate::_("Failed");
+
         try {
             
             $em = $this->context->getEntityManager();
@@ -40,7 +45,59 @@ class InstallController extends IgestisController {
         } catch (Exception $ex) {
             $databaseWork = false;
         }
-        
+
+        // Test Ldap
+        $ldapError = false;
+        $ldapConnexion = false;
+
+        if(ConfigIgestisGlobalVars::useLdap()) {
+            
+            try {
+                $ldap = Igestis\Utils\IgestisLdap::getConnexion();
+                $ldapConnexion = true;
+
+                $cnArrayUser = explode(",", ConfigIgestisGlobalVars::ldapUsersOu());
+                $firstCnUser = $cnArrayUser[0];
+                $findUserOu = $ldap->find($firstCnUser);
+                foreach ($findUserOu as $currentFind) {
+                    $dn = $currentFind->getDn();
+                    if (mb_strtolower($dn, "UTF-8") == mb_strtolower(ConfigIgestisGlobalVars::ldapUsersOu(), "UTF-8")) {
+                        $usersOuError = false;
+                        break;
+                    }
+                }
+
+                $cnArraySupplier = explode(",", ConfigIgestisGlobalVars::ldapSuppliersOu());
+                $firstCnSupplier = $cnArraySupplier[0];
+                $findSupplierOu = $ldap->find($firstCnSupplier);
+                foreach ($findSupplierOu as $currentFind) {
+                    $dn = $currentFind->getDn();
+                    if (mb_strtolower($dn, "UTF-8") == mb_strtolower(ConfigIgestisGlobalVars::ldapSuppliersOu(), "UTF-8")) {
+                        $suppliersOuError = false;
+                        break;
+                    }
+                }
+
+                $cnArrayCustomer = explode(",", ConfigIgestisGlobalVars::ldapCustomersOu());
+                $firstCnCustomer = $cnArrayCustomer[0];
+                $findCustomerOu = $ldap->find($firstCnCustomer);
+                foreach ($findCustomerOu as $currentFind) {
+                    $dn = $currentFind->getDn();
+                    if (mb_strtolower($dn, "UTF-8") == mb_strtolower(ConfigIgestisGlobalVars::ldapCustomersOu(), "UTF-8")) {
+                        $customersOuError = false;
+                        break;
+                    }
+                }
+
+            }
+            catch(\Exception $e) {
+                $ldapError = $e->getMessage();
+            }
+
+        }
+
+
+
         $this->context->render("pages/checkInstall.twig", array(
             "configFileFound" => ConfigIgestisGlobalVars::configFileFound(),
             "virtualHostOk" => !preg_match("#/public/#", $requestUri),
@@ -48,6 +105,9 @@ class InstallController extends IgestisController {
             "timezone" => date_default_timezone_get(),
             "jsonExtentionFound" => function_exists("json_encode"),
             "mcryptExtentionFound" =>  function_exists("crypt"),
+            "mysqlExtensionFound" => class_exists("PDO"),
+            "ldapExtensionFound" => function_exists("ldap_bind"),
+            
             
             "cacheFolderExists" => is_dir(ConfigIgestisGlobalVars::cacheFolder()),
             "cacheFolderWritable" => is_writable(ConfigIgestisGlobalVars::cacheFolder()),
@@ -57,7 +117,19 @@ class InstallController extends IgestisController {
             "dbDatabaseFound" => $dbDatabaseFound,
             "dbCredentialsOk" => $dbCredentialsOk,
             "dbTablesFound" => $dbTablesFound,
-            "mysqlUpdatesAvailable" => ($dbDatabaseFound && $dbCredentialsOk && !$dbTablesFound) || \Igestis\Utils\DBUpdater::hasAvailableUpdates()
+            "mysqlUpdatesAvailable" => ($dbDatabaseFound && $dbCredentialsOk && !$dbTablesFound) || \Igestis\Utils\DBUpdater::hasAvailableUpdates(),
+            "mysqlNotLaunchable" => !$databaseWork || !class_exists("PDO"),
+
+            /* LDAP section */
+            "useLdap" => ConfigIgestisGlobalVars::useLdap(),
+            "ldapConnexion" => $ldapConnexion,
+            "ldapError" => $ldapError,
+
+            "usersOuError" => $usersOuError,
+            "customersOuError" => $customersOuError,
+            "suppliersOuError" => $suppliersOuError,
+
+            "ouInstallable" => $ldapConnexion && ($usersOuNotFound || $customersOuENotFound || $suppliersOuENotFound)
         ));
         
     }

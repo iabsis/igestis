@@ -47,7 +47,12 @@ class Hook {
         foreach ($oModulesList->get() as $moduleName => $moduleDatas) {
             $hookListener = "\\Igestis\\Modules\\" . $moduleName . "\\ConfigHookListener";
             if(class_exists($hookListener)) {
-                $return = $hookListener::listen($hookName, $params);
+                try {
+                    $return = $hookListener::listen($hookName, $params);
+                }
+                catch(\Exception $e) {
+                }
+                
                 if($return == true) {
                     Debug::addLog("$hookListener::listen($hookName) has been parsed with success");
                 }

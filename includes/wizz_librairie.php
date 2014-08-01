@@ -101,6 +101,7 @@ class wizz {
     public static function show_messages() {
         // Affiche les messages
         global $application;
+
         if(is_array($_SESSION['WIZZ_MESSAGE'])) {
             while(list($key, $value) = each($_SESSION['WIZZ_MESSAGE'])) {
                 global $application;
@@ -125,6 +126,7 @@ class wizz {
      */
     public static function show_twig_messages() {
         $wizz_list = null;
+        //var_dump($_SESSION['WIZZ_MESSAGE']); exit;
         if(isset($_SESSION['WIZZ_MESSAGE']) && is_array($_SESSION['WIZZ_MESSAGE'])) {
             @reset($_SESSION['WIZZ_MESSAGE']);
             while(list($key, $value) = each($_SESSION['WIZZ_MESSAGE'])) {
