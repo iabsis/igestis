@@ -15,21 +15,24 @@ class InstallController extends IgestisController {
             new wizz(\Igestis\I18n\Translate::_("iGestis has detected the '/public/' prefix in the current url. This is not safe, you should create a virtualhost that point directly into the '/public' folder to disallow the access to the rest of the application from the browser."), wizz::WIZZ_WARNING);
         }
 
+        /* Initialize the DBUpdater class */
         \Igestis\Utils\DBUpdater::init($this->_em);
         
+        /* Set default value for database check that will be sent to the twig template */
         $databaseWork = true;
         $dbCredentialsOk = false;
         $dbDatabaseFound = false;
         $dbTablesFound = false;
 
+        /* Set default text error message for the ldap OU test */
         $usersOuError = \Igestis\I18n\Translate::_("Failed");
         $customersOuError = \Igestis\I18n\Translate::_("Failed");
         $suppliersOuError = \Igestis\I18n\Translate::_("Failed");
 
         try {
-            
+            /* Check databas connexion and table existance */
             $em = $this->context->getEntityManager();
-            
+            /* Try to connect with the given credentials */
             $connexion = $em->getConnection()->connect();
             $dbCredentialsOk = true;
             if(!$em->getConnection()->getDatabase()) {
@@ -43,6 +46,7 @@ class InstallController extends IgestisController {
             $dbTablesFound = true;
             
         } catch (Exception $ex) {
+            /* If any exception, the database is marked as "no working" */
             $databaseWork = false;
         }
 
@@ -51,11 +55,13 @@ class InstallController extends IgestisController {
         $ldapConnexion = false;
 
         if(ConfigIgestisGlobalVars::useLdap()) {
-            
+            /* If ldap is activated in the config.ini */
             try {
+                /* Test the ldap connexion */
                 $ldap = Igestis\Utils\IgestisLdap::getConnexion();
                 $ldapConnexion = true;
 
+                /* Check if users OU exists */
                 $cnArrayUser = explode(",", ConfigIgestisGlobalVars::ldapUsersOu());
                 $firstCnUser = $cnArrayUser[0];
                 $findUserOu = $ldap->find($firstCnUser);
@@ -67,6 +73,7 @@ class InstallController extends IgestisController {
                     }
                 }
 
+                /* Check if suppliers OU exists */
                 $cnArraySupplier = explode(",", ConfigIgestisGlobalVars::ldapSuppliersOu());
                 $firstCnSupplier = $cnArraySupplier[0];
                 $findSupplierOu = $ldap->find($firstCnSupplier);
@@ -78,6 +85,7 @@ class InstallController extends IgestisController {
                     }
                 }
 
+                /* Check if customers OU exists */
                 $cnArrayCustomer = explode(",", ConfigIgestisGlobalVars::ldapCustomersOu());
                 $firstCnCustomer = $cnArrayCustomer[0];
                 $findCustomerOu = $ldap->find($firstCnCustomer);
@@ -91,6 +99,7 @@ class InstallController extends IgestisController {
 
             }
             catch(\Exception $e) {
+                /* If any ldap error, we store the message in the ldapError variable to send to the twig template */
                 $ldapError = $e->getMessage();
             }
 
