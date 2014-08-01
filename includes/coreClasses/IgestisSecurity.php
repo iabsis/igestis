@@ -85,11 +85,8 @@ class IgestisSecurity {
                 new wizz(_("Please specify a login and a password"));
             }
         }
-        
-        if(empty($_SESSION['sess_login']) || empty($_SESSION['sess_password'])) {
-            return;
-        }
-        
+
+
         if (!$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
             // Connexion ...
             if (isset($_POST['sess_login']) && isset($_POST['sess_password']) && $_POST['sess_login'] && $_POST['sess_password']) {
@@ -130,8 +127,8 @@ class IgestisSecurity {
                 } else {
                     self::unset_cookie();
                     $_SESSION['sess_login'] = $_SESSION['sess_password'] = "";
+
                     new wizz(_("Invalid username or password"));
-                    
                     $hookParameters = new \Igestis\Types\HookParameters();
                     $hookParameters->set("postLogin", $_POST['sess_login']);
                     $hookParameters->set("postPassword", $_POST['sess_password']);                
@@ -139,8 +136,8 @@ class IgestisSecurity {
                 }
 
                 if ($_SESSION['sess_page_redirect']) {
-                    
                     header("location:" . $_SESSION['sess_page_redirect']);
+                    exit;
                 } else {
                     header("location:" . $_SERVER['SCRIPT_NAME']);
                     exit;

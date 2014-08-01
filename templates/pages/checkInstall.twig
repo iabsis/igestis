@@ -98,6 +98,13 @@
             .btn, .badge {
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             }
+
+            .form-horizontal .well .controls {
+                margin-left: 220px;
+            }
+            .form-horizontal .well .control-label {
+                width: 200px;
+            }
     
         </style>
     </head>
@@ -125,7 +132,56 @@
             {% include 'wizz.twig' %}
             
             <div class="row-fluid form-horizontal">
-                <div class="span4 well">
+
+                <div class="span6 well">
+                    <legend>{% trans %}PHP configuration{% endtrans %}</legend>  
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Mysql driver{% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">{% if mysqlExtensionFound %}<span class="badge badge-success">{% trans %}Installed{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not installed{% endtrans %}</span>{% endif %}</div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Mcrypt extension{% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">{% if mcryptExtentionFound %}<span class="badge badge-success">{% trans %}Installed{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not installed{% endtrans %}</span>{% endif %}</div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Json extension{% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">{% if jsonExtentionFound %}<span class="badge badge-success">{% trans %}Installed{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not installed{% endtrans %}</span>{% endif %}</div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Ldap extension (optionnal){% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">{% if ldapExtensionFound %}<span class="badge badge-success">{% trans %}Installed{% endtrans %}</span>{% else %}<span class="badge badge-warning">{% trans %}Not installed{% endtrans %}</span>{% endif %}</div>
+                    </div>
+
+                    
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Timezone{% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">{% if timezone %}<span class="badge badge-success">{{ timezone }}</span>{% else %}<span class="badge badge-important">{% trans %}Not defined{% endtrans %}</span>{% endif %}</div>
+                    </div>
+
+                    <legend>{% trans %}Access{% endtrans %}</legend> 
+                    
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Documents folder{% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">
+                            {% if documentsFolderExists %}<span class="badge badge-success">{% trans %}Found{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not found{% endtrans %}</span>{% endif %}
+                            {% if documentsFolderWritable %}<span class="badge badge-success">{% trans %}Writable{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not writable{% endtrans %}</span>{% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Cache folder{% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">
+                            {% if cacheFolderExists %}<span class="badge badge-success">{% trans %}Found{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not found{% endtrans %}</span>{% endif %}
+                            {% if cacheFolderWritable %}<span class="badge badge-success">{% trans %}Writable{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not writable{% endtrans %}</span>{% endif %}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="span6 well">
                     <legend>{% trans %}iGestis configuration{% endtrans %}</legend>
                     <div class="control-group">
                         <label class="control-label">{% trans %}config.ini file{% endtrans %}</label>
@@ -134,9 +190,10 @@
                     
                     <div class="control-group">
                         <label class="control-label">{% trans %}Virtual Host{% endtrans %}</label>
-                        <div class="controls" style="padding-top: 5px;">{% if virtualHostOk %}<span class="badge badge-success">{% trans %}Ok{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Invalid VHost{% endtrans %}</span>{% endif %}</div>
+                        <div class="controls" style="padding-top: 5px;">{% if virtualHostOk %}<span class="badge badge-success">{% trans %}Ok{% endtrans %}</span>{% else %}<span class="badge badge-warning">{% trans %}Invalid VHost{% endtrans %}</span>{% endif %}</div>
                     </div>
                     
+                    <legend>{% trans %}Database configuration{% endtrans %}</legend>
                     
                     <div class="control-group">
                         <label class="control-label">{% trans %}Database connexion{% endtrans %}</label>
@@ -160,53 +217,57 @@
                                 
                                 
                             {% endif %}
+                        </div>                        
+                    </div>
+                    {% if mysqlUpdatesAvailable %}
+                    <div  class="control-group">
+                        <label class="control-label">&nbsp;</label>
+                        <div class="controls">
+                            <button {% if mysqlNotLaunchable %}disabled="disabled"{% endif %} id="update-db-link" class="btn btn-default"><i class="icon-cogs icon-white"></i> {% trans %}Launch database update{% endtrans %}</button>
                         </div>
-                        
-                        {% if mysqlUpdatesAvailable %}
-                        <div  class="control-group" style="margin:30px; text-align: center;">
-                            <a href="javascript:;" id="update-db-link" class="btn btn-danger"><i class="icon-cogs icon-white"></i> Launch database update</a>
+                    </div>
+                    {% endif %}
+
+                    <legend>{% trans %}Ldap configuration{% endtrans %}</legend>
+                    <div class="control-group">
+                        <label class="control-label">{% trans %}Use ldap{% endtrans %}</label>
+                        <div class="controls" style="padding-top: 5px;">{% if useLdap %}<span class="badge badge-success">{% trans %}Yes{% endtrans %}</span>{% else %}<span class="badge badge-success">{% trans %}No{% endtrans %}</span>{% endif %}</div>
+                    </div>
+
+                    {% if useLdap %}
+                        {# Test ldap connexion in case of use ldap is true #}
+                        <div class="control-group">
+                            <label class="control-label">{% trans %}Ldap connexion{% endtrans %}</label>
+                            <div class="controls" style="padding-top: 5px;">{% if ldapConnexion %}<span class="badge badge-success">{% trans %}Ok{% endtrans %}</span>{% else %}<span class="badge badge-important">{{ ldapError }}</span>{% endif %}</div>
                         </div>
+
+                        <div class="control-group">
+                            <label class="control-label">{% trans %}Users OU{% endtrans %}</label>
+                            <div class="controls" style="padding-top: 5px;">{% if not usersOuError %}<span class="badge badge-success">{% trans %}Ok{% endtrans %}</span>{% else %}<span class="badge badge-important">{{ usersOuError}}</span>{% endif %}</div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">{% trans %}Customers OU{% endtrans %}</label>
+                            <div class="controls" style="padding-top: 5px;">{% if not customersOuError %}<span class="badge badge-success">{% trans %}Ok{% endtrans %}</span>{% else %}<span class="badge badge-important">{{ customersOuError }}</span>{% endif %}</div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">{% trans %}Suppliers OU{% endtrans %}</label>
+                            <div class="controls" style="padding-top: 5px;">{% if not suppliersOuError %}<span class="badge badge-success">{% trans %}Ok{% endtrans %}</span>{% else %}<span class="badge badge-important">{{ suppliersOuError }}</span>{% endif %}</div>
+                        </div>
+
+                        {% if ouInstallable %}
+                            <div  class="control-group">
+                                <label class="control-label">&nbsp;</label>
+                                <div class="controls">
+                                    <button id="create-ou-link" class="btn btn-default"><i class="icon-cogs icon-white"></i> {% trans %}Create Ou{% endtrans %}</button>
+                                </div>
+                            </div>
                         {% endif %}
-                    </div>
-                </div>
-                
-                <div class="span4 well">
-                    <legend>{% trans %}php configuration{% endtrans %}</legend>  
-                    <div class="control-group">
-                        <label class="control-label">{% trans %}Timezone{% endtrans %}</label>
-                        <div class="controls" style="padding-top: 5px;">{% if timezone %}<span class="badge badge-success">{{ timezone }}</span>{% else %}<span class="badge badge-important">{% trans %}Not defined{% endtrans %}</span>{% endif %}</div>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label">{% trans %}Mcrypt extension{% endtrans %}</label>
-                        <div class="controls" style="padding-top: 5px;">{% if mcryptExtentionFound %}<span class="badge badge-success">{% trans %}Found{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not found{% endtrans %}</span>{% endif %}</div>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label">{% trans %}Json extension{% endtrans %}</label>
-                        <div class="controls" style="padding-top: 5px;">{% if jsonExtentionFound %}<span class="badge badge-success">{% trans %}Found{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not found{% endtrans %}</span>{% endif %}</div>
-                    </div>
-                </div>
-                
-                <div class="span4 well">
-                    <legend>{% trans %}Access{% endtrans %}</legend> 
-                    
-                    <div class="control-group">
-                        <label class="control-label">{% trans %}Documents folder{% endtrans %}</label>
-                        <div class="controls" style="padding-top: 5px;">
-                            {% if documentsFolderExists %}<span class="badge badge-success">{% trans %}Found{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not found{% endtrans %}</span>{% endif %}
-                            {% if documentsFolderWritable %}<span class="badge badge-success">{% trans %}Writable{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not writable{% endtrans %}</span>{% endif %}
-                        </div>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label">{% trans %}Cache folder{% endtrans %}</label>
-                        <div class="controls" style="padding-top: 5px;">
-                            {% if cacheFolderExists %}<span class="badge badge-success">{% trans %}Found{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not found{% endtrans %}</span>{% endif %}
-                            {% if cacheFolderWritable %}<span class="badge badge-success">{% trans %}Writable{% endtrans %}</span>{% else %}<span class="badge badge-important">{% trans %}Not writable{% endtrans %}</span>{% endif %}
-                        </div>
-                    </div>
-                    
+
+                    {% endif %}
+
+
                 </div>
             </div>
                         

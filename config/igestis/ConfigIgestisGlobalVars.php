@@ -5,17 +5,16 @@
  */
 
 if(file_exists('/etc/igestis/debian-db.php')) {
-  include '/etc/igestis/debian-db.php';
-  define("IGESTIS_CORE_MYSQL_HOST", $dbserver);
-  define("IGESTIS_CORE_MYSQL_LOGIN", $dbuser);
-  define("IGESTIS_CORE_MYSQL_PASSWORD", $dbpass);
-  define("IGESTIS_CORE_MYSQL_DATABASE", $dbname);
-}
-else {
+    include '/etc/igestis/debian-db.php';
+    define("IGESTIS_CORE_MYSQL_HOST", $dbserver);
+    define("IGESTIS_CORE_MYSQL_LOGIN", $dbuser);
+    define("IGESTIS_CORE_MYSQL_PASSWORD", $dbpass);
+    define("IGESTIS_CORE_MYSQL_DATABASE", $dbname);
+} else {
     define("IGESTIS_CORE_MYSQL_HOST", '');
-  define("IGESTIS_CORE_MYSQL_LOGIN", '');
-  define("IGESTIS_CORE_MYSQL_PASSWORD", '');
-  define("IGESTIS_CORE_MYSQL_DATABASE", '');
+    define("IGESTIS_CORE_MYSQL_LOGIN", '');
+    define("IGESTIS_CORE_MYSQL_PASSWORD", '');
+    define("IGESTIS_CORE_MYSQL_DATABASE", '');
 }
 
 
@@ -30,6 +29,8 @@ class ConfigIgestisGlobalVars {
         if(empty(static::$params)) {
             self::initFromIniFile();
         }
+
+
     }
     
     public function _get($configName) {
@@ -48,11 +49,15 @@ class ConfigIgestisGlobalVars {
     
     private static function setDefaultValues() {
         if(empty(self::$params['CACHE_FOLDER'])) {
-            self::$params['CACHE_FOLDER'] = __DIR__ . "/../../cache";
+            self::$params['CACHE_FOLDER'] = "cache";
         }
         
         if(empty(self::$params['DATA_FOLDER'])) {
-            self::$params['DATA_FOLDER'] = __DIR__ . "/../../documents";
+            self::$params['DATA_FOLDER'] = "documents";
+        }
+
+        if(empty(self::$params['LOG_FILE'])) {
+            self::$params['LOG_FILE'] = "logs/igestis.log";
         }
     }
 
@@ -62,7 +67,6 @@ class ConfigIgestisGlobalVars {
         $configFileNotFound = false;
         if(!self::configFileFound()) {
             $configFileNotFound = true;
-            
         }
         else {
             self::$params = array_merge(
@@ -70,7 +74,6 @@ class ConfigIgestisGlobalVars {
                 parse_ini_file(__DIR__ . "/config.ini")
             );
         }
-        
         // Manage special mysql fields
         self::$params['MYSQL_HOST'] = isset(self::$params['MYSQL_HOST']) ? self::$params['MYSQL_HOST'] : IGESTIS_CORE_MYSQL_HOST;
         self::$params['MYSQL_LOGIN'] = isset(self::$params['MYSQL_LOGIN']) ? self::$params['MYSQL_LOGIN'] : IGESTIS_CORE_MYSQL_LOGIN;
@@ -81,8 +84,11 @@ class ConfigIgestisGlobalVars {
         self::initPHPConfig();
         
         if($configFileNotFound) {
-            
             throw new Exception(\Igestis\I18n\Translate::_("The config.ini file is not found or not readable"));
+        }
+
+        if (!parse_ini_file(__DIR__ . "/config.ini")) {
+            throw new \Igestis\Exceptions\ConfigException(\Igestis\I18n\Translate::_("The config.ini file contains errors"));
         }
     }
     
@@ -95,7 +101,7 @@ class ConfigIgestisGlobalVars {
     }
 
     public static function debugMode() {
-        return (bool)self::$params['DEBUG_MODE'];
+        return empty(self::$params['DEBUG_MODE']) ? false : (bool)self::$params['DEBUG_MODE'];
     }
     
     public static function ldapAdMode() {
@@ -103,7 +109,11 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function logFile() {
-        return self::$params['LOG_FILE'];
+        if (substr(self::$params['LOG_FILE'], 0, 1) == "/") {
+            return self::$params['LOG_FILE'];
+        } else {
+            return self::appliFolder() . '/' . self::$params['LOG_FILE'];
+        }
     }
     
     public static function igestisCoreAdmin() {
@@ -183,7 +193,11 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function cacheFolder() {
-        return self::$params['CACHE_FOLDER'];
+        if (substr(self::$params['CACHE_FOLDER'], 0, 1) == "/") {
+            return self::$params['CACHE_FOLDER'];
+        } else {
+            return self::appliFolder() . '/' . self::$params['CACHE_FOLDER'];
+        }
     }      
     
     public static function doctrineProxyFolder() {
@@ -207,7 +221,12 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function dataFolder() {
-        return self::$params['DATA_FOLDER'];
+        if (substr(self::$params['DATA_FOLDER'], 0, 1) == "/") {
+            return self::$params['DATA_FOLDER'];
+        } else {
+            return self::appliFolder() . '/' . self::$params['DATA_FOLDER'];
+        }
+        
     }
     
     public static function serverAddress() {
