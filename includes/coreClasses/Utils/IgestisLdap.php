@@ -21,17 +21,12 @@ class IgestisLdap {
             $password = \ConfigIgestisGlobalVars::ldapPassword();
         }
 
-
-
-        if(!$adminAuth && \ConfigIgestisGlobalVars::ldapCustomBind()) {
+		
+        if(!$adminAuth) {
             $ldap->bind(str_replace("%u", $username, \ConfigIgestisGlobalVars::ldapCustomBind()), $password);
         }
         else {
-            if ($ou) {
-                $ldap->bind($username . "," . \ConfigIgestisGlobalVars::ldapUsersOu(), $password);
-            } else {
-                $ldap->bind($username, $password);
-            }
+            $ldap->bind($username, $password);
         }
 
         return $ldap;

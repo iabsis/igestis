@@ -161,7 +161,7 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function ldapCustomBind() {
-        return self::$params['LDAP_CUSTOM_BIND'];
+        return self::$params['LDAP_BIND_FORMAT'];
     }
     
     public static function ldapCustomFind() {

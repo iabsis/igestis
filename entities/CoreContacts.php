@@ -816,14 +816,8 @@ class CoreContacts
             }
         }
         
-        if(\ConfigIgestisGlobalVars::useLdap() && \ConfigIgestisGlobalVars::ldapAdMode()) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
-            if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
-                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
-            }
-            else {
-                $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
-            }
+        if(\ConfigIgestisGlobalVars::useLdap()) {
+            $ldap = \Igestis\Utils\IgestisLdap::getConnexion();
             
             if(!$this->adSid) {
                 // If the AD Sid has not already been set
@@ -873,14 +867,7 @@ class CoreContacts
         if($this->postPersistDisabled) return;
         
         if(\ConfigIgestisGlobalVars::useLdap()) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
-            
-            if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
-                $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
-            }
-            else {
-                $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
-            }
+            $ldap = \Igestis\Utils\IgestisLdap::getConnexion();
             
             $createLdapEntry = false;
             $deleteLdapEntry = false;
