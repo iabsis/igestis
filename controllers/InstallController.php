@@ -127,7 +127,7 @@ class InstallController extends IgestisController {
             "dbCredentialsOk" => $dbCredentialsOk,
             "dbTablesFound" => $dbTablesFound,
             "mysqlUpdatesAvailable" => ($dbDatabaseFound && $dbCredentialsOk && !$dbTablesFound) || \Igestis\Utils\DBUpdater::hasAvailableUpdates(),
-            "mysqlNotLaunchable" => !$databaseWork || !class_exists("PDO"),
+            "mysqlNotLaunchable" => !$dbCredentialsOk || !class_exists("PDO"),
 
             /* LDAP section */
             "useLdap" => ConfigIgestisGlobalVars::useLdap(),
