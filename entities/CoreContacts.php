@@ -817,7 +817,7 @@ class CoreContacts
         }
         
         if(\ConfigIgestisGlobalVars::useLdap() && \ConfigIgestisGlobalVars::ldapAdMode()) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
+            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUri(), \ConfigIgestisGlobalVars::ldapBaseDn(), \ConfigIgestisGlobalVars::ldapVersion());
             if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
                 $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
             }
@@ -827,7 +827,7 @@ class CoreContacts
             
             if(!$this->adSid) {
                 // If the AD Sid has not already been set
-                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomFind()));
+                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapUserFilter()));
                 foreach($nodesList as $dn =>$entry){ // For each entry
                     foreach($entry as $attr => $values){ // For each attribute
                         foreach($values as $value){// For each value
@@ -873,7 +873,7 @@ class CoreContacts
         if($this->postPersistDisabled) return;
         
         if(\ConfigIgestisGlobalVars::useLdap()) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
+            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUri(), \ConfigIgestisGlobalVars::ldapBaseDn(), \ConfigIgestisGlobalVars::ldapVersion());
             
             if(\ConfigIgestisGlobalVars::ldapCustomBind()) {
                 $ldap->bind(str_replace("%u", \ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapCustomBind()), \ConfigIgestisGlobalVars::ldapPassword());
@@ -899,7 +899,7 @@ class CoreContacts
                 if($this->login == \ConfigIgestisGlobalVars::igestisCoreAdmin()) return true;
                 
                 // Is the row already exists on LDAP ?
-                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomFind()));
+                $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapUserFilter()));
                 $createLdapEntry = !count($nodesList);
                 if($this->active == 0) {
                     $this->login = null;

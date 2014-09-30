@@ -62,10 +62,9 @@ class ConfigIgestisGlobalVars {
     }
 
     public static function initFromIniFile() {
-        
         self::$params =  parse_ini_file(__DIR__ . "/default-config.ini");
         $configFileNotFound = false;
-        if(!self::configFileFound()) {
+        if (!self::configFileFound()) {
             $configFileNotFound = true;
         }
         else {
@@ -82,13 +81,25 @@ class ConfigIgestisGlobalVars {
         
         self::setDefaultValues();
         self::initPHPConfig();
-        
         if($configFileNotFound) {
             throw new Exception(\Igestis\I18n\Translate::_("The config.ini file is not found or not readable"));
         }
 
         if (!parse_ini_file(__DIR__ . "/config.ini")) {
             throw new \Igestis\Exceptions\ConfigException(\Igestis\I18n\Translate::_("The config.ini file contains errors"));
+        }
+
+        if (!empty(self::$params['LDAP_SCHEMA'])) {
+            if (is_file(__DIR__ . "/ldapSchemas/" . self::$params['LDAP_SCHEMA'] . ".ini")) {
+                if (!parse_ini_file(__DIR__ . "/ldapSchemas/" . self::$params['LDAP_SCHEMA'] . ".ini")) {
+                    throw new \Igestis\Exceptions\ConfigException(\Igestis\I18n\Translate::_("The config.ini file contains errors"));
+                }
+                
+                self::$params = array_merge(
+                    self::$params,
+                    parse_ini_file(__DIR__ . "/ldapSchemas/" . self::$params['LDAP_SCHEMA'] . ".ini")
+                );
+            }            
         }
     }
     
@@ -140,12 +151,12 @@ class ConfigIgestisGlobalVars {
         return self::$params['MYSQL_DATABASE'];
     }
     
-    public static function ldapUris() {
-        return self::$params['LDAP_URIS'];
+    public static function ldapUri() {
+        return self::$params['LDAP_URI'];
     }
     
-    public static function ldapBase() {
-        return self::$params['LDAP_BASE'];
+    public static function ldapBaseDn() {
+        return self::$params['LDAP_BASE_DN'];
     }
     
     public static function ldapActiveDirectoryMode() {
@@ -164,8 +175,8 @@ class ConfigIgestisGlobalVars {
         return self::$params['LDAP_CUSTOM_BIND'];
     }
     
-    public static function ldapCustomFind() {
-        return self::$params['LDAP_CUSTOM_FIND'];
+    public static function ldapUserFilter() {
+        return self::$params['LDAP_USER_FILTER'];
     }
     
     public static function ldapAdmin() {

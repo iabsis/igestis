@@ -173,10 +173,10 @@ class Application {
             }
         }
         
-        
         try {
             ConfigIgestisGlobalVars::initFromIniFile();
         } catch (Exception $ex) {
+
             $this->installScript();
         }
 
