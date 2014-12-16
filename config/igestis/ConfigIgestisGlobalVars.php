@@ -46,11 +46,26 @@ class ConfigIgestisGlobalVars {
             date_default_timezone_set(self::timeZone());
         }
     }
+    
+    private static function setDefaultValues() {
+        if(empty(self::$params['CACHE_FOLDER'])) {
+            self::$params['CACHE_FOLDER'] = "cache";
+        }
+        
+        if(empty(self::$params['DATA_FOLDER'])) {
+            self::$params['DATA_FOLDER'] = "documents";
+        }
+
+        if(empty(self::$params['LOG_FILE'])) {
+            self::$params['LOG_FILE'] = "logs/igestis.log";
+        }
+    }
 
     public static function initFromIniFile() {
+        
         self::$params =  parse_ini_file(__DIR__ . "/default-config.ini");
         $configFileNotFound = false;
-        if (!self::configFileFound()) {
+        if(!self::configFileFound()) {
             $configFileNotFound = true;
         }
         else {
@@ -67,25 +82,13 @@ class ConfigIgestisGlobalVars {
         
         self::setDefaultValues();
         self::initPHPConfig();
+        
         if($configFileNotFound) {
             throw new Exception(\Igestis\I18n\Translate::_("The config.ini file is not found or not readable"));
         }
 
         if (!parse_ini_file(__DIR__ . "/config.ini")) {
             throw new \Igestis\Exceptions\ConfigException(\Igestis\I18n\Translate::_("The config.ini file contains errors"));
-        }
-
-        if (!empty(self::$params['LDAP_SCHEMA'])) {
-            if (is_file(__DIR__ . "/ldapSchemas/" . self::$params['LDAP_SCHEMA'] . ".ini")) {
-                if (!parse_ini_file(__DIR__ . "/ldapSchemas/" . self::$params['LDAP_SCHEMA'] . ".ini")) {
-                    throw new \Igestis\Exceptions\ConfigException(\Igestis\I18n\Translate::_("The config.ini file contains errors"));
-                }
-                
-                self::$params = array_merge(
-                    self::$params,
-                    parse_ini_file(__DIR__ . "/ldapSchemas/" . self::$params['LDAP_SCHEMA'] . ".ini")
-                );
-            }            
         }
     }
     
@@ -105,23 +108,11 @@ class ConfigIgestisGlobalVars {
         return (bool)self::$params['LDAP_AD_MODE'];
     }
     
-    public static function logFolder() {
-    	if (substr(self::$params['LOG_FOLDER'], 0, 1) == "/") {
-
-    		return self::$params['LOG_FOLDER'];
-
-    	} else {
-
-    		return self::appliFolder() . '/' . self::$params['LOG_FOLDER'];
-
-    	}
-    }
-    
     public static function logFile() {
-        if (substr(self::$params['LOG_FOLDER'], 0, 1) == "/") {
-            return self::$params['LOG_FOLDER'] . "/igestis.log";
+        if (substr(self::$params['LOG_FILE'], 0, 1) == "/") {
+            return self::$params['LOG_FILE'];
         } else {
-            return self::appliFolder() . '/' . self::$params['LOG_FOLDER']  . "/igestis.log";
+            return self::appliFolder() . '/' . self::$params['LOG_FILE'];
         }
     }
     
@@ -149,12 +140,12 @@ class ConfigIgestisGlobalVars {
         return self::$params['MYSQL_DATABASE'];
     }
     
-    public static function ldapUri() {
-        return self::$params['LDAP_URI'];
+    public static function ldapUris() {
+        return self::$params['LDAP_URIS'];
     }
     
-    public static function ldapBaseDn() {
-        return self::$params['LDAP_BASE_DN'];
+    public static function ldapBase() {
+        return self::$params['LDAP_BASE'];
     }
     
     public static function ldapActiveDirectoryMode() {
@@ -170,11 +161,11 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function ldapCustomBind() {
-        return self::$params['LDAP_BIND_FORMAT'];
+        return self::$params['LDAP_CUSTOM_BIND'];
     }
     
-    public static function ldapUserFilter() {
-        return self::$params['LDAP_USER_FILTER'];
+    public static function ldapCustomFind() {
+        return self::$params['LDAP_CUSTOM_FIND'];
     }
     
     public static function ldapAdmin() {
@@ -186,19 +177,19 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function ldapUsersOu() {
-        return self::$params['LDAP_NEW_USERS_DN'];
+        return self::$params['LDAP_USERS_OU'];
     }
     
     public static function ldapUserRdn() {
-        return self::$params['LDAP_NEW_USER_RDN'];
+        return self::$params['LDAP_USER_RDN'];
     }
     
     public static function ldapCustomersOu() {
-        return self::$params['LDAP_NEW_CUSTOMERS_DN'];
+        return self::$params['LDAP_CUSTOMERS_OU'];
     }
     
     public static function ldapSuppliersOu() {
-        return self::$params['LDAP_NEW_SUPPLIERS_DN'];
+        return self::$params['LDAP_SUPPLIERS_OU'];
     }
     
     public static function cacheFolder() {
