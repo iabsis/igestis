@@ -114,7 +114,7 @@ class InstallController extends IgestisController {
             "timezone" => date_default_timezone_get(),
             "jsonExtentionFound" => function_exists("json_encode"),
             "mcryptExtentionFound" =>  function_exists("crypt"),
-            "mysqlExtensionFound" => class_exists("PDO"),
+            "mysqlExtensionFound" => class_exists("PDO") && function_exists("mysql_connect"),
             "ldapExtensionFound" => function_exists("ldap_bind"),
             
             
