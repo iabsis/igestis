@@ -260,5 +260,9 @@ class ConfigIgestisGlobalVars {
     public static function usernameFormat() {
         return self::$params['USERNAME_FORMAT'];
     }
+    
+    public static function passwordFormat() {
+    	return self::$params['PASSWORD_FORMAT'];
+    }
 }
 

@@ -157,6 +157,7 @@ $(document).ready(function(){
                                 required:true
                         },
                         password: {
+                        		regex: /{{ igestisConfig.get("PASSWORD_FORMAT") }}/,
                                 required:true,
 				minlength: 5
 			},
