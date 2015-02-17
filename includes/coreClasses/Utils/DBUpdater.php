@@ -7,7 +7,8 @@ namespace Igestis\Utils;
  *
  * @author Gilles Hemmerlé <giloux@gmail.com>
  */
-class DBUpdater {
+class DBUpdater
+{
     /**
      *
      * @var \Doctrine\ORM\EntityManager $doctrine
@@ -18,24 +19,27 @@ class DBUpdater {
      * Set the entitymanager in order to use the updater classes
      * @param \Doctrine\ORM\EntityManager $doctrine
      */
-    public static function init(\Doctrine\ORM\EntityManager $doctrine) {
+    public static function init(\Doctrine\ORM\EntityManager $doctrine)
+    {
         self::$doctrine = $doctrine;
     }
-    public static function hasAvailableUpdates() {
+    public static function hasAvailableUpdates()
+    {
         $databaseInstalled = self::initialTablesExist();
         
-        if(!$databaseInstalled) {
+        if (!$databaseInstalled) {
             return true;
         }
         
-        if(count(self::getListOfSqlFilesToImport())) {
+        if (count(self::getListOfSqlFilesToImport())) {
             return true;
         }
         
         return false;
     }
     
-    public static function initialTablesExist() {
+    public static function initialTablesExist()
+    {
         $connexion = self::$doctrine->getConnection();
         try {
             $connexion->executeQuery("DESC MYSQL_MIGRATION");
@@ -48,19 +52,19 @@ class DBUpdater {
         
         return $databaseInstalled;
     }
-    private static function getListOfSqlFilesToImport() {
+    private static function getListOfSqlFilesToImport()
+    {
         $initialTablesExist = self::initialTablesExist();
-        
         // Get the core sql folder
         $filesList = array();
         $sqlFolder = __DIR__ . "/../../../install/database/mysql/";
         if (is_dir($sqlFolder)) {
             if ($dh = opendir($sqlFolder)) {
                 while (($file = readdir($dh)) !== false) {
-                    if(is_file($sqlFolder . $file)) {
-                        if($initialTablesExist) {
+                    if (is_file($sqlFolder . $file)) {
+                        if ($initialTablesExist) {
                             $fileAlreadyImported = self::$doctrine->getRepository("MysqlMigration")->find(array("module" => "CORE", "file" => $file));
-                            if($fileAlreadyImported) {
+                            if ($fileAlreadyImported) {
                                 continue;
                             }
                         }
@@ -74,13 +78,44 @@ class DBUpdater {
                 closedir($dh);
             }
         }
-        
         asort($filesList);
+
+        $modulesList = \IgestisModulesList::getInstance();
+        $aModulesList = $modulesList->get();
+        foreach ($aModulesList as $module_name => $module_datas) {
+            $sqlFolder = __DIR__ . "/../../../install/database/$module_name/mysql/";
+            $moduleSqlFileList = array();
+            if (is_dir($sqlFolder)) {
+                if ($dh = opendir($sqlFolder)) {
+                    while (($file = readdir($dh)) !== false) {
+                        if (is_file($sqlFolder . $file)) {
+                            if ($initialTablesExist) {
+                                $fileAlreadyImported = self::$doctrine->getRepository("MysqlMigration")->find(array("module" => $module_name, "file" => $file));
+                                if ($fileAlreadyImported) {
+                                    continue;
+                                }
+                            }
+                            $moduleSqlFileList[$sqlFolder . $file] = array(
+                                "fileTarget" =>$sqlFolder . $file,
+                                "filename" => $file,
+                                "module" => $module_name
+                            );
+                        }
+                    }
+                    closedir($dh);
+                }
+            }
+
+            asort($moduleSqlFileList);
+            $filesList = array_merge($filesList, $moduleSqlFileList);
+        }
+        
         return $filesList;
     }
     
-    public static function startUpdate() {
-        if(!self::hasAvailableUpdates()) {
+    public static function startUpdate()
+    {
+        if (!self::hasAvailableUpdates()) {
             return true;
         }
         

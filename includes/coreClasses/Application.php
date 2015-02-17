@@ -169,6 +169,7 @@ class Application {
         }
         else {
             if($installScript) {
+                new wizz(\Igestis\I18n\Translate::_("The default credentials after a new install are : root / password. Remember to change them if that's not already done."), wizz::WIZZ_WARNING);
                 header("location:" . ConfigControllers::createUrl("home_page")); exit;
             }
         }

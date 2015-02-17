@@ -26,11 +26,13 @@ class ConfigIgestisGlobalVars {
     private static $params;
     
     public function __construct() {
+        self::initConfigVars();
+    }
+
+    public static  function initConfigVars() {
         if(empty(static::$params)) {
             self::initFromIniFile();
         }
-
-
     }
     
     public function _get($configName) {
@@ -93,22 +95,27 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function set($key, $value) {
+        self::initConfigVars();
         self::$params[$key] = $value;
     }
     
     public static function get($key) {
+        self::initConfigVars();
         return isset(self::$params[$key]) ? self::$params[$key] : null;
     }
 
     public static function debugMode() {
+        self::initConfigVars();
         return empty(self::$params['DEBUG_MODE']) ? false : (bool)self::$params['DEBUG_MODE'];
     }
     
     public static function ldapAdMode() {
+        self::initConfigVars();
         return (bool)self::$params['LDAP_AD_MODE'];
     }
     
     public static function logFile() {
+        self::initConfigVars();
         if (substr(self::$params['LOG_FILE'], 0, 1) == "/") {
             return self::$params['LOG_FILE'];
         } else {
@@ -117,82 +124,102 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function igestisCoreAdmin() {
+        self::initConfigVars();
         return self::$params['IGESTIS_CORE_ADMIN'];
     }
     
     public static function useLdap() {
+        self::initConfigVars();
         return (bool)self::$params['USE_LDAP'];
     }
     
     public static function mysqlHost() {
+        self::initConfigVars();
         return self::$params['MYSQL_HOST'];
     }
     
     public static function mysqlLogin() {
+        self::initConfigVars();
         return self::$params['MYSQL_LOGIN'];
     }
     
     public static function mysqlPassword() {
+        self::initConfigVars();
         return self::$params['MYSQL_PASSWORD'];
     }
     
     public static function mysqlDatabase() {
+        self::initConfigVars();
         return self::$params['MYSQL_DATABASE'];
     }
     
     public static function ldapUris() {
+        self::initConfigVars();
         return self::$params['LDAP_URIS'];
     }
     
     public static function ldapBase() {
+        self::initConfigVars();
         return self::$params['LDAP_BASE'];
     }
     
     public static function ldapActiveDirectoryMode() {
+        self::initConfigVars();
         return self::$params['LDAP_AD_MODE'];
     }
     
     public static function ldapVersion() {
+        self::initConfigVars();
         return self::$params['LDAP_VERSION'];
     }
     
     public static function ldapAutoImportUser() {
+        self::initConfigVars();
         return self::$params['LDAP_AUTO_IMPORT_USER'];
     }
     
     public static function ldapCustomBind() {
+        self::initConfigVars();
         return self::$params['LDAP_CUSTOM_BIND'];
     }
     
     public static function ldapCustomFind() {
+        self::initConfigVars();
         return self::$params['LDAP_CUSTOM_FIND'];
     }
     
     public static function ldapAdmin() {
+        self::initConfigVars();
         return self::$params['LDAP_ADMIN'];
     }
     
     public static function ldapPassword() {
+        self::initConfigVars();
         return self::$params['LDAP_PASSWORD'];
     }
     
     public static function ldapUsersOu() {
+        self::initConfigVars();
         return self::$params['LDAP_USERS_OU'];
     }
     
     public static function ldapUserRdn() {
+        self::initConfigVars();
         return self::$params['LDAP_USER_RDN'];
     }
     
     public static function ldapCustomersOu() {
+        self::initConfigVars();
         return self::$params['LDAP_CUSTOMERS_OU'];
     }
     
     public static function ldapSuppliersOu() {
+        self::initConfigVars();
         return self::$params['LDAP_SUPPLIERS_OU'];
     }
     
     public static function cacheFolder() {
+        self::initConfigVars();
         if (substr(self::$params['CACHE_FOLDER'], 0, 1) == "/") {
             return self::$params['CACHE_FOLDER'];
         } else {
@@ -201,10 +228,12 @@ class ConfigIgestisGlobalVars {
     }      
     
     public static function doctrineProxyFolder() {
+        self::initConfigVars();
         return self::cacheFolder() . "/proxies";
     }
     
     public static function minUidNumber() {
+        self::initConfigVars();
         return self::$params['MIN_UID_NUMBER'];
     }
     
@@ -214,13 +243,16 @@ class ConfigIgestisGlobalVars {
      * @deprecated since version 2.5
      */
     public static function theme() {
+        self::initConfigVars();
         return "";
     }
     public static function appliFolder() {
+        self::initConfigVars();
         return realpath(dirname(__FILE__) . "/../../");
     }
     
     public static function dataFolder() {
+        self::initConfigVars();
         if (substr(self::$params['DATA_FOLDER'], 0, 1) == "/") {
             return self::$params['DATA_FOLDER'];
         } else {
@@ -230,38 +262,47 @@ class ConfigIgestisGlobalVars {
     }
     
     public static function serverAddress() {
+        self::initConfigVars();
         return (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . self::$params['WEB_SUBFOLDER'];
     }
     
     public static function encryptKey() {
+        self::initConfigVars();
         return self::$params['ENCRYPT_KEY'];
     }    
     
     public static function rootFolder() {
+        self::initConfigVars();
         return realpath(dirname(__FILE__) . "/../../");
     }
     
     public static function textDomain() {
+        self::initConfigVars();
         return IGESTIS_CORE_TEXTDOMAIN;
     }
     
     public static function version() {
+        self::initConfigVars();
         return IGESTIS_CORE_VERSION;
     }
     
     public static function autoCsrfProtection() {
+        self::initConfigVars();
         return true;  // AUTO_CSRF_PROTECTION
     }
     
     public static function timeZone() {
+        self::initConfigVars();
         return self::$params['TIMEZONE'];
     }
     
     public static function usernameFormat() {
+        self::initConfigVars();
         return self::$params['USERNAME_FORMAT'];
     }
     
     public static function passwordFormat() {
+        self::initConfigVars();
     	return self::$params['PASSWORD_FORMAT'];
     }
 }
