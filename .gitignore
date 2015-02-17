@@ -3,5 +3,6 @@ sftp-config.json.buildpath
 .project
 .settings/
 .buildpath
-
 sftp-config.json
+debian/igestis
+configure-stamp

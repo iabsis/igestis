@@ -60,7 +60,7 @@ case "$1" in
 	if [ ! -e "$GLOBALVARS" ] ; then
 		FIRST_INSTALL=true
 		touch $GLOBALVARS
-		ln -sf $GLOBALVARS /usr/share/igestis/config/igestis/custom-config.ini
+		ln -sf $GLOBALVARS /usr/share/igestis/config/igestis/config.ini
 	fi
 	
 	# We generate a random encrypt key.
@@ -107,7 +107,7 @@ case "$1" in
 	db_get igestis/directory/admin
 	LDAP_ADMIN="${RET}"
 	
-	if [ -z "$(get_value_global_vars LDAP_PASSWORD)" ] ; then
+	if [ -z "$(get_value_global_vars LDAP_PASSWORD)" ] && [ ! "$AUTHENTICATION" = "Internal" ] ; then
 		db_fset igestis/directory/password seen false
 		db_input high igestis/directory/password || true
 		db_go

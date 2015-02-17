@@ -90,6 +90,10 @@ case "$AUTHENTICATION" in
 		db_get igestis/directory/password
 		LDAP_PASS="${RET}"
 
+		## AUTOCREATE USER ##
+		db_input high igestis/directory/import || true
+		db_go
+
 	;;
 
 esac
@@ -121,10 +125,6 @@ if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/config.ini" ] 
     # CORE ADMIN ACCOUNT
 	db_input high igestis/username || true
 	db_go
-
-    ## AUTOCREATE USER ##
-    db_input high igestis/directory/import || true
-    db_go
 
 	while [ true ] && [ ! "$AUTHENTICATION" = "Internal" ] ; do
 
