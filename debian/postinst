@@ -108,7 +108,7 @@ case "$1" in
 	LDAP_ADMIN="${RET}"
 	
 	if [ -z "$(get_value_global_vars LDAP_PASSWORD)" ] && [ ! "$AUTHENTICATION" = "Internal" ] ; then
-		db_fset igestis/directory/password seen false
+#		db_fset igestis/directory/password seen false ;; Commented to see if useful or not
 		db_input high igestis/directory/password || true
 		db_go
 		db_get igestis/directory/password
@@ -197,7 +197,7 @@ case "$1" in
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE false
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
-			replace_value_global_vars LDAP_CUSTOM_BIND \"cn=%u,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"cn=%u,ou=Users,${LDAP_BASE}\"
 		;;
 
 		"Active Directory")

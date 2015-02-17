@@ -197,7 +197,7 @@ CREATE TABLE `CORE_CONTACTS` (
 --
 
 INSERT INTO `CORE_CONTACTS` (`id`, `user_id`, `login`, `password`, `ssh_password`, `civility_code`, `firstname`, `lastname`, `email`, `nb_login_try`, `last_login_try`, `change_password_request_id`, `change_password_request_date`, `language_code`, `address1`, `address2`, `postal_code`, `city`, `country_code`, `phone1`, `phone2`, `mobile`, `fax`, `main_contact`, `active`) VALUES
-(1, 1, 'root', '', '', 'MR', 'admin', 'admin', '', 0, '0000-00-00 00:00:00', '', '0000-00-00', 'FR', '', '', '', '', 'FR', '', '', '', '', 0, 1);
+(1, 1, 'root', MD5('password'), '', 'MR', 'admin', 'admin', '', 0, '0000-00-00 00:00:00', '', '0000-00-00', 'FR', '', '', '', '', 'FR', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1139,3 +1139,12 @@ CREATE TABLE IF NOT EXISTS `CORE_COMPANY_RIGHTS` (
 
 ALTER TABLE `CORE_COMPANY_RIGHTS`
   ADD CONSTRAINT `CORE_COMPANY_RIGHTS_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `CORE_COMPANIES` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+
+
+CREATE TABLE IF NOT EXISTS `MYSQL_MIGRATION` (
+  `module` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `file` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `imported_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`module`,`file`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='store the database migration informations';
