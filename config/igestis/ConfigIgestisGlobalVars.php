@@ -183,9 +183,9 @@ class ConfigIgestisGlobalVars {
         return self::$params['LDAP_CUSTOM_BIND'];
     }
     
-    public static function ldapCustomFind() {
+    public static function ldapUserFilter() {
         self::initConfigVars();
-        return self::$params['LDAP_CUSTOM_FIND'];
+        return self::$params['LDAP_USER_FILTER'];
     }
     
     public static function ldapAdmin() {
