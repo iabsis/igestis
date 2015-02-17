@@ -23,10 +23,10 @@ fi
 case "$1" in
     purge)
     
-	rm -f /usr/share/igestis/config.ini
 	rm -f /usr/share/igestis/config.php
 	rm -f /etc/igestis/config.php.dpkg-bak
 	rm -f /etc/igestis/config.php
+	rm -f /etc/igestis/config.ini
 	rm -f /etc/igestis/ConfigIgestisGlobalVars.php
 	rm -f /usr/share/igestis/config/igestis/ConfigIgestisGlobalVars.php
 	rm -f /usr/share/igestis/config/igestis/config.ini

@@ -197,6 +197,7 @@ case "$1" in
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE false
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"cn=%u,${LDAP_BASE}\"
 		;;
 
 		"Active Directory")

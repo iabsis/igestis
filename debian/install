@@ -1,4 +1,5 @@
 *.php		usr/share/igestis
+version		usr/share/igestis
 
 includes	usr/share/igestis
 lang		usr/share/igestis

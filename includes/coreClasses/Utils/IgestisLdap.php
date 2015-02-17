@@ -12,7 +12,7 @@ class IgestisLdap {
      * @return \LDAP Ldap connexion
      */
     public static function getConnexion($username = null, $password = null, $ou = null) {
-        $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUri(), \ConfigIgestisGlobalVars::ldapBaseDn(), \ConfigIgestisGlobalVars::ldapVersion());
+        $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
         if (!$username) {
             $username = \ConfigIgestisGlobalVars::ldapAdmin();
             $adminAuth = true;
@@ -21,12 +21,10 @@ class IgestisLdap {
             $password = \ConfigIgestisGlobalVars::ldapPassword();
         }
 
-		
         if(!$adminAuth) {
-            $ldap->bind(str_replace("%u", $username, \ConfigIgestisGlobalVars::ldapCustomBind()), $password);
-        }
-        else {
-            $ldap->bind($username, $password);
+	   $ldap->bind(str_replace("%u", $username, \ConfigIgestisGlobalVars::ldapCustomBind()), $password);
+        } else {
+           $ldap->bind($username, $password);
         }
 
         return $ldap;
@@ -238,7 +236,7 @@ class IgestisLdap {
 
             $ldap = self::getConnexion($login, $plainPassword, \ConfigIgestisGlobalVars::ldapUsersOu());
                         
-            $nodesList = $ldap->find(str_replace("%u", $login, \ConfigIgestisGlobalVars::ldapUserFIlter()));
+            $nodesList = $ldap->find(str_replace("%u", $login, \ConfigIgestisGlobalVars::ldapUserFilter()));
             if(count($nodesList) < 1) return false;
             
             $employee = \CoreUsers::newEmployee();
