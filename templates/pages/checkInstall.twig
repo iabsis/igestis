@@ -272,7 +272,7 @@
             </div>
                         
             <div class="alert alert-info">
-                Once everything's ok, you can remove the install folder in order to start to use igestis. Then, refresh the page, you should automatically be redirected to the login page.
+                {% trans %}Once everything's ok, you can remove the install folder in order to start to use igestis. Then, refresh the page, you should automatically be redirected to the login page.{% endtrans %}
             </div>
         </div>
 
@@ -280,8 +280,11 @@
             $(function() {
 
                 $("#update-db-link").on("click", function() {
-                    bootbox.confirm("Do you confirm that you want update the database ?", function(result) {
-                        if(result) window.location.href = '{{ url('igestis_update_db') }}';
+                    bootbox.confirm("{% trans %}Do you confirm that you want update the database ?{% endtrans %}", function(result) {
+                        if(result) {
+                            window.location.href = '{{ url('igestis_update_db') }}';
+                            $("#update-db-link").attr("disabled", "disabled");
+                        }
                     });
                 }) ;  
             });

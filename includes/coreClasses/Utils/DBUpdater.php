@@ -126,7 +126,7 @@ class DBUpdater
         try {
 
             foreach ($filesList as $currentSqlFile => $fileInfos) {
-                
+                $currentFile = $fileInfos['module'] . " - " . $fileInfos['filename'];
                 $migration = new \MysqlMigration($fileInfos['module'], $fileInfos['filename']);
                 
                 $sql = file_get_contents($currentSqlFile);
@@ -139,8 +139,11 @@ class DBUpdater
             $connexion->commit();
             
         } catch (\Exception $exc) {
-            $connexion->rollback();
-            return false;
+            self::$doctrine->persist($migration);
+            self::$doctrine->flush();
+            $connexion->commit();
+
+            throw new \Exception(sprintf(\Igestis\I18n\Translate::_("An error occurred while parsing the sql '%s' file : %s"), $currentFile, $exc->getMessage()));
         }
         
         return true;

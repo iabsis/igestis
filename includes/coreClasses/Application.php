@@ -75,8 +75,11 @@ class Application {
     private function __construct() {
         // Initialise application configuration
         
-        $installScript = $this->checkInstallScript();
-        
+        if (php_sapi_name() == "cli") {
+            $installScript = false;
+        } else {
+            $installScript = $this->checkInstallScript();
+        }
 
         // Initialize modules list
         $oModulesList = IgestisModulesList::getInstance();

@@ -87,7 +87,7 @@ class IgestisSecurity {
         }
 
 
-        if (!$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
+        if (!empty($_SESSION['sess_login']) && !$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
             // Connexion ...
             if (isset($_POST['sess_login']) && isset($_POST['sess_password']) && $_POST['sess_login'] && $_POST['sess_password']) {
                 

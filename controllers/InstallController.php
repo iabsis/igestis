@@ -145,14 +145,14 @@ class InstallController extends IgestisController {
     
     public function updateDbAction() {
  
-        \Igestis\Utils\DBUpdater::init($this->_em);
-        $importStatus = \Igestis\Utils\DBUpdater::startUpdate();
         
-        if($importStatus) {
-            new wizz(\Igestis\I18n\Translate::_("The mysql database has been successfully imported"), WIZZ_SUCCESS);
-        }
-        else {
-            new wizz(\Igestis\I18n\Translate::_("An error has occured during the import process. Try to import the sql file manually."), WIZZ_SUCCESS);
+
+        try {
+            \Igestis\Utils\DBUpdater::init($this->_em);
+            $importStatus = \Igestis\Utils\DBUpdater::startUpdate();
+            new wizz(\Igestis\I18n\Translate::_("The mysql database has been successfully imported"), \wizz::WIZZ_SUCCESS);
+        } catch (\Exception $e) {
+            new wizz($e->getMessage(), \wizz::WIZZ_ERROR);
         }
         
         $this->redirect(ConfigControllers::createUrl("igestis_install"));
