@@ -74,20 +74,26 @@ class IgestisSecurity {
         $hook = Igestis\Utils\Hook::getInstance();
         
 
-        if (isset($_COOKIE['sess_login']))
+        if (isset($_COOKIE['sess_login'])) {
             $_SESSION['sess_login'] = $_COOKIE['sess_login'];
-        if (isset($_COOKIE['sess_password']))
+        }
+        if (isset($_COOKIE['sess_password'])) {
             $_SESSION['sess_password'] = $_COOKIE['sess_password'];
+        }
 
         // If the user clicks on Sign in, but without a login or a password
         if (isset($_POST['sess_login'])) {
-            if ($_POST['sess_login'] == "" || $_POST['sess_password'] == "" ) {
+            if ($_POST['sess_login'] == "" || $_POST['sess_password'] == "") {
                 new wizz(_("Please specify a login and a password"));
             }
         }
 
+        if (!isset($_SESSION['sess_login'])) {
+            $_SESSION['sess_login'] = null;
+            $_SESSION['sess_password'] = null;
+        }
 
-        if (!empty($_SESSION['sess_login']) && !$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
+        if (!$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
             // Connexion ...
             if (isset($_POST['sess_login']) && isset($_POST['sess_password']) && $_POST['sess_login'] && $_POST['sess_password']) {
                 
