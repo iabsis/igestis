@@ -10,7 +10,7 @@
 GLOBALVARS=/etc/igestis/config.ini
 CACHE_FOLDER="/var/cache/igestis/"
 LOG_FILE="/var/log/igestis/igestis.log"
-
+DATA_FOLDER="/var/lib/igestis/"
 
 replace_value_global_vars()
 {
@@ -81,11 +81,21 @@ case "$1" in
 	mkdir -p $CACHE_FOLDER
 	if [ ! -z "$CACHE_FOLDER" ] ; then rm -rf $CACHE_FOLDER/* ; fi
 
+	# New script to automatically apply SQL updates.
+	php /usr/share/igestis/command.php  databases:update
+
 	## We regenerate the language cache
 	replace_value_global_vars CACHE_FOLDER \"$CACHE_FOLDER\"
 	php /usr/share/doc/igestis/regenLocales.php /usr/share/igestis
 	chown www-data -R $CACHE_FOLDER
 	chmod 700 -R $CACHE_FOLDER
+
+	# We create data folder
+	replace_value_global_vars DATA_FOLDER \"$DATA_FOLDER\"
+	mkdir -p $DATA_FOLDER
+	chown www-data -R $DATA_FOLDER
+	chmod 700 -R $DATA_FOLDER
+	
 
 	# On corrige les droits pour les fichiers de configuration.
 	chown root:www-data -R /etc/igestis/
@@ -227,12 +237,14 @@ case "$1" in
 	db_reset igestis/directory/password || true
 
 	# Configure Apache
-    db_get igestis/reconfigure-webserver
-    webservers="$RET"
+	db_get igestis/reconfigure-webserver
+	webservers="$RET"
+
 
 	for webserver in $webservers; do
 		webserver=${webserver%,}
-		ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis
+		if [ -e /etc/$webserver/conf.d/igestis ] ; then rm /etc/$webserver/conf.d/igestis ; fi
+		ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis.conf
 
 		invoke-rc.d $webserver reload 3>/dev/null || true
 	done
