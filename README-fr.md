@@ -1,55 +1,54 @@
-iGestis installation
-====================
-
 Introduction
 ------------
 
-iGestis is an ERP designed for small companies. iGestis can support the account creation for employees, 
-customers and providers with account access. iGestis can also manage multiple companies with one instance. 
-You can also connect iGestis to a directory of your choice (OpenLDAP, Active Directory,...).
+iGestis est un ERP conçu pour les petites entreprises. iGestis supporte la création de compte d'employés,
+des clients et des founisseurs avec des comptes d'accès. iGestis peut aussi gérer plusieurs sociétés avec
+une seule instance d'installation. Enfin, il est possible de configurer iGestis sur l'annuaire de votre
+choix (OpenLDAP, Active Directory,...).
 
-iGestis needs to have a working database installation to store all information. For the moment, 
-only Mysql is supported.
+iGestis a besoin d'une base de donnée fonctionnelle pour stocker toutes les informations. Pour le moment, 
+seul Mysql est supporté.
 
 Installation
 ------------
 
-You can get iGestis on https://github.com/olivierb2/igestis/releases. This guide assume you have at least 
-iGestis version 3.0.
+Vous pouvez télécharger iGestis sur l'adresse https://github.com/olivierb2/igestis/releases. Ce guide vous
+permet de configurer iGestis version 3.
 
-Once copied to your server, extract the file with your prefered archive manager, or use the command 
-`tar xfz igestis-xx.tar.gz` or `unzip igestis-xx.zip`. Move the extracted folder somewhere not accessible
-by apache, by example **/usr/share/** or **/opt**. Then configure apache with an alias or make a symbolic link
-to let the **public** folder accessible by apache. By example `ln -s /usr/share/igestis/public/ /var/www/igestis`.
-Apache alias can be **Alias /igestis /usr/share/igestis/public**.
+Une fois copié sur le serveur, extraire le fichier avec votre gestionnaire d'archive préféré, ou utilisez la commande
+`tar xfz igestis-xx.tar.gz` ou `unzip igestis-xx.zip`. Déplacez le dossier extrait dans un emplacement non accessble par
+apache, par example **/usr/share/** ou **/opt**. Ensuite configurez apache avec un alias ou créez un lien symbolique afin
+ de rendre le dossier **public** accessible par apache. Par exemple `ln -s /usr/share/igestis/public/ /var/www/igestis`.
+Un Alias pour apache pourrait être **Alias /igestis /usr/share/igestis/public**.
 
-You can already use your prefered web browser and access to the folder something like **http://your_server/igestis**.
-The first time you open this page, you will get an install check page, to check your server settings.
+Vous pouvez désormais utiliser votre navigateur préféré pour accéder à la de votre serveur comme **http://your_server/igestis**.
+La première fois que vous ouvrirez la page, vous accéderez à une page de vérification de l'installation pour vérifier les
+paramètres de votre serveur.
 
 Configuration
 -------------
 
-During the configuration, you can anytime refresh the webpage to check what you done.
+Pendant la configuration, vous pourrez raffraichir la page pour vérifier ce que vous avez corrigé.
 
-### Fix permission right
+### Correction les problèmes de permissions
 
-First off all, make the folder **document** and **cache** writeable for Apache username. Depending of your 
-distribution, let do a `chown www-data documents cache` or `chown apache documents cache`.
+Avant toute chose, rendez le dossier **document** et **cache** inscriptible par le compte Apache. En fonction de votre
+distribution Linux, faite un `chown www-data documents cache` ou `chown apache documents cache`.
 
-### Create the database in MySQL
+### Créez une base MySQL
 
-Create an empty database under MySQL. From command line, you can access to the prompt with the command.
+Créez une base de donnée vide sous MySQL. Depuis la ligne de commande, vous pouvez accéder au shell de Mysql avec :
 
 	mysql -uroot -p
 
-Then create an empty database and user dedicated for iGestis.
+Et créez une base pour iGestis :
 
 	create database igestis;
 	create user 'igestis'@'localhost' identified by 'igestis1234';
 	grant all privileges on igestis.* to 'igestis'@'localhost';
 	quit
 
-Replace igestis1234 by the password you want.
+Remplacez igestis1234 par un mot de passe de votre choix (ou aléatoire).
 
 ### Create the config.ini file.
 
