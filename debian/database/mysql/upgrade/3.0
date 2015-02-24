@@ -1,9 +1,0 @@
-CREATE TABLE IF NOT EXISTS `MYSQL_MIGRATION` (
-  `module` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
-  `file` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
-  `imported_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`module`,`file`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='store the database migration informations';
-
-INSERT INTO `MYSQL_MIGRATION` (`module`, `file`, `imported_at`) VALUES
-('CORE', '20140238-1603-initial', '2015-02-17 14:41:01');

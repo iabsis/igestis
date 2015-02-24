@@ -1,4 +1,0 @@
-dn: uid=root,ou=Users,dc=example,dc=local
-changetype: modify
-replace: userPassword
-userPassword: testtest

@@ -1,3 +1,0 @@
-ErrorDocument 404 /igestis/index.php?Action=error404
-ErrorDocument 403 /igestis/index.php?Action=error403
-ErrorDocument 500 /igestis/error500.html
