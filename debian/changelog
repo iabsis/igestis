@@ -1,3 +1,10 @@
+igestis (3.0.2) wheezy; urgency=medium
+
+  * Bug: fix some form which cannot be valided in Firefox
+  * Change: Week starts now Monday and not Sunday.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 10 Mar 2015 21:06:30 +0100
+
 igestis (3.0.1) wheezy; urgency=medium
 
   * Fixed a regression issue in the authentication.
