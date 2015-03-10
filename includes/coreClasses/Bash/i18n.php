@@ -54,8 +54,13 @@ class i18n extends Command {
         
         
         $igestis = \Application::getInstance();
-        $twigEnv = $igestis->getTwigEnvironnement();
-        $twigEnv->getLoader()->setPaths(array($tplDir, $modulesList->getFolder('core') . '/templates/'));
+        $loader = new \Twig_Loader_Filesystem(array($tplDir, $modulesList->getFolder('core') . '/templates/'));
+        $twigEnv = new \Twig_Environment($loader, array(
+            'cache' => $tmpDir,
+            'auto_reload' => true
+        ));
+        $twigEnv->addExtension(new \Twig_Extensions_Extension_I18nExtended());
+        $twigEnv->addExtension(new \Twig_Extensions_Extension_Url());
         
         // iterate over all your templates
         foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($tplDir), \RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
@@ -69,8 +74,20 @@ class i18n extends Command {
         }
         
         $potFileName = "messages-" . date("Y-m-m-h-i-s") . ".pot";
-        exec("find " . escapeshellarg($modulesList->getFolder($moduleName)) . " -name \\*.php > " . $tmpDir . "phpfiles");
-        exec("find $tmpDir -name \\*.php -exec sed -i 's/>dgettext/ gettext/g' {} \;");
+
+        // Generates a list of the module or core php files to be translated
+        if (strtolower($moduleName) != "core") {
+            exec("find " . escapeshellarg($modulesList->getFolder($moduleName)) . " -name \\*.php > " . $tmpDir . "phpfiles");
+        } else {
+            exec("find " . escapeshellarg($modulesList->getFolder($moduleName)) . " -name \\*.php | grep -v " . escapeshellarg($modulesList->getFolder($moduleName) . "modules") . " | grep -v " . escapeshellarg($modulesList->getFolder($moduleName) . "public/modules") . " > " . $tmpDir . "phpfiles");
+        }
+
+        exec("find " . escapeshellarg($tmpDir) . " -name \\*.php >> " . $tmpDir . "phpfiles");
+
+        // Replace dgettext by gettext which is known by xgettext
+        exec("find " . escapeshellarg($tmpDir) . " -name \\*.php -exec sed -i 's/>dgettext/ gettext/g' {} \;");
+
+        // get text to be translated from the php files
         exec("xgettext --default-domain=messages -p " . $langDir . " -o" . $potFileName . " --from-code=UTF-8 -n --omit-header -L PHP -f " . $tmpDir . "phpfiles");
         exec("rm -rf '$tmpDir'");
         
