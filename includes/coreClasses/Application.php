@@ -339,9 +339,10 @@ class Application {
         if (isset($lang) == false || $lang == "") {
             
             if(!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+                $http_lang = $country = null;
                 $langs = explode(",", $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-                list($http_lang, $country) = explode("-", $langs[0]);
-                $lang = strtoupper($http_lang);
+                $firstLanguage = explode("-", $langs[0]);
+                $lang = strtoupper($firstLanguage[0]);
             }
             else {
                 $lang = "EN";
