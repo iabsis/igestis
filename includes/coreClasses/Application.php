@@ -373,8 +373,8 @@ class Application {
                 if (\ConfigIgestisGlobalVars::debugMode())
                     $getTextCaching->setCachingFor($moduleDatas);
                 $configClass = "\\Igestis\\Modules\\" . $moduleDatas['name'] . "\\ConfigModuleVars";
-                bindtextdomain($configClass::textDomain, \ConfigIgestisGlobalVars::cacheFolder() . '/lang/locale');
-                bind_textdomain_codeset($configClass::textDomain, 'UTF-8');
+                bindtextdomain((method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain), \ConfigIgestisGlobalVars::cacheFolder() . '/lang/locale');
+                bind_textdomain_codeset((method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain), 'UTF-8');
             }
         }
         // Specify the location of the translation tables
@@ -582,7 +582,7 @@ class Application {
         foreach ($this->modulesList as $moduleName => $moduleDatas) {
             if ($moduleDatas['igestisVersion'] == 2 && is_dir($moduleDatas['folder'])) {
                 $configClass = "\\Igestis\\Modules\\" . $moduleDatas['name'] . "\\ConfigModuleVars";
-                $replacement[strtoupper($moduleName) . "_VERSION"] = $configClass::version;
+                $replacement[strtoupper($moduleName) . "_VERSION"] = (method_exists($configClass, "version") ? $configClass::version() : $configClass::version);
             }
         }
 

@@ -5,11 +5,13 @@
  *
  * @author Gilles Hemmerlé
  */
-class ConfigControllers extends IgestisConfigController {
-    //put your code here    
-
-    public static function get() {
-        if(count(self::$routes)) return self::$routes;
+class ConfigControllers extends IgestisConfigController
+{
+    public static function get()
+    {
+        if (count(self::$routes)) {
+            return self::$routes;
+        }
         
         $routes = array(
             
