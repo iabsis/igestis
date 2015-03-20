@@ -1,11 +1,23 @@
-igestis (3.0.1) wheezy; urgency=medium
+igestis (3.0.3) testing; urgency=medium
+
+  * Fix missing fonction used to make exports.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 20 Mar 2015 13:39:09 +0100
+
+igestis (3.0.2) testing; urgency=medium
+
+  * Fix translations.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 10 Mar 2015 18:10:33 +0100
+
+igestis (3.0.1) testing; urgency=medium
 
   * Fixed a regression issue in the authentication.
   * Fix Mysql update system from commande.php.
 
  -- Olivier Bitsch <olivier.b@iabsis.com>  Mon, 23 Feb 2015 20:43:19 +0100
 
-igestis (3.0.0) wheezy; urgency=low
+igestis (3.0.0) testing; urgency=low
 
   * Initial release.
 
