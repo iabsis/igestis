@@ -450,6 +450,34 @@ class Application {
         return $menu->get_array();
     }
 
+    function renderContent($content, $filename="your_file", $ctype="application/force-download") {
+
+        //Begin writing headers
+        header_remove();
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header("Cache-Control: public");
+        //
+        //Use the switch-generated Content-Type
+        header("Content-Type: $ctype");
+        if ($ctype == "application/force-download") {
+            header("Content-Description: File Transfer");
+            $header = "Content-Disposition: attachment; filename=" . $filename . ";";
+        }
+        //Force the download
+        header($header);
+        header("Content-Transfer-Encoding: binary");
+        die($content);
+    }
+
+    /**
+     * @deprecated
+     */
+    function rederContent($content, $filename="your_file", $ctype="application/force-download") {
+        $this->renderContent($content, $filename, $ctype);
+    }
+
     /**
      * Start a file rendering
      * @param string $file File to upload to the user
