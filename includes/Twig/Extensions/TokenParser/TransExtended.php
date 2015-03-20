@@ -90,7 +90,7 @@ class Twig_Extensions_TokenParser_TransExtended extends Twig_Extensions_TokenPar
                     // Other specified module
                     $configClass = "\\Igestis\\Modules\\" . $matches[1] . "\\ConfigModuleVars";
                     if(class_exists($configClass)) {
-                        $domain = $configClass::textDomain;
+                        $domain = (method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain);
                     }
                     break;
             }

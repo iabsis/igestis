@@ -373,8 +373,8 @@ class Application {
                 if (\ConfigIgestisGlobalVars::debugMode())
                     $getTextCaching->setCachingFor($moduleDatas);
                 $configClass = "\\Igestis\\Modules\\" . $moduleDatas['name'] . "\\ConfigModuleVars";
-                bindtextdomain($configClass::textDomain, \ConfigIgestisGlobalVars::cacheFolder() . '/lang/locale');
-                bind_textdomain_codeset($configClass::textDomain, 'UTF-8');
+                bindtextdomain((method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain), \ConfigIgestisGlobalVars::cacheFolder() . '/lang/locale');
+                bind_textdomain_codeset((method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain), 'UTF-8');
             }
         }
         // Specify the location of the translation tables
@@ -448,6 +448,34 @@ class Application {
             }
         }
         return $menu->get_array();
+    }
+
+    function renderContent($content, $filename="your_file", $ctype="application/force-download") {
+
+        //Begin writing headers
+        header_remove();
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header("Cache-Control: public");
+        //
+        //Use the switch-generated Content-Type
+        header("Content-Type: $ctype");
+        if ($ctype == "application/force-download") {
+            header("Content-Description: File Transfer");
+            $header = "Content-Disposition: attachment; filename=" . $filename . ";";
+        }
+        //Force the download
+        header($header);
+        header("Content-Transfer-Encoding: binary");
+        die($content);
+    }
+
+    /**
+     * @deprecated
+     */
+    function rederContent($content, $filename="your_file", $ctype="application/force-download") {
+        $this->renderContent($content, $filename, $ctype);
     }
 
     /**
@@ -582,7 +610,7 @@ class Application {
         foreach ($this->modulesList as $moduleName => $moduleDatas) {
             if ($moduleDatas['igestisVersion'] == 2 && is_dir($moduleDatas['folder'])) {
                 $configClass = "\\Igestis\\Modules\\" . $moduleDatas['name'] . "\\ConfigModuleVars";
-                $replacement[strtoupper($moduleName) . "_VERSION"] = $configClass::version;
+                $replacement[strtoupper($moduleName) . "_VERSION"] = (method_exists($configClass, "version") ? $configClass::version() : $configClass::version);
             }
         }
 

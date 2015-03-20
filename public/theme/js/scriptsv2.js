@@ -704,58 +704,61 @@ $(function() {
 
 // Upload system initialisation
 $(function() {
-    $('a[data-upload-url]').each(function() {
-        var $inputFile = $('<input data-url="' + $(this).data('uploadUrl') + '" type="file" multiple="multiple" name="files[]">').uniqueId().hide();
-        var $progressBar = $('<div id="progress" style=" width: 140px; display:none" class="progress progress-striped active">' +
-                '<div class="bar" style="width: 0%;"></div>' +
-                '</div>');
-        $(this).after($inputFile);
-        $(this).before($progressBar);
-        $(this).unbind("click").bind("click", function() {
-            $("#" + $inputFile.attr('id')).trigger("click");
-        });
-
-        var callbackFunctionName = $(this).data('uploadCallback');
-        
-
-        // Attach the uploader progressbar manager to the file field
-        $($inputFile).fileupload({
-            dataType: 'json',
-            fail: function(e, data) {
-            },
-            done: function(e, data) {
-                var message = $.parseJSON(data.jqXHR.responseText);
-                if (message.files) {
-                    for (i = 0; i < message.files.length; i++) {
-                        if (message.files[i].error) {
-                            var messageText = message.files[i].name + " : " + message.files[i].error;
-                            if(message.files[i].errorButton) {
-                                messageText += "<br />" + message.files[i].errorButton;
-                            }
-                            igestisWizz(messageText, "error", null, true);
-                        }
+   $('a[data-upload-url]').each(function() {
+      var $inputFile = $('<input data-url="' + $(this).data('uploadUrl') + '" type="file" multiple="multiple" name="files[]">').uniqueId().hide();
+      var $progressBar = $('<div id="progress" style=" width: 140px; display:none" class="progress progress-striped active">' +
+                            '<div class="bar" style="width: 0%;"></div>' + 
+                          '</div>');
+      $(this).after($inputFile); 
+      $(this).before($progressBar);
+      $(this).unbind("click").bind("click", function() {
+          $("#" + $inputFile.attr('id')).trigger("click");
+      });
+      
+      var callback = $(this).data('uploadCallback');
+      
+      // Attach the uploader progressbar manager to the file field
+      $($inputFile).fileupload({
+        dataType: 'json',
+        fail: function(e, data) {
+        },
+        done: function (e, data) {
+            var message = $.parseJSON(data.jqXHR.responseText);
+            if(message.files) {
+                for(i = 0; i < message.files.length; i++) {
+                    if(message.files[i].error) {
+                        igestisWizz(message.files[i].name + " : " + message.files[i].error, "error", null, true);
                     }
                 }
-                if(callbackFunctionName) {
-                    eval(callbackFunctionName + "()");
-                }
-            },
-            start: function(e, data) {
-                $progressBar.fadeIn();
-            },
-            always: function(e, data) {
-                $progressBar.fadeOut();
-            },
-            progressall: function(e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#progress .bar').css(
-                    'width',
-                    progress + '%'
-                );
             }
-        });
+            
+            
+            if(callback) {
+                var splitted = callback.split('.');
+                var callbackfunction = null;
+                for(i = 0; i < splitted.length; i++) {
+                    callbackfunction = callbackfunction ? callbackfunction[splitted[i]] : window[splitted[i]];
+                }
+                callbackfunction.call(window, e, data);
+            }
+        },
+        start: function(e, data) {
+            $progressBar.fadeIn();
+        },
+        always: function (e, data) {
+            $progressBar.fadeOut();
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .bar').css(
+                'width',
+                progress + '%'
+            );
+        }
     });
+   });
 });
+
 
 var igestisLockPage = function(msg) {
     igestisWizz(msg);

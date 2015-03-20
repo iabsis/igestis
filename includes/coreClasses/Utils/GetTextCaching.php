@@ -74,7 +74,7 @@ class GetTextCaching {
                         $this->emptyFolder("igestis", $cacheCurrentFolder . "/LC_MESSAGES/");
                     }
                     else {
-                        $this->emptyFolder($configClass::moduleName, $cacheCurrentFolder . "/LC_MESSAGES/");
+                        $this->emptyFolder((method_exists($configClass, "moduleName") ? $configClass::moduleName() : $configClass::moduleName), $cacheCurrentFolder . "/LC_MESSAGES/");
                     }
                     
                     copy($currentFile, $cacheCurrentFile);
