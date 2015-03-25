@@ -69,12 +69,15 @@ class CoreUsers
     private $isActive;
 
     /**
-     * @Id @Column(type="integer") @GeneratedValue
+     * @Id 
+     * @Column(type="integer") 
+     * @GeneratedValue
      */
     private $id;
 
     /**
-     * @Column(type="string", name="client_type_code")
+     * @JoinColumn(name="client_type_code", referencedColumnName="code")
+     * @ManyToOne(targetEntity="CoreClientType")
      * @var CoreClientTypeCode
      */
     private $clientTypeCode;
@@ -530,7 +533,7 @@ class CoreUsers
     public function PrePersist() {
         $mainContact = $this->getMainContact();
         if($this->userType == "client" || $this->userType == "supplier") {
-            if($this->clientTypeCode == "PART") {
+            if($this->clientTypeCode && $this->clientTypeCode->getCode() == "PART") {
                 $this->userLabel = $mainContact->getFirstname() . " " . $mainContact->getLastname();
             }
             else {

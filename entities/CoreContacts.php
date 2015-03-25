@@ -168,7 +168,8 @@ class CoreContacts
     /**
      * Constructor - Initialize some variables
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->active = 1;
         $this->countryCode = null;
         $this->languageCode = null;
@@ -176,7 +177,8 @@ class CoreContacts
         $this->postPersistDisabled = false;
     }
     
-    public function disablePostPersistProcess() {
+    public function disablePostPersistProcess()
+    {
         $this->postPersistDisabled = true;
     }
     
@@ -188,7 +190,9 @@ class CoreContacts
      */
     public function setLogin($login)
     {
-        if($this->initialLogin == "")            $this->initialLogin = $login;
+        if ($this->initialLogin == "") {
+            $this->initialLogin = $login;
+        }
         $this->login = $login;
         return $this;
     }
@@ -683,7 +687,7 @@ class CoreContacts
      * @param string $civilityCode
      * @return CoreContacts
      */
-    public function setCivilityCode( $civilityCode = null)
+    public function setCivilityCode($civilityCode = null)
     {
         $this->civilityCode = $civilityCode;
         return $this;
@@ -705,7 +709,7 @@ class CoreContacts
      * @param string $countryCode
      * @return CoreContacts
      */
-    public function setCountryCode( $countryCode = null)
+    public function setCountryCode($countryCode = null)
     {
         $this->countryCode = $countryCode;
         return $this;
@@ -727,7 +731,7 @@ class CoreContacts
      * @param string $languageCode
      * @return CoreContacts
      */
-    public function setLanguageCode( $languageCode = null)
+    public function setLanguageCode($languageCode = null)
     {
         $this->languageCode = $languageCode;
         return $this;
