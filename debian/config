@@ -95,7 +95,7 @@ case "$AUTHENTICATION" in
 		db_go
 
 		if [ "${AUTHENTICATION}" = "OpenLDAP" ] ; then
-			db_set igestis/directory/custombind "cn=%u,${LDAP_BASE}"
+			db_set igestis/directory/custombind "cn=%u,ou=Users,${LDAP_BASE}"
 		else
 			db_set igestis/directory/custombind "%u@${LDAP_DOMAIN}"
 		fi
