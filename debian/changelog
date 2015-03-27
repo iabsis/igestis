@@ -1,3 +1,15 @@
+igestis (3.0.6) testing; urgency=medium
+
+  * Fix override of Ldap Custom Bind by asking the value.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 27 Mar 2015 09:07:37 +0100
+
+igestis (3.0.4) testing; urgency=medium
+
+  * Fix : regression fix due to clean up. Removed library moved back.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 24 Mar 2015 08:42:46 +0100
+
 igestis (3.0.3) testing; urgency=medium
 
   * Fix missing fonction used to make exports.

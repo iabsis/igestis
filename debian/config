@@ -94,6 +94,14 @@ case "$AUTHENTICATION" in
 		db_input high igestis/directory/import || true
 		db_go
 
+		if [ "${AUTHENTICATION}" = "OpenLDAP" ] ; then
+			db_set igestis/directory/custombind "cn=%u,${LDAP_BASE}"
+		else
+			db_set igestis/directory/custombind "%u@${LDAP_DOMAIN}"
+		fi
+		db_input high igestis/directory/custombind || true
+		db_go
+
 	;;
 
 esac

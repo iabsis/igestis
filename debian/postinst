@@ -116,6 +116,9 @@ case "$1" in
 
 	db_get igestis/directory/admin
 	LDAP_ADMIN="${RET}"
+
+	db_get igestis/directory/custombind
+	LDAP_CUSTOM_BIND="${RET}"
 	
 	if [ -z "$(get_value_global_vars LDAP_PASSWORD)" ] && [ ! "$AUTHENTICATION" = "Internal" ] ; then
 #		db_fset igestis/directory/password seen false ;; Commented to see if useful or not
@@ -171,7 +174,7 @@ case "$1" in
 			replace_value_global_vars LDAP_VERSION 2
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE true
-			replace_value_global_vars LDAP_CUSTOM_BIND \"%u@${LDAP_DOMAIN}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
 		;;
 
@@ -207,7 +210,7 @@ case "$1" in
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE false
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
-			replace_value_global_vars LDAP_CUSTOM_BIND \"cn=%u,ou=Users,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
 		;;
 
 		"Active Directory")
@@ -222,7 +225,7 @@ case "$1" in
 			replace_value_global_vars LDAP_VERSION 3
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE true
-			replace_value_global_vars LDAP_CUSTOM_BIND \"%u@${LDAP_DOMAIN}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
 		;;
 
