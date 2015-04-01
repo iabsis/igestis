@@ -6,3 +6,5 @@ sftp-config.json.buildpath
 sftp-config.json
 debian/igestis
 configure-stamp
+
+.remote-sync.json

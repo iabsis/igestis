@@ -224,6 +224,7 @@ class IgestisSecurity {
             $user_id = $for_user_id;
         }
         $rights_list = $this->get_rights_list($user_id, ($for_user_id != NULL)); //, $this->context);
+
         return empty($rights_list[strtoupper($module_name)]) ? "" : strtoupper($rights_list[strtoupper($module_name)]);
     }
 
@@ -240,9 +241,9 @@ class IgestisSecurity {
             $users_rights = $this->context->entityManager->getRepository("CoreUsersRights")->getUserRights($user_id);
 
             $list = null;
-
             if(is_array($users_rights)) {
                 foreach ($users_rights as $right) {
+                    
                     if($user_id != $this->user->getId()) {
                         $list[strtoupper($right['moduleName'])] = $right['rightCode'];
                     }
@@ -266,7 +267,6 @@ class IgestisSecurity {
             }
         }        
         
-
         if($user_id != $this->user->getId()) {
             return $list;
         }
@@ -295,6 +295,7 @@ class IgestisSecurity {
             }
         }
         
+        
         return $list;
         
     }
@@ -309,8 +310,14 @@ class IgestisSecurity {
         $rightsArray = array();
         
         foreach ($company->getDefaultRightsList() as $companuRight) {
-            $rightsArray[strtoupper($companuRight->getModuleName())] = $companuRight->getRightCode();
+            if ($this->user->getUserType() != \CoreUsers::USER_TYPE_EMPLOYEE) {
+                $rightsArray[strtoupper($companuRight->getModuleName())] = null;
+            } else {
+                $rightsArray[strtoupper($companuRight->getModuleName())] = $companuRight->getRightCode();
+            }
+            
         }
+
         return $rightsArray;
         
     }
