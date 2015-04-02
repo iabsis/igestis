@@ -1,3 +1,9 @@
+igestis (3.0.7) testing; urgency=medium
+
+  * Fix security issue : fix right issue in customer page.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 02 Apr 2015 20:48:52 +0200
+
 igestis (3.0.6) testing; urgency=medium
 
   * Fix override of Ldap Custom Bind by asking the value.
