@@ -288,8 +288,6 @@ $(function() {
             }
 
             // Manage the result 
-            console.log(jsonData);
-            console.log($(this), $(this).attr('id'));
             var jsonData = $.parseJSON($(this).contents().find("body").text());
             if (jsonData !== null)
                 igestisParseJsonAjaxResult(jsonData);
