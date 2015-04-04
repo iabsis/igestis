@@ -213,9 +213,9 @@
                               {% if show is null or show is empty %}{% set show = " " %}{% endif %}
 
                               {% if multiple %}
-                                <option {% if attribute(item, value_column) in selected_value %}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{% trans show %}</option>
+                                <option {% if attribute(item, value_column) in selected_value %}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{{ show|trans }}</option>
                               {% else %}
-                                <option {% if attribute(item, selected_value) %}selected="selected"{% endif %}{% if attribute(item, value_column) == selected_value or (loop.last and loop.first and state == "required")%}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{% trans show %}</option>
+                                <option {% if attribute(item, selected_value) %}selected="selected"{% endif %}{% if attribute(item, value_column) == selected_value or (loop.last and loop.first and state == "required")%}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{{ show|trans }}</option>
                            {% endif %}
                         {% endfor %}
                       </select>

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: iGestis\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-03-10 18:07+0100\n"
+"PO-Revision-Date: 2015-04-04 18:15+0100\n"
 "Last-Translator: Olivier Bitsch <olivier.b@iabsis.com>\n"
 "Language-Team: Iabsis <info@iabsis.com>\n"
 "Language: fr_FR\n"
@@ -2756,6 +2756,24 @@ msgstr ""
 msgid "Do you confirm that you want update the database ?"
 msgstr "Etes-vous sûr de vouloir mettre à jour la base de donnée ?"
 
+msgid "Doctor"
+msgstr "Docteur"
+
+msgid "Miss"
+msgstr "Mademoiselle"
+
+msgid "Mister"
+msgstr "Monsieur"
+
+msgid "Madam"
+msgstr "Madame"
+
+msgid "Collectivity"
+msgstr "Collectivité"
+
+msgid "Individual"
+msgstr "Particulier"
+
 #~ msgid "The apc_fetch is not available"
 #~ msgstr "apc_fetch n'est pas disponible"
 
@@ -3550,15 +3568,3 @@ msgstr "Etes-vous sûr de vouloir mettre à jour la base de donnée ?"
 
 #~ msgid "Chinese"
 #~ msgstr "Chinois"
-
-msgid "Doctor"
-msgstr "Docteur"
-
-msgid "Miss"
-msgstr "Mademoiselle"
-
-msgid "Mister"
-msgstr "Monsieur"
-
-msgid "Madam"
-msgstr "Madame"
