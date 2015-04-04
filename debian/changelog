@@ -1,3 +1,10 @@
+igestis (3.0.9) testing; urgency=medium
+
+  * Feature: ability to define a maximum of login attempt before temporary account disabled.
+  * Feature: ability to disable save session and save credential from browser for security reason.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Sat, 04 Apr 2015 21:19:56 +0200
+
 igestis (3.0.8) testing; urgency=medium
 
   * Fix: removed consolelog in javascript that can cause issue in IE.
