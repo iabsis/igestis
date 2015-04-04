@@ -146,8 +146,18 @@ class CoreContacts
      * @var boolean Tell if yes or not, we need to launch the postpersist so we can disable it for the login process
      */
     private $postPersistDisabled;
-    
 
+    /**
+     * @Column(type="integer", name="consecutive_wrong_login_attempts")
+     * @var string
+     */
+    private $consecutiveWrongLoginAttempts;
+    
+    /**
+     * @Column(type="datetime", name="locked_at")
+     * @var string
+     */
+    private $lockedAt;
 
     /**
      * @var CoreUsers Associated user
@@ -768,6 +778,58 @@ class CoreContacts
     {
         return $this->user;
     }
+
+    /**
+     * Gets the value of lockedAt.
+     *
+     * @return \DateTime
+     */
+    public function getLockedAt()
+    {
+        return $this->lockedAt;
+    }
+
+    /**
+     * Sets the value of lockedAt.
+     *
+     * @param string $lockedAt the locked at
+     *
+     * @return self
+     */
+    public function setLockedAt($lockedAt)
+    {
+        $this->lockedAt = $lockedAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of consecutiveWrongLoginAttempts.
+     *
+     * @return string
+     */
+    public function getConsecutiveWrongLoginAttempts()
+    {
+        return $this->consecutiveWrongLoginAttempts;
+    }
+
+    /**
+     * Sets the value of consecutiveWrongLoginAttempts.
+     *
+     * @param string $consecutiveWrongLoginAttempts the consecutive wrong login attempts
+     *
+     * @return self
+     */
+    public function setConsecutiveWrongLoginAttempts($consecutiveWrongLoginAttempts)
+    {
+        $this->consecutiveWrongLoginAttempts = $consecutiveWrongLoginAttempts;
+
+        return $this;
+    }
+
+    public function newWrongLoginAttempt() {
+        $this->consecutiveWrongLoginAttempts++;
+    }
     
     
     
@@ -1344,5 +1406,4 @@ class CoreContactsRepository extends Doctrine\ORM\EntityRepository {
             ->setMaxResults(1);
         return $qb->getQuery()->getOneOrNullResult();
     }
-
 }

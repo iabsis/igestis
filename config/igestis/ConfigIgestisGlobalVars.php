@@ -4,7 +4,7 @@
  * @Author : Gilles Hemmerlé <gilles.h@iabsis.com>
  */
 
-if(file_exists('/etc/igestis/debian-db.php')) {
+if (file_exists('/etc/igestis/debian-db.php')) {
     include '/etc/igestis/debian-db.php';
     define("IGESTIS_CORE_MYSQL_HOST", $dbserver);
     define("IGESTIS_CORE_MYSQL_LOGIN", $dbuser);
@@ -291,19 +291,45 @@ class ConfigIgestisGlobalVars {
         return true;  // AUTO_CSRF_PROTECTION
     }
     
-    public static function timeZone() {
+    public static function timeZone()
+    {
         self::initConfigVars();
         return self::$params['TIMEZONE'];
     }
     
-    public static function usernameFormat() {
+    public static function usernameFormat()
+    {
         self::initConfigVars();
         return self::$params['USERNAME_FORMAT'];
     }
     
-    public static function passwordFormat() {
+    public static function passwordFormat()
+    {
         self::initConfigVars();
-    	return self::$params['PASSWORD_FORMAT'];
+        return self::$params['PASSWORD_FORMAT'];
+    }
+
+    public static function disableRememberMe()
+    {
+        self::initConfigVars();
+        return self::$params['DISABLE_REMEMBER_ME'];
+    }
+    
+    public static function disableRememberPassword()
+    {
+        self::initConfigVars();
+        return self::$params['DISABLE_REMEMBER_PASSWORD'];
+    }
+
+    public static function bruteForceMaxAttemps()
+    {
+        self::initConfigVars();
+        return self::$params['BRUTE_FORCE_MAX_ATTEMPTS'];
+    }
+
+    public static function bruteForceLockTime()
+    {
+        self::initConfigVars();
+        return self::$params['BRUTE_FORCE_LOCK_TIME'];
     }
 }
-

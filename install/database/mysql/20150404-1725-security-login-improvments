@@ -1,0 +1,2 @@
+ALTER TABLE  `CORE_CONTACTS` ADD  `consecutive_wrong_login_attempts` TINYINT NOT NULL DEFAULT  '0',
+ADD  `locked_at` DATETIME NULL DEFAULT NULL;

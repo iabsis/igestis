@@ -125,11 +125,19 @@ class Application {
 
 
         if(!$installScript) {
-            if (\ConfigIgestisGlobalVars::useLdap()) {
-                $this->security = \IgestisSecurityLdap::init($this);
-            } else {
-                $this->security = \IgestisSecurity::init($this);
+            try {
+                if (\ConfigIgestisGlobalVars::useLdap()) {
+                    $this->security = \IgestisSecurityLdap::init($this);
+                } else {
+                    $this->security = \IgestisSecurity::init($this);
+                }
+            } catch(\Igestis\Exceptions\AuthenticationException $e) {
+                new \wizz($e->getMessage());
+                header("location:" . ConfigControllers::createUrl("login_form", array("Force" => 1)));
+                exit;
             }
+
+            
 
             $this->setLanguage($this->security->contact->getLanguageCode());
         }
