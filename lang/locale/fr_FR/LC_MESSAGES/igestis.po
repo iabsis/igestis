@@ -3550,3 +3550,15 @@ msgstr "Etes-vous sûr de vouloir mettre à jour la base de donnée ?"
 
 #~ msgid "Chinese"
 #~ msgstr "Chinois"
+
+msgid "Doctor"
+msgstr "Docteur"
+
+msgid "Miss"
+msgstr "Mademoiselle"
+
+msgid "Mister"
+msgstr "Monsieur"
+
+msgid "Madam"
+msgstr "Madame"
