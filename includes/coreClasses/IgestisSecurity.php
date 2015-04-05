@@ -93,13 +93,15 @@ class IgestisSecurity {
             $_SESSION['sess_password'] = null;
         }
 
+        $contactRequester = $this->context->entityManager->getRepository("CoreContacts")->findOneBy(array("login" => $_POST['sess_login']));
+
         if (!$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
             // Connexion ...
             if (isset($_POST['sess_login']) && isset($_POST['sess_password']) && $_POST['sess_login'] && $_POST['sess_password']) {
                 
 
                 // Check if the login is not disabled
-                $contactRequester = $this->context->entityManager->getRepository("CoreContacts")->findOneBy(array("login" => $_POST['sess_login']));
+                
 
                 if ($contactRequester && $contactRequester->getLockedAt() != null) {
                     $since_start = $contactRequester->getLockedAt()->diff(new DateTime());
@@ -116,9 +118,9 @@ class IgestisSecurity {
 
                 $hookParameters = new \Igestis\Types\HookParameters();
                 $hookParameters->set("postLogin", $_POST['sess_login']);
-                $hookParameters->set("postPassword", $_POST['sess_password']);                
+                $hookParameters->set("postPassword", $_POST['sess_password']);
                 $hook->callHook("startAuthentication", $hookParameters);
-                if ($this->authenticate($_POST['sess_login'], $_POST['sess_password'])) {  
+                if ($this->authenticate($_POST['sess_login'], $_POST['sess_password'])) {
                     $_SESSION['sess_login'] = $_POST['sess_login'];
                     $_SESSION['sess_password'] = md5($_POST['sess_password']);
                     // Sauvegarde du mot de passe crypté dans mysql
@@ -157,17 +159,21 @@ class IgestisSecurity {
                     $_SESSION['sess_login'] = $_SESSION['sess_password'] = "";
 
                     if ($contactRequester) {
+                        $lockMessage = false;
                         $contactRequester->newWrongLoginAttempt();
-                        if ($contactRequester->getConsecutiveWrongLoginAttempts() > \ConfigIgestisGlobalVars::bruteForceMaxAttemps()) {
+                        if ($contactRequester->getConsecutiveWrongLoginAttempts() >= \ConfigIgestisGlobalVars::bruteForceMaxAttemps()) {
                             $contactRequester->setLockedAt(new \DateTime());
+                            $lockMessage = true;
                         }
 
                         $this->context->entityManager->persist($contactRequester);
-                        
                         $this->context->entityManager->flush();
+
+                        if ($lockMessage) {
+                            throw new \Igestis\Exceptions\AuthenticationException(sprintf(\Igestis\I18n\Translate::_("Your account is currently locked for %s minutes."), \ConfigIgestisGlobalVars::bruteForceLockTime()));
+                        }
                     }
                     
-
                     new wizz(_("Invalid username or password"));
                     $hookParameters = new \Igestis\Types\HookParameters();
                     $hookParameters->set("postLogin", $_POST['sess_login']);

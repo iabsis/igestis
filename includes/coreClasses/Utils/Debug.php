@@ -176,7 +176,6 @@ class Debug {
         else {
             $login = "Anonymous";
         }
-        
         if($logFile !== null) {
             @file_put_contents($logFile, date("Y-m-d H:i:s") . " - " . $login . " - " . $log . "\n", FILE_APPEND);
         }

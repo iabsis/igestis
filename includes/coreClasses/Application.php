@@ -133,7 +133,7 @@ class Application {
                 }
             } catch(\Igestis\Exceptions\AuthenticationException $e) {
                 new \wizz($e->getMessage());
-                header("location:" . ConfigControllers::createUrl("login_form", array("Force" => 1)));
+                header("location:" . ConfigControllers::createUrl("login_form", array("Force" => 0)));
                 exit;
             }
 
