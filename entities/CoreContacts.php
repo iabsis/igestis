@@ -185,6 +185,8 @@ class CoreContacts
         $this->languageCode = null;
         $this->hideQuicktour = 0;
         $this->postPersistDisabled = false;
+        $this->lockedAt = null;
+        $this->consecutiveWrongLoginAttempts = 0;
     }
     
     public function disablePostPersistProcess()
