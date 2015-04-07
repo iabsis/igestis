@@ -72,6 +72,10 @@ class IgestisSecurity {
         $this->user = new CoreUsers();
         
         $hook = Igestis\Utils\Hook::getInstance();
+
+        if (php_sapi_name() == "cli") {
+            return;
+        }
         
 
         if (isset($_COOKIE['sess_login'])) {
