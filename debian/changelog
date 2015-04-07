@@ -1,3 +1,28 @@
+igestis (3.0.14) testing; urgency=medium
+
+  * Fix: remove unused apache configuration on purge.
+  * Feature: support new apache version from jessie.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 07 Apr 2015 14:49:22 +0200
+
+igestis (3.0.13) testing; urgency=medium
+
+  * Fix: missing install folder.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 07 Apr 2015 14:28:17 +0200
+
+igestis (3.0.12) testing; urgency=medium
+
+  * Fix: missing SQL in the initial install.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 07 Apr 2015 14:13:27 +0200
+
+igestis (3.0.11) testing; urgency=medium
+
+  * Fix: SQL import error
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 07 Apr 2015 13:55:49 +0200
+
 igestis (3.0.9) testing; urgency=medium
 
   * Feature: ability to define a maximum of login attempt before temporary account disabled.
