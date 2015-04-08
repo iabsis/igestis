@@ -1,0 +1,12 @@
+{
+  "uploadOnSave": true,
+  "hostname": "igestis3",
+  "port": "22",
+  "target": "/usr/share/igestis/",
+  "ignore": [
+    ".git/**"
+  ],
+  "username": "root",
+  "password": "pfcqopfs",
+  "transport": "scp"
+}

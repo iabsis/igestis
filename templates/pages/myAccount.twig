@@ -1,0 +1,98 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-personal",
+                'title': "My account",
+                'help': "Update your personal information"} %}
+ 
+{% block content %}
+
+
+<div class="well">
+    <form id="form_data" method='post' action=''>
+        <fieldset>
+            <legend>{% trans %}Personal information{% endtrans %}</legend>
+            <div class="row-fluid">
+                <div class="span5">
+                    {{ forms.select('civilityCode', 'Civility'|trans, civilities_list, form_data.civilityCode, 'code', 'label') }}
+                    {{ forms.input('firstname', 'First name'|trans, form_data.firstname, null, null, null, false, "required") }}
+                    {{ forms.input('lastname', 'Last name'|trans, form_data.lastname, null, null, null, false, "required") }}
+                    {{ forms.input('login', 'User name'|trans, form_data.login, "Username not editable"|trans, "Due to some constraints and data depedencies with the employee, this field is not editable."|trans,"", "false", "uneditable") }}
+                    {{ forms.input('password', 'Password'|trans, "", "Change password"|trans, "Let empty will keep the old password. If changed, please choose a good password, with a minimum of 5 caracters."|trans, "password", "false") }}
+                    {{ forms.input('password2', 'Password confirmation'|trans, "", "Confirm the password"|trans, "Password confirmation just confirms that you make an error when you typed the first password."|trans, "password", "false") }}
+
+                    {% if form_data.user.userType == "client" %}
+                        {{ forms.input(null, 'Company'|trans, form_data.user.company.name, null, null, null, null, 'disabled') }}
+                    {% endif %}
+                    {{ forms.input('address1', 'Postal address'|trans, form_data.address1) }}
+                    {{ forms.input('address2', 'Postal address supplement'|trans, form_data.address2) }}
+                    {{ forms.input('postalCode', 'Postal code'|trans, form_data.postalCode) }}
+                    {{ forms.input('city', 'City'|trans, form_data.city) }}
+                </div>
+                <div class="span5 offset1">
+                    {{ forms.input('phone1', 'Phone'|trans, form_data.phone1) }}
+                    {{ forms.input('phone2', 'Phone supplement'|trans, form_data.phone2) }}
+                    {{ forms.input('mobile', 'Mobile phone'|trans, form_data.mobile) }}
+                    {{ forms.input('fax', 'Fax'|trans, form_data.fax) }}
+                    {{ forms.select('countryCode', 'Country'|trans, countries_list, form_data.countryCode, 'code', 'label', true) }}
+                    {{ forms.select('languageCode', 'Language'|trans, languages_list, form_data.languageCode, 'code', 'label', true) }}
+                    {{ forms.input('email', 'Email'|trans, form_data.email) }}
+                </div>
+            </div>
+            <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+                    <input class="btn" type="button" value="{% trans %}Cancel{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+         
+
+<script>
+$(document).ready(function(){
+        $("#form_data").validate({
+                rules:{
+                        firstname:{
+                                required:true
+                        },
+                        lastname:{
+                                required:true
+                        },
+                        password: {
+				minlength: 5
+			},
+                        password2:{
+                                equalTo: "#id-password"
+                        },
+                        login:{
+                                regex: /{{ igestisConfig.get("USERNAME_FORMAT") }}/,
+                                required:true
+                        },
+                        email:{
+                                email: true
+                        },
+                        company:{
+                                required:true
+                        }
+                },
+                errorClass: "help-inline",
+                errorElement: "span",
+                errorPlacement: function(error, element) {
+                        element.parent().after(error);
+                },
+                highlight:function(element, errorClass, validClass) {
+                        $(element).parents('.control-group').removeClass('success');
+                        $(element).parents('.control-group').addClass('error');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                        $(element).parents('.control-group').removeClass('error');
+                        $(element).parents('.control-group').addClass('success');
+                }
+        });
+});
+</script>
+
+    
+{% endblock %}
+    

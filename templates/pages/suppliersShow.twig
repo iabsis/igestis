@@ -1,0 +1,66 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-suppliers",
+                'title': "Show a supplier"|trans,
+                'help': "Show supplier details"|trans} %}
+
+{% block content %}
+
+<div class="well">
+    <legend>{{ show_data.userLabel }}</legend>
+
+    {% if show_data.accountCode is not empty %}{% trans %}Client ID{% endtrans %} : {{ show_data.accountCode }}<br />{% endif %}
+    {% trans %}VAT billed{% endtrans %} : 
+        {% if show_data.tvaInvoice == true %}{% trans %}Yes{% endtrans %}
+        {% else %}{% trans %}No{% endtrans %}
+        {% endif %}<br />
+    {% if show_data.tvaNumber is not empty %}{% trans %}VAT number{% endtrans %} : {{ show_data.tvaNumber }}<br />{% endif %}
+    {% if show_data.rib is not empty %}{% trans %}Bank account number{% endtrans %} : {{ show_data.rib }}<br />{% endif %}
+</div>
+
+
+<legend>{% trans %}Contacts list for {% endtrans %} {{ show_data.userLabel }}</legend>
+
+<div class="container">
+{% for contact in show_data.contacts %}
+
+
+{% if loop.index is odd %}
+        <div class="row-fluid">
+{% endif %}
+
+                <div class="span6">
+                    <div class="well">
+                        <legend>
+                {% for item in civilities_list %}
+                    {% if item.code == contact.civilityCode %}{{ item.label }}{% endif %}
+                {% endfor %}
+                    {{ contact.firstname }} {{ contact.lastname }} <td>{% if contact.mainContact %}<i class="icon-ok" title="{% trans %}Main contact{% endtrans %}"></i>{% endif %}</td>
+                        </legend>
+                <p>
+                    {% if contact.address1 is not empty %}{{ contact.address1 }}{% endif %}<br />
+                    {% if contact.address2 is not empty %}{{ contact.address2 }}<br />{% endif %}
+                    {{ contact.postalCode }} {{ contact.city }}
+                </p>
+            {% trans %}Username{% endtrans %} : {{ contact.login }}<br />
+            {% if contact.email is not empty %}
+                {% trans %}Email{% endtrans %} : <a href="mailto:{{ contact.email }}">{{ contact.email }}</a><br />
+            {% endif %}
+            <p>
+                {% if contact.phone1 is not empty %}<b>{% trans %}Phone{% endtrans %}</b> : {{ contact.phone1 }}<br />{% endif %}
+                {% if contact.phone2 is not empty %}{% trans %}Phone supplement{% endtrans %} : {{ contact.phone2 }}<br />{% endif %}
+                {% if contact.mobile is not empty %}{% trans %}Mobile phone{% endtrans %} : {{ contact.mobile }}<br />{% endif %}
+                {% if contact.fax is not empty %}{% trans %}Fax{% endtrans %} : {{ contact.fax }}{% endif %}
+            </p>
+                        </div>
+                    </div>
+
+{% if loop.index is even or loop.last %}
+                </div>
+{% endif %}
+
+{% endfor %}
+            </div>
+
+            <button onclick="javascript:window.history.go(-1);" class="btn btn-info">{% trans %}Back{% endtrans %}</button>
+{% endblock %}

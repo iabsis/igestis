@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'header.twig' %}
+        {% block cssFiles %}
+            {% include 'css.twig' %}
+        {% endblock %}
+    </head>
+
+
+    <body class="{% if DEBUG_MODE %}debug-mode{% endif %}">
+        {% block translations %}
+            {% include 'translations.twig' %}
+        {% endblock %}
+
+        {% block javascriptFiles %}
+            {% include 'script.twig' %}
+        {% endblock %}
+
+    
+    	{% import "form.twig" as forms %}
+        
+        <div class="wrapper">
+            {% if DEBUG_MODE %}
+                {% include 'debugToolbar.twig' %}
+                <div class="menu">
+            {% endif %}
+                    {% include 'menu.twig' %}
+            {% if DEBUG_MODE %}
+                </div>
+            {% endif %}
+            
+                
+        <header class="header-blue">
+            <div class="container-fluid">
+                <div class="title">
+                {% include 'title.twig' %}
+                    </div>
+            </div>
+        </header>
+        <div class="header-spacer"></div>
+            <div class="content" id="global-page-content">
+                <div class="container-fluid" id="general-container">
+                    {% block modals %}
+                    {% endblock %}
+                    {% if CONTACT.login == ADMIN_ACCOUNT %}
+                        <div class="alert alert-error">
+                            <strong>{% trans from "Module:core" %}Warning!{% endtrans %}</strong><br />
+                            {% trans from "Module:core" %}You are using the root account, which is a system account. Thus, some fonctions will be disabled by default. Please create a new employee whose account will allow you to enjoy all the fonctions.{% endtrans %}<br /><br />
+                            <button class="btn btn-danger" onclick="javascript:window.location.href='{{ url('employees_new') }}'">{% trans from "Module:core" %}Create an employee{% endtrans %}</button>
+                        </div>
+                    {% endif %}
+    
+                    {% include 'wizz.twig' %}
+                    <div class="row-fluid">
+                        {% if sidebar is defined or (MODULE_SIDEBAR is defined and sidebarActivated == true) %}
+                            <div class="span3">
+                              {% block sidebar %}
+                              {% endblock %}
+                            </div>
+                            <div class="span9">
+                        {% endif %}
+                              {% block content %}
+                                  {% trans from "Module:core" %}Don't call this template directly, but extend this template from an other twig{% endtrans %}
+                              {% endblock %}
+                        {% if sidebar is defined or (MODULE_SIDEBAR is defined and sidebarActivated == true) %}
+                            </div>
+                        {% endif %}
+
+                        
+                    </div>
+                    <div class="push"></div>
+                </div><!--/.container-->
+            </div>
+        </div><!--/.wrapper-->
+        <div class="footer">
+                {% include 'footer.twig' %}
+        </div><!--/.footer-->
+        
+    </body>
+</html>

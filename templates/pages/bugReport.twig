@@ -1,0 +1,60 @@
+{% extends "common.twig" %}
+
+{% set title = {'title': "New bug report",
+                'help': "Please fill all information about your bug"} %}
+
+{% block content %}
+
+
+<div class="well">
+    <form id="form_data" method='post' action=''>
+        <fieldset>
+            <legend>Bug request</legend>
+                {{ forms.textarea('bugdoing', 'What was you doing before the bug appears?'|trans, null, null, null, "textarea") }}
+                {{ forms.textarea('bugexpected', 'What was the expected result when the bug appears?'|trans, null, null, null, "textarea") }}
+                {{ forms.textarea('bugappend', 'What happened instead of what you expected?'|trans, null, null, null, "textarea") }}
+                {{ forms.input('email', 'Email on which we can contact you'|trans, form_data.contacts.first.email, null, null) }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">{% trans %}Send{% endtrans %}</button>
+                    <input class="btn" type="button" value="{% trans %}Cancel{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+                </div>
+            </fieldset>
+        </form>
+</div>
+
+<script>
+$(document).ready(function(){
+          $("#form_data").validate({
+                  rules:{
+                  	    bugdoing:{
+                                  required:true
+                          },
+                          bugexpected:{
+                          	    required:true
+                          },
+                          bugappend:{
+                              required:true
+                          },
+                          email:{
+                              required:true,
+                              email:true
+                          }
+                  },
+                  errorClass: "help-inline",
+                  errorElement: "span",
+                  errorPlacement: function(error, element) {
+                      element.parent().after(error);
+                  },
+                  highlight:function(element, errorClass, validClass) {
+                          $(element).parents('.control-group').removeClass('success');
+                          $(element).parents('.control-group').addClass('error');
+                  },
+                  unhighlight: function(element, errorClass, validClass) {
+                          $(element).parents('.control-group').removeClass('error');
+                          $(element).parents('.control-group').addClass('success');
+                  }
+            });
+    });
+</script>
+
+{% endblock %}

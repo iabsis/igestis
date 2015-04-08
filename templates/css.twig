@@ -1,0 +1,21 @@
+<!-- Le styles -->
+<link href="{{ TEMPLATE_URL }}/css/bootstrap.css?{{ CORE_VERSION }}" rel="stylesheet">
+<link href="{{ TEMPLATE_URL }}/css/bootstrap-responsive.css?{{ CORE_VERSION }}" rel="stylesheet">
+<link href="{{ TEMPLATE_URL }}/css/select2.css?{{ CORE_VERSION }}" rel="stylesheet"/>
+<link rel="stylesheet" href="{{ TEMPLATE_URL }}/css/font-awesome.min.css?{{ CORE_VERSION }}">
+<link rel="stylesheet" href="{{ TEMPLATE_URL }}/css/datepicker.css?{{ CORE_VERSION }}">
+<link rel="stylesheet" href="{{ TEMPLATE_URL }}/css/bootstrap-datetimepicker.min.css?{{ CORE_VERSION }}">
+<link rel="stylesheet" href="{{ TEMPLATE_URL }}/css/jasny-bootstrap.css?{{ CORE_VERSION }}">
+<link href="{{ TEMPLATE_URL }}/css/stylesv2.css?{{ CORE_VERSION }}" rel="stylesheet"> 
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if IE 7]>
+<link rel="stylesheet" href="{{ TEMPLATE_URL }}//css/font-awesome-ie7.min.css">
+<![endif]-->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+{% if CUSTOM_CSS %} 
+    <link href="{{ CUSTOM_CSS }}?{{ "now"|date("ydmhis") }}" rel="stylesheet">
+{% endif %}

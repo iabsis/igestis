@@ -1,0 +1,277 @@
+#!/bin/sh
+# postinst script for igestis
+#
+# see: dh_installdeb(1)
+
+. /usr/share/debconf/confmodule
+. /usr/share/dbconfig-common/dpkg/postinst.mysql
+
+# We set some var specific for igestis
+GLOBALVARS=/etc/igestis/config.ini
+CACHE_FOLDER="/var/cache/igestis/"
+LOG_FILE="/var/log/igestis/igestis.log"
+DATA_FOLDER="/var/lib/igestis/"
+
+replace_value_global_vars()
+{
+
+sed -i "s#$1[[:space:]]*=.*#$1 = $2#g" $GLOBALVARS
+sed_return_value=$(grep "^$1[[:space:]]*=.*" $GLOBALVARS | \
+  cut -d= -f 2 | \
+  cut -d" " -f 2)
+
+if [ -z "$sed_return_value" ] ; then
+    echo "$1 = $2" >> $GLOBALVARS
+fi
+
+}
+
+get_value_global_vars()
+{
+
+grep "^$1[[:space:]]*=.*" $GLOBALVARS | \
+  cut -d= -f 2 | \
+  cut -d" " -f 2
+
+}
+
+generate_random_key()
+{
+
+dd if=/dev/urandom bs=1 count=62 2> /dev/null | tr -c -d '[A-Za-z0-9]'
+
+}
+
+
+
+
+#DEBHELPER#
+
+
+case "$1" in
+	configure)
+
+	mkdir -p /etc/igestis/
+	dbc_generate_include=php:/etc/igestis/debian-db.php
+	dbc_go igestis $@
+
+
+	# Config file creation from template.
+	if [ ! -e "$GLOBALVARS" ] ; then
+		FIRST_INSTALL=true
+		touch $GLOBALVARS
+		ln -sf $GLOBALVARS /usr/share/igestis/config/igestis/config.ini
+	fi
+
+	# We generate a random encrypt key.
+	if [ -z "$(get_value_global_vars ENCRYPT_KEY)" ] ; then
+		replace_value_global_vars ENCRYPT_KEY \"$(generate_random_key)\"
+	fi
+
+	## On place le log au bon endroit.
+	mkdir -p $(dirname $LOG_FILE)
+	chown www-data -R $(dirname $LOG_FILE)
+	chmod 750 -R $(dirname $LOG_FILE)
+	replace_value_global_vars LOG_FILE \"$LOG_FILE\"
+
+	# Ensure that the root folder is correctly defined
+	replace_value_global_vars ROOT_FOLDER \"/usr/share/igestis\"
+
+	## We setup the cache folder to the right location
+	mkdir -p $CACHE_FOLDER
+	if [ ! -z "$CACHE_FOLDER" ] ; then rm -rf $CACHE_FOLDER/* ; fi
+
+	# New script to automatically apply SQL updates.
+	php /usr/share/igestis/command.php  databases:update
+	rm -rf /usr/share/igestis/install/
+
+	## We regenerate the language cache
+	replace_value_global_vars CACHE_FOLDER \"$CACHE_FOLDER\"
+	php /usr/share/doc/igestis/regenLocales.php /usr/share/igestis
+	chown www-data -R $CACHE_FOLDER
+	chmod 700 -R $CACHE_FOLDER
+
+	# We create data folder
+	replace_value_global_vars DATA_FOLDER \"$DATA_FOLDER\"
+	mkdir -p $DATA_FOLDER
+	chown www-data -R $DATA_FOLDER
+	chmod 700 -R $DATA_FOLDER
+
+
+	# On corrige les droits pour les fichiers de configuration.
+	chown root:www-data -R /etc/igestis/
+	chmod 750 -R /etc/igestis/
+
+	db_get igestis/password1
+	ROOT_PW="${RET}"
+
+	db_get igestis/authentication
+	AUTHENTICATION="${RET}"
+
+	db_get igestis/directory/base
+	LDAP_DOMAIN="${RET}"
+	LDAP_BASE="dc=`echo $LDAP_DOMAIN | sed 's/^\.//; s/\./,dc=/g'`"
+
+	db_get igestis/directory/uris
+	LDAP_URIS="${RET}"
+
+	db_get igestis/directory/admin
+	LDAP_ADMIN="${RET}"
+
+	db_get igestis/directory/custombind
+	LDAP_CUSTOM_BIND="${RET}"
+
+	if [ -z "$(get_value_global_vars LDAP_PASSWORD)" ] && [ ! "$AUTHENTICATION" = "Internal" ] ; then
+#		db_fset igestis/directory/password seen false ;; Commented to see if useful or not
+		db_input high igestis/directory/password || true
+		db_go
+		db_get igestis/directory/password
+		LDAP_PASS="${RET}"
+	fi
+
+	db_get igestis/directory/password
+	LDAP_PASSWORD="${RET}"
+
+	# Get the new value username for the admin igestis account.
+	db_get igestis/username
+	IGESTIS_CORE_ADMIN="${RET}"
+	if [ ! -z "$IGESTIS_CORE_ADMIN" ] ; then
+		 dbc_mysql_exec_command "update CORE_CONTACTS set login=\"$IGESTIS_CORE_ADMIN\" WHERE CORE_CONTACTS.id=1;"
+	fi
+	replace_value_global_vars USE_LDAP false
+
+	# Get the value for the auto import.
+	db_get igestis/ldap/import
+	AUTO_IMPORT="${RET}"
+	if [ "${AUTO_IMPORT}" = "0" ] ; then
+		AUTO_IMPORT="false"
+	else
+		AUTO_IMPORT="true"
+	fi
+
+	# Retrive right values (disable because whe need suffix for Admin.
+	LDAP_LOGIN=$(echo ${LDAP_ADMIN} | cut -d'@' -f1)
+
+	case "$AUTHENTICATION" in
+
+		Internal)
+			replace_value_global_vars USE_LDAP false
+
+			if [ ! -z "$ROOT_PW" ] ; then
+				dbc_mysql_exec_command "update CORE_CONTACTS set password=md5(\"$ROOT_PW\") WHERE "CORE_CONTACTS"."id"=1;"
+			fi
+			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
+		;;
+
+		Samba4)
+			replace_value_global_vars USE_LDAP true
+			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
+			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
+			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
+			replace_value_global_vars LDAP_USERS_OU \"cn=Users,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_SUPPLIERS_OU \"ou=Suppliers,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_VERSION 2
+			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
+			replace_value_global_vars LDAP_AD_MODE true
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
+			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
+		;;
+
+		OpenLDAP)
+			for i in igestis-populate.ldif root-pw-ch.ldif root-pw-exp.ldif ; do
+				sed -i -e "s/dc=.*,dc=.*/${LDAP_BASE}/g" /usr/share/doc/igestis/ldap/$i
+			done
+
+			# Adding the right OU.
+			#ldapadd -Y EXTERNAL -H ldapi:/// -f /usr/share/doc/igestis/ldap/igestis-populate.ldif || true
+			ldapadd -cxD "${LDAP_ADMIN}" -w ${LDAP_PASSWORD} -f /usr/share/doc/igestis/ldap/igestis-populate.ldif > /dev/null 2>&1 || true
+
+			# On remplace ce mot de passe dans le fichier ldif puis on applique ce changement dans la base LDAP.
+			# Enfin on replace ce mot de passe par 123456 pour ne pas garder de trace du mot de passe.
+			sed -i -e "s/userPassword:.*/userPassword:\ ${ROOT_PW}/g" \
+			  /usr/share/doc/igestis/ldap/root-pw-ch.ldif > /dev/null 2>&1
+			ldapmodify -cxD "${LDAP_ADMIN}" -w ${LDAP_PASSWORD} -f /usr/share/doc/igestis/ldap/root-pw-ch.ldif > /dev/null 2>&1 || true
+			sed -i -e "s/userPassword:.*/userPassword:\ 123456/g" \
+			  /usr/share/doc/igestis/ldap/root-pw-ch.ldif
+
+			# Small patch avoid the password expiring in old igestis version.
+			ldapmodify -cxD "${LDAP_ADMIN}" -w ${LDAP_PASSWORD} -f /usr/share/doc/igestis/ldap/root-pw-exp.ldif > /dev/null 2>&1 || true
+
+			replace_value_global_vars USE_LDAP true
+			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
+			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
+			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
+			replace_value_global_vars LDAP_USERS_OU \"ou=Users,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_SUPPLIERS_OU \"ou=Suppliers,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_VERSION 3
+			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
+			replace_value_global_vars LDAP_AD_MODE false
+			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
+		;;
+
+		"Active Directory")
+			replace_value_global_vars USE_LDAP true
+			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
+			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
+			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
+			replace_value_global_vars LDAP_USERS_OU \"cn=Users,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_SUPPLIERS_OU \"ou=Suppliers,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_VERSION 3
+			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
+			replace_value_global_vars LDAP_AD_MODE true
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
+			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
+		;;
+
+	esac
+
+	db_input high igestis/reconfigure-webserver || true
+	db_go
+
+	# Clean all saved password from the config.
+	db_reset igestis/password1 || true
+	db_reset igestis/password2 || true
+	db_reset igestis/directory/password || true
+
+	# Configure Apache
+	db_get igestis/reconfigure-webserver
+	webservers="$RET"
+
+
+	for webserver in $webservers; do
+		webserver=${webserver%,}
+
+		if [ -e /etc/$webserver/conf.d/igestis ] ; then rm /etc/$webserver/conf.d/igestis ; fi
+		if [ -d /etc/$webserver/conf.d/ ] ; then ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis.conf ; fi
+    if [ -d /etc/$webserver/conf-available/ ] ; then ln -sf /etc/igestis/apache.conf /etc/$webserver/conf-available/igestis.conf ; fi
+
+    a2enconf=$(which a2enconf) && ${a2enconf} igestis
+
+		invoke-rc.d $webserver reload 3>/dev/null || true
+	done
+
+	;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+
+	;;
+
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 1
+	;;
+esac
+
+# dh_installdeb will replace this with shell code automatically
+# generated by other debhelper scripts.
+
+#DEBHELPER#
+
+exit 0

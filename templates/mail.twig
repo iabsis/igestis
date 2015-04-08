@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    
+.header-blue {
+    background-color: #002d3f;
+    background-position: left;
+    background-image: url("{{ TEMPLATE_URL }}/images/header_background.png");
+    height: 61px;
+    background-repeat: no-repeat;
+}
+</style>
+<body>
+    <div class="header-blue"></div>
+
+    {% block content %}
+            {% trans from "Module:core" %}Don't call this template directly, but extend this template from an other twig{% endtrans %}
+    {% endblock %}
+ 
+</body>
+</html>

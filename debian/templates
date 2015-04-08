@@ -1,0 +1,103 @@
+Template: igestis/password1
+Type: password
+_Description: New iGestis root password :
+ In order to access on iGestis, you need to specify a non empty password
+ for the default root account. Please don't use this account for
+ daily works.
+ .
+ If you choose to use LDAP on next step, the root account entry will be also
+ created with this same password.
+
+Template: igestis/password2
+Type: password
+_Description: Confirm password :
+ Please enter the root password for the root in LDAP directory again to verify
+ that you have typed it correctly.
+
+Template: igestis/username
+Type: string
+Default: root
+_Description: Choose the admin account name :
+ You can customise the default admin account name for iGestis.
+ Keep the "root" account by default if you are unsure. If you use Samba4,
+ the best value is probably "administrator".
+
+Template: igestis/password/mismatch
+Type: note
+_Description: Password mismatch.
+ The two passwords you entered were not the same. Please try again.
+
+Template: igestis/password/empty
+Type: note
+_Description: Password cannot be empty.
+ The root password cannot be empty. Please try again.
+
+Template: igestis/authentication
+Type: select
+Default: Internal
+Choices: Internal, OpenLDAP, Samba4, Active Directory
+_Description: Choose the wanted authentication method :
+ iGestis can connect and synchronise users information with an external
+ directory. Internal authenticated means all users password will be
+ stored in MySQL database itself.
+
+Template: igestis/reconfigure-webserver
+Type: multiselect
+Default: apache2
+Choices: apache2
+_Description: Web server to reconfigure automatically :
+ Please choose the web server that should be automatically configured
+ to run iGestis. The webserver will be automatically restart once
+ configured.
+
+Template: igestis/directory/base
+Type: string
+Description: Specify the directory base tree :
+ iGestis needs to know your directory base.
+
+Template: igestis/directory/admin
+Type: string
+Description: Specify the directory admin account for the directory :
+ iGestis needs to know your directory admin account.
+
+Template: igestis/directory/password
+Type: password
+_Description: Please specify the admin password for the directory :
+ iGestis needs to know your directory admin password.
+
+Template: igestis/directory/uris
+Type: string
+Default: ldap://localhost:389
+Description: Specify the uris for the directory :
+ iGestis needs to know your directory uris.
+
+Template: igestis/directory/import
+Type: boolean
+Default: 1
+Description: Create a user in iGestis when present in the directory ?
+ If a user already exists in the database but was not created from
+ iGestis, the user can be created automatically in iGestis database
+ on the first login.
+
+
+Template: igestis/directory/wrong
+Type: select
+Choices: Cancel, Change settings, Try again, Ignore
+Description: Error while trying to communicate with your directory.
+ iGestis got an error while it tries to communicate with your directory
+ service.
+ .
+ The error was :
+ ${error}
+
+Template: igestis/directory/custombind
+Type: string
+Default: cn=%u,dc=example,dc=local
+Description: Specify the way that iGestis will bind you directory
+ iGestis needs to know the username format to be used with your directory.
+ OpenLDAP commonly uses cn=%u,dc=example,dc=local while Active
+ Directory uses %u@example.local.
+ .
+ The %u variable represents the iGestis username.
+ .
+ If you are unsure of this value, keep the recommanded chosen for you.

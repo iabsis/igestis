@@ -1,0 +1,19 @@
+{% extends 'common.twig' %}
+
+{% set title = {'title': "Help"|trans} %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row-fluid">
+        <ul>
+          <li><a href="{{ url('quick_tour') }}">{% trans %}See again the quick tour{% endtrans %}</a></li>
+          <li><a href="http://www.igestis.org/projects/igestis/wiki">{% trans %}iGestis support website{% endtrans %}</a></li>
+        </ul>
+        <input class="btn btn-info" type="button" value="{% trans %}Back{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+    </div>
+</div>
+
+
+{% endblock %}

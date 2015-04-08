@@ -1,0 +1,11 @@
+{% if id %}
+    <a href="#{{ id }}" data-toggle="modal">
+        {{ linkName }}
+    </a>
+{% endif %}
+
+{% if onclick %}
+    <a href="javascript:;" onclick="javascript:{{ onclick }}">
+        {{ linkName }}
+    </a>
+{% endif %}

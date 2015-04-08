@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# summary of how this script can be called:
+#        * <new-preinst> install
+#        * <new-preinst> install <old-version>
+#        * <new-preinst> upgrade <old-version>
+#        * <old-preinst> abort-upgrade <new-version>
+#
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+# We move old style config file.
+CONFFILE=/etc/igestis/config.php
+if [ -e "$CONFFILE" ] ; then
+    mkdir -p /var/backup/igestis/ && chmod 700 /var/backup/igestis/
+    mv $CONFFILE /var/backup/igestis/config.php
+fi
+
+## If we have the old global vars way.
+GLOBALVARS=/etc/igestis/ConfigIgestisGlobalVars.php
+if [ -e "$GLOBALVARS" ] ; then
+	mkdir -p /var/backup/igestis/ && chmod 700 /var/backup/igestis/
+	mv $GLOBALVARS /var/backup/igestis/IgestisConfigGlobalVars.php
+	rm -f /usr/share/igestis/config/igestis/IgestisConfigGlobalVars.php
+fi
+
+#DEBHELPER#
+exit 0

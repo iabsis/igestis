@@ -1,0 +1,15 @@
+{% for items in WIZZ %}
+
+    {% if items.type == "WIZZ_ERROR" %}{% set type = "error" %}
+    {% elseif items.type == "WIZZ_INFO" %}{% set type = "info" %}
+    {% elseif items.type == "WIZZ_SUCCESS" %}{% set type = "success" %}
+    {% elseif items.type == "WIZZ_WARNING" %}{% set type = "block" %}
+    {% else %}{% set type = items.type %}
+    {% endif %}
+
+    <div class="alert alert-{{ type|default("success")}}">
+        <a class="close" data-dismiss="alert">×</a>
+        {% set message = items.message %}
+        {% trans from "Module:core" message %}
+    </div>
+{% endfor %}

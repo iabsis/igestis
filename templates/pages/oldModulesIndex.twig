@@ -1,0 +1,41 @@
+<body>
+
+          <!-- Full screen message --> 
+          <div id="fullscreen_contnair">
+            <div id="full_screen_background"></div>
+            <div id="full_screen_message"></div>
+        </div>
+
+
+        <div id="wrap">
+            <div id="inner_wrap">
+                <div id="header" >
+                    <div id="help_panel">
+                        <span>
+                            <h1>Page title</h1>
+                            <h2>Page help</h2>
+                        </span>
+			</div>			
+		</div>
+			
+		<ul id="main_menu">
+			<ul class="nav nav-pills nav-stacked">
+                        {% for item in SIDEBAR_MENU %}
+                        <li {% if item.active %}class="active"{% endif %} ><a href="{{ item.link}}">{{ item.name }}</a></li>
+                        {% endfor %}
+                        </ul>
+		</ul>
+		
+		<!-- Main content -->
+		<div class="main_content">
+			<div class="main_content_left">
+				<div class="main_content_right">
+                                    {{ PAGE_CONTENT }}
+                                </div>
+			</div>
+		</div>
+		<div class="push"></div>		
+	</div>
+</div>
+
+</body>

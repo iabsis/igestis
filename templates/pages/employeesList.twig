@@ -1,0 +1,60 @@
+{% extends 'common.twig' %}
+
+{% set title = {'logo': "emblem-people",
+                'title': "Employees management"|trans,
+                'help': "Add and remove your employees account and information"|trans} %}
+
+{% block content %}
+
+<script type="text/javascript">
+    function delete_employee(id) {
+        bootbox.confirm("{% trans %}Are you sure that you want to delete this employee ?{% endtrans %}", "{% trans %}No{% endtrans %}", "{% trans %}Yes{% endtrans %}", function(result) {
+            if(result) window.location.href="{{ url('employees_delete', {"Id":''}) }}" + id;
+        });
+    }
+</script>
+
+<div class="pull-right">
+        <a href="{{ url('employees_new') }}" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> {% trans %}Add new employee{% endtrans %}</a>
+</div>
+<br /><br />
+
+{% import "table.twig" as table %}
+{{ table.datatable() }}
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-condensed table-striped" id="table_data">
+    <thead>
+        <tr>
+            <th>{% trans %}Denomination{% endtrans %}</th>
+            <th class="">{% trans %}Mail{% endtrans %}</th>
+            <th class="hidden-phone">{% trans %}Phone{% endtrans %}</th>
+            <th class="hidden-phone">{% trans %}Mobile{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in table_data %}
+            <tr>
+                <td>{{ row.user.userLabel }}</td>
+                <td>{{ row.email }}</td>  
+                <td class="hidden-phone">{{ row.phone1 }}</td> 
+                <td class="hidden-phone">{{ row.mobile }}</td>
+                <td>
+                    <a href="{{ url('employees_show', {'Id':row.user.id}) }}" class="btn btn-mini a-visible-line-on-over">
+                        <i class="icon-eye-open"></i> {% trans %}View{% endtrans %}
+                    </a>
+                {% if RIGHTS_LIST.CORE == "ADMIN" %}
+                    <a href="{{ url('employees_edit', {'Id':row.user.id}) }}" class="btn btn-mini a-visible-line-on-over">
+                        <i class="icon-edit"></i> {% trans %}Edit{% endtrans %}
+                    </a>
+                    <a href="javascript:delete_employee('{{ row.user.id }}')" class="btn btn-danger btn-mini a-visible-line-on-over">
+                        <i class="icon-trash icon-white"></i> {% trans %}Delete{% endtrans %}
+                    </a>
+                 {% endif %}
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

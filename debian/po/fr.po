@@ -1,0 +1,180 @@
+# samba debconf screens: French translation.
+# Copyright (C) 2006-2009, Olivier Bitsch <olivier.b@iabsis.com>
+# This file is distributed under the same license as the samba package.
+# Olivier Bitsch <olivier.b@iabsis.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fr\n"
+"Report-Msgid-Bugs-To: igestis-ldap@packages.debian.org\n"
+"POT-Creation-Date: 2011-08-11 16:02+0200\n"
+"PO-Revision-Date: 2011-08-11 16:09+0200\n"
+"Last-Translator: Olivier Bitsch <olivier.b@iabsis.com>\n"
+"Language-Team: Français <info@iabsis.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: test\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: s\n"
+
+#. Type: bolean
+#. Description
+#: ../templates:1001
+msgid "Automatic configuration for samba"
+msgstr "Configuration automatique pour samba."
+
+#. Type: bolean
+#. Description
+#: ../templates:1001
+msgid ""
+"Samba needs to works with Ldap and shares must be setuped in order to work "
+"with igestis. Please confirm that you want update. The old config file will "
+"be keeped in"
+msgstr ""
+"Samba a besoin de fonctionner avec Ldap et les partages seront configurer "
+"automatiquement afin de fonctionner avec iGestis. Si vous préférer gérez "
+"vous même la configuration de Samba (déconseillé) veuillez répondre non. "
+"Dans l'affirmative, le fichier de configuration actuel sera sauvegardé."
+
+#. Type: password
+#. Description
+#: ../templates:2001
+msgid "Administrator password:"
+msgstr "Mot de passe administrateur"
+
+#. Type: password
+#. Description
+#: ../templates:2001
+msgid ""
+"Please enter the password for the root account entry in LDAP directory. This "
+"password will be used as well on iGestis."
+msgstr ""
+"Veuillez choisir un mot de passe pour le compte root dans votre annuaire "
+"LDAP.Ce mot de passe sera utilisé pour la première connexion à iGestis."
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "Confirm password:"
+msgstr "Veuillez confirmer le mot de passe:"
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid ""
+"Please enter the root password for the root in LDAP directory again to "
+"verify that you have typed it correctly."
+msgstr ""
+"Veuillez encore entrer le mot de passe root précédemment saisi afin de vé"
+"rifier que vous l'avez entré correctement."
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid "Password mismatch"
+msgstr "mots de passe invalident"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid "The two passwords you entered were not the same. Please try again."
+msgstr ""
+"Les deux mots de passe entrés ne correspondent pas. Veuillez réessayer."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "Workgroup/Domain Name:"
+msgstr "Nom de domaine ou de groupe de travail :"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"Please specify the workgroup for this system.  This setting controls which "
+"workgroup the system will appear in when used as a server, the default "
+"workgroup to be used when browsing with various frontends, and the domain "
+"name used with the \"security=domain\" setting."
+msgstr ""
+"Veuillez indiquer le groupe de travail pour ce système. Ce réglage dé"
+"finit le groupe de travail où le système apparaîtra s'il est utilisé "
+"comme serveur, le groupe de travail utilisé par défaut avec les divers "
+"outils de Samba ainsi que le nom de domaine utilisé le cas échéant avec "
+"le paramètre « security=domain »."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid "LDAP server URI:"
+msgstr "URI du serveur LDAP:"
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"Please enter the Uniform Resource Identifier of the LDAP server. The format "
+"is 'ldap://<hostname_or_IP_address>:<port>/'. Alternatively, 'ldaps://' or "
+"'ldapi://' can be used. The port number is optional."
+msgstr ""
+"Veuillez entrer l'identifiant uniforme de ressource du serveur LDAP (URI). "
+"Le format est 'ldap://<nom d'hôte_or_adresse_IP>:<port>/'. 'ldaps://' ou "
+"'ldapi://' peuvent également être utilisés. Le numéro du port est "
+"optionnel."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"When using an ldap or ldaps scheme it is recommended to use an IP address to "
+"avoid failures when domain name services are unavailable."
+msgstr ""
+"Lorsque vous utilisez un schema ldap ou ldaps, il est recommandé d'utiliser "
+"une adresse IP afin d'éviter les échecs lorsque les services de nom de "
+"domaines sont inaccessibles."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid "Multiple URIs can be specified by separating them with spaces."
+msgstr ""
+"Plusieurs URIs peuvent être spécifiés en les séparant par des espaces."
+
+#. Type: string
+#. Description
+#: ../templates:7001
+msgid "LDAP server search base:"
+msgstr "Base de recherche du serveur LDAP :"
+
+#. Type: string
+#. Description
+#: ../templates:7001
+msgid ""
+"Please enter the distinguished name of the LDAP search base. Many sites use "
+"the components of their domain names for this purpose. For example, the "
+"domain \"example.net\" would use \"dc=example,dc=net\" as the distinguished "
+"name of the search base."
+msgstr ""
+"Veuillez entrer le nom distinctif de la base de recherche LDAP. Beaucoup de "
+"sites utiles leur nom de domaine pour cet usage. Par exemple, le domaine "
+"\"exemple.net\" deviendrait \"dc=exemple,dc=net\" comme nom distinctif de la "
+"base de recherche LDAP."
+
+#. Type: password
+#. Description
+#: ../templates:8001
+#| msgid "LDAP server URI:"
+msgid "LDAP server password:"
+msgstr "Mot de passe pour le serveur LDAP:"
+
+#. Type: password
+#. Description
+#: ../templates:8001
+msgid ""
+"Please enter your LDAP password for the admin account. iGestis will "
+"automatically insert the right LDAP schema and will populate in order to "
+"have the correct use."
+msgstr ""
+"Veuillez entrer le mot de passe LDAP pour le compte admin. iGestis va "
+"ajouter automatiquement à votre serveur LDAP les schémas nécessaire au "
+"bon fonctionnement d'iGestis."

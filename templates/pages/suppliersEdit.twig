@@ -1,0 +1,199 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-suppliers",
+                'title': "Edit a supplier"|trans,
+                'help': "Modify the information about the selected supplier"|trans} %}
+
+{% block content %}
+
+<div id="new_contact" class="modal hide fade">
+    {% include 'ajax/modalContactsEdit.twig' %}
+</div>
+
+<div class="well">
+    <form id="form_data" method='post' action=''>
+        <fieldset>
+            <legend>General information</legend>
+        {{ forms.input('userLabel', 'Showed name'|trans, form_data.userLabel, "Set the showed name"|trans, "The showed named is the company name in this case."|trans, null, null, "required") }}
+        {{ forms.input('accountCode', 'Client ID'|trans, form_data.accountCode, "Set the supplier ID"|trans, "This field can be used to set a customized identifier linked with an external software"|trans) }}
+        {{ forms.input('tvaNumber', 'VAT number'|trans, form_data.tvaNumber) }}
+        {{ forms.switchbox('tvaInvoice', 'VAT billed'|trans, form_data.tvaInvoice, null, null, "checkbox") }}
+        {{ forms.input('rib', 'Bank account number'|trans, form_data.rib) }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+                    <input class="btn" type="button" value="{% trans %}Cancel{% endtrans %}" onclick="javascript:history.go(-1);return true;">
+                </div>
+            </fieldset>
+        </form>
+</div>
+
+<legend>{% trans %}Contacts list for {% endtrans %} {{ form_data.userLabel }}</legend>
+
+
+{% import "table.twig" as table %}
+{{ table.datatable() }}
+
+            <div class="row-fluid">
+                <div class="pull-right">
+                        <a onclick="javascript:edit_contact('0')" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> {% trans %}Add new contact{% endtrans %}</a>
+                </div>
+            </div>
+            <br />
+            
+            <div class="row-fluid">
+                <div id="contact_edit">
+                    {% include 'ajax/tableContactsList.twig' %}
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                function delete_contact(contactId) {
+                    var url = "{{ url('ajax_delete_contact', {'ContactId' : ''}) }}";
+                    url += contactId;
+                    bootbox.confirm("{% trans %}Are you sure that you want to delete this contact ?{% endtrans %}",
+                                    "{% trans %}No{% endtrans %}",
+                                    "{% trans %}Yes{% endtrans %}",
+                                    function(result) {
+                        if(result) {
+                            $.post(url, "")
+                                .success(function(data) {
+                                        var result = JSON.parse(data);
+                                        if(result.error) {
+                                            bootbox.alert(result.error);
+                                        }
+                                        else if(result.successful) {
+                                            $("#contact_edit").html(result.successful);
+                                            $("#new_contact").modal("hide");
+                                            IgestisInitTable();
+                                        }
+                                        else {
+                                            bootbox.alert(data);
+                                        }
+                                })
+                                .error(function() { /* Manage errors */ })
+                                .complete(function() { /* Complete */ });
+                        }
+                    });
+                }
+
+                function edit_contact(contactId) {
+                    var url = "{{ url('ajax_get_contact', {'ContactId' : ''}) }}";
+                    url += contactId;
+
+                    var parser = new IgestisPopulateAjaxForms();
+                    parser.setValidator(initContactModalFormValidator);
+                    parser.start(url, $("#new_contact"));
+                }
+                $(document).ready(function(){
+                    $("#form_data").validate({
+                                ignore: "input[type='text']:hidden",
+                                rules:{
+                                    userLabel:{
+                                            required:true
+                                    }
+                                },
+                                errorClass: "help-inline",
+                                errorElement: "span",
+                                errorPlacement: function(error, element) {
+                                    element.parent().after(error);
+                                },
+                                highlight:function(element, errorClass, validClass) {
+                                        $(element).parents('.control-group').removeClass('success');
+                                        $(element).parents('.control-group').addClass('error');
+                                },
+                                unhighlight: function(element, errorClass, validClass) {
+                                        $(element).parents('.control-group').removeClass('error');
+                                        $(element).parents('.control-group').addClass('success');
+                                }
+                            });
+                        });
+
+
+                var initContactModalFormValidator = function() {
+                    // Init the validate method for the contact modal
+                    $("#contact_data").validate({
+                        rules:{
+                            firstname:{
+                                required:true
+                            },
+                            lastname:{
+                                required:true
+                            },
+                            password: {
+                                minlength: 5
+                            },
+                            password2:{
+                                equalTo: "#id-password"
+                            },
+                            login:{
+                                regex: /{{ igestisConfig.get("USERNAME_FORMAT") }}/,
+                                required:true,
+                                LoginNotExists: $("#id-login").val()
+                            },
+                            email:{
+                                email: true
+                            },
+                            phone1: {
+                                unique: true
+                            },
+                            phone2: {
+                                unique: true
+                            },
+                            mobile: {
+                                unique: true
+                            },
+                            address1: {
+                                unique: true
+                            },
+                            address2: {
+                                unique: true
+                            }
+                        },
+                        messages: {
+                            login: {
+                                regex: jQuery.format(translations.loginformat)
+                            }
+                        },
+                        errorClass: "help-inline",
+                        errorElement: "span",
+                        errorPlacement: function(error, element) {
+                            element.parent().after(error);
+                        },
+                        highlight:function(element, errorClass, validClass) {
+                            $(element).parents('.control-group').removeClass('success');
+                            $(element).parents('.control-group').addClass('error');
+                        },
+                        unhighlight: function(element, errorClass, validClass) {
+                            $(element).parents('.control-group').removeClass('error');
+                            $(element).parents('.control-group').addClass('success');
+                        },
+                        submitHandler: function(form) {
+                            var url = "{{ url('ajax_edit_contact', {'UserId' : form_data.id, 'ContactId' : ''}) }}";
+                            url += $("#CurrentContactId").val();
+                            $.post(url, $(form).serialize())
+                                    .success(function(data) {
+                                        var result = JSON.parse(data);
+                                        if(result.error) {
+                                            bootbox.alert(result.error);
+                                        }
+                                        else if(result.successful) {
+                                            $("#contact_edit").html(result.successful);
+                                            $("#new_contact").modal("hide");
+                                            IgestisInitTable();
+                                        }
+                                        else {
+                                            bootbox.alert(data);
+                                        }
+                                    })
+                                    .error(function() { /* Manage errors */ })
+                                    .complete(function() { /* Complete */ });
+                        }
+                    });
+                }
+
+                $(function() {
+                    initContactModalFormValidator();
+                });
+                </script>
+
+{% endblock %}

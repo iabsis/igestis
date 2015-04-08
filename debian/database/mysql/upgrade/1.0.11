@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `USERPREFS` (
+  `option` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `value` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `contact_id` mediumint(9) NOT NULL,
+  PRIMARY KEY  (`option`,`contact_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

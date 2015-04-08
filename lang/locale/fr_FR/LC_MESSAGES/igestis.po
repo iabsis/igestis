@@ -1,0 +1,3570 @@
+#
+# Olivier Bitsch <olivier.b@iabsis.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: iGestis\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-04-04 18:15+0100\n"
+"Last-Translator: Olivier Bitsch <olivier.b@iabsis.com>\n"
+"Language-Team: Iabsis <info@iabsis.com>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: /home/olivierb/Développements/igestis/igestis/trunk/\n"
+"X-Poedit-KeywordsList: _;gettext;dgettext\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SearchPath-0: tmp\n"
+
+#: /var/www/includes/coreClasses/../../controllers/CoreAjaxController.php:52
+msgid "No scanner found"
+msgstr "Aucun scanner trouvé"
+
+#: /var/www/includes/coreClasses/../../controllers/DepartmentsController.php:28
+#: /var/www/includes/coreClasses/../../controllers/DepartmentsController.php:108
+msgid "The department name is a required field"
+msgstr "Le nom du département est un champ requis"
+
+#: /var/www/includes/coreClasses/../../controllers/DepartmentsController.php:64
+#: /var/www/includes/coreClasses/../../controllers/DepartmentsController.php:122
+msgid "The department data has been successfully saved"
+msgstr "Les données du département ont été enregistrées avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/DepartmentsController.php:95
+msgid "The department has been successfully deleted"
+msgstr "Le département a été supprimé avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/EmployeesController.php:29
+#: /var/www/includes/coreClasses/../../controllers/EmployeesController.php:127
+msgid "The employee has not been found"
+msgstr "L'employé n'a pas été trouvé"
+
+#: /var/www/includes/coreClasses/../../controllers/EmployeesController.php:97
+#: /var/www/includes/coreClasses/../../controllers/EmployeesController.php:226
+msgid "The employee data have been successfully saved"
+msgstr "Les données de l'employé ont été enregistrées avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/EmployeesController.php:152
+msgid "The employee has been successfully deleted"
+msgstr "L'employé a été supprimé avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/EmployeesController.php:254
+msgid "The Employee has not been found"
+msgstr "L'employé n'a pas été trouvé"
+
+#: /var/www/includes/coreClasses/../../controllers/AdminController.php:43
+msgid "The twig cache has correctly been cleared."
+msgstr "Le cache Twig a été vidé avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/AdminController.php:50
+msgid "The lang cache has correctly been reloaded."
+msgstr "Le cache des langues a été raffraichi avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/CustomersAjaxController.php:58
+msgid "No post datas"
+msgstr "Pas de post datas"
+
+#: /var/www/includes/coreClasses/../../controllers/MyAccountController.php:33
+msgid "Data have been successfully saved"
+msgstr "Les données ont été enregistrées avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:55
+msgid "Thanks to complete this form in order to reset your password"
+msgstr ""
+"Merci de complété ce formulaire afin de réinitialiser votre mot de passe"
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:70
+msgid "User not known"
+msgstr "Utilisateur inconnu"
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:88
+msgid "Password reset request"
+msgstr "Requête de ré-initialisation de mot de passe"
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:118
+msgid ""
+"This password reset key code is unknown. Thanks to try the process again"
+msgstr ""
+"La clé de réinitialisation de mot de passe est inconnue. Merci de "
+"recommencer le processus."
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:129
+msgid ""
+"The new password has been saved. You can try to login with your new password"
+msgstr ""
+"Le nouveau mot de passe a été sauvegardé. Vous pouvez désormais l'utiliser "
+"pour vous authentifier."
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:183
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:28
+msgid "New feature request"
+msgstr "Besoin de nouveauté ?"
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:200
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:245
+msgid "Thanks for your request, an email will be sent to igestis developpers."
+msgstr ""
+"Merci pour votre demande, un mail a été envoyé aux développeurs d'iGestis"
+
+#: /var/www/includes/coreClasses/../../controllers/HomePageController.php:228
+msgid "New bug report"
+msgstr "Rapport de bug"
+
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:34
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:91
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:187
+msgid "The customer has not been found"
+msgstr "Le client n'a pas été trouvé"
+
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:58
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:155
+msgid "The customer data have been successfully saved"
+msgstr "Les données du client ont été enregistrées avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:110
+msgid "The customer has been successfully deleted"
+msgstr "Le client a été supprimé avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:269
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:252
+msgid "The file contains no usable datas"
+msgstr "Le fichier ne contient pas de donnée utilisable"
+
+#: /var/www/includes/coreClasses/../../controllers/CustomersController.php:294
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:277
+msgid "Thanks to select one or more entries from the table"
+msgstr "Veuillez sélectionner une ou plusieurs entrées du tableau"
+
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:36
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:90
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:186
+msgid "The supplier has not been found"
+msgstr "Le fournisseur n'a pas été trouvé"
+
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:60
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:154
+msgid "The supplier data have been successfully saved"
+msgstr "Les données du fournisseur ont été enregistrées avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/SuppliersController.php:109
+msgid "The supplier has been successfully deleted"
+msgstr "Le fournisseur a été supprimé avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/InstallController.php:15
+msgid ""
+"iGestis has detected the '/public/' prefix in the current url. This is not "
+"safe, you should create a virtualhost that point directly into the '/public' "
+"folder to disallow the access to the rest of the application from the "
+"browser."
+msgstr ""
+"iGestis a détecté le prefix '/public/' dans l'url courante. Ceci n'est pas "
+"sécurité et vous devriez créer un hôte virtuel qui pointe directement dans "
+"le sous dossier '/public' afin de bloquer l'accès aux autres éléments de "
+"l'application depuis le navigateur."
+
+#: /var/www/includes/coreClasses/../../controllers/InstallController.php:28
+#: /var/www/includes/coreClasses/../../controllers/InstallController.php:29
+#: /var/www/includes/coreClasses/../../controllers/InstallController.php:30
+msgid "Failed"
+msgstr "Echec"
+
+#: /var/www/includes/coreClasses/../../controllers/InstallController.php:153
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Bash/DatabaseUpdater.php:30
+msgid "The mysql database has been successfully imported"
+msgstr "La base de données a été sauvegardée avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/CompaniesController.php:28
+#: /var/www/includes/coreClasses/../../controllers/CompaniesController.php:143
+msgid "The company name is a required field"
+msgstr "Le nom de la société est un champ requis"
+
+#: /var/www/includes/coreClasses/../../controllers/CompaniesController.php:98
+#: /var/www/includes/coreClasses/../../controllers/CompaniesController.php:197
+msgid "The company data have been successfully saved"
+msgstr "Les données de la société ont été enregistrées avec succès"
+
+#: /var/www/includes/coreClasses/../../controllers/CompaniesController.php:129
+msgid "The company has been successfully deleted"
+msgstr "La société a été supprimée avec succès"
+
+#: /var/www/includes/coreClasses/../../includes/Oldaphp/LDAP.php:54
+#, php-format
+msgid "Connection to %s failed"
+msgstr "Connexion a %s échoué"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:175
+msgid ""
+"The default credentials after a new install are : root / password. Remember "
+"to change them if that's not already done."
+msgstr ""
+"Les identifiants par défaut après une nouvelle installation sont : root / "
+"password. N'oubliez pas de les changer si ce n'est pas déjà fait."
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:428
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:430
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:432
+msgid "Contacts"
+msgstr "Contacts"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:428
+msgid "Employees"
+msgstr "Employés"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:430
+msgid "Customers"
+msgstr "Clients"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:432
+msgid "Suppliers"
+msgstr "Fournisseurs"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:433
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:434
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:435
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:436
+msgid "Administration"
+msgstr "Administration"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:433
+msgid "My companies"
+msgstr "Mes sociétés"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:434
+msgid "Departments"
+msgstr "Départements"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:435
+#: /tmp/igestis/core-54ff09419c44e/b9/51/d8aa012b9ed9d8ef968d418edba7.php:28
+msgid "Modules and addons"
+msgstr "Modules additionnels"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Application.php:436
+msgid "Maintenance"
+msgstr "Maintenance"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvSuppliers.php:31
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvCustomers.php:31
+msgid "Login column was not found"
+msgstr "La colonne Login n'est pas trouvée"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvSuppliers.php:47
+msgid "This login is already associated to a non supplier contact"
+msgstr "Cet identifiant est déjà associé à un contact non fournisseur"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvSuppliers.php:67
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvCustomers.php:67
+msgid "Persisting the new user :"
+msgstr "Enregistrement du nouvel utilisateur :"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvSuppliers.php:96
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvCustomers.php:96
+#, php-format
+msgid "%d added, %d updated, %d passed"
+msgstr "%d ajouté, %d mis à jour, %d ignoré"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Core/ImportCsvCustomers.php:47
+msgid "This login is already associated to an employee"
+msgstr "Cet identifiant est déjà associé à un employé"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Utils/Scanner.php:22
+msgid "Command not found"
+msgstr "Commande introuvable"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Utils/Scanner.php:50
+msgid "No label"
+msgstr "Pas de label"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Utils/Scanner.php:80
+#, php-format
+msgid ""
+"The '%s' folder is not writeable. Unable to scan document into this folder"
+msgstr ""
+"Le dossier '%s' n'est pas inscriptible. Impossible de numériser le document "
+"dans le dossier"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Utils/Scanner.php:83
+#, php-format
+msgid ""
+"The file '%s' already exists and is not deletable. Unable to scan document."
+msgstr ""
+"Le fichier '%s' existe déjà ou ne peut pas être supprimé. Impossible de "
+"numériser le document."
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Utils/IgestisLdap.php:274
+msgid "There is not any company to import the user in"
+msgstr "Il n'y a pas de société pour importer l'utilisateur automatiquement"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Utils/IgestisLdap.php:282
+msgid "Unable to retrieve datas from the LDAP / Active directory server"
+msgstr ""
+"Impossible de récupérer les données depuis l'annuaire LDAP / Active directory"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Utils/DBUpdater.php:146
+#, php-format
+msgid "An error occurred while parsing the sql '%s' file : %s"
+msgstr "Une erreur s'est produite pendant le traitement du fichier '%s' : '%s'"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:87
+msgid "Please specify a login and a password"
+msgstr "Veuillez choisir un identifiant et un mot de passe"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:137
+msgid "Invalid username or password"
+msgstr "Nom d'utilisateur ou mot de passe invalide"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:456
+msgid "None"
+msgstr "Aucun"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:456
+msgid "No privileges"
+msgstr "Aucun privilège"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:457
+msgid "Administrator"
+msgstr "Administrateur"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:457
+msgid "Can do everything"
+msgstr "Aucune restriction"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:458
+msgid "Employee"
+msgstr "Employés"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisSecurity.php:458
+msgid "Can edit customers and show employees"
+msgstr "Peut modifier les clients et voir les employés"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisErrors.php:27
+msgid ""
+"Unable to delete this row. It has some associated datas on the application"
+msgstr ""
+"Impossible de supprimer cette ligne, elle est associée à des données dans "
+"l'application"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Apis/ImportCsvDatas.php:59
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Apis/ImportCsvDatas.php:227
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Apis/ImportCsvDatas.php:271
+msgid "The scriptName is required"
+msgstr "Le scriptName est requis"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Apis/ImportCsvDatas.php:77
+msgid "The csv file does not exists or is not readable"
+msgstr "Le fichier csv n'existe pas ou n'est pas lisible"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Bash/i18n.php:38
+#, php-format
+msgid "The '%s' module doest not exist"
+msgstr "Le module '%s' n'existe pas"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Bash/i18n.php:72
+#, php-format
+msgid "Compiling '%s' ..."
+msgstr "Compilation '%s' ..."
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Bash/i18n.php:95
+#, php-format
+msgid "Done. The new '%s' POT file has been created."
+msgstr "Fat. Le nouveau fichier POT '%s' a été créé."
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Bash/DatabaseUpdater.php:33
+msgid ""
+"An error has occured during the import process. Try to import the sql file "
+"manually."
+msgstr ""
+"Une erreur s'est produite pendant le processus d'import. Essayez d'importer "
+"le fichier SQL manuellement."
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/IgestisParseRequest.php:105
+msgid "Route not known for url :"
+msgstr "Route introuvable pour l'url :"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Ajax/AjaxResult.php:31
+msgid "A key is required to send a data to ajax script"
+msgstr "Une clé est nécessaire afin d'envoyer une donnée au script ajax"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Ajax/AjaxResult.php:34
+msgid "successful and error are reserved keywords"
+msgstr "successful et error sont des mots clés réservés"
+
+#: /var/www/includes/coreClasses/../../includes/coreClasses/Ajax/AjaxResult.php:59
+msgid "Error occured during ajax statement"
+msgstr "Une erreur s'est produite pendant le traitement de l'ajax"
+
+#: /var/www/includes/coreClasses/../../entities/CoreContacts.php:881
+msgid "This person already exists in LDAP and it's not an employee"
+msgstr "Cette personne existe déjà dans l'annuaire mais n'est pas un employé"
+
+#: /var/www/includes/coreClasses/../../entities/CoreContacts.php:970
+#: /var/www/includes/coreClasses/../../entities/CoreContacts.php:1027
+msgid "This login already exists in LDAP as employee"
+msgstr "Cet identifiant est déjà existant dans l'annuaire LDAP"
+
+#: /var/www/includes/coreClasses/../../entities/CoreContacts.php:1080
+#, php-format
+msgid "Warning : Unknown '%s' user type"
+msgstr "Attention : type d'utilisateur '%s' inconnu"
+
+#: /var/www/includes/coreClasses/../../entities/CoreContacts.php:1110
+msgid ""
+"Error : LDAP_USER_RDN cannot be set to true. Please set to false or a custom "
+"value"
+msgstr ""
+"Erreur : LDAP_USER_RDN ne peut pas être défini sur \"true\". Veuillez le "
+"définir à \"false\" ou bien choisir une valeur personnalisée"
+
+#: /var/www/includes/coreClasses/../../config/igestis/ConfigIgestisGlobalVars.php:89
+msgid "The config.ini file is not found or not readable"
+msgstr "Le fichier config.ini est introuvable ou n'est pas lisible"
+
+#: /var/www/includes/coreClasses/../../config/igestis/ConfigIgestisGlobalVars.php:93
+msgid "The config.ini file contains errors"
+msgstr "Le fichier config.ini contient des erreurs"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:50
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:49
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:156
+#: /var/www/includes/coreClasses/../../cache/twig/5f/1d/f82bb19a27dcc84dd1fc11f13142.php:110
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:49
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:156
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:127
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:480
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:492
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:273
+#: /tmp/igestis/core-54ff09419c44e/b1/b2/7ec5d3c91a7fa5ca1cd474884d2f.php:110
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:255
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:50
+msgid "Warning!"
+msgstr "Attention !"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:54
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:53
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:53
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:54
+msgid "You must first create at least one company before adding an employee."
+msgstr ""
+"Vous devez d'abord créer au moins une société avant de pouvoir ajouter un "
+"employé."
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:58
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:59
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:59
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:58
+msgid "Create a company"
+msgstr "Créer une société"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:75
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:75
+msgid "Modification of"
+msgstr "Modification de"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:190
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:188
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:188
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:190
+msgid "Account information"
+msgstr "Informations concernant ce compte"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:215
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:226
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:213
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:224
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:213
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:224
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:215
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:226
+msgid "Department"
+msgstr "Départements"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:222
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:220
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:220
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:222
+msgid "Sel"
+msgstr "Sel"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:230
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:228
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:228
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:112
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:113
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:230
+msgid "Description"
+msgstr "Description"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:273
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:273
+msgid "Custom application rights"
+msgstr "Droits de l'application personnalisé"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:357
+#: /var/www/includes/coreClasses/../../cache/twig/86/4b/1b4826e868f8d97f602c299cb8c5.php:218
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:132
+#: /var/www/includes/coreClasses/../../cache/twig/a4/08/bf63602920d82150ee1c4d97d91f.php:226
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:352
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:352
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:226
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:71
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:132
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:67
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:165
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:132
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:218
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:135
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:53
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:161
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:357
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:63
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:75
+msgid "Save changes"
+msgstr "Enregistrer les modifications"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:361
+#: /var/www/includes/coreClasses/../../cache/twig/86/4b/1b4826e868f8d97f602c299cb8c5.php:222
+#: /var/www/includes/coreClasses/../../cache/twig/a4/08/bf63602920d82150ee1c4d97d91f.php:230
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:356
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:356
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:230
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:75
+#: /tmp/igestis/core-54ff09419c44e/b8/17/dc7bda72a7e12e992f878b5e3a3c.php:65
+#: /tmp/igestis/core-54ff09419c44e/50/82/a7b4e8ee664a3d7cd63e96c5e694.php:49
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:71
+#: /tmp/igestis/core-54ff09419c44e/80/9a/09687e831dc358d82fb0bc8d878e.php:49
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:169
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:136
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:64
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:222
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:57
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:165
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:361
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:67
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:107
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:79
+msgid "Cancel"
+msgstr "Annuler"
+
+#: /var/www/includes/coreClasses/../../cache/twig/22/b7/286ad9e22b290f488a343e6b7a1a.php:442
+#: /var/www/includes/coreClasses/../../cache/twig/86/4b/1b4826e868f8d97f602c299cb8c5.php:264
+#: /var/www/includes/coreClasses/../../cache/twig/a4/08/bf63602920d82150ee1c4d97d91f.php:280
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:440
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:444
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:280
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:113
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:264
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:442
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:110
+msgid "Nothing to edit."
+msgstr "Rien n'est à modifier"
+
+#: /var/www/includes/coreClasses/../../cache/twig/86/4b/1b4826e868f8d97f602c299cb8c5.php:134
+#: /var/www/includes/coreClasses/../../cache/twig/a4/08/bf63602920d82150ee1c4d97d91f.php:140
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:140
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:134
+msgid "Default users rights"
+msgstr "Droit utilisateur par défaut"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:63
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:63
+msgid "Are you sure that you want to restore the default page ?"
+msgstr "Etes-vous sûr de vouloir restaurer la page d'origine ?"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:65
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:43
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:43
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:48
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:1412
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:129
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:43
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:48
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:43
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:65
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:121
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:165
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:176
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:187
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:198
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:209
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:220
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:231
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:242
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:253
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:264
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:275
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:286
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:297
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:308
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:319
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:330
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:359
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:122
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:166
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:177
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:188
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:199
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:210
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:221
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:232
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:243
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:254
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:265
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:276
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:298
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:309
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:320
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:331
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:342
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:371
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:79
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:62
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:133
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:483
+msgid "No"
+msgstr "Non"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:67
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:45
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:45
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:50
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:1402
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:133
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:45
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:50
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:45
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:67
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:132
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:143
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:154
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:361
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:133
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:144
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:155
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:287
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:373
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:75
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:58
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:137
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:479
+msgid "Yes"
+msgstr "Oui"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:90
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:90
+msgid "Error during ajax statement"
+msgstr "Erreur pendant le traitement ajax"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:117
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:117
+msgid "Edit the home page"
+msgstr "Modifier la page d'accueil"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:140
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:140
+msgid "Edit this page"
+msgstr "Modifier cette page"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:146
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:146
+msgid "Revert to original state"
+msgstr "Revenir à la page d'origine"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:174
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:174
+msgid "Welcome to iGestis !!"
+msgstr "Bienvenue sur iGestis !!"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:178
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:178
+msgid ""
+"It seems this is the first time you log in iGestis. You can have a quick "
+"tour of what you can do with iGestis."
+msgstr ""
+"Il semblerait que ce soit la première fois que vous vous connectez sur "
+"iGestis. Vous pouvez avoir un aperçu rapide de ce que vous pouvez faire avec "
+"iGestis."
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:185
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:185
+msgid "See a quick tour"
+msgstr "Avoir un aperçu "
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:218
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:28
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:218
+msgid "Companies management"
+msgstr "Gestion des sociétés"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:224
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:224
+msgid "Add a company"
+msgstr "Ajouter une société"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:228
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:228
+msgid "View all companies"
+msgstr "Voir toutes les sociétés"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:247
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:28
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:247
+msgid "Employees management"
+msgstr "Gestion des employés"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:253
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:253
+msgid "Add an employee"
+msgstr "Ajouter un employé"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:257
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:257
+msgid "View all employees"
+msgstr "Voir tous les employés"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:290
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:290
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:28
+msgid "Customers management"
+msgstr "Gestion des clients"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:296
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:296
+msgid "Add a customer"
+msgstr "Ajouter un client"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:300
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:300
+msgid "View all customers"
+msgstr "Voir tous les clients"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:319
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:319
+msgid "Providers management"
+msgstr "Gestion des fournisseurs"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:325
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:325
+msgid "Add a provider"
+msgstr "Ajouter un fournisseur"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:329
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:329
+msgid "View all providers"
+msgstr "Voir tous les fournisseurs"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:356
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:399
+#: /var/www/includes/coreClasses/../../cache/twig/b7/17/db7c3c4323fff8d90e43a54bffbc.php:179
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:356
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:399
+#: /tmp/igestis/core-54ff09419c44e/57/1c/cb26c26fe5a7b3bc1db5c83e7b7f.php:179
+msgid "My account"
+msgstr "Mon compte"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:362
+#: /var/www/includes/coreClasses/../../cache/twig/b6/10/c71682b99f86f16831c4ca9a7456.php:405
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:362
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:405
+msgid "Update my personnal details"
+msgstr "Mettre à jour mes informations personnelles"
+
+#: /var/www/includes/coreClasses/../../cache/twig/10/1e/ebce3725579203210024f58f7f56.php:53
+#: /tmp/igestis/core-54ff09419c44e/82/16/41a9822a0ad176f91bf29afb8130.php:53
+msgid "Authentication"
+msgstr "Authentification"
+
+#: /var/www/includes/coreClasses/../../cache/twig/10/1e/ebce3725579203210024f58f7f56.php:57
+#: /tmp/igestis/core-54ff09419c44e/82/16/41a9822a0ad176f91bf29afb8130.php:57
+msgid "Login"
+msgstr "Identifiant"
+
+#: /var/www/includes/coreClasses/../../cache/twig/10/1e/ebce3725579203210024f58f7f56.php:61
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:200
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:55
+#: /tmp/igestis/core-54ff09419c44e/82/16/41a9822a0ad176f91bf29afb8130.php:61
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:104
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:65
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:75
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:100
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:202
+msgid "Password"
+msgstr "Mot de passe"
+
+#: /var/www/includes/coreClasses/../../cache/twig/10/1e/ebce3725579203210024f58f7f56.php:66
+#: /tmp/igestis/core-54ff09419c44e/82/16/41a9822a0ad176f91bf29afb8130.php:66
+msgid "Remember me"
+msgstr "Se souvenir de moi"
+
+#: /var/www/includes/coreClasses/../../cache/twig/10/1e/ebce3725579203210024f58f7f56.php:71
+#: /tmp/igestis/core-54ff09419c44e/82/16/41a9822a0ad176f91bf29afb8130.php:71
+msgid "Sign in"
+msgstr "Connexion"
+
+#: /var/www/includes/coreClasses/../../cache/twig/10/1e/ebce3725579203210024f58f7f56.php:77
+#: /tmp/igestis/core-54ff09419c44e/82/16/41a9822a0ad176f91bf29afb8130.php:77
+msgid "Lost password"
+msgstr "Mot de passe oublié"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:41
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:41
+msgid "Are you sure that you want to delete this employee ?"
+msgstr "Etes-vous sûr de vouloir supprimer cet employé ?"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:60
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:60
+msgid "Add new employee"
+msgstr "Ajouter un  nouvel employé"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:77
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:77
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:402
+msgid "Denomination"
+msgstr "Dénomination"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:81
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:81
+msgid "Mail"
+msgstr "Adresse mail"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:85
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:85
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:39
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:116
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:75
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:85
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:85
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:72
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:398
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:71
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:410
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:219
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:146
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:101
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:74
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:115
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:202
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:142
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:117
+msgid "Phone"
+msgstr "Téléphone"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:89
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:89
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:43
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:89
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:89
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:402
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:414
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:154
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:123
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:150
+msgid "Mobile"
+msgstr "Téléphone portable"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:93
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:93
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:90
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:47
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:93
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:90
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:93
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:406
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:418
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:158
+msgid "Actions"
+msgstr "Actions"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:128
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:128
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:117
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:128
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:117
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:128
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:441
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:453
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:190
+msgid "View"
+msgstr "Afficher"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:140
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:137
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:126
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:90
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:140
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:126
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:137
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:450
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:462
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:196
+msgid "Edit"
+msgstr "Modifier"
+
+#: /var/www/includes/coreClasses/../../cache/twig/99/bc/d82fa8338994172b6d2d1beaeaf3.php:149
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:146
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:135
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:99
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:149
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:135
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:146
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:459
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:471
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:205
+msgid "Delete"
+msgstr "Supprimer"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b7/17/db7c3c4323fff8d90e43a54bffbc.php:166
+#: /tmp/igestis/core-54ff09419c44e/57/1c/cb26c26fe5a7b3bc1db5c83e7b7f.php:166
+msgid "Logged in as"
+msgstr "Connecté en tant que"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b7/17/db7c3c4323fff8d90e43a54bffbc.php:185
+#: /tmp/igestis/core-54ff09419c44e/57/1c/cb26c26fe5a7b3bc1db5c83e7b7f.php:185
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: /var/www/includes/coreClasses/../../cache/twig/b7/17/db7c3c4323fff8d90e43a54bffbc.php:197
+#: /tmp/igestis/core-54ff09419c44e/57/1c/cb26c26fe5a7b3bc1db5c83e7b7f.php:197
+msgid "Not Logged in"
+msgstr "Non connecté"
+
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:327
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:425
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:525
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:602
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:854
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:327
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:425
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:525
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:602
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:854
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:108
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:109
+msgid "Required"
+msgstr "Obligatoire"
+
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:619
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:619
+msgid "Browse"
+msgstr "Parcourir"
+
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:738
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:748
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:738
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:748
+msgid "Select image"
+msgstr "Sélectionnez l'image"
+
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:742
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:752
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:742
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:752
+msgid "Change"
+msgstr "Changer"
+
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:770
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:778
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:770
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:778
+msgid "Remove"
+msgstr "Supprimer"
+
+#: /var/www/includes/coreClasses/../../cache/twig/88/f1/9c1406e1fdf93cdcb3e2da9dcd02.php:858
+#: /tmp/igestis/core-54ff09419c44e/2c/55/d8a9d7291d1c6bf8d480021cf4e2.php:858
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:209
+msgid "Choose a value"
+msgstr "Choisir un paramètre"
+
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:41
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:41
+msgid "Are you sure that you want to delete this company ?"
+msgstr "Etes-vous sûr de vouloir supprimer cette société ?"
+
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:60
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:60
+msgid "Add new company"
+msgstr "Ajouter une nouvelle société"
+
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:77
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:51
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:77
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:390
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:60
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:50
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:56
+msgid "Company name"
+msgstr "Raison sociale"
+
+#: /var/www/includes/coreClasses/../../cache/twig/38/d3/04e7e807e65df7f6903fd122e030.php:81
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:162
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:71
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:81
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:394
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:406
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:138
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:95
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:70
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:107
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:134
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:164
+msgid "City"
+msgstr "Ville"
+
+#: /var/www/includes/coreClasses/../../cache/twig/15/e5/4460d22da9ba316a78e287239ce0.php:34
+#: /tmp/igestis/core-54ff09419c44e/94/40/a106a0b04ebba33351593fee86de.php:34
+msgid "About iGestis"
+msgstr "A propos d'iGestis"
+
+#: /var/www/includes/coreClasses/../../cache/twig/15/e5/4460d22da9ba316a78e287239ce0.php:38
+#: /tmp/igestis/core-54ff09419c44e/94/40/a106a0b04ebba33351593fee86de.php:38
+msgid "Need help?"
+msgstr "Besoin d'aide ?"
+
+#: /var/www/includes/coreClasses/../../cache/twig/15/e5/4460d22da9ba316a78e287239ce0.php:46
+#: /tmp/igestis/core-54ff09419c44e/94/40/a106a0b04ebba33351593fee86de.php:46
+msgid "Need new feature?"
+msgstr "Besoin de nouveauté ?"
+
+#: /var/www/includes/coreClasses/../../cache/twig/15/e5/4460d22da9ba316a78e287239ce0.php:50
+#: /tmp/igestis/core-54ff09419c44e/94/40/a106a0b04ebba33351593fee86de.php:50
+msgid "Bug report"
+msgstr "Rapport de bug"
+
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:76
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:76
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:43
+msgid "Personal information"
+msgstr "Informations personnelles"
+
+#: /var/www/includes/coreClasses/../../cache/twig/8a/b1/876caa5413d4f4128864ece0359e.php:270
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:270
+msgid "Application rights"
+msgstr "Droits de l'application"
+
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:46
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:46
+msgid "Are you sure that you want to delete this department ?"
+msgstr "Etes-vous sûr de vouloir supprimer ce département ?"
+
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:65
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:65
+msgid "Add new department"
+msgstr "Ajouter une nouveau département"
+
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:82
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:82
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:55
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:50
+msgid "Department name"
+msgstr "Nom du département"
+
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:86
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:86
+msgid "Department description"
+msgstr "Description du département"
+
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:160
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:160
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:131
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:484
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:496
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:277
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:259
+msgid ""
+"You cannot create a customer or provider, please create an employee account "
+"before."
+msgstr ""
+"Vous ne pouvez pas créer de client ni de fournisseur, veuillez créer un "
+"employé avant."
+
+#: /var/www/includes/coreClasses/../../cache/twig/ad/c6/d062395e99b4cef5a7268f757fd5.php:166
+#: /var/www/includes/coreClasses/../../cache/twig/5f/1d/f82bb19a27dcc84dd1fc11f13142.php:120
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:166
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:137
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:490
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:502
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:283
+#: /tmp/igestis/core-54ff09419c44e/b1/b2/7ec5d3c91a7fa5ca1cd474884d2f.php:120
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:265
+msgid "Create an employee"
+msgstr "Créer un employé"
+
+#: /var/www/includes/coreClasses/../../cache/twig/5f/1d/f82bb19a27dcc84dd1fc11f13142.php:114
+#: /tmp/igestis/core-54ff09419c44e/b1/b2/7ec5d3c91a7fa5ca1cd474884d2f.php:114
+msgid ""
+"You are using the root account, which is a system account. Thus, some "
+"fonctions will be disabled by default. Please create a new employee whose "
+"account will allow you to enjoy all the fonctions."
+msgstr ""
+"Vous utilisez le compte root qui est un compte système. Certaines fonctions "
+"vont donc être désactivées par défault. Veuillez créer un nouvel employé "
+"dont le compte vous permettra de bénéficier de toutes les fonctionnalités."
+
+#: /var/www/includes/coreClasses/../../cache/twig/5f/1d/f82bb19a27dcc84dd1fc11f13142.php:224
+#: /tmp/igestis/core-54ff09419c44e/31/65/d5229bff03cba1ec39939f4c4e56.php:102
+#: /tmp/igestis/core-54ff09419c44e/0c/00/345336d1dafd76081791d8e5d5a3.php:265
+#: /tmp/igestis/core-54ff09419c44e/b1/b2/7ec5d3c91a7fa5ca1cd474884d2f.php:224
+#: /tmp/igestis/core-54ff09419c44e/07/7d/6482b1e0c9d0182a48e6ecd31c60.php:56
+msgid ""
+"Don't call this template directly, but extend this template from an other "
+"twig"
+msgstr ""
+"N'appelez pas ce modèle directement, mais étendez le depuis un autre twig"
+
+#: /tmp/igestis/core-54ff09419c44e/78/6d/8d6bab0cc2d293600eda76fd54a0.php:28
+msgid "Home"
+msgstr "Accueil"
+
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:27
+msgid "Def."
+msgstr "Def."
+
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:31
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:94
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:96
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:57
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:67
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:92
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:95
+msgid "Last name"
+msgstr "Nom"
+
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:35
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:88
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:92
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:53
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:63
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:88
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:89
+msgid "First name"
+msgstr "Prénom"
+
+#: /tmp/igestis/core-54ff09419c44e/13/4d/e2500502a589867fb2ee768b1977.php:63
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:169
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:152
+msgid "Main contact"
+msgstr "Contact principal"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:28
+msgid "Create a new employee"
+msgstr "Créer un nouvel employé"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:28
+msgid "Fill all information about the new employee"
+msgstr "Complétez toutes les informations concernant ce nouvel employé"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:82
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:112
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:49
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:83
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:108
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:83
+msgid "Civility"
+msgstr "Civilité"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:102
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:77
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:103
+msgid "Company"
+msgstr "Société"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:108
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:93
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:110
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:105
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:205
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:116
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:125
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:92
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:87
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:188
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:112
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:109
+msgid "Email"
+msgstr "Email"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:122
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:79
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:81
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:79
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:227
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:150
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:105
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:78
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:119
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:210
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:146
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:123
+msgid "Phone supplement"
+msgstr "Téléphone complémentaire"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:128
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:85
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:90
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:268
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:87
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:269
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:235
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:109
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:84
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:218
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:129
+msgid "Mobile phone"
+msgstr "Téléphone portable"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:134
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:89
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:99
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:95
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:243
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:158
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:113
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:88
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:127
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:226
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:154
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:135
+msgid "Fax"
+msgstr "Fax"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:142
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:59
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:124
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:83
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:58
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:120
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:144
+msgid "Postal address"
+msgstr "Adresse postale"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:148
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:63
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:130
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:87
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:62
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:126
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:150
+msgid "Postal address supplement"
+msgstr "Complément d'adresse postale"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:156
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:67
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:213
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:214
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:134
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:91
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:66
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:103
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:130
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:158
+msgid "Postal code"
+msgstr "Code postal"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:168
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:142
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:117
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:111
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:138
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:170
+msgid "Country"
+msgstr "Pays"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:176
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:120
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:121
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:91
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:116
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:178
+msgid "Language"
+msgstr "Langue"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:182
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:128
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:157
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:114
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:123
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:184
+msgid "RIB"
+msgstr "RIB"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:194
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:196
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:100
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:71
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:179
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:96
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:196
+#: /tmp/igestis/core-54ff09419c44e/19/e0/8f0e40d4d19f983f71dbde63355e.php:49
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:194
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:196
+msgid "Choose a username"
+msgstr "Choisir un nom d'utilisateur"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:194
+msgid ""
+"Username must be in lower case, begin with a letter and not contain special "
+"caracter."
+msgstr ""
+"L'identifiant doit être en lettres minuscules, sans caractères spéciaux, et "
+"ne doit pas commencer par un chiffre."
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:200
+msgid "Choose a password"
+msgstr "Choisir un mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:200
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:104
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:108
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:100
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:104
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:202
+msgid "Please choose a good password, with a minimum of 5 caracters."
+msgstr "Veuillez choisir un mot de passe compliqué avec au moins 5 caractères."
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:206
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:108
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:69
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:79
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:104
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:208
+msgid "Password confirmation"
+msgstr "Confirmez votre mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:206
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:69
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:79
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:208
+msgid "Confirm the password"
+msgstr "Confirmer le mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:206
+msgid ""
+"Password confirmation just checks that you did not make an error when you "
+"typed the first password."
+msgstr ""
+"Le mot de passe de confirmation pour s'assurer que vous n'avez pas fait "
+"d'erreur pendant la saisie du premier mot de passe."
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:317
+msgid "Inherit from company rights"
+msgstr "Hérité des droits de la société"
+
+#: /tmp/igestis/core-54ff09419c44e/13/d8/d5bdb1a7beb357501e1ddb7dee5b.php:441
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:277
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:261
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:439
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:107
+msgid "Error, you don't have permission to access to this page"
+msgstr "Vous ne possédez pas les droits pour accéder à cette page."
+
+#: /tmp/igestis/core-54ff09419c44e/11/4f/95f2f9b5af3a589a20880e47b0d9.php:28
+msgid "Help"
+msgstr "Aide"
+
+#: /tmp/igestis/core-54ff09419c44e/11/4f/95f2f9b5af3a589a20880e47b0d9.php:45
+msgid "See again the quick tour"
+msgstr "Revoir l'aperçu"
+
+#: /tmp/igestis/core-54ff09419c44e/11/4f/95f2f9b5af3a589a20880e47b0d9.php:49
+msgid "iGestis support website"
+msgstr "Site internet du support iGestis"
+
+#: /tmp/igestis/core-54ff09419c44e/11/4f/95f2f9b5af3a589a20880e47b0d9.php:54
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:194
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:122
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:279
+#: /tmp/igestis/core-54ff09419c44e/7f/41/232ccfc283b726489813207842e6.php:55
+#: /tmp/igestis/core-54ff09419c44e/7c/11/9d368246b7682e0d336da8071c60.php:50
+#: /tmp/igestis/core-54ff09419c44e/00/e3/27bf7afa91ec7831e3821d93235f.php:87
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:262
+msgid "Back"
+msgstr "Retour"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:28
+msgid "Set new password"
+msgstr "Entrez votre nouveau mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:28
+#: /tmp/igestis/core-54ff09419c44e/19/e0/8f0e40d4d19f983f71dbde63355e.php:28
+msgid "Fill this form to reset your password"
+msgstr "Remplissez ce formulaire pour réinitialiser votre mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:51
+msgid "Please choose a new password"
+msgstr "Veuillez choisir un nouveau mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:59
+msgid "Confirm password"
+msgstr "Confirmation du mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:64
+msgid "Set the new password"
+msgstr "Entrez votre nouveau mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:70
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:119
+#: /tmp/igestis/core-54ff09419c44e/19/e0/8f0e40d4d19f983f71dbde63355e.php:60
+msgid "Back to home page"
+msgstr "Retour à la page d'accueil"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:113
+msgid "Reset again a password"
+msgstr "Supprimer une nouvelle fois un mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/e7/44/eab17785504385bb08055a2886f8.php:125
+msgid "Error, the link is has expired or is invalid"
+msgstr "Erreur, le lien a expiré ou est invalide"
+
+#: /tmp/igestis/core-54ff09419c44e/dd/17/4dd7d547b0ebe3fa9d378866616c.php:29
+#: /tmp/igestis/core-54ff09419c44e/00/e3/27bf7afa91ec7831e3821d93235f.php:28
+msgid "About"
+msgstr "A propos"
+
+#: /tmp/igestis/core-54ff09419c44e/dd/17/4dd7d547b0ebe3fa9d378866616c.php:148
+msgid "Intervention informations"
+msgstr "information de l'intervention"
+
+#: /tmp/igestis/core-54ff09419c44e/dd/17/4dd7d547b0ebe3fa9d378866616c.php:152
+msgid "Input demo"
+msgstr "Entrée de démo"
+
+#: /tmp/igestis/core-54ff09419c44e/dd/17/4dd7d547b0ebe3fa9d378866616c.php:156
+msgid "Symbol demo"
+msgstr "Demo de symbole"
+
+#: /tmp/igestis/core-54ff09419c44e/dd/17/4dd7d547b0ebe3fa9d378866616c.php:160
+msgid "Date demo"
+msgstr "Demo date"
+
+#: /tmp/igestis/core-54ff09419c44e/dd/17/4dd7d547b0ebe3fa9d378866616c.php:164
+#: /tmp/igestis/core-54ff09419c44e/dd/17/4dd7d547b0ebe3fa9d378866616c.php:184
+msgid "File demo"
+msgstr "Fichier démo"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:28
+msgid "Edit a company"
+msgstr "Modifier une société"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:28
+msgid "Modify the information about the selected company"
+msgstr "Modifiez les informations concernant la société sélectionnée"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:51
+msgid "Place here your complete company name with legal form"
+msgstr "Placez ici le nom de votre société sous sa forme légale (Sàrl, SA,...)"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:55
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:54
+msgid "Your logo"
+msgstr "Votre logo"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:55
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:54
+msgid "Select your logo"
+msgstr "Sélectionnez votre logo"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:97
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:120
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:96
+msgid "Web site"
+msgstr "Site internet"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:101
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:58
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:133
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:301
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:313
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:87
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:70
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:100
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:70
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:66
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:62
+msgid "VAT number"
+msgstr "TVA"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:105
+msgid "VAT rating"
+msgstr "taux de la TVA"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:109
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:165
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:104
+msgid "RCS"
+msgstr "RCS"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:118
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:141
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:113
+msgid "Bank"
+msgstr "Banque"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:122
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:149
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:117
+msgid "IBAN"
+msgstr "IBAN"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:132
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:173
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:127
+msgid "Money symbol"
+msgstr "Symbole monétaire"
+
+#: /tmp/igestis/core-54ff09419c44e/e3/dc/722fef17a997e3dba82c0d12f66e.php:189
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:182
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:322
+msgid "Inherit from default company rights"
+msgstr "Hérité des droits la société par défaut"
+
+#: /tmp/igestis/core-54ff09419c44e/b9/51/d8aa012b9ed9d8ef968d418edba7.php:28
+msgid "View all installed addons"
+msgstr "Voir tous les modules installés"
+
+#: /tmp/igestis/core-54ff09419c44e/b9/51/d8aa012b9ed9d8ef968d418edba7.php:86
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:182
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:201
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:220
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:239
+msgid "Installed"
+msgstr "Installé"
+
+#: /tmp/igestis/core-54ff09419c44e/b9/51/d8aa012b9ed9d8ef968d418edba7.php:121
+msgid "Nothing to view."
+msgstr "Aucun élément à afficher"
+
+#: /tmp/igestis/core-54ff09419c44e/a1/32/3d1c817edbf40725874409e9890e.php:25
+#: /tmp/igestis/core-54ff09419c44e/87/99/f32f5e1b122188d35bd27c71eef5.php:43
+msgid "From:"
+msgstr "De:"
+
+#: /tmp/igestis/core-54ff09419c44e/a1/32/3d1c817edbf40725874409e9890e.php:30
+msgid "What the user was doing:"
+msgstr "Ce que l'utilisateur était en train de faire :"
+
+#: /tmp/igestis/core-54ff09419c44e/a1/32/3d1c817edbf40725874409e9890e.php:36
+msgid "What the user expected:"
+msgstr "Ce que l'utilisateur recherchait a faire:"
+
+#: /tmp/igestis/core-54ff09419c44e/a1/32/3d1c817edbf40725874409e9890e.php:42
+msgid "What the user endured:"
+msgstr "Ce qui s'est passé au lieu du résultat attendu:"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:28
+msgid "Edit a supplier"
+msgstr "Editer un fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:28
+msgid "Modify the information about the selected supplier"
+msgstr "Modifiez les informations concernant le fournisseur sélectionné"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:50
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:54
+msgid "Showed name"
+msgstr "Dénomination"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:50
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:54
+msgid "Set the showed name"
+msgstr "Définir la dénomination"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:50
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:60
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:56
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:54
+msgid "The showed named is the company name in this case."
+msgstr "Le label représente la nom de la société dans ce cas de figure."
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:54
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:63
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:64
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:46
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:60
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:58
+msgid "Client ID"
+msgstr "ID du client"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:54
+msgid "Set the supplier ID"
+msgstr "Définir l'ID du fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:54
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:58
+msgid ""
+"This field can be used to set a customized identifier linked with an "
+"external software"
+msgstr ""
+"Le champs peut être utilisé pour définir un ID lié à un logiciel tiers."
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:62
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:70
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:74
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:53
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:70
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:66
+msgid "VAT billed"
+msgstr "TVA facturée"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:66
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:95
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:78
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:78
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:74
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:70
+msgid "Bank account number"
+msgstr "Numéro de carte bancaire"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:84
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:106
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:89
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:88
+msgid "Contacts list for"
+msgstr "Liste de contacts de "
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:101
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:105
+msgid "Add new contact"
+msgstr "Ajouter un nouveau contact"
+
+#: /tmp/igestis/core-54ff09419c44e/cf/dd/922a192acb19d59f7672f3400f1d.php:125
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:129
+msgid "Are you sure that you want to delete this contact ?"
+msgstr "Etes-vous sûr de vouloir supprimer ce contact ?"
+
+#: /tmp/igestis/core-54ff09419c44e/2b/fc/d21c2206a65ffd657ddf125580aa.php:28
+msgid "Add and remove your employees account and information"
+msgstr ""
+"Ajoutez et supprimez les comptes et informations concernant vos employés."
+
+#: /tmp/igestis/core-54ff09419c44e/b8/17/dc7bda72a7e12e992f878b5e3a3c.php:44
+msgid "What was you doing before the bug appears?"
+msgstr "Qu'est ce que vous faisiez juste avant que le bug apparaisse ?"
+
+#: /tmp/igestis/core-54ff09419c44e/b8/17/dc7bda72a7e12e992f878b5e3a3c.php:48
+msgid "What was the expected result when the bug appears?"
+msgstr "Qu'est ce qui aurait du se passer au moment ou le bug est apparu ?"
+
+#: /tmp/igestis/core-54ff09419c44e/b8/17/dc7bda72a7e12e992f878b5e3a3c.php:52
+msgid "What happened instead of what you expected?"
+msgstr "Que s'est-il passé au lieu de ce que vous attendiez ?"
+
+#: /tmp/igestis/core-54ff09419c44e/b8/17/dc7bda72a7e12e992f878b5e3a3c.php:56
+msgid "Email on which we can contact you"
+msgstr "Mail sur laquelle nous pouvons vous contacter"
+
+#: /tmp/igestis/core-54ff09419c44e/b8/17/dc7bda72a7e12e992f878b5e3a3c.php:61
+msgid "Send"
+msgstr "Envoyer"
+
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:28
+msgid "Departments management"
+msgstr "Gestion des départements"
+
+#: /tmp/igestis/core-54ff09419c44e/6a/d1/b5d390da4426530f21fef147e0ed.php:28
+msgid "Add and remove the departments you are owning."
+msgstr "Ajoutez ou supprimez les départements que vous possédez"
+
+#: /tmp/igestis/core-54ff09419c44e/48/05/e40a7f0bab26570027d845c74d44.php:28
+msgid ""
+"Add and remove the companies you are owning. This does not include the "
+"companies which are your customers."
+msgstr ""
+"Ajoutez et supprimez les sociétés que vous possédez. Ceci n'inclut pas les "
+"sociétés qui figurent parmis vos clients."
+
+#: /tmp/igestis/core-54ff09419c44e/50/82/a7b4e8ee664a3d7cd63e96c5e694.php:28
+msgid "Import suppliers preview"
+msgstr "Aperçu avant importation des fournisseurs"
+
+#: /tmp/igestis/core-54ff09419c44e/50/82/a7b4e8ee664a3d7cd63e96c5e694.php:28
+msgid "Check all data before to finalize the suppliers import"
+msgstr ""
+"Vérifier toutes les données afin de finaliser l'importation des fournisseurs"
+
+#: /tmp/igestis/core-54ff09419c44e/50/82/a7b4e8ee664a3d7cd63e96c5e694.php:45
+msgid "Import the suppliers"
+msgstr "Importer les fournisseurs"
+
+#: /tmp/igestis/core-54ff09419c44e/1c/03/d613645fcad12638a49cad4d91b5.php:28
+msgid "Error message"
+msgstr "Message d'erreur"
+
+#: /tmp/igestis/core-54ff09419c44e/1c/03/d613645fcad12638a49cad4d91b5.php:40
+msgid "Iabsis encoutered an error!"
+msgstr "iGestis à rencontré une erreur !"
+
+#: /tmp/igestis/core-54ff09419c44e/82/16/41a9822a0ad176f91bf29afb8130.php:28
+msgid "Login page"
+msgstr "Page d'identification"
+
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:28
+msgid "Show a company"
+msgstr "Afficher une société"
+
+#: /tmp/igestis/core-54ff09419c44e/a2/f7/855f4daefc6b6568b2793ae971bc.php:28
+msgid "Consult the company details"
+msgstr "Consultez les détails concernant la société"
+
+#: /tmp/igestis/core-54ff09419c44e/a2/8c/2ca4cf7a90c94ea3fc387e8a5210.php:28
+msgid "Home page"
+msgstr "Page d'accueil"
+
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:28
+msgid "Create a new department"
+msgstr "Créer un nouveau département"
+
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:28
+msgid "Fill all information about the new department"
+msgstr "Complétez toutes les informations concernant ce nouveau département"
+
+#: /tmp/igestis/core-54ff09419c44e/ee/26/ac0f65e1c46af4db568f169b9c43.php:59
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:54
+msgid "Description of the department"
+msgstr "Description du département"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:28
+msgid "Suppliers management"
+msgstr "Gestion des fournisseurs"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:28
+msgid ""
+"Add and remove your suppliers. This also includes the companies which are "
+"your suppliers."
+msgstr ""
+"Ajouter et supprimez vos fournisseurs. Ceci inclut également les sociétés "
+"qui figurent parmi vos fournisseurs."
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:61
+msgid "Import suppliers data"
+msgstr "Importer des données concernant le fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:75
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:76
+msgid "Select file source information"
+msgstr "Sélectionnez le fichier source"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:80
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:81
+msgid "Input text file"
+msgstr "Fichier texte d'import"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:84
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:85
+msgid "Delimiter"
+msgstr "Séparateur"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:84
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:85
+msgid "Field delimiter"
+msgstr "Délimiteur du champ"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:84
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:85
+msgid "Delimiter is a caracter used to separate field."
+msgstr "Le délimiteur est un caractère utilisé pour séparé les champs."
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:88
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:89
+msgid "Enclosure"
+msgstr "Délimiteur"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:97
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:98
+msgid ""
+"The source file has to be in csv format and with utf8 encoding to avoid any "
+"special caracters issue."
+msgstr ""
+"Le fichier source doit être au format csv et avec un encode en utf8 afin "
+"d'éviter tout problème de caractère spéciaux."
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:104
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:105
+msgid "Field name"
+msgstr "Nom du champ"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:125
+msgid "Main contact civility, possible value"
+msgstr "Civilité du contact principal, valeur possible"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:136
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:137
+msgid "Must be unique, example"
+msgstr "Doit être unique, exemple"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:147
+msgid "Main contact first name, example"
+msgstr "Premier contact principal, exemple"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:158
+msgid "Main contact last name, example"
+msgstr "Contact principal dernier nom, example"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:169
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:170
+msgid "Email, example:"
+msgstr "Email, example : "
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:180
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:181
+msgid "Two first letter of user Language, example:"
+msgstr "Les deux premières lettre de la langue de l'utilisateur, exemple :"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:191
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:192
+msgid "Fist part of the postal address"
+msgstr "Première partie de l'adresse postale"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:202
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:203
+msgid "Second part of the postal address"
+msgstr "Deuxième partie de l'adresse postale"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:224
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:225
+msgid "City name"
+msgstr "Ville"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:235
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:236
+msgid "Two first letter of the country"
+msgstr "Deux premières lettres du pays"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:246
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:247
+msgid "First contact phone"
+msgstr "Premier contact téléphone"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:257
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:258
+msgid "Second contact phone"
+msgstr "Second téléphone du contact"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:279
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:280
+msgid "Fax number"
+msgstr "Numéro de fax"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:290
+msgid "Company name."
+msgstr "Nom de la société"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:312
+msgid ""
+"Bolean, does the TVA billed when invoicing this supplier, possible value"
+msgstr "Boléen, est-ce que le fournisseur facture la TVA, valeur possible"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:323
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:335
+msgid "Bank account information"
+msgstr "Informations concernant le compte bancaire"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:334
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:346
+msgid "Custom user ID, usefull to be linked with external software"
+msgstr "ID utilisateur personnalisé, utile pour être lié à un logiciel tiers"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:347
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:359
+msgid "Next step"
+msgstr "Etape suivante"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:357
+msgid "Are you sure that you want to delete this supplier ?"
+msgstr "Etes-vous sûr de vouloir supprimer ce fournisseur ?"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:376
+msgid "Add a new supplier"
+msgstr "Ajouter un nouveau fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/52/ba/77d540b049b8d9edecda43383a48.php:380
+msgid "Import suppliers"
+msgstr "Importer des fournisseurs"
+
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:28
+msgid "Show an employee"
+msgstr "Afficher un employé"
+
+#: /tmp/igestis/core-54ff09419c44e/bc/d4/adc7c46c96d72bfa1d97275dd604.php:28
+msgid "Consult the employee details"
+msgstr "Consultez les détails concernant l'employé"
+
+#: /tmp/igestis/core-54ff09419c44e/80/9a/09687e831dc358d82fb0bc8d878e.php:28
+msgid "Import customer preview"
+msgstr "Aperçu avant importation des clients"
+
+#: /tmp/igestis/core-54ff09419c44e/80/9a/09687e831dc358d82fb0bc8d878e.php:28
+msgid "Check all data before real customer import"
+msgstr "Vérifier toutes les données avant l'importation définitive"
+
+#: /tmp/igestis/core-54ff09419c44e/80/9a/09687e831dc358d82fb0bc8d878e.php:45
+msgid "Import the customers"
+msgstr "Importer le client"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:28
+msgid ""
+"Add and remove your customers. This also includes the companies which are "
+"your customers."
+msgstr ""
+"Ajoutez et supprimez vos clients. Ceci inclut également les sociétés qui "
+"figurent parmis vos clients."
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:62
+msgid "Import customers data"
+msgstr "Importer des données concernant le client"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:126
+msgid "Contact civility, possible value"
+msgstr "Civilité du contact, valeur possible"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:148
+msgid "First contact first name, example"
+msgstr "Premier contact premier nom, example"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:159
+msgid "First contact last name, example"
+msgstr "Premier contact dernier nom, example"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:291
+msgid "Customer type, possible value"
+msgstr "Type de client, valeur possible"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:302
+msgid "Enterprise or collectivity name, empty for individual."
+msgstr ""
+"Nom de l'entreprise ou de la collectivité, ne pas remplir pour les "
+"particuliers."
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:324
+msgid "Bolean, does the TVA billed for the customer, possible value"
+msgstr "Boléen, est-ce que la TVA est facturée au client, valeur possible"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:369
+msgid "Are you sure that you want to delete this customer ?"
+msgstr "Etes-vous sûr de vouloir supprimer ce client ?"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:388
+msgid "Add new customer"
+msgstr "Ajouter un nouveau client"
+
+#: /tmp/igestis/core-54ff09419c44e/d1/35/c2902cd126063738954ccf1cc18d.php:392
+msgid "Import customers"
+msgstr "Importer des clients"
+
+#: /tmp/igestis/core-54ff09419c44e/d8/e4/5130d09eb0aa155129595a8842d5.php:28
+#: /tmp/igestis/core-54ff09419c44e/3a/00/851abfdfe8a7a77fa74c7d98b998.php:28
+msgid "Error"
+msgstr "Erreur"
+
+#: /tmp/igestis/core-54ff09419c44e/d8/e4/5130d09eb0aa155129595a8842d5.php:39
+msgid "Authorization error"
+msgstr "Erreur d'autorisation"
+
+#: /tmp/igestis/core-54ff09419c44e/d8/e4/5130d09eb0aa155129595a8842d5.php:43
+msgid "You don't have autorisation to access to this page."
+msgstr "Vous ne possédez pas les droits pour accéder à cette page."
+
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:28
+msgid "Show a customer"
+msgstr "Afficher un client"
+
+#: /tmp/igestis/core-54ff09419c44e/e4/19/af94bcd5a6c08c4a936432a9b5fa.php:28
+msgid "Consult the customer details"
+msgstr "Consultez les détails concernant le client"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:28
+msgid "Create a new customer"
+msgstr "Créer un nouveau client"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:28
+msgid "Fill all information about the new customer"
+msgstr "Complétez toutes les informations concernant ce nouveau client"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:48
+msgid "Customer information"
+msgstr "Informations concernant le client"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:56
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:50
+msgid "Customer type"
+msgstr "Type de client"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:60
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:56
+msgid "Define the showed name"
+msgstr "Définissez la dénomination"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:64
+msgid "Define the client ID"
+msgstr "Définir l'ID du client"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:64
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:60
+msgid ""
+"This field can be used to define a cusomized ID linked with an external "
+"software"
+msgstr ""
+"Le champs peut être utilisé pour définir un ID lié à un logiciel tiers."
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:84
+msgid "Personnal information"
+msgstr "Informations personnelles"
+
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:104
+#: /tmp/igestis/core-54ff09419c44e/31/3d/30e706420ffae89eae0c6a480722.php:108
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:65
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:75
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:100
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:104
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:202
+msgid "Change password"
+msgstr "Changer de mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:61
+msgid "User name"
+msgstr "Nom d'utilisateur"
+
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:61
+msgid "Username not editable"
+msgstr "Nom d'utilisateur non éditable"
+
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:61
+msgid ""
+"Due to some constraints and data depedencies with the employee, this field "
+"is not editable."
+msgstr ""
+"Dû a des contraintes et dépendances des données avec l'employé, ce champ "
+"n'est pas modifiable."
+
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:65
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:75
+msgid ""
+"Let empty will keep the old password. If changed, please choose a good "
+"password, with a minimum of 5 caracters."
+msgstr ""
+"Laissez le champ vide garder l'ancien mot de passe. S'il doit être changé, "
+"veuillez choisir un mot de passe compliqué d'autre moins cinq caractères."
+
+#: /tmp/igestis/core-54ff09419c44e/88/c5/1cdcbf757f110fcb6a4ec9936eb4.php:69
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:79
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:208
+msgid ""
+"Password confirmation just confirms that you make an error when you typed "
+"the first password."
+msgstr ""
+"Le mot de passe de confirmation pour s'assurer que vous n'avez pas fait "
+"d'erreur pendant la saisie du premier mot de passe."
+
+#: /tmp/igestis/core-54ff09419c44e/7f/41/232ccfc283b726489813207842e6.php:28
+msgid "Error on form submit"
+msgstr "Erreur à la validation du formulaire"
+
+#: /tmp/igestis/core-54ff09419c44e/7f/41/232ccfc283b726489813207842e6.php:41
+msgid "Invalid form"
+msgstr "Formulaire invalide"
+
+#: /tmp/igestis/core-54ff09419c44e/7f/41/232ccfc283b726489813207842e6.php:45
+msgid ""
+"The datas that you have just sent are invalid. Please go back to the form "
+"and fix the invalid datas (Check if javascript is activated to let you see "
+"the form errors)."
+msgstr ""
+"Les données que vous avez envoyées ne sont pas valides. Veuillez retourner "
+"dans le formulaire afin de modifier ces données (vérifier que javascript est "
+"bien activé de manière à vous permettre de voir l'erreur dans le "
+"formulaire) ."
+
+#: /tmp/igestis/core-54ff09419c44e/7f/41/232ccfc283b726489813207842e6.php:49
+msgid "Invoked reason"
+msgstr "Raison invoquée"
+
+#: /tmp/igestis/core-54ff09419c44e/7c/11/9d368246b7682e0d336da8071c60.php:28
+msgid "Show a department"
+msgstr "Afficher un département"
+
+#: /tmp/igestis/core-54ff09419c44e/7c/11/9d368246b7682e0d336da8071c60.php:28
+msgid "Show department details"
+msgstr "Voir le détail du département."
+
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:28
+msgid "Please give us your idea"
+msgstr "Donnez votre idée"
+
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:44
+msgid ""
+"Please note that this request will not give an immediate result, we will "
+"take care about your remark, then we will probably contact you."
+msgstr ""
+"Veuillez noter que la réponse à votre requête ne sera pas immédiate. Nous "
+"allons prendre connaissance de votre remarque, puis probablement vous "
+"contacter."
+
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:47
+msgid "What you would like to do?"
+msgstr "Quelle fonctionnalité souhaiteriez vous avoir ?"
+
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:51
+msgid "Where do you want the new feature?"
+msgstr "Ou est ce que vous souhaitez cette nouvelle fonctionnalité ?"
+
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:55
+msgid "Email where we can contact you"
+msgstr "Mail ou nous pouvons vous contacter"
+
+#: /tmp/igestis/core-54ff09419c44e/e6/95/d69f88459fae7a981813aeb3b830.php:60
+msgid "Send the bug"
+msgstr "Envoyer le rapport de bug"
+
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:28
+msgid "Create a new company"
+msgstr "Créer une nouvelle société"
+
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:28
+msgid "Fill all information about the new company"
+msgstr "Complétez toutes les informations concernant cette nouvelle société."
+
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:50
+msgid "Define the company name"
+msgstr "Définir le nom de la société"
+
+#: /tmp/igestis/core-54ff09419c44e/28/82/92ea096235dab71ce94f308db8d2.php:50
+msgid "Write here your complete company name in its legal form"
+msgstr ""
+"Écrivez ici la désignation complète de votre société dans sa forme légale"
+
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:32
+msgid "Edit contact information"
+msgstr "Modifier les informations concernant le contact"
+
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:51
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:57
+msgid "Set main contact"
+msgstr "Contact principal"
+
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:95
+msgid "Address"
+msgstr "Adresse"
+
+#: /tmp/igestis/core-54ff09419c44e/f4/20/69535dc3abfbceeb41ca517617d0.php:99
+msgid "Address supplement"
+msgstr "Complément d'adresse postale"
+
+#: /tmp/igestis/core-54ff09419c44e/33/e5/8da09deb0443a2fd5b5eecac3b75.php:72
+msgid "Attached data file"
+msgstr "Fichier attaché"
+
+#: /tmp/igestis/core-54ff09419c44e/33/e5/8da09deb0443a2fd5b5eecac3b75.php:85
+msgid "Loading list of scanners ..."
+msgstr "Chargement de la liste des scanners ..."
+
+#: /tmp/igestis/core-54ff09419c44e/33/e5/8da09deb0443a2fd5b5eecac3b75.php:92
+msgid "File"
+msgstr "Fichier"
+
+#: /tmp/igestis/core-54ff09419c44e/33/e5/8da09deb0443a2fd5b5eecac3b75.php:107
+msgid "Keep the current file"
+msgstr "Gardez le fichier courant"
+
+#: /tmp/igestis/core-54ff09419c44e/33/e5/8da09deb0443a2fd5b5eecac3b75.php:117
+msgid "Delete file"
+msgstr "Supprimer un fichier"
+
+#: /tmp/igestis/core-54ff09419c44e/33/e5/8da09deb0443a2fd5b5eecac3b75.php:129
+msgid "Don't attach file"
+msgstr "Ne pas attacher le fichier"
+
+#: /tmp/igestis/core-54ff09419c44e/00/e3/27bf7afa91ec7831e3821d93235f.php:43
+msgid ""
+"iGestis is a free ERP software for small companies. It's licenced under GPL "
+"v3."
+msgstr ""
+"iGestis est un logiciel ERP gratuit pour les petites entreprises. Elle "
+"possède une licence GPL v3."
+
+#: /tmp/igestis/core-54ff09419c44e/00/e3/27bf7afa91ec7831e3821d93235f.php:50
+msgid "GPL V3 Licence page"
+msgstr "Page de la licence GPL v3"
+
+#: /tmp/igestis/core-54ff09419c44e/00/e3/27bf7afa91ec7831e3821d93235f.php:54
+msgid "iGestis home page"
+msgstr "Page d'accueil iGestis"
+
+#: /tmp/igestis/core-54ff09419c44e/00/e3/27bf7afa91ec7831e3821d93235f.php:61
+msgid "iGestis works with the following librairies."
+msgstr "iGestis fonctionne avec les librairies suivantes"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:37
+msgid "Search"
+msgstr "Rechercher"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:41
+msgid "files"
+msgstr "fichiers"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:45
+msgid "All"
+msgstr "Tout"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:49
+msgid "Add"
+msgstr "Ajouter"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:61
+msgid "No matching records found"
+msgstr "Aucune donnée correspondante n'a été trouvée"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:65
+msgid "No entries to show"
+msgstr "Aucune entrée à afficher"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:69
+msgid "Processing"
+msgstr "Traitement en cours"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:73
+msgid "Loading"
+msgstr "Chargement"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:77
+msgid "Showing"
+msgstr "Afficher"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:81
+msgid "to"
+msgstr "à"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:85
+msgid "entries"
+msgstr "entrées"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:89
+msgid "of"
+msgstr "de"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:93
+msgid "Previous"
+msgstr "Précédent"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:97
+msgid "Next"
+msgstr "Suivant"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:101
+msgid "No data available in table"
+msgstr "Aucune information disponible dans ce tableau"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:105
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "Afficher _START_ à _END_ de _TOTAL_ entrées"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:109
+msgid "(filtered from _MAX_ total entries)"
+msgstr "(filtré sur _MAX_ entrée)"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:113
+msgid "_MENU_ records per page"
+msgstr "_MENU_ enregistrements par page"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:117
+msgid "First"
+msgstr "Premier"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:121
+msgid "Last"
+msgstr "Dernier"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:125
+msgid "This field is required."
+msgstr "Ce champ est obligatoire. "
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:129
+msgid "Please fix this field."
+msgstr "Veuillez corriger ce champ."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:133
+msgid "Please enter a valid email address."
+msgstr "Veuillez entrer une adresse email valide."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:137
+msgid "Please enter a valid URL."
+msgstr "Veuillez entrer un URL valide"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:141
+msgid "Please enter a valid date."
+msgstr "Veuillez entrer une date valide"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:145
+msgid "Please enter a valid date (ISO)."
+msgstr "Veuillez entrer une date valide (ISO)."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:149
+msgid "Please enter a valid number."
+msgstr "Veuillez entrer un numéro valide"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:153
+msgid "Please enter only digits."
+msgstr "Veuillez n'entrer que des numéros."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:157
+msgid "Please enter a valid credit card number."
+msgstr "Veuillez entrer un numéro de carte bancaire valide"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:161
+msgid "Please enter the same value again."
+msgstr "Veuillez entrer à nouveau la même valeur."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:165
+msgid "Please enter a value with a valid extension."
+msgstr "Veuillez entrer une valeur avec une extension valide."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:169
+msgid "Please enter no more than {0} characters."
+msgstr "Veuillez ne pas entrer plus de {0} caractères."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:173
+msgid "Please enter at least {0} characters."
+msgstr "Veuillez entrer au minimum {0} caractères."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:177
+msgid "Please enter a value between {0} and {1} characters long."
+msgstr "Veuillez entrer une valeur comprise entre {0} et {1} caractères."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:181
+msgid "Please enter a value between {0} and {1}."
+msgstr "Veuillez entrer une valeur comprise entre {0} et {1}."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:185
+msgid "Please enter a value less than or equal to {0}."
+msgstr "Veuillez entrer une valeur inférieure ou égale à {0}"
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:189
+msgid "Please enter a value greater than or equal to {0}."
+msgstr "Veuillez entrer une valeur supérieure ou égale à {0}."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:193
+msgid "Please enter a correct value."
+msgstr "Veuillez entrer une valeur correcte."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:197
+msgid "This login already exists."
+msgstr "Cet identifiant est déjà existant."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:201
+msgid ""
+"The login must be in lower case, no special caracters, and not begin by a "
+"number."
+msgstr ""
+"L'identifiant doit être en lettres minuscules, sans caractères spéciaux, et "
+"ne doit pas commencer par un chiffre."
+
+#: /tmp/igestis/core-54ff09419c44e/00/8b/0eb00833692f5b04ab57847d4dc1.php:205
+msgid "Please enter an unique value."
+msgstr "Veuillez n'entrer qu'une seule valeur."
+
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:28
+msgid "Show a supplier"
+msgstr "Voir le fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/00/56/fffeda8f2a90741c2151ddefa574.php:28
+msgid "Show supplier details"
+msgstr "Voir les détails du fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:28
+msgid "Create a new supplier"
+msgstr "Créer un nouveau fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:28
+msgid "Fill all information about the new supplier"
+msgstr "Complétez toutes les informations concernant ce nouveau fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:48
+msgid "Supplier information"
+msgstr "Information du fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:60
+msgid "Define the supplier ID"
+msgstr "Définir l'ID du fournisseur"
+
+#: /tmp/igestis/core-54ff09419c44e/be/aa/2982347621bd53279278d6ff26cf.php:80
+msgid "Main contact information"
+msgstr "Information du contact principal"
+
+#: /tmp/igestis/core-54ff09419c44e/40/e1/d84bf3270bcca89a4baa9b8b4dc7.php:39
+msgid "Thank you for using iGestis"
+msgstr "Merci d'avoir utilisé iGestis"
+
+#: /tmp/igestis/core-54ff09419c44e/40/e1/d84bf3270bcca89a4baa9b8b4dc7.php:44
+msgid ""
+"You received this mail because you or somebody asked to reset your password. "
+"If you think this is an error, you can just delete this mail."
+msgstr ""
+"Vous recevez ce mail car vous ou une autre personne souhaite supprimer votre "
+"mot de passe. Si vous pensez que c'est une erreur, vous pouvez simplement "
+"supprimer ce mail."
+
+#: /tmp/igestis/core-54ff09419c44e/40/e1/d84bf3270bcca89a4baa9b8b4dc7.php:48
+msgid ""
+"Follow the link under the login concerned, you may have several link in case "
+"of your mail is registered with multiple iGestis account."
+msgstr ""
+"Suivez le lien de l'identifiant concerné, vous pouvez avoir plusieurs liens "
+"dans le cas ou votre mail est enregistré plusieurs dans différents comptes "
+"iGestis."
+
+#: /tmp/igestis/core-54ff09419c44e/40/e1/d84bf3270bcca89a4baa9b8b4dc7.php:63
+msgid "For the login"
+msgstr "Pour l'identifiant"
+
+#: /tmp/igestis/core-54ff09419c44e/40/e1/d84bf3270bcca89a4baa9b8b4dc7.php:67
+msgid "Account type is"
+msgstr "Le type de compte est"
+
+#: /tmp/igestis/core-54ff09419c44e/3a/00/851abfdfe8a7a77fa74c7d98b998.php:40
+msgid "The page that you requested is not found."
+msgstr "La page que vous recherchez n'a pas été trouvée."
+
+#: /tmp/igestis/core-54ff09419c44e/3a/b2/fb080135d8dfc93ae7d56b1ec11a.php:28
+msgid "Module"
+msgstr "Module"
+
+#: /tmp/igestis/core-54ff09419c44e/3a/b2/fb080135d8dfc93ae7d56b1ec11a.php:28
+msgid "Description du module"
+msgstr "Description du module"
+
+#: /tmp/igestis/core-54ff09419c44e/3a/b2/fb080135d8dfc93ae7d56b1ec11a.php:41
+msgid "Navigation"
+msgstr "Navigation"
+
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:28
+msgid "Edit an employee"
+msgstr "Editer un employé"
+
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:28
+msgid "Modify the information about the selected employee"
+msgstr "Modifiez les informations concernant l'employé sélectionné"
+
+#: /tmp/igestis/core-54ff09419c44e/9a/5e/13de798324f79961a45669531d6d.php:196
+msgid "Due to some constraints, the username is not editable."
+msgstr "Dû à des contraintes, le nom d'utilisteur n'est pas modifiable"
+
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:28
+msgid "Edit a department"
+msgstr "Modifier un département"
+
+#: /tmp/igestis/core-54ff09419c44e/f0/38/734661d7a873fff3991f71a65368.php:28
+msgid "Modify the information about the selected department"
+msgstr "Modifiez les informations concernant le département sélectionné"
+
+#: /tmp/igestis/core-54ff09419c44e/19/e0/8f0e40d4d19f983f71dbde63355e.php:28
+msgid "Reset my password"
+msgstr "Réinitialiser mon mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/19/e0/8f0e40d4d19f983f71dbde63355e.php:45
+msgid "Login or Email"
+msgstr "Identifiant ou Email"
+
+#: /tmp/igestis/core-54ff09419c44e/19/e0/8f0e40d4d19f983f71dbde63355e.php:54
+msgid "Request a new password"
+msgstr "Demande d'un nouveau mot de passe"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:28
+msgid "Quick tour"
+msgstr "Aperçu rapide"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:43
+msgid "New menu style"
+msgstr "Nouveau style de menu"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:47
+msgid ""
+"The menu has been now moved on the top of the screen and has been "
+"reorganised."
+msgstr ""
+"Le menu se trouve désormais en haut de votre écran et a été réorganisé."
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:54
+msgid "Personal settings"
+msgstr "Paramètres personnels"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:58
+msgid ""
+"All personal information are available in <b>My account</b> submenu. Don't "
+"forgot to choose a good password !"
+msgstr ""
+"Toutes les informations personnelles sont disponibles dans le sous menu "
+"<b>My account</b> . N'oubliez pas de choisir un mot de passe pertinent !"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:71
+msgid "New clear forms"
+msgstr "Nouveau formulaires plus clairs"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:75
+msgid "All forms have on fly data check avoiding errors."
+msgstr ""
+"Tous les formulaires ont des vérifications à la volée afin d'éviter les "
+"erreurs de saisies."
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:84
+msgid "Enter information"
+msgstr "Entrer des informations"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:103
+msgid "Save"
+msgstr "Enregistrer"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:124
+msgid "New interractive tables"
+msgstr "Nouveaux tableaux interactifs"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:142
+msgid "Column 1"
+msgstr "Colonne 1"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:146
+msgid "Column 2"
+msgstr "Colonne 2"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:150
+msgid "Column 3"
+msgstr "Colonne 3"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:154
+msgid "Column 4"
+msgstr "Colonne 4"
+
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:172
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:176
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:180
+#: /tmp/igestis/core-54ff09419c44e/a7/51/47bf6af9abb3ea37c17b8bef08ac.php:184
+msgid "Row %row%"
+msgstr "Rangée %row%"
+
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:28
+msgid "Edit a customer"
+msgstr "Modifier un client"
+
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:28
+msgid "Modify the information about the selected customer"
+msgstr "Modifiez les informations concernant le client sélectionné"
+
+#: /tmp/igestis/core-54ff09419c44e/ac/8f/a84dde8468762da95c494329cb43.php:58
+msgid "Set the client ID"
+msgstr "définissez l'ID du client"
+
+#: /tmp/igestis/core-54ff09419c44e/17/e0/aef48624ae3fc62cdbd6ad17995c.php:31
+msgid "General Admin"
+msgstr "Administration générale"
+
+#: /tmp/igestis/core-54ff09419c44e/17/e0/aef48624ae3fc62cdbd6ad17995c.php:31
+msgid "Update general configuration of Igestis"
+msgstr "Mettre à jour la configuration générale d'iGestis"
+
+#: /tmp/igestis/core-54ff09419c44e/17/e0/aef48624ae3fc62cdbd6ad17995c.php:61
+msgid "Caches"
+msgstr "Caches"
+
+#: /tmp/igestis/core-54ff09419c44e/17/e0/aef48624ae3fc62cdbd6ad17995c.php:74
+msgid "Clean caches"
+msgstr "Vider les caches"
+
+#: /tmp/igestis/core-54ff09419c44e/17/e0/aef48624ae3fc62cdbd6ad17995c.php:78
+msgid "Clear templates cache"
+msgstr "Vider les caches des pages."
+
+#: /tmp/igestis/core-54ff09419c44e/17/e0/aef48624ae3fc62cdbd6ad17995c.php:82
+msgid "Clear languages cache"
+msgstr "Vider le cache des traductions"
+
+#: /tmp/igestis/core-54ff09419c44e/17/e0/aef48624ae3fc62cdbd6ad17995c.php:98
+msgid "Apply actions"
+msgstr "Valider les actions"
+
+#: /tmp/igestis/core-54ff09419c44e/87/99/f32f5e1b122188d35bd27c71eef5.php:39
+msgid "An iGestis user reports a new feature request"
+msgstr "Un utilisateur d'iGestis demande de nouvelles fonctions"
+
+#: /tmp/igestis/core-54ff09419c44e/87/99/f32f5e1b122188d35bd27c71eef5.php:48
+msgid "User would like to do:"
+msgstr "L'utilisateur souhaiterait :"
+
+#: /tmp/igestis/core-54ff09419c44e/87/99/f32f5e1b122188d35bd27c71eef5.php:54
+msgid "User would like at location:"
+msgstr "Emplacement de l'utilisateur"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:171
+msgid "PHP configuration"
+msgstr "Configuration PHP"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:176
+msgid "Mysql driver"
+msgstr "Driver Mysql"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:186
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:205
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:224
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:243
+msgid "Not installed"
+msgstr "Non installé"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:195
+msgid "Mcrypt extension"
+msgstr "Extension Mcrypt"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:214
+msgid "Json extension"
+msgstr "Extension Json"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:233
+msgid "Ldap extension (optionnal)"
+msgstr "Extension Ldap (optionelle)"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:253
+msgid "Timezone"
+msgstr "Fuseau horraire"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:263
+msgid "Not defined"
+msgstr "Non définit"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:271
+msgid "Access"
+msgstr "Accès"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:277
+msgid "Documents folder"
+msgstr "Dossier des documents"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:284
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:316
+msgid "Found"
+msgstr "Trouvé"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:288
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:320
+msgid "Not found"
+msgstr "Introuvable"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:295
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:327
+msgid "Writable"
+msgstr "Inscriptible"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:299
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:331
+msgid "Not writable"
+msgstr "Pas d'accès en écriture"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:309
+msgid "Cache folder"
+msgstr "Dossier cache"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:343
+msgid "iGestis configuration"
+msgstr "Configuration d'iGestis"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:348
+msgid "config.ini file"
+msgstr "fichier config.ini"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:363
+msgid "Virtual Host"
+msgstr "Hôte virtuel"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:369
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:395
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:504
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:523
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:542
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:561
+msgid "Ok"
+msgstr "Ok"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:373
+msgid "Invalid VHost"
+msgstr "Vhost invalide"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:381
+msgid "Database configuration"
+msgstr "Configuration de la base"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:387
+msgid "Database connexion"
+msgstr "Connection à la base"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:404
+msgid "Credentials ok"
+msgstr "Authentification ok"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:410
+msgid "Connexion failed"
+msgstr "Connexion échouée"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:421
+msgid "Db not found"
+msgstr "Base de données introuvable"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:430
+msgid "Tables not found"
+msgstr "Tableau introuvable"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:458
+msgid "Launch database update"
+msgstr "Lancer la mise à jour de la base de donnée"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:468
+msgid "Ldap configuration"
+msgstr "Configuration Ldap"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:473
+msgid "Use ldap"
+msgstr "Utiliser LDAP"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:498
+msgid "Ldap connexion"
+msgstr "Connexion Ldap"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:517
+msgid "Users OU"
+msgstr "OU Utilisateur"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:536
+msgid "Customers OU"
+msgstr "OU clients"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:555
+msgid "Suppliers OU"
+msgstr "OU Fournisseurs"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:580
+msgid "Create Ou"
+msgstr "Créer le OU"
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:599
+msgid ""
+"Once everything's ok, you can remove the install folder in order to start to "
+"use igestis. Then, refresh the page, you should automatically be redirected "
+"to the login page."
+msgstr ""
+"Une fois que tous est ok, vous devez supprimer le dossier install afin de "
+"démarrer avec igestis. Raffraichissez ensuite la page, vous devriez être "
+"redirigé automatiquement sur la page d'authentification."
+
+#: /tmp/igestis/core-54ff09419c44e/f2/b5/0e52dc0b3b1b7c624fccaac3fe87.php:610
+msgid "Do you confirm that you want update the database ?"
+msgstr "Etes-vous sûr de vouloir mettre à jour la base de donnée ?"
+
+msgid "Doctor"
+msgstr "Docteur"
+
+msgid "Miss"
+msgstr "Mademoiselle"
+
+msgid "Mister"
+msgstr "Monsieur"
+
+msgid "Madam"
+msgstr "Madame"
+
+msgid "Collectivity"
+msgstr "Collectivité"
+
+msgid "Individual"
+msgstr "Particulier"
+
+#~ msgid "The apc_fetch is not available"
+#~ msgstr "apc_fetch n'est pas disponible"
+
+#~ msgid "Failed to create '%s' folder."
+#~ msgstr "La création du dossier '%s' a échouée."
+
+#~ msgid "'%s' folder is not readable."
+#~ msgstr "Le dossier '%s' n'est pas accessible."
+
+#, fuzzy
+#~ msgid "Custom css successfuly saved."
+#~ msgstr "Les données ont été enregistrées avec succès"
+
+#, fuzzy
+#~ msgid "Custom stylesheet"
+#~ msgstr "Type de client"
+
+#, fuzzy
+#~ msgid ""
+#~ "Are you sure that you want to delete this image ? It will be deleted only "
+#~ "if you validate the form."
+#~ msgstr "Etes-vous sûr de vouloir supprimer cet employé ?"
+
+#~ msgid "Customer management"
+#~ msgstr "Gestion des clients"
+
+#~ msgid "Update your personal information"
+#~ msgstr "Actualisez vos informations personnelles"
+
+#~ msgid "Bank information"
+#~ msgstr "Informations bancaires"
+
+#~ msgid ""
+#~ "Add and remove your suppliers. This also includes the compagnies which "
+#~ "are yoursuppliers."
+#~ msgstr ""
+#~ "Ajoutez et supprimez vos fournisseurs. Ceci inclut également les sociétés "
+#~ "qui figurent parmis vos fournisseurs."
+
+#~ msgid "Afghanistan"
+#~ msgstr "Afghanistan"
+
+#~ msgid "Aland Islands"
+#~ msgstr "Åland"
+
+#~ msgid "Albania"
+#~ msgstr "Albanie"
+
+#~ msgid "Algeria"
+#~ msgstr "Algérie"
+
+#~ msgid "American Samoa"
+#~ msgstr "Samoa américaines"
+
+#~ msgid "Andorra"
+#~ msgstr "Andorre"
+
+#~ msgid "Angola"
+#~ msgstr "Angola"
+
+#~ msgid "Anguilla"
+#~ msgstr "Anguilla"
+
+#~ msgid "Antarctica"
+#~ msgstr "Antarctique"
+
+#~ msgid "Antigua and Barbuda"
+#~ msgstr "Antigua-et-Barbuda"
+
+#~ msgid "Argentina"
+#~ msgstr "Argentine"
+
+#~ msgid "Armenia"
+#~ msgstr "Arménie"
+
+#~ msgid "Aruba"
+#~ msgstr "Aruba"
+
+#~ msgid "Australia"
+#~ msgstr "Australie"
+
+#~ msgid "Austria"
+#~ msgstr "Autriche"
+
+#~ msgid "Azerbaijan"
+#~ msgstr "Azerbaïdjan"
+
+#~ msgid "Bahamas"
+#~ msgstr "Bahamas"
+
+#~ msgid "Bahrain"
+#~ msgstr "Bahreïn"
+
+#~ msgid "Bangladesh"
+#~ msgstr "Bangladesh"
+
+#~ msgid "Barbados"
+#~ msgstr "Barbade"
+
+#~ msgid "Belarus"
+#~ msgstr "Biélorussie"
+
+#~ msgid "Belgium"
+#~ msgstr "Belgique"
+
+#~ msgid "Belize"
+#~ msgstr "Belize"
+
+#~ msgid "Benin"
+#~ msgstr "Bénin"
+
+#~ msgid "Bermuda"
+#~ msgstr "Bermudes"
+
+#~ msgid "Bhutan"
+#~ msgstr "Bhoutan"
+
+#~ msgid "Bolivia"
+#~ msgstr "Bolivie"
+
+#~ msgid "Bonaire"
+#~ msgstr "Bonaire"
+
+#~ msgid "Bosnia and Herzegovina"
+#~ msgstr "Bosnie-Herzégovine"
+
+#~ msgid "Botswana"
+#~ msgstr "Botswana"
+
+#~ msgid "Bouvet Island"
+#~ msgstr "Île Bouvet"
+
+#~ msgid "Brazil"
+#~ msgstr "Brésil"
+
+#~ msgid "British Indian Ocean Territory"
+#~ msgstr "Territoire britannique de l'océan Indien"
+
+#~ msgid "Brunei Darussalam"
+#~ msgstr "Brunei"
+
+#~ msgid "Bulgaria"
+#~ msgstr "Bulgarie"
+
+#~ msgid "Burkina Faso"
+#~ msgstr "Burkina Faso"
+
+#~ msgid "Burundi"
+#~ msgstr "Burundi"
+
+#~ msgid "Cambodia"
+#~ msgstr "Cambodge"
+
+#~ msgid "Cameroon"
+#~ msgstr "Cameroun"
+
+#~ msgid "Canada"
+#~ msgstr "Canada"
+
+#~ msgid "Cape Verde"
+#~ msgstr "Cap-Vert"
+
+#~ msgid "Cayman Islands"
+#~ msgstr "Îles Caïmans"
+
+#~ msgid "Central African Republic"
+#~ msgstr "République centrafricaine"
+
+#~ msgid "Chad"
+#~ msgstr "Tchad"
+
+#~ msgid "Chile"
+#~ msgstr "Chili"
+
+#~ msgid "China"
+#~ msgstr "Chine"
+
+#~ msgid "Christmas Island"
+#~ msgstr "Île Christmas"
+
+#~ msgid "Cocos (Keeling) Islands"
+#~ msgstr "Îles Cocos"
+
+#~ msgid "Colombia"
+#~ msgstr "Colombie"
+
+#~ msgid "Comoros"
+#~ msgstr "Comores (pays)"
+
+#~ msgid "Congo"
+#~ msgstr "République du Congo"
+
+#~ msgid "Cook Islands"
+#~ msgstr "Îles Cook"
+
+#~ msgid "Costa Rica"
+#~ msgstr "Costa Rica"
+
+#~ msgid "Côte d'Ivoire"
+#~ msgstr "Côte d'Ivoire"
+
+#~ msgid "Croatia"
+#~ msgstr "Croatie"
+
+#~ msgid "Cuba"
+#~ msgstr "Cuba"
+
+#~ msgid "Curaçao"
+#~ msgstr "Curaçao"
+
+#~ msgid "Cyprus"
+#~ msgstr "Chypre (pays)"
+
+#~ msgid "Czech Republic"
+#~ msgstr "République tchèque"
+
+#~ msgid "Denmark"
+#~ msgstr "Danemark"
+
+#~ msgid "Dominica"
+#~ msgstr "Dominique"
+
+#~ msgid "Dominican Republic"
+#~ msgstr "République dominicaine"
+
+#~ msgid "Ecuador"
+#~ msgstr "Équateur (pays)"
+
+#~ msgid "Egypt"
+#~ msgstr "Égypte"
+
+#~ msgid "El Salvador"
+#~ msgstr "Salvador"
+
+#~ msgid "Equatorial Guinea"
+#~ msgstr "Guinée équatoriale"
+
+#~ msgid "Eritrea"
+#~ msgstr "Érythrée"
+
+#~ msgid "Estonia"
+#~ msgstr "Estonie"
+
+#~ msgid "Ethiopia"
+#~ msgstr "Éthiopie"
+
+#~ msgid "Falkland Islands (Malvinas)"
+#~ msgstr "Îles Malouines"
+
+#~ msgid "Faroe Islands"
+#~ msgstr "Îles Féroé"
+
+#~ msgid "Fiji"
+#~ msgstr "Fidji"
+
+#~ msgid "Finland"
+#~ msgstr "Finlande"
+
+#~ msgid "France"
+#~ msgstr "France"
+
+#~ msgid "French Guiana"
+#~ msgstr "Guyane"
+
+#~ msgid "French Polynesia"
+#~ msgstr "Polynésie française"
+
+#~ msgid "French Southern Territories"
+#~ msgstr "Terres australes et antarctiques françaises"
+
+#~ msgid "Gabon"
+#~ msgstr "Gabon"
+
+#~ msgid "Gambia"
+#~ msgstr "Gambie"
+
+#~ msgid "Georgia"
+#~ msgstr "Géorgie (pays)"
+
+#~ msgid "Germany"
+#~ msgstr "Allemagne"
+
+#~ msgid "Ghana"
+#~ msgstr "Ghana"
+
+#~ msgid "Gibraltar"
+#~ msgstr "Gibraltar"
+
+#~ msgid "Greece"
+#~ msgstr "Grèce"
+
+#~ msgid "Greenland"
+#~ msgstr "Groenland"
+
+#~ msgid "Grenada"
+#~ msgstr "Grenade (pays)"
+
+#~ msgid "Guadeloupe"
+#~ msgstr "Guadeloupe"
+
+#~ msgid "Guam"
+#~ msgstr "Guam"
+
+#~ msgid "Guatemala"
+#~ msgstr "Guatemala"
+
+#~ msgid "Guernsey"
+#~ msgstr "Guernesey"
+
+#~ msgid "Guinea"
+#~ msgstr "Guinée"
+
+#~ msgid "Guinea-Bissau"
+#~ msgstr "Guinée-Bissau"
+
+#~ msgid "Guyana"
+#~ msgstr "Guyana"
+
+#~ msgid "Haiti"
+#~ msgstr "Haïti"
+
+#~ msgid "Heard Island and McDonald Islands"
+#~ msgstr "Îles Heard-et-MacDonald"
+
+#~ msgid "Holy See (Vatican City State)"
+#~ msgstr "Saint-Siège (État de la Cité du Vatican)"
+
+#~ msgid "Honduras"
+#~ msgstr "Honduras"
+
+#~ msgid "Hong Kong"
+#~ msgstr "Hong Kong"
+
+#~ msgid "Hungary"
+#~ msgstr "Hongrie"
+
+#~ msgid "Iceland"
+#~ msgstr "Islande"
+
+#~ msgid "India"
+#~ msgstr "Inde"
+
+#~ msgid "Indonesia"
+#~ msgstr "Indonésie"
+
+#~ msgid "Iran"
+#~ msgstr "Iran"
+
+#~ msgid "Iraq"
+#~ msgstr "Irak"
+
+#~ msgid "Ireland"
+#~ msgstr "Irlande (pays)"
+
+#~ msgid "Isle of Man"
+#~ msgstr "Île de Man"
+
+#~ msgid "Israel"
+#~ msgstr "Israël"
+
+#~ msgid "Italy"
+#~ msgstr "Italie"
+
+#~ msgid "Jamaica"
+#~ msgstr "Jamaïque"
+
+#~ msgid "Japan"
+#~ msgstr "Japon"
+
+#~ msgid "Jersey"
+#~ msgstr "Jersey"
+
+#~ msgid "Jordan"
+#~ msgstr "Jordanie"
+
+#~ msgid "Kazakhstan"
+#~ msgstr "Kazakhstan"
+
+#~ msgid "Kenya"
+#~ msgstr "Kenya"
+
+#~ msgid "Kiribati"
+#~ msgstr "Kiribati"
+
+#~ msgid "Korea"
+#~ msgstr "Corée du Nord"
+
+#~ msgid "Kuwait"
+#~ msgstr "Koweït"
+
+#~ msgid "Kyrgyzstan"
+#~ msgstr "Kirghizistan"
+
+#~ msgid "Lao People's Democratic Republic"
+#~ msgstr "Laos"
+
+#~ msgid "Latvia"
+#~ msgstr "Lettonie"
+
+#~ msgid "Lebanon"
+#~ msgstr "Liban"
+
+#~ msgid "Lesotho"
+#~ msgstr "Lesotho"
+
+#~ msgid "Liberia"
+#~ msgstr "Liberia"
+
+#~ msgid "Libya"
+#~ msgstr "Libye"
+
+#~ msgid "Liechtenstein"
+#~ msgstr "Liechtenstein"
+
+#~ msgid "Lithuania"
+#~ msgstr "Lituanie"
+
+#~ msgid "Luxembourg"
+#~ msgstr "Luxembourg (pays)"
+
+#~ msgid "Macao"
+#~ msgstr "Macao"
+
+#~ msgid "Macedonia"
+#~ msgstr "Macédoine (pays)"
+
+#~ msgid "Madagascar"
+#~ msgstr "Madagascar"
+
+#~ msgid "Malawi"
+#~ msgstr "Malawi"
+
+#~ msgid "Malaysia"
+#~ msgstr "Malaisie"
+
+#~ msgid "Maldives"
+#~ msgstr "Maldives"
+
+#~ msgid "Mali"
+#~ msgstr "Mali"
+
+#~ msgid "Malta"
+#~ msgstr "Malte"
+
+#~ msgid "Marshall Islands"
+#~ msgstr "Marshall (pays)"
+
+#~ msgid "Martinique"
+#~ msgstr "Martinique"
+
+#~ msgid "Mauritania"
+#~ msgstr "Mauritanie"
+
+#~ msgid "Mauritius"
+#~ msgstr "Maurice (pays)"
+
+#~ msgid "Mayotte"
+#~ msgstr "Mayotte"
+
+#~ msgid "Mexico"
+#~ msgstr "Mexique"
+
+#~ msgid "Micronesia"
+#~ msgstr "Micronésie (pays)"
+
+#~ msgid "Moldova"
+#~ msgstr "Moldavie"
+
+#~ msgid "Monaco"
+#~ msgstr "Monaco"
+
+#~ msgid "Mongolia"
+#~ msgstr "Mongolie"
+
+#~ msgid "Montenegro"
+#~ msgstr "Monténégro"
+
+#~ msgid "Montserrat"
+#~ msgstr "Montserrat"
+
+#~ msgid "Morocco"
+#~ msgstr "Maroc"
+
+#~ msgid "Mozambique"
+#~ msgstr "Mozambique"
+
+#~ msgid "Myanmar"
+#~ msgstr "Birmanie"
+
+#~ msgid "Namibia"
+#~ msgstr "Namibie"
+
+#~ msgid "Nauru"
+#~ msgstr "Nauru"
+
+#~ msgid "Nepal"
+#~ msgstr "Népal"
+
+#~ msgid "Netherlands"
+#~ msgstr "Pays-Bas"
+
+#~ msgid "New Caledonia"
+#~ msgstr "Nouvelle-Calédonie"
+
+#~ msgid "New Zealand"
+#~ msgstr "Nouvelle-Zélande"
+
+#~ msgid "Nicaragua"
+#~ msgstr "Nicaragua"
+
+#~ msgid "Niger"
+#~ msgstr "Niger"
+
+#~ msgid "Nigeria"
+#~ msgstr "Nigeria"
+
+#~ msgid "Niue"
+#~ msgstr "Niue"
+
+#~ msgid "Norfolk Island"
+#~ msgstr "Île Norfolk"
+
+#~ msgid "Northern Mariana Islands"
+#~ msgstr "Îles Mariannes du Nord"
+
+#~ msgid "Norway"
+#~ msgstr "Norvège"
+
+#~ msgid "Oman"
+#~ msgstr "Oman"
+
+#~ msgid "Pakistan"
+#~ msgstr "Pakistan"
+
+#~ msgid "Palau"
+#~ msgstr "Palaos"
+
+#~ msgid "Palestinian Territory"
+#~ msgstr "Autorité Palestinienne"
+
+#~ msgid "Panama"
+#~ msgstr "Panama"
+
+#~ msgid "Papua New Guinea"
+#~ msgstr "Papouasie-Nouvelle-Guinée"
+
+#~ msgid "Paraguay"
+#~ msgstr "Paraguay"
+
+#~ msgid "Peru"
+#~ msgstr "Pérou"
+
+#~ msgid "Philippines"
+#~ msgstr "Philippines"
+
+#~ msgid "Pitcairn"
+#~ msgstr "Îles Pitcairn"
+
+#~ msgid "Poland"
+#~ msgstr "Pologne"
+
+#~ msgid "Portugal"
+#~ msgstr "Portugal"
+
+#~ msgid "Puerto Rico"
+#~ msgstr "Porto Rico"
+
+#~ msgid "Qatar"
+#~ msgstr "Qatar"
+
+#~ msgid "Réunion"
+#~ msgstr "La Réunion"
+
+#~ msgid "Romania"
+#~ msgstr "Roumanie"
+
+#~ msgid "Russian Federation"
+#~ msgstr "Russie"
+
+#~ msgid "Rwanda"
+#~ msgstr "Rwanda"
+
+#~ msgid "Saint Barthélemy"
+#~ msgstr "Saint-Barthélemy"
+
+#~ msgid "Saint Helena"
+#~ msgstr "Sainte-Hélène"
+
+#~ msgid "Saint Kitts and Nevis"
+#~ msgstr "Saint-Christophe-et-Niévès"
+
+#~ msgid "Saint Lucia"
+#~ msgstr "Sainte-Lucie"
+
+#~ msgid "Saint Martin (French part)"
+#~ msgstr "Saint-Martin (Antilles françaises)"
+
+#~ msgid "Saint Pierre and Miquelon"
+#~ msgstr "Saint-Pierre-et-Miquelon"
+
+#~ msgid "Saint Vincent and the Grenadines"
+#~ msgstr "Saint-Vincent-et-les-Grenadines"
+
+#~ msgid "Samoa"
+#~ msgstr "Samoa"
+
+#~ msgid "San Marino"
+#~ msgstr "Saint-Marin"
+
+#~ msgid "Sao Tome and Principe"
+#~ msgstr "Sao Tomé-et-Principe"
+
+#~ msgid "Saudi Arabia"
+#~ msgstr "Arabie saoudite"
+
+#~ msgid "Serbia"
+#~ msgstr "Serbie"
+
+#~ msgid "Seychelles"
+#~ msgstr "Seychelles"
+
+#~ msgid "Sierra Leone"
+#~ msgstr "Sierra Leone"
+
+#~ msgid "Singapore"
+#~ msgstr "Singapour"
+
+#~ msgid "Sint Maarten (Dutch part)"
+#~ msgstr "Saint-Martin"
+
+#~ msgid "Slovakia"
+#~ msgstr "Slovaquie"
+
+#~ msgid "Slovenia"
+#~ msgstr "Slovénie"
+
+#~ msgid "Solomon Islands"
+#~ msgstr "Salomon"
+
+#~ msgid "Somalia"
+#~ msgstr "Somalie"
+
+#~ msgid "South Africa"
+#~ msgstr "Afrique du Sud"
+
+#~ msgid "South Georgia and the South Sandwich Islands"
+#~ msgstr "Géorgie du Sud-et-les Îles Sandwich du Sud"
+
+#~ msgid "South Sudan"
+#~ msgstr "Soudan du Sud"
+
+#~ msgid "Spain"
+#~ msgstr "Espagne"
+
+#~ msgid "Sri Lanka"
+#~ msgstr "Sri Lanka"
+
+#~ msgid "Sudan"
+#~ msgstr "Soudan"
+
+#~ msgid "Suriname"
+#~ msgstr "Suriname"
+
+#~ msgid "Svalbard and Jan Mayen"
+#~ msgstr "Svalbard et île Jan Mayen"
+
+#~ msgid "Swaziland"
+#~ msgstr "Swaziland"
+
+#~ msgid "Sweden"
+#~ msgstr "Suède"
+
+#~ msgid "Switzerland"
+#~ msgstr "Suisse"
+
+#~ msgid "Syrian Arab Republic"
+#~ msgstr "Syrie"
+
+#~ msgid "Taiwan"
+#~ msgstr "Taïwan / (République de Chine (Taïwan))"
+
+#~ msgid "Tajikistan"
+#~ msgstr "Tadjikistan"
+
+#~ msgid "Tanzania"
+#~ msgstr "Tanzanie"
+
+#~ msgid "Thailand"
+#~ msgstr "Thaïlande"
+
+#~ msgid "Timor-Leste"
+#~ msgstr "Timor oriental"
+
+#~ msgid "Togo"
+#~ msgstr "Togo"
+
+#~ msgid "Tokelau"
+#~ msgstr "Tokelau"
+
+#~ msgid "Tonga"
+#~ msgstr "Tonga"
+
+#~ msgid "Trinidad and Tobago"
+#~ msgstr "Trinité-et-Tobago"
+
+#~ msgid "Tunisia"
+#~ msgstr "Tunisie"
+
+#~ msgid "Turkey"
+#~ msgstr "Turquie"
+
+#~ msgid "Turkmenistan"
+#~ msgstr "Turkménistan"
+
+#~ msgid "Turks and Caicos Islands"
+#~ msgstr "Îles Turques-et-Caïques"
+
+#~ msgid "Tuvalu"
+#~ msgstr "Tuvalu"
+
+#~ msgid "Uganda"
+#~ msgstr "Ouganda"
+
+#~ msgid "Ukraine"
+#~ msgstr "Ukraine"
+
+#~ msgid "United Arab Emirates"
+#~ msgstr "Émirats arabes unis"
+
+#~ msgid "United Kingdom"
+#~ msgstr "Royaume-Uni"
+
+#~ msgid "United States"
+#~ msgstr "États-Unis"
+
+#~ msgid "United States Minor Outlying Islands"
+#~ msgstr "Îles mineures éloignées des États-Unis"
+
+#~ msgid "Uruguay"
+#~ msgstr "Uruguay"
+
+#~ msgid "Uzbekistan"
+#~ msgstr "Ouzbékistan"
+
+#~ msgid "Vanuatu"
+#~ msgstr "Vanuatu"
+
+#~ msgid "Venezuela"
+#~ msgstr "Venezuela"
+
+#~ msgid "Viet Nam"
+#~ msgstr "Viêt Nam"
+
+#~ msgid "Virgin Islands"
+#~ msgstr "Îles Vierges britanniques"
+
+#~ msgid "Wallis and Futuna"
+#~ msgstr "Wallis-et-Futuna"
+
+#~ msgid "Western Sahara"
+#~ msgstr "Sahara occidental"
+
+#~ msgid "Yemen"
+#~ msgstr "Yémen"
+
+#~ msgid "Zambia"
+#~ msgstr "Zambie"
+
+#~ msgid "Zimbabwe"
+#~ msgstr "Zimbabwe"
+
+#~ msgid "Arabic"
+#~ msgstr "Arabe"
+
+#~ msgid "Breton"
+#~ msgstr "Breton"
+
+#~ msgid "German"
+#~ msgstr "Allemand"
+
+#~ msgid "English"
+#~ msgstr "Anglais"
+
+#~ msgid "Spanish"
+#~ msgstr "Espagnol"
+
+#~ msgid "French"
+#~ msgstr "Français"
+
+#~ msgid "Italian"
+#~ msgstr "Italien"
+
+#~ msgid "Chinese"
+#~ msgstr "Chinois"

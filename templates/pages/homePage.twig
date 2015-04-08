@@ -1,0 +1,207 @@
+{% extends 'common.twig' %}
+
+{% set title = {'logo': "emblem-people",
+                'title': "Home page"|trans} %}
+
+{% block content %}
+<div class="container">
+
+<link href="{{ TEMPLATE_URL }}/css/bootstrap-wysihtml5.css" rel="stylesheet">
+<link href="{{ TEMPLATE_URL }}/css/prettify.css" rel="stylesheet">
+
+<script src="{{ TEMPLATE_URL }}/js/wysihtml5-0.3.0.js"></script>
+<script src="{{ TEMPLATE_URL }}/js/prettify.js"></script>
+<script src="{{ TEMPLATE_URL }}/js/bootstrap-wysihtml5.js"></script>
+<script type="text/javascript">
+    function core_restore_home_page() {
+        bootbox.confirm("{% trans %}Are you sure that you want to restore the default page ?{% endtrans %}", "{% trans %}No{% endtrans %}", "{% trans %}Yes{% endtrans %}", function(result) {
+            if(result) window.location.href="{{ url('restore_home_page') }}";
+         });
+    }
+
+    function hide_quicktour()  {
+    $.ajax({
+            url: "{{ url('ajax_hide_quicktour') }}",
+            context: this,
+            success: function(data) {
+                try {
+                    var result = JSON.parse(data);
+                }
+                catch(err) {
+                    bootbox.alert("{% trans %}Error during ajax statement{% endtrans %}" + "<br />" + data);
+                    return;
+                }
+                if(result.error) {
+                    bootbox.alert(result.error);
+                }
+                else if(result.successful) {
+                }
+            }
+        });
+}
+</script>
+
+{% if RIGHTS_LIST.CORE == "ADMIN" %}
+    <div id="EditHomePage" class="modal hide fade">
+        <form class="modal-form" action="{{ url('save_home_page') }}" method="post">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>{% trans %}Edit the home page{% endtrans %}</h3>
+            </div>
+            <div class="modal-body">
+                <textarea name="content" class="textarea" placeholder="Enter text ..." style="width: 510px; height: 200px">{% if content_homepage is defined %}{{content_homepage }}{% endif %}</textarea>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal" >Close</a>
+                <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+            </div>
+        </form>
+    </div>
+    <div class="row" align="right">
+        <a data-toggle="modal" data-backdrop="static" href="#EditHomePage" class="btn btn-primary btn-small"><i class="icon-edit icon-white"></i> {% trans %}Edit this page{% endtrans %}</a>
+        {% if content_homepage is defined %}<a href="javascript:core_restore_home_page()" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i> {% trans %}Revert to original state{% endtrans %}</a>{% endif %}
+    </div>
+
+<script>
+    $('.textarea').wysihtml5();
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    $(prettyPrint);
+</script>
+
+<br />
+{% endif %}{# RIGHTS_LIST.CORE == "ADMIN" #}
+
+
+{% if not hideQuicktour %}
+<div class="alert alert-block alert-success fade in">
+    <button type="button" class="close" data-dismiss="alert" onclick="javascript:hide_quicktour()">&times;</button>
+    <h4 class="alert-heading">{% trans %}Welcome to iGestis !!{% endtrans %}</h4>
+    <p>{% trans %}It seems this is the first time you log in iGestis. You can have a quick tour of what you can do with iGestis.{% endtrans %}</p>
+    <p>
+        <a class="btn btn-success" href="{{ url("quick_tour") }}">{% trans %}See a quick tour{% endtrans %}</a>
+    </p>
+</div>
+{% endif %}{# hideQuicktour #}
+
+
+{% if content_homepage is not defined and CONTACT.User.userType == "employee" %}
+
+{% if RIGHTS_LIST.CORE == "ADMIN" %}
+
+<div class="row-fluid">
+    <div class="span6">
+        <div class="well">
+            <div class="row-fluid">
+                <div class="span3 hidden-phone home-icons">
+                    <!-- <img class="img-polaroid" src="{{ TEMPLATE_URL }}/images/emblem-employees.png" width="90%"> -->
+                    <i class="icon-sitemap "></i>
+                </div>
+                <div class="span9">
+                    <h2>{% trans %}Companies management{% endtrans %}</h2>
+                    <a href="{{ url('companies_new') }}">{% trans %}Add a company{% endtrans %}</a> - <a href="{{ url('companies_list') }}">{% trans %}View all companies{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="well">
+            <div class="row-fluid">
+                <div class="span3 hidden-phone home-icons">
+                    <!-- <img class="img-polaroid" src="{{ TEMPLATE_URL }}/images/emblem-employees.png" width="90%"> -->
+                    <i class="icon-group "></i>
+                </div>
+                <div class="span9">
+                    <h2>{% trans %}Employees management{% endtrans %}</h2>
+                    <a href="{{ url('employees_new') }}">{% trans %}Add an employee{% endtrans %}</a> - <a href="{{ url('employees_list') }}">{% trans %}View all employees{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+
+
+<div class="row-fluid">
+{% if RIGHTS_LIST.CORE == "TECH" or RIGHTS_LIST.CORE == "ADMIN" %}
+
+    <div class="span6">
+        <div class="well">
+            <div class="row-fluid">
+                <div class="span3 hidden-phone home-icons">
+                    <i class="icon-user "></i>
+                </div>
+                <div class="span9">
+                    <h2>{% trans %}Customers management{% endtrans %}</h2>
+                    <a href="{{ url('customers_new') }}">{% trans %}Add a customer{% endtrans %}</a> - <a href="{{ url('customers_list') }}">{% trans %}View all customers{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="well">
+            <div class="row-fluid">
+                <div class="span3 hidden-phone home-icons">
+                    <i class="icon-truck "></i>
+                </div>
+                <div class="span9">
+                    <h2>{% trans %}Providers management{% endtrans %}</h2>
+                    <a href="{{ url('suppliers_new') }}">{% trans %}Add a provider{% endtrans %}</a> - <a href="{{ url('suppliers_list') }}">{% trans %}View all providers{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+        <div class="well">
+            <div class="row-fluid">
+                <div class="span3 hidden-phone home-icons">
+                    <i class="icon-cogs "></i>
+                </div>
+                <div class="span9">
+                    <h2>{% trans %}My account{% endtrans %}</h2>
+                    <a href="{{ url('my_account') }}">{% trans %}Update my personnal details{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% elseif content_homepage is defined and CONTACT.User.userType == "employee" %}
+
+
+{{ content_homepage|raw }}
+
+
+{% elseif content_homepage is not defined and CONTACT.User.userType == "client" %}
+
+
+<div class="row-fluid">
+    <div class="span6">
+        <div class="well">
+            <div class="row-fluid">
+              <div class="span3 hidden-phone home-icons">
+                  <i class="icon-cogs "></i>
+              </div>
+                <div class="span9">
+                    <h2>{% trans %}My account{% endtrans %}</h2>
+                    <a href="{{ url('my_account') }}">{% trans %}Update my personnal details{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}{# content_homepage is not defined #}
+
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-settings",
+                'title': "Modules and addons"|trans,
+                'help': "View all installed addons"|trans} %}
+
+{% block content %}
+
+{% if RIGHTS_LIST.CORE == "ADMIN" %}
+
+
+
+{% for module in modules_list %}
+    {% if loop.index is odd %}
+        <div class="row-fluid">
+    {% endif %}
+    <div class="span6">
+         <div class="well">
+             <div class="row-fluid">
+                 <div class="span2 home-icons" >
+                    <i class="icon-check"></i>
+                 </div>
+                 <div class="span10">
+                     <h2>{{ module.name }}</h2>
+                     <span class="label label-success">{% trans %}Installed{% endtrans %}</span>
+                 </div>
+             </div>
+         </div>
+    </div>
+    {% if loop.index is even or loop.last %}
+        </div>
+    {% endif %}
+{% endfor %}
+
+
+{% else %}{# RIGHTS_LIST.CORE == "ADMIN" #}
+    {% set WIZZ = [ {'message': "Error, you don't have permission to access to this page", 'type': "error"} ] %}
+    {% trans %}Nothing to view.{% endtrans %}
+{% endif %}{# RIGHTS_LIST.CORE == "ADMIN" #}
+
+{% endblock %}

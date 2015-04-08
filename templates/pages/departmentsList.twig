@@ -1,0 +1,65 @@
+{% extends "common.twig" %}
+
+{% set title = {'logo': "emblem-departments",
+                'title': "Departments management"|trans,
+                'help': "Add and remove the departments you are owning."|trans} %}
+
+{% block content %}
+
+{% if CONTACT.login != ADMIN_ACCOUNT %}
+
+<script type="text/javascript">
+    function delete_department(id) {
+        bootbox.confirm("{% trans %}Are you sure that you want to delete this department ?{% endtrans %}", "{% trans %}No{% endtrans %}", "{% trans %}Yes{% endtrans %}", function(result) {
+            if(result) window.location.href="{{ url('departments_delete', {"Id":''}) }}" + id;
+        });
+    }
+</script>
+
+<div class="row-fluid" align="right">
+        <a href="{{ url('departments_new') }}" class="btn btn-success btn-small"><i class="icon-plus-sign icon-white"></i> {% trans %}Add new department{% endtrans %}</a>
+</div>
+<br />
+
+{% import "table.twig" as table %}
+{{ table.datatable() }}    
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-condensed table-striped" id="table_data">
+        <thead>
+            <tr>
+                <th>{% trans %}Department name{% endtrans %}</th>
+                <th>{% trans %}Department description{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for row in table_data %}
+                <tr>
+                    <td>{{ row.label }}</td>
+                    <td class="hidden-phone">{{ row.description }}</td>
+                    <td>
+                        <a href="{{ url('departments_show', {'Id':row.id}) }}" class="btn btn-mini a-visible-line-on-over">
+                            <i class="icon-eye-open"></i> {% trans %}View{% endtrans %}
+                        </a>
+                        <a href="{{ url('departments_edit', {'Id':row.id}) }}" class="btn btn-mini a-visible-line-on-over">
+                            <i class="icon-edit"></i> {% trans %}Edit{% endtrans %}
+                        </a>
+                        <a href="javascript:delete_department('{{ row.id }}')" class="btn btn-danger btn-mini a-visible-line-on-over">
+                            <i class="icon-trash icon-white"></i> {% trans %}Delete{% endtrans %}
+                        </a>
+                    </td>
+                </tr>
+          {% endfor %}
+            </tbody>
+        </table>
+
+{% else %}{# if CONTACT.login == ADMIN_ACCOUNT #}
+
+<div class="alert alert-error">
+     <strong>{% trans from "Module:core" %}Warning!{% endtrans %}</strong><br />
+             {% trans from "Module:core" %}You cannot create a customer or provider, please create an employee account before.{% endtrans %}<br /><br />
+     <button class="btn btn-danger" onclick="javascript:window.location.href='{{ url('employees_new') }}'">{% trans from "Module:core" %}Create an employee{% endtrans %}</button>
+</div>
+{% endif %}
+        
+{% endblock %}

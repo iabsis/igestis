@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <title>iGestis - Error</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="theme/css/bootstrap.css?2.0-3" rel="stylesheet">
+    <link href="theme/css/bootstrap-responsive.css?2.0-3" rel="stylesheet">
+    <link href="theme/css/select2.css?2.0-3" rel="stylesheet"/>
+    <link href="theme/stylesv2.css?2.0-3" rel="stylesheet"> 
+            <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="theme/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png?2.0-3">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png?2.0-3">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png?2.0-3">
+</head>
+
+<body>
+        
+        
+        <div class="wrapper">
+                                <div class="navbar navbar-fixed-top navbar-inverse">
+    
+        <div class="navbar-inner">
+            <div class="container">
+                                
+                
+                <a href="index.php?" class="brand">iGestis </a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                                            </ul>
+
+                                            <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle">Not Logged in</a>
+                            </li>
+                        </ul>
+                                </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>                        
+        <header class="header-blue">
+            <div class="container">
+                <div class="title">
+                
+
+<h2 style="margin-top: 25px">Error</h2>
+
+                    </div>
+            </div>
+        </header>
+        
+         <div class="header-spacer"></div>
+            <div class="content">
+                <div class="container">
+                        
+                                        
+                    <div class="row-fluid">
+                                                      
+<div class="alert alert-error">
+    Oops, iGestis encountered a fatal error.
+</div>
+
+In order to fix the issue :
+<ul>
+    <li>Change the variable <b>DEBUG_MODE</b> to <b>true</b> in the file /usr/share/igestis/index.php</li>
+    <li>Change the variable <b>display_errors</b> to <b>On</b> in the file apache configuration (usually in /etc/apache2/conf)</li>
+    <li>Check the logs for Apache or iGestis (usually in /var/log/igestis/igestis.log and /var/log/apache2/error.log)</li>
+</ul>
+
+{ErrorContent}
+
+
+                        
+                        
+                    </div>
+                    <div class="push"></div>
+                </div><!--/.container-->
+            </div>
+        </div><!--/.wrapper-->
+        <div class="footer">
+                <footer></footer>
+        </div><!--/.footer-->
+    </body>
+</html>

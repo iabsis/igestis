@@ -1,0 +1,393 @@
+{# Generate help popover
+ # =====================
+ # data_original_title : Title of the popover
+ # data_content : Content of the popover.
+ #}
+
+{% macro help(data_original_title, data_content) %}
+    {% if data_original_title is not null %}
+    <span data-trigger="click" rel="popover" data-placement="right" data-html="true" data-content="{{ data_content }}" data-original-title="{{ data_original_title }}" class="btn" type="button">
+      <i class="icon-question-sign"></i>
+    </span>
+    {% endif %}
+{% endmacro %}
+
+
+{## macro input - generate input
+ # Generate automatically a select list.
+ # name : system name of the select
+ # label : name of the list showed on the page before the list.
+ # selected_value : Default value or value get from the database.
+ # data_original_title : Popover title, showed when mouse is over the field.
+ # data_content : Popover description, showed when mouse is over the field.
+ # type : type of input, can be text, radio, etc...
+ # autocomplete : if set to true, the autocomplete form will be disabled, useful for login, password, etc.. saved in the browser.
+ # state : state of the field, can be "disabled" (greyed up) or "readonly".
+ # custom_attr : override any attribute in the input line.
+#}
+{% macro input(name, label, selected_value, data_original_title, data_content, type, autocomplete, state, custom_attr) %}
+
+{% spaceless %}
+<div class="control-group">
+  <label class="control-label" for="{{ name }}">{{ label }}</label>
+  <div class="controls">
+
+      <input
+          class="span12"
+          {% if state == "disabled"%}disabled="true"{% endif %}
+          {% if state == "uneditable"  or state == "readonly" %}readonly="true"{% endif %}
+          type="{{ type|default('text') }}"
+          name="{{ name }}"
+          {% if state == "required"%}placeholder="{% trans %}Required{% endtrans %}{% if data_original_title %} - {{data_original_title}}{% endif %}"{% endif %}
+          value="{% if type == "checkbox" %}1{% else %}{{ selected_value|e }}{% endif %}"
+          {% if type == "checkbox" %}{% if selected_value == true %}checked="checked"{% endif %}{% endif %}
+          id="id-{{ name }}"
+          {% if not autocomplete == true %}autocomplete="off"{% endif %}
+        />
+
+  </div>
+</div>
+{% endspaceless %}
+
+{% endmacro %}
+
+{% macro symbol(name, label, selected_value, symbol, autocomplete, state) %}
+
+<div class="control-group">
+  <label class="control-label" for="{{ name }}">{{ label }}</label>
+  <div class="controls">
+    <div class="input-append span12">
+      <input class="span9"
+        {% if state == "disabled"%}disabled="true"{% endif %}
+        {% if state == "uneditable"  or state == "readonly" %}readonly="true"{% endif %}
+        type="text"
+        name="{{ name }}"
+        {% if state == "required"%}placeholder="{% trans %}Required{% endtrans %}"{% endif %}
+        value="{% if type == "checkbox" %}1{% else %}{{ selected_value|e }}{% endif %}"
+        {% if type == "checkbox" %}{% if selected_value == true %}checked="checked"{% endif %}{% endif %}
+        id="id-{{ name }}"
+        {% if autocomplete == false %}autocomplete="off"{% endif %} />
+      <span class="add-on">{{ symbol }}</span>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+{## macro input - generate input
+ # Generate automatically a select list.
+ # name : system name of the select
+ # label : name of the list showed on the page before the list.
+ # selected_value : Objet de type \DateTime ou \Igestis\Utils\DateTimeManager
+ # data_original_title : Popover title, showed when mouse is over the field.
+ # data_content : Popover description, showed when mouse is over the field.
+ # type : type of input, can be text, radio, etc...
+ # autocomplete : if set to true, the autocomplete form will be disabled, useful for login, password, etc.. saved in the browser.
+ # state : state of the field, can be "disabled" (greyed up) or "readonly".
+#}
+{% macro date(name, label, selected_value, data_original_title, data_content, type, autocomplete, state) %}
+
+    <div class="control-group">
+        <label class="control-label" for="{{ name }}">{{ label }}</label>
+        <div class="controls">
+            <div class="input-append date datepicker" data-date="{{ selected_value.date ? selected_value.date|date('d/m/Y') : ''}}" data-date-format="dd/mm/yyyy" data-date-viewmode="years">
+            <input class="span9"
+                    {% if state == "disabled"%}disabled="true"{% endif %}
+                    {% if state == "uneditable" or state == "readonly" %}readonly="true"{% endif %}
+                    type="text"
+                    placeholder="dd/mm/yyyy"
+                    name="{{ name }}"
+                    {% if state == "required"%}placeholder="{% trans %}Required{% endtrans %}"{% endif %}
+                    value="{{ selected_value.date ? selected_value.date|date('d/m/Y') : ''}}"
+                    {% if type == "checkbox" %}{% if selected_value == true %}checked="checked"{% endif %}{% endif %}
+                    id="id-{{ name }}"
+                    {% if autocomplete == false %}autocomplete="off"{% endif %} />
+	                    <span class="add-on"><i class="icon-calendar"></i></span>
+	            </div>
+            </div>
+    </div>
+
+{% endmacro %}
+
+
+{% macro file(name, label, files_list, data_original_title, data_content, multiple, autocomplete, state) %}
+
+<div class="control-group">
+  <label class="control-label" for="{{ name }}">{{ label }}</label>
+  <div class="controls">
+  	 <div class="input-append">
+  	 	{% spaceless %}
+	    <input
+		     {% if state == "required"%}placeholder="{% trans %}Required{% endtrans %}"{% endif %}
+		     readonly="true"
+		     id="id-{{ name }}-field"
+		     class="span9"
+		     type="text">
+     	{% endspaceless %}
+	    <a class="btn" onclick="$('input[id=id-{{ name }}]').click();">{% trans %}Browse{% endtrans %}</a>
+     </div>
+  </div>
+</div>
+<input {% if multiple == true %} multiple="multiple" {% endif %}
+  {% if state == "disabled"%}disabled="true"{% endif %}
+  {% if state == "uneditable"%}readonly="true"{% endif %}
+  type="file"
+  name="{{ name }}{% if multiple == true %}[]{% endif %}"
+
+  id="id-{{ name }}"
+  {% if autocomplete == false %}autocomplete="off"{% endif %}
+  style="display:none" />
+
+<script type="text/javascript">
+    $('input[id=id-{{ name }}]').change(function() {
+        if ( $('input[id=id-{{ name }}]').get(0).files.length > 1 ) {
+        	$('#id-{{ name }}-field').val($('input[id=id-{{ name }}]').get(0).files.length + " " + translations.files);
+        } else {
+    		$('#id-{{ name }}-field').val($(this).val().replace(new RegExp("^.*\\\\"), ""));
+        }
+    });
+</script>
+
+{% endmacro %}
+
+{% macro uploadimage(name, label, files_list, data_original_title, data_content, multiple, autocomplete, state) %}
+
+<div class="control-group">
+  <label class="control-label" for="{{ name }}">{{ label }}</label>
+  <div class="controls">
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+      <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;">
+        <img src="{{ files_list }}" />
+      </div>
+      <div>
+
+        <span class="btn btn-file">
+            {% if not files_list %}
+              <span class="fileupload-new">{% trans %}Select image{% endtrans %}</span>
+              <span class="fileupload-exists">{% trans %}Change{% endtrans %}</span>
+            {% else %}
+              <span class="fileupload-exists">{% trans %}Select image{% endtrans %}</span>
+              <span class="fileupload-new">{% trans %}Change{% endtrans %}</span>
+            {% endif %}
+          <input type="file" name="{{ name }}" id="id-{{ name }}" />
+        </span>
+        {% if not files_list %}
+          <a id="id-delete-{{ name }}" href="#" class="btn fileupload-exists" data-dismiss="fileupload">{% trans %}Remove{% endtrans %}</a>
+        {% else %}
+          <a id="id-delete-{{ name }}" href="#" class="btn fileupload-new" data-dismiss="fileupload">{% trans %}Remove{% endtrans %}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+
+{## macro select - Generate select from into a form.
+ # Generate automatically a select list.
+ # name : system name of the select
+ # label : name of the list showed on the page before the list.
+ # value : table variable where are stored all information. This table must be sent from the Controller.
+ # selected_value : Select the list value or select the default value.
+ # value_column : Column name where is stored the system value.
+ # showed_name_column : Column name where is stored the showed name list.
+ # show_value : default is false, if set true, the value_colum is showed in the list, useful to sort the list.
+ # data_original_title : Popover title, showed when mouse is over the field.
+ # data_content : Popover description, showed when mouse is over the field.
+ # state : state of the field, can be "disabled" (greyed up) or "readonly".
+#}
+{% macro select(name, label, value, selected_value, value_column, showed_name_column, show_value, data_original_title, data_content, state, multiple, placeholder) %}
+    <div class="control-group">
+            <label class="control-label" for="{{ name }}">{{ label }}</label>
+            <div class="controls">
+                  {% if value|length == "-1" %}
+                      <input type="hidden" name="{{ name }}" id="id-{{ name }}" value="{{ attribute(value[0], value_column) }}">
+                      <input class="span9" disabled="true" type="text" value="{{ attribute(value[0], showed_name_column) }}" />
+                  {% else %}
+                      <select {% if placeholder %}data-placeholder="{{ placeholder }}"{% elseif state == "required" %}data-placeholder="{% trans %}Required{% endtrans %}"{% else %}data-placeholder="{% trans %}Choose a value{% endtrans %}"{% endif %} {% if multiple %} multiple="multiple" {% endif %} id="id-{{ name }}" name="{{ name }}{% if multiple %}[]{% endif %}" class="span12 select2" {% if state == "disabled"%}disabled="true"{% endif %} {% if state == "readonly"%}readonly="true"{% endif %}>
+                          {% if not multiple %}<option></option>{% endif %}
+
+                          {% for item in value %}
+                              {% set show = attribute(item, showed_name_column) %}
+                              {% if show is null or show is empty %}{% set show = " " %}{% endif %}
+
+                              {% if multiple %}
+                                <option {% if attribute(item, value_column) in selected_value %}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{{ show|trans }}</option>
+                              {% else %}
+                                <option {% if attribute(item, selected_value) %}selected="selected"{% endif %}{% if attribute(item, value_column) == selected_value or (loop.last and loop.first and state == "required")%}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{{ show|trans }}</option>
+                           {% endif %}
+                        {% endfor %}
+                      </select>
+                  {% endif %}
+            </div>
+    </div>
+{% endmacro %}
+
+{% macro tagfield(name, label, list_of_available_tags, selected_tags, data_original_title, data_content, state, max_tags) %}
+    {% if max_tags is null or max_tags is not defined %}
+        {% set max_tags = 0 %}
+    {% endif %}
+
+    <div class="control-group">
+            <label class="control-label" for="{{ name }}">{{ label }}</label>
+            <div class="controls">
+                {% set arrayAvailableTags = [] %}
+                {% set arraySelectedTags = [] %}
+
+
+                {% for tag in list_of_available_tags %}
+                    {% set value = tag %}
+                    {% if tag.__toString is defined %}{% set value = tag.__toString %}{% endif %}
+                    {% set arrayAvailableTags=arrayAvailableTags|merge({ (loop.index0): value}) %}
+                {% endfor %}
+
+                {% for tag in selected_tags %}
+                    {% set value = tag %}
+                    {% if tag.__toString is defined %}{% set value = tag.__toString %}{% endif %}
+                    {% set arraySelectedTags=arraySelectedTags|merge({ (loop.index0): value}) %}
+                {% endfor %}
+                <input value="{{ arraySelectedTags|join(",") }}" data-max-selectable-tags="{{ max_tags }}" data-available-tags="{{ arrayAvailableTags|json_encode() }}" data-selected-tags="{{ arraySelectedTags|json_encode() }}" type="text"  id="id-{{ name }}" name="{{ name }}" {% if data_original_title is not null %}class="span11 taglist"{% else %}class="span12 taglist"{% endif %} {% if state == "disabled"%}disabled="true"{% endif %} {% if state == "readonly"%}readonly="true"{% endif %} />
+
+            </div>
+    </div>
+{% endmacro %}
+
+
+{% macro textarea(name, label, value, data_original_title, data_content, state) %}
+    <div class="control-group">
+            <label class="control-label" for="{{ name }}">{{ label }}</label>
+            <div class="controls">
+                    <textarea rows="4" id="id-{{ name }}" name="{{ name }}" class="span12"
+                    {% if state == "disabled"%}disabled="true"{% endif %}
+                    {% if state == "uneditable"%}readonly="true"{% endif %}
+                    >{{ value }}</textarea>
+            </div>
+    </div>
+{% endmacro %}
+
+
+{% macro checkbox(name, label, selected_value, default_value, state) %}
+    <div class="control-group">
+        {% if label is not null %}<label class="control-label" for="{{ name }}">{{ label }}</label>{% endif %}
+        <div class="controls">
+            <div class="input-append">
+                <input class="span9"
+                    {% if state == "disabled"%}disabled="true"{% endif %}
+                    {% if state == "uneditable"%}readonly="true"{% endif %}
+                    type="checkbox"
+                    name="{{ name }}"
+                    value="{{ selected_value|e }}"
+                    {% if default_value == true %}checked="checked"{% endif %}
+                    id="id-{{ name }}" />
+            </div>
+        </div>
+    </div>
+
+{% endmacro %}
+
+{% macro switchbox(name, label, selected_value, default_value, state, value, true_label, false_label) %}
+{% if value is null %}
+    {% set value = "1" %}
+{% endif %}
+{% if selected_value is defined %}
+    {% if selected_value == "1" or selected_value == value %}
+        {% set checked = true %}
+    {% else %}
+        {% set checked = false %}
+    {% endif %}
+{% else %}
+    {% if default_value == "1" or default_value == value %}
+        {% set checked = true %}
+    {% else %}
+        {% set checked = false %}
+    {% endif %}
+{% endif %}
+
+<div class="control-group">
+    {% if label is not null %}<label class="control-label" for="{{ name }}">{{ label }}</label>{% endif %}
+    <div class="controls">
+        <input style="display: none;" class="span9"
+            {% if state == "disabled"%}disabled="true"{% endif %}
+            {% if state == "uneditable"%}readonly="true"{% endif %}
+            type="checkbox"
+            name="{{ name }}"
+            value="{{ value }}"
+            {% if checked == true %}checked="checked"{% endif %}
+            id="id-{{ name }}" />
+        <div class="btn-group" data-toggle="buttons-radio">
+            <a class="btn {{ state }} {% if checked == true %}btn-success active{% endif %}" data-value="1" href="javascript:;">{{ true_label ? true_label : "Yes"|trans }}</a>
+            <a class="btn {{ state }} {% if checked == false %}btn-success active{% endif %}" data-value="0" href="javascript:;">{{ false_label ? false_label : "No"|trans }}</i></a>
+        </div>
+    </div>
+</div>
+
+{% endmacro %}
+
+{% macro datetime(name, label, selected_value, default_value, state) %}
+
+<div class="well">
+  <div id="datetimepicker4" class="input-append">
+    <input data-format="yyyy-MM-dd" type="text"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker4').datetimepicker({
+      pickTime: false
+    });
+  });
+</script>
+
+{% endmacro %}
+
+{% macro time(name, label, selected_value, data_original_title, data_content, type, autocomplete, state) %}
+
+<div class="control-group">
+    <label class="control-label" for="{{ name }}">{{ label }}</label>
+    <div class="controls">
+        <div id="id-{{ name }}-time" class="input-append">
+          	<input
+          		class="span9"
+          	    {% if state == "disabled"%}disabled="true"{% endif %}
+                {% if state == "uneditable" or state == "readonly" %}readonly="true"{% endif %}
+                type="text"
+				placeholder="hh:mm"
+				name="{{ name }}"
+          		data-format="hh:mm"
+          		type="text"
+          		value="{{ selected_value|e}}"
+          		id="id-{{ name }}" />
+           	<span class="add-on">
+		    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+		    </span>
+        </div>
+   	</div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#id-{{ name }}-time').datetimepicker({
+      pickDate: false,
+      pickSeconds: false
+    }).on('changeDate', function(e) {
+        $(this).find("input").trigger("keyup");
+    });
+
+  });
+</script>
+
+{% endmacro %}
+
+{% macro text(text, label) %}
+
+<div class="control-group">
+    <label class="control-label"><b>{{ label }}</b></label>
+    <div class="controls" style="padding-top: 5px;">{{ text }}</div>
+</div>
+
+{% endmacro %}
