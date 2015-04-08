@@ -97,7 +97,11 @@ class IgestisSecurity {
             $_SESSION['sess_password'] = null;
         }
 
-        $contactRequester = $this->context->entityManager->getRepository("CoreContacts")->findOneBy(array("login" => $_POST['sess_login']));
+        $contactRequester = null;
+        if (!empty($_POST['sess_login'])) {
+            $contactRequester = $this->context->entityManager->getRepository("CoreContacts")->findOneBy(array("login" => $_POST['sess_login']));
+        }
+        
 
         if (!$this->authenticate($_SESSION['sess_login'], $_SESSION['sess_password'])) {
             // Connexion ...
