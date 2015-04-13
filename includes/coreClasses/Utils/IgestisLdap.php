@@ -13,6 +13,7 @@ class IgestisLdap {
      */
     public static function getConnexion($username = null, $password = null, $ou = null) {
         $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase(), \ConfigIgestisGlobalVars::ldapVersion());
+        $adminAuth = false;
         if (!$username) {
             $username = \ConfigIgestisGlobalVars::ldapAdmin();
             $adminAuth = true;
@@ -30,17 +31,17 @@ class IgestisLdap {
         return $ldap;
     }
     /**
-     * 
+     *
      * @return string Next LDAP UID
      */
     public static function getNextUid() {
-        
+
         $ldap = self::getConnexion();
         $maxUidNumber = \ConfigIgestisGlobalVars::minUidNumber();
-        
+
         if(\ConfigIgestisGlobalVars::ldapAdMode() != true) {
             $result = $ldap->find("(uidNumber=*)", array("uidNumber"));
-            
+
             try {
                 foreach($result as $dn => $entry){ // For each entry
                     foreach($entry as $attr => $values){ // For each attribute
@@ -49,7 +50,7 @@ class IgestisLdap {
                         }
                     }
                 }
-                
+
                 return $maxUidNumber + 1;
             }catch(\Exception $e){
                 if(\ConfigIgestisGlobalVars::debugMode()) {
@@ -62,11 +63,11 @@ class IgestisLdap {
         }
         else {
             $result = $ldap->find("(objectSid=*)", array("objectSid"));
-            
+
             try {
                 foreach($result as $dn => $entry){ // For each entry
                     foreach($entry as $attr => $values){ // For each attribute
-                        foreach($values as $value){// For each value            
+                        foreach($values as $value){// For each value
                             $value = self::sidBinToString($value);
                             $exploded = explode("-", $value);
                             $value = $exploded[count($exploded) - 1];
@@ -85,20 +86,20 @@ class IgestisLdap {
                 }
             }
         }
-        
-        
+
+
     }
-    
-    
+
+
     /**
-     * This function checks the validity of the session or logout in case 
+     * This function checks the validity of the session or logout in case
      * the password changed in the LDAP.
-     * 
+     *
      * @param \CoreContacts $contact
      * @return boolean
      */
     public static function ldapSynchDatas(\CoreContacts &$contact, $plainPassword) {
-        if (!\ConfigIgestisGlobalVars::useLdap())  return false;        
+        if (!\ConfigIgestisGlobalVars::useLdap())  return false;
         switch ($contact->getUser()->getUserType()) {
             case "client" :
                 return true;
@@ -106,8 +107,8 @@ class IgestisLdap {
             case "employee" :
                 try {
                     $ldap = self::getConnexion($contact->getLogin(), $plainPassword, \ConfigIgestisGlobalVars::ldapUsersOu());
-                    
-                    
+
+
                     if(\ConfigIgestisGlobalVars::ldapAutoImportUser()) {
                         $nodesList = $ldap->find(str_replace("%u", $contact->getLogin(), \ConfigIgestisGlobalVars::ldapUserFilter()));
                     if(count($nodesList) < 1) return false;
@@ -123,7 +124,7 @@ class IgestisLdap {
                                 ->setCity('')
                                 ->setAddress1('')
                                 ->setAddress2('');
-                        
+
                         foreach ($nodesList as $dn => $entry) { // For each entry
                             foreach ($entry as $attr => $values) { // For each attribute
                                 foreach ($values as $value) {
@@ -173,10 +174,10 @@ class IgestisLdap {
                         if(!empty($value[1])) $contact->setAddress2(trim($value[1]));
 
                     }
-                    
+
                 } catch(\Exception $e){
                     if (\ConfigIgestisGlobalVars::debugMode()) {
-                        new \wizz($e->getMessage() . "\n" . $e->getTraceAsString()); 
+                        new \wizz($e->getMessage() . "\n" . $e->getTraceAsString());
                         return false;
                     } else {
                         return false;
@@ -192,7 +193,7 @@ class IgestisLdap {
         }
         return false;
     }
-    
+
     /**
      * Get the binary format of the SID and return it into a readable string
      * @param string $binsid Binary data returned by Active directory
@@ -206,7 +207,7 @@ class IgestisLdap {
         $result    = "$rev-$auth";
 
         for ($x=0;$x < $subcount; $x++) {
-            $subauth[$x] = 
+            $subauth[$x] =
                 hexdec(self::littleEndian(substr($hex_sid, 16 + ($x * 8), 8)));
             $result .= "-" . $subauth[$x];
         }
@@ -226,8 +227,8 @@ class IgestisLdap {
         }
         return $result;
     }
-    
-    
+
+
     public static function importUser($login, $plainPassword) {
         $entityManager = \Application::getEntityManager();
         if (!\ConfigIgestisGlobalVars::useLdap())
@@ -235,10 +236,10 @@ class IgestisLdap {
         try {
 
             $ldap = self::getConnexion($login, $plainPassword, \ConfigIgestisGlobalVars::ldapUsersOu());
-                        
+
             $nodesList = $ldap->find(str_replace("%u", $login, \ConfigIgestisGlobalVars::ldapUserFilter()));
             if(count($nodesList) < 1) return false;
-            
+
             $employee = \CoreUsers::newEmployee();
             $contact = new \CoreContacts();
             $contact->setMainContact(true);
@@ -263,30 +264,30 @@ class IgestisLdap {
                     }
                 }
             }
-            
+
             $contact->setLogin($login)->setPassword($plainPassword)->disablePostPersistProcess();
             $employee->setUserLabel($contact->getFirstName() . " " . $contact->getLastName());
-            $employee->AddOrEditContact($contact);    
-            
+            $employee->AddOrEditContact($contact);
+
             $company = $entityManager->getRepository("\CoreCompanies")->getFirst();
             if(!$company) throw new \Exception(_("There is not any company to import the user in"));
-            
+
             $employee->setCompany($company);
 
             $entityManager->persist($employee);
-            $entityManager->flush();            
+            $entityManager->flush();
 
         } catch (\Exception $exc) {
             \IgestisErrors::createWizz($exc, \IgestisErrors::TYPE_ANY, _("Unable to retrieve datas from the LDAP / Active directory server"));
             return false;
         }
     }
-    
-    public static function createCn($cn) {        
-        
+
+    public static function createCn($cn) {
+
         try {
             $ldap = self::getConnexion();
-            
+
             $count = 0;
             $currentCn = $cn;
             do {
@@ -295,15 +296,15 @@ class IgestisLdap {
                 $result = $ldap->find("(cn=$currentCn)", array("cn"));
                 $count++;
             } while(count($result) > 0);
-            
+
             return $currentCn;
-            
-            
+
+
         } catch (\Exception $exc) {
             throw $exc;
         }
-            
-        
+
+
     }
 
 }
