@@ -1,3 +1,9 @@
+igestis (3.0.10) testing; urgency=medium
+
+  * Fix: various.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Sun, 05 Apr 2015 14:53:07 +0200
+
 igestis (3.0.9) testing; urgency=medium
 
   * Feature: ability to define a maximum of login attempt before temporary account disabled.
