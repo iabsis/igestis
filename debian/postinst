@@ -149,7 +149,7 @@ case "$1" in
 		AUTO_IMPORT="true"
 	fi
 
-	# Retrive right values
+	# Retrive right values (disable because whe need suffix for Admin.
 	LDAP_LOGIN=$(echo ${LDAP_ADMIN} | cut -d'@' -f1)
 
 	case "$AUTHENTICATION" in
@@ -167,7 +167,7 @@ case "$1" in
 			replace_value_global_vars USE_LDAP true
 			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
 			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
-			replace_value_global_vars LDAP_ADMIN \"${LDAP_LOGIN}\"
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
 			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
 			replace_value_global_vars LDAP_USERS_OU \"cn=Users,${LDAP_BASE}\"
 			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"
@@ -218,7 +218,7 @@ case "$1" in
 			replace_value_global_vars USE_LDAP true
 			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
 			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
-			replace_value_global_vars LDAP_ADMIN \"${LDAP_LOGIN}\"
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
 			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
 			replace_value_global_vars LDAP_USERS_OU \"cn=Users,${LDAP_BASE}\"
 			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"

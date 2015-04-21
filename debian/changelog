@@ -1,3 +1,9 @@
+igestis (3.0.15) testing; urgency=medium
+
+  * Fix: wrong address when resetting password.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Wed, 08 Apr 2015 17:54:07 +0200
+
 igestis (3.0.14) testing; urgency=medium
 
   * Fix: remove unused apache configuration on purge.
