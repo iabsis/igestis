@@ -16,9 +16,11 @@ class Encryption {
     public static function encryptString($string) {
         $td = MCRYPT_RIJNDAEL_128; // Encryption cipher (http://www.ciphersbyritter.com/glossary.htm#Cipher)
         $iv_size = mcrypt_get_iv_size($td, MCRYPT_MODE_ECB); // Dependant on cipher/mode combination (http://www.php.net/manual/en/function.mcrypt-get-iv-size.php)
+
         $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND); // Creates an IV (http://www.ciphersbyritter.com/glossary.htm#IV)
 
-        $encrypted_string = mcrypt_encrypt($td, \ConfigIgestisGlobalVars::encryptKey(), $string, MCRYPT_MODE_ECB, $iv);
+        $encrypted_string = mcrypt_encrypt($td, md5(\ConfigIgestisGlobalVars::encryptKey()), $string, MCRYPT_MODE_ECB, $iv);
+        //var_dump(mcrypt_encrypt($td, \ConfigIgestisGlobalVars::encryptKey(), $string, MCRYPT_MODE_ECB, $iv)); exit;
         $return = "";
         for ($i = 0; $i < strlen($encrypted_string); $i++) {
             $hex = dechex(ord(substr($encrypted_string, $i, 1)));
@@ -38,7 +40,7 @@ class Encryption {
         if($autoUnhex) {
             $string = self::unhex($string);
         }
-        return trim(mcrypt_decrypt($td, \ConfigIgestisGlobalVars::encryptKey(), $string, MCRYPT_MODE_ECB, $iv));
+        return trim(mcrypt_decrypt($td, md5(\ConfigIgestisGlobalVars::encryptKey()), $string, MCRYPT_MODE_ECB, $iv));
     }
 
     public static function unhex($string) {
