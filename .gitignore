@@ -5,3 +5,11 @@ debian/igestis.debhelper.log
 debian/igestis.postrm.debhelper
 debian/igestis.substvars
 debian/igestis
+*~
+sftp-config.json.buildpath
+.project
+.settings/
+.buildpath
+sftp-config.json
+debian/igestis
+.remote-sync.json
