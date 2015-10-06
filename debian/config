@@ -40,7 +40,7 @@ done
 init_authentication_info()
 {
 
-db_set igestis/directory/base "$(hostname -d)"		
+db_set igestis/directory/base "$(hostname -d)"
 
 if [ "${AUTHENTICATION}" = "Samba4" ] || [ "${AUTHENTICATION}" = "Active Directory" ] ; then
 	db_set igestis/username "administrator"
@@ -59,7 +59,7 @@ get_authentication_info()
 case "$AUTHENTICATION" in
 
 	"OpenLDAP" | "Active Directory" | "Samba4" )
-		
+
         # LDAP_URIS
 		db_input high igestis/directory/uris  || true
 		db_go
@@ -110,7 +110,7 @@ esac
 
 . /usr/share/debconf/confmodule
 if [ -f /usr/share/dbconfig-common/dpkg/config.mysql ]; then
-	. /usr/share/dbconfig-common/dpkg/config.mysql 
+	. /usr/share/dbconfig-common/dpkg/config.mysql
 	dbc_go igestis $@
 fi
 
@@ -140,7 +140,7 @@ if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/config.ini" ] 
 
 		db_get igestis/directory/wrong
 		action="${RET}"
-		
+
 		if [ ! "${action}" = "Ignore" ] ; then
 			unset ERROR
 			if [ "$(which ldapsearch)" ] ; then
@@ -159,7 +159,7 @@ if [ "$1" = "configure" ] && ([ -z "$2" ] && [ ! -e "/etc/igestis/config.ini" ] 
 			db_go
 			db_get igestis/directory/wrong
 			action="${RET}"
-	
+
 			case "$action" in
 				"Cancel")
 					exit 1

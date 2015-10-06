@@ -153,3 +153,9 @@ And install updates for the core and the installed modules:
 	apt-get upgrade
 
 > Note: iGestis v3 uses now an *ini* file instead the *php* for the configuration. Most of the configuration will be kept, but you have probably to check your settings inside the file */etc/igestis/config.ini*.
+
+
+Login into iGestis
+------------------
+
+Now you've installed iGestis, you can simply login with **root** and **password**.
