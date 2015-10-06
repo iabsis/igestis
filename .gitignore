@@ -1,0 +1,7 @@
+build-stamp
+configure-stamp
+debian/files
+debian/igestis.debhelper.log
+debian/igestis.postrm.debhelper
+debian/igestis.substvars
+debian/igestis
