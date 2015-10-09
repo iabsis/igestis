@@ -10,13 +10,24 @@ class IgestisFormRequest {
     private $isGet = false;
     private $post = array();
     private $get = array();
+    private static $query = array();
+
+    public static function initQuery()
+    {
+        self::$query = array_merge($get, $post);
+    }
     
-    
+    public static function getQuery()
+    {
+        return self::$query;
+    }
+
     /**
      * Init the IgestisFormRequest with only post form management
      * @return self
      */
     public static function InitPostRequest() {
+        self::initQuery();
         if(isset ($_POST) && count($_POST) > 0) {
             return new self(true, false);
         }
@@ -28,6 +39,7 @@ class IgestisFormRequest {
      * @return self 
      */
     public static function InitGetRequest() {
+        self::initQuery();
         if(isset ($_GET) && count($_GET) > 0) {
             return new self(true, false);
         }

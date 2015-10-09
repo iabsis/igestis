@@ -26,6 +26,7 @@ $.extend( $.fn.dataTableExt.oSort, {
 $.fn.dataTableExt.aTypes.unshift(
     function ( sData )
     {
+        sData = "" + sData;
         if (sData !== null && sData.match(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20|21)\d\d$/))
         {
             return 'date-uk';
@@ -792,4 +793,39 @@ var igestisLockPage = function(msg) {
         e.stopPropagation();
     });
     $("#global-page-content").find(".select2").select2("disable");
+};
+
+var IgestisSimpleDataTable = function($jqueryObject, config)  {
+    var datatableConfig = {
+        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span5'i><'span7'p>>",
+        "sPaginationType": "bootstrap",
+        "aLengthMenu": [[10, 25, 40, -1], [10, 25, 40, translations.all]],
+        "oLanguage": {
+            "sLengthMenu": translations.recordsperpage,
+            "oPaginate": {
+                "sFirst": translations.first,
+                "sLast": translations.last,
+                "sNext": translations.next,
+                "sPrevious": translations.previous
+            },
+            "sEmptyTable": translations.tableempty,
+            "sInfo": translations.showingxtoyofzentires,
+            "sInfoEmpty": translations.infoempty,
+            "sSearch ": translations.search,
+            "sZeroRecords ": translations.zerorecords,
+            "sInfoFiltered ": " " + translations.infofiltered
+        },
+        "fnRowCallback" : function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+            // Generate buttons                
+            var $th = $(this).find("tr:first th");
+            $("td", nRow).each(function(id, field) {
+                if($th.eq(id).hasClass("hidden-xs")) $(this).addClass('hidden-xs');
+            });
+        }
+    };
+    
+    if(config !== undefined) {
+        $.extend(datatableConfig, config);
+    }
+    $jqueryObject.dataTable(datatableConfig);
 };

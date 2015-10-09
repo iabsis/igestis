@@ -113,6 +113,7 @@ class Application {
         $this->twigEnv->addExtension(new Twig_Extensions_Extension_Url());
         $this->twigEnv->getExtension('core')->setNumberFormat(3, '.', "'");
         $this->twigEnv->addFunction(new Twig_SimpleFunction('pad', 'str_pad'));
+        $this->twigEnv->addExtension(new Twig_Extensions_Extension_Text());
         $this->twigEnv->addGlobal("igestisConfig", new ConfigIgestisGlobalVars());
         if (\ConfigIgestisGlobalVars::debugMode()) {
             $this->twigEnv->addExtension(new Twig_Extension_Debug());
