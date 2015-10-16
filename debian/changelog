@@ -1,3 +1,9 @@
+igestis (3.0.16) testing; urgency=medium
+
+  * Added necessary to use ajax in datatable.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 16 Oct 2015 10:56:03 +0200
+
 igestis (3.0.15) testing; urgency=medium
 
   * Fix: wrong address when resetting password.
