@@ -796,6 +796,17 @@ var igestisLockPage = function(msg) {
 };
 
 var IgestisSimpleDataTable = function($jqueryObject, config)  {
+
+    $.extend($.fn.dataTableExt.oStdClasses, {
+        "sWrapper": "dataTables_wrapper form-inline"
+    });
+
+    $.extend($.fn.dataTableExt.oStdClasses, {
+        "sSortAsc": "header headerSortDown",
+        "sSortDesc": "header headerSortUp",
+        "sSortable": "header"
+    });
+
     var datatableConfig = {
         "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span5'i><'span7'p>>",
         "sPaginationType": "bootstrap",
@@ -827,5 +838,15 @@ var IgestisSimpleDataTable = function($jqueryObject, config)  {
     if(config !== undefined) {
         $.extend(datatableConfig, config);
     }
-    $jqueryObject.dataTable(datatableConfig);
+    var oTable = $jqueryObject.dataTable(datatableConfig);
+ 
+
+    $jqueryObject.find(' tbody > tr').hover(function() {
+        $(this).find('a-visible-line-on-over').addClass('opacity-1');
+    }, function() {
+        $(this).find('a-visible-line-on-over').removeClass('opacity-1');
+    });
+
+    igestisInitInputEraser($jqueryObject.parent().find("input:text, input:password"));
+    return oTable;
 };

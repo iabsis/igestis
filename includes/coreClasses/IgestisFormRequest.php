@@ -14,11 +14,15 @@ class IgestisFormRequest {
 
     public static function initQuery()
     {
-        self::$query = array_merge($get, $post);
+        if (!self::$query) {
+            self::$query = array_merge($_GET, $_POST);
+        }
+        return self::$query;
     }
     
     public static function getQuery()
     {
+        self::initQuery();
         return self::$query;
     }
 

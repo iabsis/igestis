@@ -61,7 +61,6 @@ class AjaxDatatableOutput {
      */
     public function sortingManager(AjaxDatatableSorting $sorting) {
         $this->sortingManager = $sorting;
-        
         foreach ($this->request->getQuery() as $key => $value) {
             $return = null;
             if(!preg_match('/iSortCol_([0-9]+)/', $key, $return)) continue;                     
