@@ -1,3 +1,15 @@
+igestis (3.0.18) UNRELEASED; urgency=medium
+
+  * New feature: it's possible now to place custom HTML on the home page.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 27 Oct 2015 15:41:28 +0100
+
+igestis (3.0.17) testing; urgency=medium
+
+  * Fix for ajax datatable orderig .
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 16 Oct 2015 13:50:38 +0200
+
 igestis (3.0.16) testing; urgency=medium
 
   * Added necessary to use ajax in datatable.
