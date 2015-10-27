@@ -1,4 +1,4 @@
-igestis (3.0.18) UNRELEASED; urgency=medium
+igestis (3.0.18) testing; urgency=medium
 
   * New feature: it's possible now to place custom HTML on the home page.
 
