@@ -4,14 +4,15 @@
                 'title': "Home page"|trans} %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
 
-<link href="{{ TEMPLATE_URL }}/css/bootstrap-wysihtml5.css" rel="stylesheet">
 <link href="{{ TEMPLATE_URL }}/css/prettify.css" rel="stylesheet">
 
-<script src="{{ TEMPLATE_URL }}/js/wysihtml5-0.3.0.js"></script>
+<script src="{{ TEMPLATE_URL }}/js/wysiwyg/wysihtml-toolbar.min.js"></script>
+<script src="{{ TEMPLATE_URL }}/js/wysiwyg/parser_rules/allow-all-html5.js"></script>
+
 <script src="{{ TEMPLATE_URL }}/js/prettify.js"></script>
-<script src="{{ TEMPLATE_URL }}/js/bootstrap-wysihtml5.js"></script>
+<!-- <script src="{{ TEMPLATE_URL }}/js/bootstrap-wysihtml5.js"></script>-->
 <script type="text/javascript">
     function core_restore_home_page() {
         bootbox.confirm("{% trans %}Are you sure that you want to restore the default page ?{% endtrans %}", "{% trans %}No{% endtrans %}", "{% trans %}Yes{% endtrans %}", function(result) {
@@ -49,7 +50,21 @@
                 <h3>{% trans %}Edit the home page{% endtrans %}</h3>
             </div>
             <div class="modal-body">
-                <textarea name="content" class="textarea" placeholder="Enter text ..." style="width: 510px; height: 200px">{% if content_homepage is defined %}{{content_homepage }}{% endif %}</textarea>
+                <div id="toolbar" class="wysiwyg-toolbar">
+                  <a data-wysihtml5-command="bold" href="javascript:;" unselectable="on" class="btn">
+                    <i class="icon-bold"></i>
+                  </a>
+                  <a data-wysihtml5-command="italic" href="javascript:;" unselectable="on" class="btn">
+                    <i class="icon-italic"></i>
+                  </a>
+                  <a data-wysihtml5-command="underline" href="javascript:;" unselectable="on" class="btn">
+                    <i class="icon-underline"></i>
+                  </a>
+                  <a data-wysihtml5-action="change_view" title="Edit HTML source" class="btn">
+                    <i class="icon-code"></i>
+                  </a>
+                </div>
+                <textarea id="editor" name="content" class="textarea" placeholder="Enter text ..." style="width: 510px; height: 200px">{% if content_homepage is defined %}{{content_homepage }}{% endif %}</textarea>
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal" >Close</a>
@@ -63,9 +78,19 @@
     </div>
 
 <script>
-    $('.textarea').wysihtml5({
-        "html": true
-    });
+    /*$('.textarea').wysihtml5({
+        "html": true,
+        "cleanUp" : true,
+        "useLineBreaks": false,
+        "parser" : function(html) {
+            return html;
+        }
+    });*/
+
+    var editor = new wysihtml5.Editor('editor', {
+        toolbar: 'toolbar',
+        parserRules:  wysihtml5ParserRules
+      });
 </script>
 
 <script type="text/javascript" charset="utf-8">
