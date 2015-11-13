@@ -4,7 +4,7 @@ igestis (3.0.19) testing; urgency=medium
   * Change the wysiwyg library
   * Fix an issue in the reset password mail
 
- -- gilles hemmerle <gilles.h@iabsis.com>  Fri, 13 Nov 2015 15:24:26 +0100
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Fri, 13 Nov 2015 15:24:26 +0100
 
 igestis (3.0.18) testing; urgency=medium
 
