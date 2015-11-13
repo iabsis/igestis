@@ -17,19 +17,11 @@ var doRemove = {"remove": 1},
      * Following HTML5 valid tags won't be removed/replaced when parsed by the wysihtml5 HTML parser
      */
     "tags": {
-        "a": {                             // Defines a hyperlink
-          "set_attributes": {
-            "target":   "_blank",
-            "rel":      "nofollow"
-          },
-          "check_attributes": {
-            "href":     "url"              // important to avoid XSS
-          }
-        },
+        "a":            doNotRemove,
         "abbr":         doNotRemove,       // Defines an abbreviation
         "acronym":      doNotRemove,       // Defines an acronym
         "address":      doNotRemove,       // Defines contact information for the author/owner of a document
-        "applet":       doRemove,          // Defines an embedded applet
+        "applet":       doNotRemove,          // Defines an embedded applet
         "area":         doNotRemove,       // Defines an area inside an image-map
         "article":      doNotRemove,       // Defines an article
         "aside":        doNotRemove,       // Defines content aside from the page content
@@ -59,7 +51,7 @@ var doRemove = {"remove": 1},
         "dl":           doNotRemove,       // Defines a definition list
         "dt":           doNotRemove,       // Defines a term (an item) in a definition list
         "em":           doNotRemove,       // Defines emphasized text
-        "embed":        doRemove,          // Defines a container for an external (non-HTML) application
+        "embed":        doNotRemove,          // Defines a container for an external (non-HTML) application
         "fieldset":     doNotRemove,       // Groups related elements in a form
         "figcaption":   doNotRemove,       // Defines a caption for a <figure> element
         "figure":       doNotRemove,       // Specifies self-contained content
@@ -77,7 +69,7 @@ var doRemove = {"remove": 1},
         "hr":           doNotRemove,       // Defines a thematic change in the content
         "html":         doNotRemove,       // Defines the root of an HTML document
         "i":            doNotRemove,       // Defines a part of text in an alternate voice or mood
-        "iframe":       doRemove,          // Defines an inline frame
+        "iframe":       doNotRemove,          // Defines an inline frame
         "img":          doNotRemove,       // Defines an image
         "input":        doNotRemove,       // Defines an input control
         "ins":          doNotRemove,       // Defines a text that has been inserted into a document
@@ -94,7 +86,7 @@ var doRemove = {"remove": 1},
         "meter":        doNotRemove,       // Defines a scalar measurement within a known range (a gauge)
         "nav":          doNotRemove,       // Defines navigation links
         "noscript":     doNotRemove,       // Defines an alternate content for users that do not support client-side scripts
-        "object":       doRemove,          // Defines an embedded object
+        "object":       doNotRemove,          // Defines an embedded object
         "ol":           doNotRemove,       // Defines an ordered list
         "optgroup":     doNotRemove,       // Defines a group of related options in a drop-down list
         "option":       doNotRemove,       // Defines an option in a drop-down list
