@@ -116,11 +116,11 @@ class Application {
         $this->twigEnv->addGlobal("igestisConfig", new ConfigIgestisGlobalVars());
         if (\ConfigIgestisGlobalVars::debugMode()) {
             $this->twigEnv->addExtension(new Twig_Extension_Debug());
-            $this->twigEnv->clearCacheFiles();
+            $this->twigEnv->setCache(false);
         }
         
         $this->stringTwigEnv = clone $this->twigEnv;
-        $this->stringTwigEnv->setLoader(new \Twig_Loader_String());
+        $this->stringTwigEnv->setLoader(new \Twig_Loader_Array([]));
         $this->stringTwigEnv->getExtension('core')->setNumberFormat(2, '.', "");
 
         if(!$installScript) {
