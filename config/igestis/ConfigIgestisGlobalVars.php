@@ -86,10 +86,8 @@ class ConfigIgestisGlobalVars {
         self::initPHPConfig();
         
         if($configFileNotFound) {
-            throw new Exception(\Igestis\I18n\Translate::_("The config.ini file is not found or not readable"));
-        }
-
-        if (!parse_ini_file(__DIR__ . "/config.ini")) {
+            new \wizz(\Igestis\I18n\Translate::_("The config.ini file is not found or not readable"), \wizz::WIZZ_ERROR);
+        } elseif (!parse_ini_file(__DIR__ . "/config.ini")) {
             throw new \Igestis\Exceptions\ConfigException(\Igestis\I18n\Translate::_("The config.ini file contains errors"));
         }
     }

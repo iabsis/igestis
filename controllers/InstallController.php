@@ -7,7 +7,6 @@
  */
 class InstallController extends IgestisController {
     public function checkAction() {
-        
         // Disable cache to avoid issue during install (if user has not set the write yet)
         $this->context->getTwigEnvironnement()->setCache(false);
         $requestUri = $_SERVER['REQUEST_URI'];
@@ -32,6 +31,7 @@ class InstallController extends IgestisController {
         try {
             /* Check databas connexion and table existance */
             $em = $this->context->getEntityManager();
+
             /* Try to connect with the given credentials */
             $connexion = $em->getConnection()->connect();
             $dbCredentialsOk = true;
@@ -47,6 +47,7 @@ class InstallController extends IgestisController {
             
         } catch (Exception $ex) {
             /* If any exception, the database is marked as "no working" */
+            new \Wizz($ex->getMessage());
             $databaseWork = false;
         }
 
