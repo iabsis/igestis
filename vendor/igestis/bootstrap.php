@@ -47,6 +47,8 @@ session_start();
 
 header('Content-Type: text/html; charset=utf-8');
 // Inclusion des librairies
+
+require_once dirname(__FILE__) . "/no_gettext_compatibility.php";
 require_once dirname(__FILE__) . "/wizz_librairie.php";
 require_once dirname(__FILE__) . "/smb_librairie.php";
 require_once dirname(__FILE__) . "/errors_handler.php";

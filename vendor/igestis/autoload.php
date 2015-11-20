@@ -59,7 +59,7 @@ class IgestisAutoloader
         
         // The modules config files (must start with Config)
         if(preg_match("#Igestis\\\Modules\\\([A-Za-z]{1}[A-Za-z0-9\-\_]+)\\\(Config[A-Za-z0-9\-\_]+)#", $class, $result)) {
-            $file = dirname(__FILE__) . "/../modules/" . $result[1] . "/config/" . $result[2] . '.php';
+            $file = dirname(__FILE__) . "/../../modules/" . $result[1] . "/config/" . $result[2] . '.php';
             if (is_file($file)) {
                 require $file;
                 return;
@@ -69,7 +69,7 @@ class IgestisAutoloader
         
         // The modules controllers files (must finish with Controller
         if(preg_match("#Igestis\\\Modules\\\([A-Za-z]{1}[A-Za-z0-9\-\_]+)\\\([A-Za-z0-9\-\_]+Controller)#", $class, $result)) {
-            $file = dirname(__FILE__) . "/../modules/" . $result[1] . "/controllers/" . $result[2] . '.php';
+            $file = dirname(__FILE__) . "/../../modules/" . $result[1] . "/controllers/" . $result[2] . '.php';
             if (is_file($file)) {
                 require $file;
                 return;

@@ -63,10 +63,8 @@ class GetTextCaching {
             if(is_dir($currentFolder)) {
                 $cacheCurrentFolder = $cacheLangDir . "/locale/" . $dirName;
                 if(!is_dir($cacheCurrentFolder)) {
-                    mkdir('/home/vagrant/sites/igestis3/cache/lang/locale/bla/bla', 0777, true);
                     mkdir($cacheCurrentFolder . "/LC_MESSAGES", 0755, true);
-                }                
-
+                }
                 $cacheCurrentFile = $cacheCurrentFolder . "/LC_MESSAGES/" . (method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain) . ".mo";
                 if(!is_file($cacheCurrentFile)) {
                     

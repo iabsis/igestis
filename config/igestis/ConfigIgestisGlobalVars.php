@@ -261,7 +261,11 @@ class ConfigIgestisGlobalVars {
     
     public static function serverAddress() {
         self::initConfigVars();
-        return (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . self::$params['WEB_SUBFOLDER'];
+        $url = (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] ;
+        if (!empty(self::$params['WEB_SUBFOLDER'])) {
+            $url .= self::$params['WEB_SUBFOLDER'];
+        }
+        return $url;
     }
     
     public static function encryptKey() {

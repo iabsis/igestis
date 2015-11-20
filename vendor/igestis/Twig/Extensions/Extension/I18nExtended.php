@@ -23,14 +23,13 @@ class I18nExtended extends \Twig_Extensions_Extension_I18n
     public function getFilters()
     {
         return array(
-            'trans' => new \Twig_Filter_Method($this, 'dgettext'),
+            'trans' => new \Twig_SimpleFilter('trans', function($string, $vars=null, $domainTag="") {
+                $translatedText = dgettext(TransExtended::getTextDomainString($domainTag), $string);;
+                if($translatedText == $string) $translatedText = dgettext(TransExtended::getTextDomainString(), $string);
+                return $translatedText;
+            })
         );
-    }
-    
-    public function dgettext($text="", $vars=null, $domainTag="") {
-        $translatedText = dgettext(TransExtended::getTextDomainString($domainTag), $text);;
-        if($translatedText == $text) $translatedText = dgettext(TransExtended::getTextDomainString(), $text);
-        return $translatedText;
+
     }
 
     /**

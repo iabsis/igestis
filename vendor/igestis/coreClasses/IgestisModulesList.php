@@ -62,7 +62,7 @@ class IgestisModulesList {
      */
     public function getFolder($moduleName) {
         if($moduleName == "core") {
-            return (__DIR__ . "/../../");
+            return (__DIR__ . "/../../../");
         }
         
         if(!$this->moduleExists($moduleName)) {

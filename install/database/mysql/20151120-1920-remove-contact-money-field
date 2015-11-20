@@ -1,0 +1,1 @@
+ALTER TABLE `CORE_USERS` CHANGE `symbol_money` `symbol_money` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;

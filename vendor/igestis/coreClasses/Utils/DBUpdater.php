@@ -57,7 +57,7 @@ class DBUpdater
         $initialTablesExist = self::initialTablesExist();
         // Get the core sql folder
         $filesList = array();
-        $sqlFolder = __DIR__ . "/../../../install/database/mysql/";
+        $sqlFolder = __DIR__ . "/../../../../install/database/mysql/";
         if (is_dir($sqlFolder)) {
             if ($dh = opendir($sqlFolder)) {
                 while (($file = readdir($dh)) !== false) {
@@ -83,7 +83,7 @@ class DBUpdater
         $modulesList = \IgestisModulesList::getInstance();
         $aModulesList = $modulesList->get();
         foreach ($aModulesList as $module_name => $module_datas) {
-            $sqlFolder = __DIR__ . "/../../../install/database/$module_name/mysql/";
+            $sqlFolder = __DIR__ . "/../../../../install/database/$module_name/mysql/";
             $moduleSqlFileList = array();
             if (is_dir($sqlFolder)) {
                 if ($dh = opendir($sqlFolder)) {

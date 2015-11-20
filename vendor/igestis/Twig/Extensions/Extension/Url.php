@@ -10,7 +10,7 @@ class Url extends \Twig_Extension {
     public function getFunctions()
     {
         return array(
-            'url' => new \Twig_Function_Method($this, 'url', array('is_safe' => array('html')))
+            'url' => new \Twig_SimpleFunction('url', [$this, 'url'], ['is_safe' => ['html']])
         );
     }
  
