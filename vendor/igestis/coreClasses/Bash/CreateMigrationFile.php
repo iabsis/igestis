@@ -2,7 +2,7 @@
 
 namespace Igestis\Bash;
 
-use Igestis\Types\String;
+use Igestis\Types\String as IgestisString;
 
 /**
  * Description of IgestisScripts
@@ -37,7 +37,7 @@ class CreateMigrationFile extends Command {
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $moduleName = $input->getArgument('moduleName');
-        $migrationReason = String::slug($input->getArgument('migrationReason'));
+        $migrationReason = IgestisString::slug($input->getArgument('migrationReason'));
 
         
         $modulesList = \IgestisModulesList::getInstance();

@@ -563,7 +563,7 @@ class CoreUsersRepository extends Doctrine\ORM\EntityRepository {
         return $qb->getQuery()->getOneOrNullResult();
     }
     
-    public function find($id, $lockMode = Doctrine\DBAL\LockMode::NONE, $lockVersion = null) {
+    public function find($id, $lockMode = null, $lockVersion = null) {
         $user = parent::find($id, $lockMode, $lockVersion);
         if(!$user) return null;
         

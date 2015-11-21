@@ -34,7 +34,7 @@ class IgestisAutoloader
         if(preg_match("#Igestis\\\Modules\\\([A-Za-z]{1}[A-Za-z0-9\-\_]+)\\\.*#", $class, $result)) {
             $folder = preg_replace("#Igestis\\\Modules\\\([A-Za-z]{1}[A-Za-z0-9\-\_]+)\\\#", "", $class);
             $folder = str_replace("\\", "/", $folder);
-            $file = dirname(__FILE__) . "/../modules/" . $result[1] . "/classes/" . $folder . '.php';
+            $file = dirname(__FILE__) . "/../../modules/" . $result[1] . "/classes/" . $folder . '.php';
             if(is_file($file)) {
                require $file;
                return;

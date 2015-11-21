@@ -680,11 +680,11 @@ class Application {
      * @return string Rendered content
      */
     function renderFromString($string, $variables) {
-        
-        return $this->stringTwigEnv->render(
-          $string,
-          $variables
-        );
+        if (!trim($string)) {
+            return $string;
+        }
+        $template = $this->stringTwigEnv->createTemplate($string);
+        return $template->render($variables);
     }
 
     /**
