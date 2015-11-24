@@ -8,7 +8,7 @@ igestis (3.0.20) testing; urgency=medium
   * Change the html sanitizer for the home page content editor
   * Updated Twig * Updated Doctrine * Added composer dependencies
 
- -- gilles hemmerle <gilles.h@iabsis.com>  Tue, 24 Nov 2015 07:56:12 +0100
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 24 Nov 2015 07:56:12 +0100
 
 igestis (3.0.19) testing; urgency=medium
 
