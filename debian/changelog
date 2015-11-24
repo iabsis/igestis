@@ -1,3 +1,15 @@
+igestis (3.0.20) testing; urgency=medium
+
+  [ Gilles Hemmerlé ]
+  * Removed deprecated twig method calls from the initialization
+  * Added a sql file generator * Removed debuging code * Fix some folder target because some include files have been moved in a previous commit * Fix some twig call to avoid use of deprecated function
+  * Fix target folder depending the new igestis structure * Fix an issue for PHP7, String is now a reserved word
+  * Updated select2 library which caused an issue on chrome for android and iOS
+  * Change the html sanitizer for the home page content editor
+  * Updated Twig * Updated Doctrine * Added composer dependencies
+
+ -- gilles hemmerle <gilles.h@iabsis.com>  Tue, 24 Nov 2015 07:56:12 +0100
+
 igestis (3.0.19) testing; urgency=medium
 
   [ gilles hemmerle ]
