@@ -1,4 +1,4 @@
-igestis (3.0.20) testing; urgency=medium
+igestis (3.1.0) testing; urgency=medium
 
   [ Gilles Hemmerlé ]
   * Removed deprecated twig method calls from the initialization
