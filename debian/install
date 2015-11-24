@@ -15,4 +15,3 @@ debian/database/mysql/upgrade/*	usr/share/dbconfig-common/data/igestis/upgrade/m
 debian/database/mysql/install/*	usr/share/dbconfig-common/data/igestis/install
 install/ldap				usr/share/doc/igestis/
 install/apache2/apache.conf		etc/igestis/
-install/regenLocales.php    usr/share/doc/igestis/
