@@ -9,7 +9,7 @@ function messageOnError()
         $errorMessage = ob_get_clean();
         $ErrorContent = "<pre>" . $errorMessage . "</pre>";
 
-        $html = file_get_contents(__DIR__ . "/../public/error500.html");
+        $html = file_get_contents(__DIR__ . "/../../public/error500.html");
         $html = str_replace("{ErrorContent}", $ErrorContent, $html);
         
         if (method_exists('ConfigIgestisGlobalVars', "logFile")) {
