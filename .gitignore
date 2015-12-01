@@ -13,3 +13,4 @@ sftp-config.json.buildpath
 sftp-config.json
 debian/igestis
 .remote-sync.json
+.sync-config.cson
