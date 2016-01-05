@@ -85,7 +85,7 @@ case "$1" in
 
 	## We regenerate the language cache
 	replace_value_global_vars CACHE_FOLDER \"$CACHE_FOLDER\"
-    php /usr/share/igestis/command.php i18n:regen-locales
+        php /usr/share/igestis/command.php i18n:regen-locales
 	chown www-data -R $CACHE_FOLDER
 	chmod 700 -R $CACHE_FOLDER
 
