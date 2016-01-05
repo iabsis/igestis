@@ -1,10 +1,16 @@
-igestis (2.3.19) wheezy; urgency=medium
+igestis (2.3.21) stable; urgency=medium
+
+  * Revert regretion select2.
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 05 Jan 2016 15:31:18 +0100
+
+igestis (2.3.19) stable; urgency=medium
 
   * Fix dependancy to optional mariadb.
 
  -- Olivier Bitsch <olivier.b@iabsis.com>  Tue, 18 Nov 2014 18:49:14 +0100
 
-igestis (2.3.18) wheezy; urgency=medium
+igestis (2.3.18) stable; urgency=medium
 
   * Fixes for latest ubuntu.
 
