@@ -1,19 +1,20 @@
 <?php
 
-class Application {    
+class Application
+{
     /**
      *
-     * @var array List of wizz to show 
+     * @var array List of wizz to show
      */
     private $wizzMessages = array();
     /**
      *
-     * @var bool True if the application is under 404 error, false else 
+     * @var bool True if the application is under 404 error, false else
      */
     public $is404error = false;
     /**
      *
-     * @var bool True if the application is under 403 error, false else 
+     * @var bool True if the application is under 403 error, false else
      */
     public $is403error = false;
 
@@ -27,7 +28,7 @@ class Application {
      * @var Twig_Environment Twig environment to render content without file
      */
     private $stringTwigEnv = NULL;
-    
+
     /**
      *
      * @var \IgestisModulesList List of modules
@@ -62,19 +63,19 @@ class Application {
      * @var \Doctrine\ORM\EntityManager store the entitymanager to access to the doctrine entities
      */
     private static $_entityManager;
-    
+
     /**
      *
      * @var \Doctrine\ORM\EntityManager Helper for the entitymanager to access to the doctrine entities
      */
     public $entityManager;
-    
+
         /**
      * Constructor is private. Use getInstance to create the singleton
      */
     private function __construct() {
         // Initialise application configuration
-        
+
         if (php_sapi_name() == "cli") {
             $installScript = false;
         } else {
@@ -83,14 +84,14 @@ class Application {
         // Initialize modules list
         $oModulesList = IgestisModulesList::getInstance();
         $this->modulesList = $oModulesList->get();
-        
+
         // Initialize default values
         self::$doctrineLogger = null;
         $this->debugger = Igestis\Utils\Debug::getInstance();
         self::$_entityManager = self::configDoctrine();
         $this->entityManager = self::$_entityManager;
 
-        
+
         $templateFoldersList = array(dirname(__FILE__) . "/../../../templates/");
         $modulesList = IgestisModulesList::getInstance();
         foreach ($modulesList->get() as $module_name => $module) {
@@ -99,7 +100,7 @@ class Application {
                     $templateFoldersList[] = $module['folder'] . "/templates/";
             }
         }
-        
+
         $twigLoader = new Twig_Loader_Filesystem($templateFoldersList);
 
         //$this->twigEnv = new Twig_Extensions_Extension_I18n();
@@ -118,9 +119,9 @@ class Application {
             $this->twigEnv->addExtension(new Twig_Extension_Debug());
             $this->twigEnv->setCache(false);
         }
-        
+
         $this->stringTwigEnv = clone $this->twigEnv;
-        $this->stringTwigEnv->setLoader(new \Twig_Loader_Array([]));
+        $this->stringTwigEnv->setLoader(new \Twig_Loader_Array(array()));
         $this->stringTwigEnv->getExtension('core')->setNumberFormat(2, '.', "");
 
         if(!$installScript) {
@@ -146,7 +147,7 @@ class Application {
 
         self::$_instance = $this;
     }
-    
+
     /**
      * Get template local folder
      * @return type
@@ -154,7 +155,7 @@ class Application {
     function getTemplateFolder() {
         return \ConfigIgestisGlobalVars::serverFolder() . "/" . \ConfigIgestisGlobalVars::appliFolder() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
     }
-    
+
     /**
      * Return puvlic url of the theme
      * @return string
@@ -164,14 +165,14 @@ class Application {
         //return \ConfigIgestisGlobalVars::serverAddress() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
     }
 
-    
+
     private function checkInstallScript() {
         // If install folder nor longer exist and we are on the install script, then we redirect to the login page
         $installScript = false;
         if(filter_input(INPUT_GET, "Page") == "install-check") {
             $installScript = true;
         }
-        
+
         if(is_dir(__DIR__ . "/../../../install")) {
             $this->installScript();
         }
@@ -181,7 +182,7 @@ class Application {
                 header("location:" . ConfigControllers::createUrl("home_page")); exit;
             }
         }
-        
+
         try {
             ConfigIgestisGlobalVars::initFromIniFile();
         } catch (Exception $ex) {
@@ -190,7 +191,7 @@ class Application {
         }
 
         return $installScript;
-        
+
     }
     private function installScript() {
         if(filter_input(INPUT_GET, "Page") != "install-check") {
@@ -206,7 +207,7 @@ class Application {
         ConfigIgestisGlobalVars::set("DEBUG_MODE", (bool)$debugMode);
         if(!defined("DEBUG_MODE")) define("DEBUG_MODE", (bool)$debugMode);
     }
-    
+
     /**
      * Get the single entityManager
      * @return EntityManager
@@ -215,7 +216,7 @@ class Application {
     public static function getEntityMaanger() {
         return self::getEntityManager();
     }
-    
+
     /**
      * Get the single entityManager
      * @return EntityManager
@@ -266,7 +267,7 @@ class Application {
             $this->userprefs = array(
                 "user_label" => $this->security->user->getUserLabel(),
                 "user_type" => $this->security->user->getUserType(),
-                "company_id" => ($company ? $company->getId() : 0), 
+                "company_id" => ($company ? $company->getId() : 0),
                 "id" => $this->security->contact->getId(),
                 "contact_id" => $this->security->contact->getId(),
                 "user_id" => $this->security->user->getId(),
@@ -274,7 +275,7 @@ class Application {
                 "login" => $this->security->contact->getLogin(),
                 "password" => $this->security->contact->getPassword(),
                 "ssh_password" => $this->security->contact->getSshPassword(),
-                "civility_code" => $this->security->contact->getCivilityCode(), 
+                "civility_code" => $this->security->contact->getCivilityCode(),
                 "firstname" => $this->security->contact->getFirstname(),
                 "lastname" => $this->security->contact->getLastname(),
                 "email" => $this->security->contact->getEmail(),
@@ -299,7 +300,7 @@ class Application {
         }
         $config = Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../entities"), \ConfigIgestisGlobalVars::debugMode());
         $config->setAutoGenerateProxyClasses(true);
-        
+
         if(!is_dir(ConfigIgestisGlobalVars::doctrineProxyFolder())) {
             mkdir(ConfigIgestisGlobalVars::doctrineProxyFolder());
         }
@@ -312,7 +313,7 @@ class Application {
         }
 
 
-        $connectionOptions = array( 
+        $connectionOptions = array(
             'dbname' => \ConfigIgestisGlobalVars::mysqlDatabase(),
             'user' => \ConfigIgestisGlobalVars::mysqlLogin(),
             'password' => \ConfigIgestisGlobalVars::mysqlPassword(),
@@ -325,7 +326,7 @@ class Application {
         );
 
         $entityManager = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
-                
+
         $hook = Igestis\Utils\Hook::getInstance();
         $hookParameters = new \Igestis\Types\HookParameters();
         $hookParameters->set('entityManager', $entityManager);
@@ -343,7 +344,7 @@ class Application {
     function setLanguage($lang) {
 
         if (isset($lang) == false || $lang == "") {
-            
+
             if(!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
                 $http_lang = $country = null;
                 $langs = explode(",", $_SERVER['HTTP_ACCEPT_LANGUAGE']);
@@ -353,7 +354,7 @@ class Application {
             else {
                 $lang = "EN";
             }
-            
+
         }
 
         // This is used by getext from Twig plugin
@@ -397,7 +398,7 @@ class Application {
     function invalidForm($reason = "Unknown reason") {
         $this->render("pages/invalidForm.twig", array("reason" => $reason));
     }
-   
+
     /**
      * Return the array for the sidebar
      * @return array
@@ -492,7 +493,7 @@ class Application {
      */
     function renderFile($file, $forceDownload = 0, $customName = '') {
         //First, see if the file exists
-        
+
         if ((int) $forceDownload != 1)
             $forceDownload = 0;
 
@@ -571,7 +572,7 @@ class Application {
         }
 
         //Force the download
-        
+
         header("Content-Transfer-Encoding: binary");
         header("Content-Length: " . $len);
         @readfile($file);
@@ -627,7 +628,7 @@ class Application {
         $menu = $this->getMenu();
 
         if ($menu) $replacement['menu_top'] = $menu;
-        $sidebar = $this->getSidebar();        
+        $sidebar = $this->getSidebar();
         if ($sidebar) $replacement['MODULE_SIDEBAR'] = $sidebar;
 
         if ($this->security && $this->security->isLoged()) {
@@ -637,13 +638,13 @@ class Application {
         if ($forceDebugToolbar || preg_match("/debugToolbar.twig/", $twigFile) || $return == false) {
 
             if (self::$doctrineLogger && \ConfigIgestisGlobalVars::debugMode()) {
-                
+
                 foreach (self::$doctrineLogger->queries as $query) {
                     $this->debugger->addDoctrineLog(
                             $query['sql'], $query['params'], $query['types'], $query['executionMS']
                     );
                 }
-                
+
 
                 $this->debugger->addDump($_GET, "_GET");
                 $this->debugger->addDump($_POST, "_POST");
@@ -658,7 +659,7 @@ class Application {
                 $replacement['DEBUGGING_VARS'] = $this->debugger->getEvents();
             }
         }
-        
+
 
         if ($return) {
             return $this->twigEnv->render($twigFile, $replacement);
@@ -668,11 +669,11 @@ class Application {
             $hookParameters->set('replacements', $replacement);
             $hook->callHook("finalRendering", $hookParameters);
             $replacement = $hookParameters->get("replacements");
-            
+
             die($this->twigEnv->render($twigFile, $replacement));
         }
     }
-    
+
     /**
      * Render a twig content from variable
      * @param string $string Twig code
@@ -719,7 +720,7 @@ class Application {
         //$controller->error404();
         exit;
     }
-    
+
     public function dieMessage($msg) {
         die($msg);
     }
