@@ -1,5 +1,5 @@
 Introduction
-============
+------------
 
 iGestis is an ERP designed for small companies. iGestis can support the account creation for employees, 
 customers and providers with account access. iGestis can also manage multiple companies with one instance. 
@@ -9,7 +9,7 @@ iGestis needs to have a working database installation to store all information. 
 only Mysql is supported.
 
 Installation with Debian package (version 2)
-============================================
+--------------------------------------------
 
 We provide ready package for Debian/Ubuntu. The installation is straigh forward.
 
@@ -48,7 +48,7 @@ Open your browser and type the server url and happend **/igestis**, by example
 > http://my_ip_server/igestis
 
 Installation with Debian package (version 3)
-============================================
+--------------------------------------------
 
 We provide ready package for Debian/Ubuntu. The installation is straigh forward.
 
@@ -95,7 +95,7 @@ Open your browser and type the server url and happend **/igestis**, by example
 > http://my_ip_server/igestis
 
 Manual Installation
-===================
+-------------------
 
 You can get iGestis on https://github.com/olivierb2/igestis/releases. This guide assume you have at least 
 iGestis version 3.0 from the branche master.
@@ -109,17 +109,16 @@ Apache alias can be **Alias /igestis /usr/share/igestis/public**.
 You can already use your prefered web browser and access to the folder something like **http://your_server/igestis**.
 The first time you open this page, you will get an install check page, to check your server settings.
 
-Configuration
--------------
+### Configuration
 
 During the configuration, you can anytime refresh the webpage to check what you done.
 
-### Fix permission right
+#### Fix permission right
 
 First off all, make the folder **document** and **cache** writeable for Apache username. Depending of your 
 distribution, let do a `chown www-data documents cache` or `chown apache documents cache`.
 
-### Create the database in MySQL
+#### Create the database in MySQL
 
 Create an empty database under MySQL. From command line, you can access to the prompt with the command.
 
@@ -134,7 +133,7 @@ Then create an empty database and user dedicated for iGestis.
 
 Replace igestis1234 by the password you want.
 
-### Create the config.ini file.
+#### Create the config.ini file.
 
 Then create a `config.ini` file by copying the `config.ini-template.ini` with the command 
 `cp config/igestis/config.ini-template.ini config/igestis/config.ini`. Use your prefered text
@@ -154,12 +153,12 @@ encrypt all sensitive data in the database that must be decipherable.
 In the case of the database is stollen without the configuration file, it will be no way to recover
 the encrypted data.
 
-### Install MySQL database.
+#### Install MySQL database.
 
 Go back to the check install web page, check at least everything are green or orange, and then click 
 on **Launch database update**.
 
-### Ldap configuration (optionnal).
+#### Ldap configuration (optionnal).
 
 In the of you would like to let user use their **Active directory** or **OpenLDAP** account, you can 
 configure iGestis to use and manage the Users LDAP information.
@@ -198,8 +197,8 @@ directory.
 But Active Directory use the convention "cn=%username%".
 
 
-Modules installation
-====================
+Modules installation (version 3)
+--------------------------------
 
 iGestis is provided with few optional modules.
 
@@ -213,12 +212,11 @@ iGestis is provided with few optional modules.
 | ServerMgmt: Easily setup your folder access right within iGestis.             | No                    | Yes        | igestis-roundcube  |
 
 Troubleshooting
-===============
+---------------
 
 In the case of you encounter an issue with iGestis, follow this process.
 
-iGestis v2
-----------
+### iGestis v2
 
 Enable the debug mode with the following command :
 
@@ -231,5 +229,17 @@ And then change the line
 Into
 
     define("DEBUG_MODE", true);
+
+Open the web page and try again the failed step, you should now have a more detail error of the issue.
+
+### iGestis v3
+
+Enable the debug mode with the following command:
+
+    nano /etc/igestis/config.ini
+
+And then add the line
+
+    DEBUG_MODE=true
 
 Open the web page and try again the failed step, you should now have a more detail error of the issue.

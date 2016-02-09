@@ -10,7 +10,7 @@ iGestis a besoin d'une base de donnée fonctionnelle pour stocker toutes les inf
 seul Mysql est supporté.
 
 Installation avec le paquet Debian (version 2)
-==============================================
+----------------------------------------------
 
 Nous fournissons une installation simplifiée d'iGestis grâce au paquet Debian.
 
@@ -49,7 +49,7 @@ Ouvrez votre navigateur et tapez l'adresse de votre serveur et en ajoutant **/ig
 > http://my_ip_server/igestis
 
 Installation avec le paquet Debian (version 3)
-==============================================
+----------------------------------------------
 
 Nous fournissons une installation simplifiée d'iGestis grâce au paquet Debian.
 
@@ -109,17 +109,16 @@ Vous pouvez désormais utiliser votre navigateur préféré pour accéder à la 
 La première fois que vous ouvrirez la page, vous accéderez à une page de vérification de l'installation pour vérifier les
 paramètres de votre serveur.
 
-Configuration
--------------
+### Configuration
 
 Pendant la configuration, vous pourrez raffraichir la page pour vérifier ce que vous avez corrigé.
 
-### Correction les problèmes de permissions
+#### Correction les problèmes de permissions
 
 Avant toute chose, rendez le dossier **document** et **cache** inscriptible par le compte Apache. En fonction de votre
 distribution Linux, faite un `chown www-data documents cache` ou `chown apache documents cache`.
 
-### Créez une base MySQL
+#### Créez une base MySQL
 
 Créez une base de donnée vide sous MySQL. Depuis la ligne de commande, vous pouvez accéder au shell de Mysql avec :
 
@@ -134,7 +133,7 @@ Et créez une base pour iGestis :
 
 Remplacez igestis1234 par un mot de passe de votre choix (ou aléatoire).
 
-### Créez le fichier config.ini.
+#### Créez le fichier config.ini.
 
 Créez donc ensuite un fichier `config.ini` en copiant le fichier `config.ini-template.ini` grace à la commande
 `cp config/igestis/config.ini-template.ini config/igestis/config.ini`. Utilisez votre éditeur de texte préféré
@@ -153,11 +152,11 @@ les données sensibles dans votre base de données tout en restant déchiffrable
 
 Dans ce cas, même si la base de données est volée, ces données resteront cryptées et indéchiffrable sans la clef de décryptage.
 
-### Installer la base de donnée Mysql.
+#### Installer la base de donnée Mysql.
 
 De retour dans la page de vérification, vérifiez une dernière fois que tout est vert ou orange, et cliquez sur **Launch database update**.
 
-### Configuration Ldap (optionnelle).
+#### Configuration Ldap (optionnelle).
 
 In the of you would like to let user use their **Active directory** or **OpenLDAP** account, you can 
 configure iGestis to use and manage the Users LDAP information.
@@ -196,8 +195,8 @@ directory.
 But Active Directory use the convention "cn=%username%".
 
 
-Installation de module
-======================
+Installation de module (version 3)
+----------------------------------
 
 iGestis est fourni avec plusieurs modules optionnels
 
@@ -211,7 +210,7 @@ iGestis est fourni avec plusieurs modules optionnels
 | ServerMgmt: Easily setup your folder access right within iGestis.             | No                    | Yes        | igestis-roundcube  |
 
 Dépannage
-=========
+---------
 
 Dans le cas ou vous rencontreriez un problème avec iGestis, suivez la procédure suivante.
 
@@ -229,5 +228,17 @@ Et modifiez la ligne
 En 
 
     define("DEBUG_MODE", true);
+
+Ouvrez la page web et tentez à nouveau l'étape ayant échouée, vous devriez avoir maintenant un message plus détaillé du problème.
+
+### iGestis v3
+
+Activez le mode debuggage avec la commande suivante :
+
+    nano /etc/igestis/config.ini
+
+Et ensuite ajoutez la ligne suivante :
+
+    DEBUG_MODE=true
 
 Ouvrez la page web et tentez à nouveau l'étape ayant échouée, vous devriez avoir maintenant un message plus détaillé du problème.
