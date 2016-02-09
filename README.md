@@ -1,8 +1,5 @@
-iGestis installation
-====================
-
 Introduction
-------------
+============
 
 iGestis is an ERP designed for small companies. iGestis can support the account creation for employees, 
 customers and providers with account access. iGestis can also manage multiple companies with one instance. 
@@ -11,11 +8,97 @@ You can also connect iGestis to a directory of your choice (OpenLDAP, Active Dir
 iGestis needs to have a working database installation to store all information. For the moment, 
 only Mysql is supported.
 
-Installation
-------------
+Installation with Debian package (version 2)
+============================================
+
+We provide ready package for Debian/Ubuntu. The installation is straigh forward.
+
+Add the ready source list for the apt repository
+
+    wget http://open.iabsis.com/iabsis.list -O /etc/apt/sources.list.d/iabsis.list
+
+Add the repository certificate
+
+    wget http://open.iabsis.com/open.iabsis.com.asc -O- | apt-key add -
+
+Refresh the package list 
+
+    apt-get update
+
+And finally install iGestis
+
+    apt-get install igestis
+
+iGestis will ask you some question.
+
+ * Choose the wanted authentication method: choose your actual directory (OpenLDAP or Active Directory). If none, choose **Internal**
+ * Choose the admin account name: only change if you don't like the default one. This account must exists within your directory.
+ * Specify the uris for the directory: replace here the address of your server. In case of Samba4 usage, keep the proposed ldapi url.
+ * Specify the directory base tree: type the FQDN domain name (example: *domain.local*)
+ * Specify the directory admin account for the directory : The bind dn of the Administrator account. By example **dc=admin,dc=domain,dc=local** for OpenLDAP or **Administrator@domain.local** for Samba4 or Active Directory.
+ * Please specify the admin password for the directory : Your Administrator password.
+ * Create a user in iGestis when present in the directory ? Prefered **Yes**
+ * Configure database for igestis with dbconfig-common? Yes
+ * Password of the database's administrative user: Your Mysql Root password
+ * MySQL application password for igestis: Keep empty for a random password.
+ * Web server to reconfigure automatically : Keep *apache2* for an automated Apache2 configuration.
+
+Open your browser and type the server url and happend **/igestis**, by example
+
+> http://my_ip_server/igestis
+
+Installation with Debian package (version 3)
+============================================
+
+We provide ready package for Debian/Ubuntu. The installation is straigh forward.
+
+Add the ready source list for the apt repository
+
+    wget http://open.iabsis.com/iabsis.list -O /etc/apt/sources.list.d/iabsis.list
+
+Edit the file just downloaded with
+
+    nano /etc/apt/sources.list.d/iabsis.list
+
+And uncomment the following line
+
+    deb http://open.iabsis.com/debian testing main
+
+Add the repository certificate
+
+    wget http://open.iabsis.com/open.iabsis.com.asc -O- | apt-key add -
+
+Refresh the package list 
+
+    apt-get update
+
+And finally install iGestis
+
+    apt-get install igestis
+
+iGestis will ask you some question.
+
+ * Choose the wanted authentication method: choose your actual directory (OpenLDAP or Active Directory). If none, choose **Internal**
+ * Choose the admin account name: only change if you don't like the default one.
+ * Specify the uris for the directory: replace here the address of your server. In case of Samba4 usage, keep the proposed ldapi url.
+ * Specify the directory base tree : type the FQDN domain name (example: *domain.local*)
+ * Specify the directory admin account for the directory : The bind dn or the Administrator account. By example **dc=admin,dc=domain,dc=local** for OpenLDAP or **Administrator@domain.local** for Samba4 or Active Directory.
+ * Please specify the admin password for the directory : Your Administrator password.
+ * Create a user in iGestis when present in the directory ? Prefered Yes
+ * Configure database for igestis with dbconfig-common? Yes
+ * Password of the database's administrative user: Your Mysql Root password
+ * MySQL application password for igestis: Keep empty for a random password.
+ * Web server to reconfigure automatically : Keep *apache2* for an automated Apache2 configuration.
+
+Open your browser and type the server url and happend **/igestis**, by example
+
+> http://my_ip_server/igestis
+
+Manual Installation
+===================
 
 You can get iGestis on https://github.com/olivierb2/igestis/releases. This guide assume you have at least 
-iGestis version 3.0.
+iGestis version 3.0 from the branche master.
 
 Once copied to your server, extract the file with your prefered archive manager, or use the command 
 `tar xfz igestis-xx.tar.gz` or `unzip igestis-xx.zip`. Move the extracted folder somewhere not accessible
@@ -114,48 +197,39 @@ directory.
 * **LDAP\_USER\_RDN** by default, iGestis create an employee with "uid=%username%". 
 But Active Directory use the convention "cn=%username%".
 
-### Debian/Ubuntu installation
 
-Installing iGestis on a Debian is pretty simple, first add the repository:
+Modules installation
+====================
 
-	wget http://open.iabsis.com/igestis.list -O /etc/apt/sources.list.d/igestis.list
+iGestis is provided with few optional modules.
 
-Install the repository certificate:
+|                                                                               | iGestis v2            | iGestis v3 | Package name       |
+|-------------------------------------------------------------------------------|-----------------------|------------|--------------------|
+| Commercial: let you manage your quotation, invoicing, orders and accounting   | Yes (but not updated) | Yes        | igestis-commercial |
+| Ajaxplorer: Access remotely to your files (not available for iGestis 3 yet    | Yes                   | Not yet    | igestis-ajaxplorer |
+| Roundcube: Display and manage your mail within iGestis                        | Yes                   | Yes        | igestis-roundcube  |
+| OpenChange: Extend Active Directory attributes to manage OpenChange.          | Yes                   | Not yet    | igestis-roundcube  |
+| Samba: Extend OpenLDAP attributes to manage Samba 3/4.                        | Yes                   | Yes        | igestis-roundcube  |
+| ServerMgmt: Easily setup your folder access right within iGestis.             | No                    | Yes        | igestis-roundcube  |
 
-	wget http://open.iabsis.com/open.iabsis.com.asc -O- | apt-key add -
+Troubleshooting
+===============
 
-And finally install the igestis core
+In the case of you encounter an issue with iGestis, follow this process.
 
-	apt-get update && apt-get install igestis
+iGestis v2
+----------
 
-iGestis will ask you regarding some question like the database and ldap configuration.
+Enable the debug mode with the following command :
 
-You can also easily search for modules available with
+    nano /usr/share/igestis/index.php
 
-	apt-cache search igestis
+And then change the line
 
-### Upgrade from branch 2.0 to 3.0 on Debian/Ubuntu
+    define("DEBUG_MODE", false);
 
-iGestis can be easily updated from version 2.0 to 3.0. First ensure you have the testing branch enabled:
+Into
 
-	nano /etc/apt/sources.list.d/igestis.list
+    define("DEBUG_MODE", true);
 
-And uncomment/add the line
-
-	deb http://open.iabsis.com/debian testing main
-
-Update the list:
-
-	apt-get update
-
-And install updates for the core and the installed modules:
-
-	apt-get upgrade
-
-> Note: iGestis v3 uses now an *ini* file instead the *php* for the configuration. Most of the configuration will be kept, but you have probably to check your settings inside the file */etc/igestis/config.ini*.
-
-
-Login into iGestis
-------------------
-
-Now you've installed iGestis, you can simply login with **root** and **password**.
+Open the web page and try again the failed step, you should now have a more detail error of the issue.
