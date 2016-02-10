@@ -1,13 +1,14 @@
 Introduction
 ------------
 
-iGestis est un ERP conçu pour les petites entreprises. iGestis supporte la création de compte d'employés,
-des clients et des founisseurs avec des comptes d'accès. iGestis peut aussi gérer plusieurs sociétés avec
-une seule instance d'installation. Enfin, il est possible de configurer iGestis sur l'annuaire de votre
-choix (OpenLDAP, Active Directory,...).
+iGestis vous permet :
+ * d'implémenter un PGI (Progiciel de Gestion Intégré) conçu et adapté pour les petites entreprises, collectivités, artisans, ...
+ * d'utiliser un annuaire de votre choix (OpenLDAP, Active Directory,...)
+ * de créer rapidement des comptes d'employés, de clients et de founisseurs avec des comptes d'accès à l'aide de son interface conviviale
+ * de centraliser la gestion de plusieurs sociétés avec une seule instance d'installation.
 
-iGestis a besoin d'une base de donnée fonctionnelle pour stocker toutes les informations. Pour le moment, 
-seul Mysql est supporté.
+iGestis a besoin d'une base de données fonctionnelle pour stocker toutes les informations.
+Pour le moment, seul Mysql est supporté.
 
 Installation avec le paquet Debian (version 2)
 ----------------------------------------------
@@ -22,7 +23,7 @@ Ajoutez le certificat
 
     wget http://open.iabsis.com/open.iabsis.com.asc -O- | apt-key add -
 
-Raffraichissez la liste des paquets
+Rafraichissez la liste des paquets
 
     apt-get update
 
@@ -30,12 +31,12 @@ Et finalement installez iGestis
 
     apt-get install igestis
 
-iGestis va vous posez quelques questions.
+iGestis va vous poser quelques questions :
 
  * Choose the wanted authentication method: choose your actual directory (OpenLDAP or Active Directory). If none, choose **Internal**
- * Choose the admin account name : changez ce compte uniquement si celui proposé ne vous plait pas. Ce compte doit existant dans annuaire le cas échéant.
+ * Choose the admin account name : changez ce compte uniquement si celui proposé ne vous plait pas. Ce compte doit exister dans annuaire le cas échéant.
  * Specify the uris for the directory : remplacez ici par l'adresse de votre serveur. En cas d'utilisation de Samba4, gardez l'url ldapi proposée.
- * Specify the directory base tree : tapez le nom de domaine FQDN (exemple: *domain.local*)
+ * Specify the directory base tree : saisissez le nom de domaine FQDN (exemple: *domain.local*)
  * Specify the directory admin account for the directory : Le bind dn du compte Administrator. Par exemple **dc=admin,dc=domain,dc=local** pour OpenLDAP ou **Administrator@domain.local** pour Samba4 ou Active Directory.
  * Please specify the admin password for the directory : Le mot de passe de votre compte administrateur.
  * Create a user in iGestis when present in the directory ? Préférez **Yes**
@@ -44,9 +45,7 @@ iGestis va vous posez quelques questions.
  * MySQL application password for igestis: Laissez vide pour générer un mot de passe aléatoire
  * Web server to reconfigure automatically : Gardez coché *apache2* pour une configuration automatique de Apache2.
 
-Ouvrez votre navigateur et tapez l'adresse de votre serveur et en ajoutant **/igestis**, par exemple :
-
-> http://my_ip_server/igestis
+Ouvrez votre navigateur, saisissez l'adresse de votre serveur et ajoutez **/igestis**, par exemple : http://ip_de_votre_serveur/igestis
 
 Installation avec le paquet Debian (version 3)
 ----------------------------------------------
@@ -57,11 +56,11 @@ Ajoutez le fichier de dépôt
 
     wget http://open.iabsis.com/iabsis.list -O /etc/apt/sources.list.d/iabsis.list
 
-Modifiez le fichier tout juste téléchargé avec
+Modifiez le fichier téléchargé avec
 
     nano /etc/apt/sources.list.d/iabsis.list
 
-Et décommentez la ligne suivante
+Et décommentez la ligne
 
     deb http://open.iabsis.com/debian testing main
 
@@ -69,7 +68,7 @@ Ajoutez le certificat
 
     wget http://open.iabsis.com/open.iabsis.com.asc -O- | apt-key add -
 
-Raffraichissez la liste des paquets
+Rafraichissez la liste des paquets
 
     apt-get update
 
@@ -77,12 +76,12 @@ Et finalement installez iGestis
 
     apt-get install igestis
 
-iGestis va vous posez quelques questions.
+iGestis va vous poser quelques questions.
 
  * Choose the wanted authentication method: choose your actual directory (OpenLDAP or Active Directory). If none, choose **Internal**
- * Choose the admin account name : changez ce compte uniquement si celui proposé ne vous plait pas. Ce compte doit existant dans annuaire le cas échéant.
+ * Choose the admin account name : changez ce compte uniquement si celui proposé ne vous plait pas. Ce compte doit exister dans annuaire le cas échéant.
  * Specify the uris for the directory : remplacez ici par l'adresse de votre serveur. En cas d'utilisation de Samba4, gardez l'url ldapi proposée.
- * Specify the directory base tree : tapez le nom de domaine FQDN (exemple: *domain.local*)
+ * Specify the directory base tree : saisissez le nom de domaine FQDN (exemple: *domain.local*)
  * Specify the directory admin account for the directory : Le bind dn du compte Administrator. Par exemple **dc=admin,dc=domain,dc=local** pour OpenLDAP ou **Administrator@domain.local** pour Samba4 ou Active Directory.
  * Please specify the admin password for the directory : Le mot de passe de votre compte administrateur.
  * Create a user in iGestis when present in the directory ? Préférez **Yes**
@@ -91,36 +90,36 @@ iGestis va vous posez quelques questions.
  * MySQL application password for igestis: Laissez vide pour générer un mot de passe aléatoire
  * Web server to reconfigure automatically : Gardez coché *apache2* pour une configuration automatique de Apache2.
 
-Ouvrez votre navigateur et tapez l'adresse de votre serveur et en ajoutant **/igestis**, par exemple :
+Ouvrez votre navigateur, saisissez l'adresse de votre serveur et ajoutez **/igestis**, par exemple : http://ip_de_votre_serveur/igestis
 
 Installation Manuelle
 ---------------------
 
-Vous pouvez télécharger iGestis sur l'adresse https://github.com/olivierb2/igestis/releases. Ce guide vous
-permet de configurer iGestis version 3.
+Vous pouvez télécharger iGestis sur l'adresse https://github.com/olivierb2/igestis/releases
+Ce guide vous permet de configurer iGestis version 3.
 
-Une fois copié sur le serveur, extraire le fichier avec votre gestionnaire d'archive préféré, ou utilisez la commande
-`tar xfz igestis-xx.tar.gz` ou `unzip igestis-xx.zip`. Déplacez le dossier extrait dans un emplacement non accessble par
-apache, par example **/usr/share/** ou **/opt**. Ensuite configurez apache avec un alias ou créez un lien symbolique afin
- de rendre le dossier **public** accessible par apache. Par exemple `ln -s /usr/share/igestis/public/ /var/www/igestis`.
-Un Alias pour apache pourrait être **Alias /igestis /usr/share/igestis/public**.
+Une fois copié sur le serveur, extraire le fichier avec votre gestionnaire d'archive préféré ou utilisez la commande
+`tar xfz igestis-xx.tar.gz` ou `unzip igestis-xx.zip`
+Déplacez le dossier extrait dans un emplacement non accessible par apache, par example **/usr/share/** ou **/opt**.
+Configurez apache avec un alias ou créez un lien symbolique afin de rendre le dossier **public** accessible par apache.
+Par exemple `ln -s /usr/share/igestis/public/ /var/www/igestis`
+Un Alias pour apache pourrait être **Alias /igestis /usr/share/igestis/public**
 
-Vous pouvez désormais utiliser votre navigateur préféré pour accéder à la de votre serveur comme **http://your_server/igestis**.
-La première fois que vous ouvrirez la page, vous accéderez à une page de vérification de l'installation pour vérifier les
-paramètres de votre serveur.
+Vous pouvez désormais utiliser votre navigateur préféré afin d'accéder à l'interface web de votre serveur : **http://ip_de_votre_serveur/igestis**
+Lors de cette première connexion, vous accéderez à une page de vérification de l'installation permettant de consulter les paramètres de votre serveur.
 
 ### Configuration
 
-Pendant la configuration, vous pourrez raffraichir la page pour vérifier ce que vous avez corrigé.
+Pendant la configuration, vous pourrez rafraichir la page afin de vérifier ce que vous avez modifié.
 
-#### Correction les problèmes de permissions
+#### Correction des problèmes de permissions
 
-Avant toute chose, rendez le dossier **document** et **cache** inscriptible par le compte Apache. En fonction de votre
-distribution Linux, faite un `chown www-data documents cache` ou `chown apache documents cache`.
+Dans un premier temps, autorisez les droits en écriture par le compte Apache sur les répertoires **documents** et **cache**.
+En fonction de votre distribution Linux, faites un `chown www-data documents cache` ou `chown apache documents cache`.
 
 #### Créez une base MySQL
 
-Créez une base de donnée vide sous MySQL. Depuis la ligne de commande, vous pouvez accéder au shell de Mysql avec :
+Créez une base de données vide sous MySQL. Depuis la ligne de commande, vous pouvez accéder au shell de Mysql avec :
 
 	mysql -uroot -p
 
@@ -135,9 +134,9 @@ Remplacez igestis1234 par un mot de passe de votre choix (ou aléatoire).
 
 #### Créez le fichier config.ini.
 
-Créez donc ensuite un fichier `config.ini` en copiant le fichier `config.ini-template.ini` grace à la commande
+Créez ensuite un fichier `config.ini` en copiant le fichier `config.ini-template.ini` grâce à la commande
 `cp config/igestis/config.ini-template.ini config/igestis/config.ini`. Utilisez votre éditeur de texte préféré
-et modifiez le fichier, comme par exemple `nano config/igestis/config.ini`. Changez les valeurs des quatres premières lignes
+et modifiez le fichier, comme par exemple `nano config/igestis/config.ini`. Changez les valeurs des quatre premières lignes
 afin de l'adapter à votre configuration définie précédemment.
 
 	MYSQL_HOST = "localhost"
@@ -150,11 +149,11 @@ les données sensibles dans votre base de données tout en restant déchiffrable
 
 	ENCRYPT_KEY = "TBXvZGkFMiKoCsMY1AjlEuexFR6XMo"
 
-Dans ce cas, même si la base de données est volée, ces données resteront cryptées et indéchiffrable sans la clef de décryptage.
+Dans ce cas, même si la base de données est volée, ces données resteront cryptées et indéchiffrables sans la clef de décryptage.
 
-#### Installer la base de donnée Mysql.
+#### Installer la base de données Mysql.
 
-De retour dans la page de vérification, vérifiez une dernière fois que tout est vert ou orange, et cliquez sur **Launch database update**.
+De retour dans la page de vérification, vérifiez une dernière fois que tout est vert ou orange et cliquez sur **Launch database update**.
 
 #### Configuration Ldap (optionnelle).
 
@@ -242,3 +241,4 @@ Et ensuite ajoutez la ligne suivante :
     DEBUG_MODE=true
 
 Ouvrez la page web et tentez à nouveau l'étape ayant échouée, vous devriez avoir maintenant un message plus détaillé du problème.
+
