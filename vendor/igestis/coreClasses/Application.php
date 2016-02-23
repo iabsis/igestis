@@ -1,5 +1,4 @@
 <?php
-
 class Application
 {
     /**
@@ -22,24 +21,24 @@ class Application
      *
      * @var Twig_Environment Normal twig environnement
      */
-    private $twigEnv = NULL;
+    private $twigEnv = null;
     /**
      *
      * @var Twig_Environment Twig environment to render content without file
      */
-    private $stringTwigEnv = NULL;
+    private $stringTwigEnv = null;
 
     /**
      *
      * @var \IgestisModulesList List of modules
      */
-    public $modulesList = NULL;
+    public $modulesList = null;
 
     /**
      *
      * @var IgestisSecurity Object that defines the access to the application
      */
-    public $security = NULL;
+    public $security = null;
 
     /**
      *
@@ -70,10 +69,11 @@ class Application
      */
     public $entityManager;
 
-        /**
+    /**
      * Constructor is private. Use getInstance to create the singleton
      */
-    private function __construct() {
+    private function __construct()
+    {
         // Initialise application configuration
 
         if (php_sapi_name() == "cli") {
@@ -91,13 +91,14 @@ class Application
         self::$_entityManager = self::configDoctrine();
         $this->entityManager = self::$_entityManager;
 
-
         $templateFoldersList = array(dirname(__FILE__) . "/../../../templates/");
         $modulesList = IgestisModulesList::getInstance();
         foreach ($modulesList->get() as $module_name => $module) {
             if ($module['igestisVersion'] == 2) {
-                if (is_dir($module['folder'] . "/templates/"))
+                if (is_dir($module['folder'] . "/templates/")) {
                     $templateFoldersList[] = $module['folder'] . "/templates/";
+                }
+
             }
         }
 
@@ -107,7 +108,7 @@ class Application
 
         $this->twigEnv = new Twig_Environment($twigLoader, array(
             'cache' => \ConfigIgestisGlobalVars::debugMode() ? false : \ConfigIgestisGlobalVars::cacheFolder() . "/twig",
-            'debug' => \ConfigIgestisGlobalVars::debugMode()
+            'debug' => \ConfigIgestisGlobalVars::debugMode(),
         ));
         $this->twigEnv->addExtension(new Igestis\Twig\Extensions\Extension\I18nExtended());
         $this->twigEnv->addExtension(new Igestis\Twig\Extensions\Extension\Url());
@@ -124,7 +125,7 @@ class Application
         $this->stringTwigEnv->setLoader(new \Twig_Loader_Array(array()));
         $this->stringTwigEnv->getExtension('core')->setNumberFormat(2, '.', "");
 
-        if(!$installScript) {
+        if (!$installScript) {
             try {
                 if (\ConfigIgestisGlobalVars::useLdap()) {
                     $this->security = \IgestisSecurityLdap::init($this);
@@ -132,16 +133,14 @@ class Application
 
                     $this->security = \IgestisSecurity::init($this);
                 }
-            } catch(\Igestis\Exceptions\AuthenticationException $e) {
+            } catch (\Igestis\Exceptions\AuthenticationException $e) {
                 new \wizz($e->getMessage());
                 header("location:" . ConfigControllers::createUrl("login_form", array("Force" => 0)));
                 exit;
             }
 
-
             $this->setLanguage($this->security->contact->getLanguageCode());
-        }
-        else {
+        } else {
             $this->setLanguage("EN");
         }
 
@@ -152,7 +151,8 @@ class Application
      * Get template local folder
      * @return type
      */
-    function getTemplateFolder() {
+    public function getTemplateFolder()
+    {
         return \ConfigIgestisGlobalVars::serverFolder() . "/" . \ConfigIgestisGlobalVars::appliFolder() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
     }
 
@@ -160,26 +160,26 @@ class Application
      * Return puvlic url of the theme
      * @return string
      */
-    public static function getTemplateUrl() {
+    public static function getTemplateUrl()
+    {
         return "theme/" . \ConfigIgestisGlobalVars::theme() . "/";
         //return \ConfigIgestisGlobalVars::serverAddress() . "/theme/" . \ConfigIgestisGlobalVars::theme() . "/";
     }
 
-
-    private function checkInstallScript() {
+    private function checkInstallScript()
+    {
         // If install folder nor longer exist and we are on the install script, then we redirect to the login page
         $installScript = false;
-        if(filter_input(INPUT_GET, "Page") == "install-check") {
+        if (filter_input(INPUT_GET, "Page") == "install-check") {
             $installScript = true;
         }
 
-        if(is_dir(__DIR__ . "/../../../install")) {
+        if (is_dir(__DIR__ . "/../../../install")) {
             $this->installScript();
-        }
-        else {
-            if($installScript) {
+        } else {
+            if ($installScript) {
                 new wizz(\Igestis\I18n\Translate::_("The default credentials after a new install are : root / password. Remember to change them if that's not already done."), wizz::WIZZ_WARNING);
-                header("location:" . ConfigControllers::createUrl("home_page")); exit;
+                header("location:" . ConfigControllers::createUrl("home_page"));exit;
             }
         }
 
@@ -193,9 +193,10 @@ class Application
         return $installScript;
 
     }
-    private function installScript() {
-        if(filter_input(INPUT_GET, "Page") != "install-check") {
-            header("location:?Page=install-check"); exit;
+    private function installScript()
+    {
+        if (filter_input(INPUT_GET, "Page") != "install-check") {
+            header("location:?Page=install-check");exit;
         }
     }
 
@@ -203,9 +204,13 @@ class Application
      * Set debug mode Set true to show debug bar and disable caches
      * @param type $debugMode
      */
-    public static function setDebugMode($debugMode) {
-        ConfigIgestisGlobalVars::set("DEBUG_MODE", (bool)$debugMode);
-        if(!defined("DEBUG_MODE")) define("DEBUG_MODE", (bool)$debugMode);
+    public static function setDebugMode($debugMode)
+    {
+        ConfigIgestisGlobalVars::set("DEBUG_MODE", (bool) $debugMode);
+        if (!defined("DEBUG_MODE")) {
+            define("DEBUG_MODE", (bool) $debugMode);
+        }
+
     }
 
     /**
@@ -213,7 +218,8 @@ class Application
      * @return EntityManager
      * @deprecated since version 2.5 User the getEntityManager() function instead (fixed typo error)
      */
-    public static function getEntityMaanger() {
+    public static function getEntityMaanger()
+    {
         return self::getEntityManager();
     }
 
@@ -221,7 +227,8 @@ class Application
      * Get the single entityManager
      * @return EntityManager
      */
-    public static function getEntityManager() {
+    public static function getEntityManager()
+    {
         if (self::$_entityManager === null) {
             self::$_entityManager = self::configDoctrine();
         }
@@ -232,7 +239,8 @@ class Application
      * Return the instance singleton
      * @return \Application
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
 
         if (self::$_instance === null) {
             self::$_instance = new self;
@@ -244,7 +252,8 @@ class Application
      * Return the twig environnement
      * @return Twig_Environment
      */
-    public function getTwigEnvironnement() {
+    public function getTwigEnvironnement()
+    {
         return $this->twigEnv;
     }
 
@@ -253,7 +262,8 @@ class Application
      * @param string $login
      * @param string $password
      */
-    public function forceLogin($login, $password) {
+    public function forceLogin($login, $password)
+    {
 
         if (\ConfigIgestisGlobalVars::useLdap()) {
             $this->security->authenticate($login, $password);
@@ -279,7 +289,7 @@ class Application
                 "firstname" => $this->security->contact->getFirstname(),
                 "lastname" => $this->security->contact->getLastname(),
                 "email" => $this->security->contact->getEmail(),
-                "language_code" => $this->security->contact->getLanguageCode()
+                "language_code" => $this->security->contact->getLanguageCode(),
             );
         }
     }
@@ -288,8 +298,9 @@ class Application
      * Create an object of type EntityManager to work with the doctrine entities
      * @return \Doctrine\ORM\EntityManager
      */
-    public static function configDoctrine() {
-        if(self::$_entityManager) {
+    public static function configDoctrine()
+    {
+        if (self::$_entityManager) {
             self::$doctrineLogger = self::$_entityManager->getConfiguration()->getSQLLogger();
             return self::$_entityManager;
         }
@@ -301,7 +312,7 @@ class Application
         $config = Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../entities"), \ConfigIgestisGlobalVars::debugMode());
         $config->setAutoGenerateProxyClasses(true);
 
-        if(!is_dir(ConfigIgestisGlobalVars::doctrineProxyFolder())) {
+        if (!is_dir(ConfigIgestisGlobalVars::doctrineProxyFolder())) {
             mkdir(ConfigIgestisGlobalVars::doctrineProxyFolder());
         }
         $config->setProxyDir(ConfigIgestisGlobalVars::doctrineProxyFolder());
@@ -312,7 +323,6 @@ class Application
             $config->setSQLLogger(self::$doctrineLogger);
         }
 
-
         $connectionOptions = array(
             'dbname' => \ConfigIgestisGlobalVars::mysqlDatabase(),
             'user' => \ConfigIgestisGlobalVars::mysqlLogin(),
@@ -321,8 +331,8 @@ class Application
             'driver' => 'pdo_mysql',
             'charset' => 'utf8',
             'driverOptions' => array(
-                1002 => 'SET NAMES utf8'
-            )
+                1002 => 'SET NAMES utf8',
+            ),
         );
 
         $entityManager = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
@@ -335,23 +345,21 @@ class Application
         return $entityManager;
     }
 
-
-
     /**
      * Define the language to enable
      * @param type $lang
      */
-    function setLanguage($lang) {
+    public function setLanguage($lang)
+    {
 
         if (isset($lang) == false || $lang == "") {
 
-            if(!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
                 $http_lang = $country = null;
                 $langs = explode(",", $_SERVER['HTTP_ACCEPT_LANGUAGE']);
                 $firstLanguage = explode("-", $langs[0]);
                 $lang = strtoupper($firstLanguage[0]);
-            }
-            else {
+            } else {
                 $lang = "EN";
             }
 
@@ -377,8 +385,10 @@ class Application
         foreach ($this->modulesList as $moduleName => $moduleDatas) {
             if ($moduleDatas['igestisVersion'] == 2 && is_dir($moduleDatas['folder'])) {
                 // Caching the mo file
-                if (\ConfigIgestisGlobalVars::debugMode())
+                if (\ConfigIgestisGlobalVars::debugMode()) {
                     $getTextCaching->setCachingFor($moduleDatas);
+                }
+
                 $configClass = "\\Igestis\\Modules\\" . $moduleDatas['name'] . "\\ConfigModuleVars";
                 bindtextdomain((method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain), \ConfigIgestisGlobalVars::cacheFolder() . '/lang/locale');
                 bind_textdomain_codeset((method_exists($configClass, "textDomain") ? $configClass::textDomain() : $configClass::textDomain), 'UTF-8');
@@ -395,7 +405,8 @@ class Application
      * Show an error with the incorrect form content
      * @param string $reason
      */
-    function invalidForm($reason = "Unknown reason") {
+    public function invalidForm($reason = "Unknown reason")
+    {
         $this->render("pages/invalidForm.twig", array("reason" => $reason));
     }
 
@@ -403,9 +414,11 @@ class Application
      * Return the array for the sidebar
      * @return array
      */
-    private function getSidebar() {
-        if (!$this->security || !$this->security->isLoged())
+    private function getSidebar()
+    {
+        if (!$this->security || !$this->security->isLoged()) {
             return "";
+        }
 
         $sidebar = new IgestisSidebar($this);
 
@@ -417,6 +430,12 @@ class Application
             $moduleMenuConfig::sidebarSet($this, $sidebar);
         }
 
+        $hook = Igestis\Utils\Hook::getInstance();
+        $hookParameters = new \Igestis\Types\HookParameters();
+        $hookParameters->set('sidebar', $sidebar);
+        $hookParameters->set('context', $this);
+        $hook->callHook("sidebarInitialized", $hookParameters);
+
         return $sidebar->get_array();
     }
 
@@ -424,19 +443,26 @@ class Application
      * Return the array of the menu
      * @return array
      */
-    private function getMenu() {
-        if (!$this->security || !$this->security->isLoged())
+    private function getMenu()
+    {
+        if (!$this->security || !$this->security->isLoged()) {
             return "";
+        }
+
         $user_rights = $this->security->module_access("CORE");
 
         $menu = new IgestisMenu($this);
         if ($this->security->user->getUserType() == "employee" && ($user_rights == "ADMIN" || $user_rights == "TECH")) {
             // Affichage de l'onglet contacts pour les employés Admin ou Tech
             $menu->addItem(_("Contacts"), _("Employees"), "employees_list");
-            if ($this->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin())
+            if ($this->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
                 $menu->addItem(_("Contacts"), _("Customers"), "customers_list");
-            if ($this->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin())
+            }
+
+            if ($this->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
                 $menu->addItem(_("Contacts"), _("Suppliers"), "suppliers_list");
+            }
+
             $menu->addItem(_("Administration"), _("My companies"), "companies_list");
             $menu->addItem(_("Administration"), _("Departments"), "departments_list");
             $menu->addItem(_("Administration"), _("Modules and addons"), "modules_list");
@@ -454,10 +480,18 @@ class Application
                 }
             }
         }
+
+        $hook = Igestis\Utils\Hook::getInstance();
+        $hookParameters = new \Igestis\Types\HookParameters();
+        $hookParameters->set('menu', $menu);
+        $hookParameters->set('context', $this);
+        $hook->callHook("menuInitialized", $hookParameters);
+
         return $menu->get_array();
     }
 
-    function renderContent($content, $filename="your_file", $ctype="application/force-download") {
+    public function renderContent($content, $filename = "your_file", $ctype = "application/force-download")
+    {
 
         //Begin writing headers
         header_remove();
@@ -481,7 +515,8 @@ class Application
     /**
      * @deprecated
      */
-    function rederContent($content, $filename="your_file", $ctype="application/force-download") {
+    public function rederContent($content, $filename = "your_file", $ctype = "application/force-download")
+    {
         $this->renderContent($content, $filename, $ctype);
     }
 
@@ -491,11 +526,13 @@ class Application
      * @param bool $forceDownload True to force download, false to try to display file inline in the browser
      * @param string $customName Filename to show to the user
      */
-    function renderFile($file, $forceDownload = 0, $customName = '') {
+    public function renderFile($file, $forceDownload = 0, $customName = '')
+    {
         //First, see if the file exists
 
-        if ((int) $forceDownload != 1)
+        if ((int) $forceDownload != 1) {
             $forceDownload = 0;
+        }
 
         if (!is_file($file)) {
             $this->throw404error();
@@ -505,41 +542,41 @@ class Application
         $len = filesize($file);
         $filename = basename($file);
         $file_extension = strtolower(substr(strrchr($filename, "."), 1));
-        if ($forceDownload == 1)
+        if ($forceDownload == 1) {
             $ctype = "application/force-download";
-        else {
+        } else {
             //This will set the Content-Type to the appropriate setting for the file
             switch ($file_extension) {
-                case "pdf": $ctype = "application/pdf";
+                case "pdf":$ctype = "application/pdf";
                     break;
-                case "exe": $ctype = "application/octet-stream";
+                case "exe":$ctype = "application/octet-stream";
                     break;
-                case "zip": $ctype = "application/zip";
+                case "zip":$ctype = "application/zip";
                     break;
-                case "doc": $ctype = "application/msword";
+                case "doc":$ctype = "application/msword";
                     break;
-                case "xls": $ctype = "application/vnd.ms-excel";
+                case "xls":$ctype = "application/vnd.ms-excel";
                     break;
-                case "ppt": $ctype = "application/vnd.ms-powerpoint";
+                case "ppt":$ctype = "application/vnd.ms-powerpoint";
                     break;
-                case "gif": $ctype = "image/gif";
+                case "gif":$ctype = "image/gif";
                     break;
-                case "png": $ctype = "image/png";
+                case "png":$ctype = "image/png";
                     break;
                 case "jpeg":
-                case "jpg": $ctype = "image/jpg";
+                case "jpg":$ctype = "image/jpg";
                     break;
-                case "mp3": $ctype = "audio/mpeg";
+                case "mp3":$ctype = "audio/mpeg";
                     break;
-                case "wav": $ctype = "audio/x-wav";
+                case "wav":$ctype = "audio/x-wav";
                     break;
                 case "mpeg":
                 case "mpg":
-                case "mpe": $ctype = "video/mpeg";
+                case "mpe":$ctype = "video/mpeg";
                     break;
-                case "mov": $ctype = "video/quicktime";
+                case "mov":$ctype = "video/quicktime";
                     break;
-                case "avi": $ctype = "video/x-msvideo";
+                case "avi":$ctype = "video/x-msvideo";
                     break;
 
                 //The following are for extensions that shouldn't be downloaded (sensitive stuff, like php files)
@@ -549,12 +586,13 @@ class Application
                     $this->throw403error();
                     break;
 
-                default: $ctype = "application/force-download";
+                default:$ctype = "application/force-download";
             }
         }
 
-        if ($customName != "")
+        if ($customName != "") {
             $filename = $customName;
+        }
 
         //Begin writing headers
         header_remove();
@@ -588,7 +626,8 @@ class Application
      * @param Boolean $forceDebugToolbar True to force the debug toolbar to show
      * @return String Return the content if $return == true
      */
-    function render($twigFile, $replacement, $return = false, $forceDebugToolbar = false) {
+    public function render($twigFile, $replacement, $return = false, $forceDebugToolbar = false)
+    {
         $this->debugger->addLog("Start rendering " . $twigFile);
         $replacement['DEBUG_MODE'] = \ConfigIgestisGlobalVars::debugMode();
 
@@ -609,7 +648,7 @@ class Application
         $replacement['WIZZ'] = $this->wizzMessages;
         $replacement['CURRENT_URL'] = IgestisParseRequest::getActiveRouteUrl();
 
-        $replacement['RIGHTS_LIST'] = NULL;
+        $replacement['RIGHTS_LIST'] = null;
         $replacement['CORE_VERSION'] = \ConfigIgestisGlobalVars::version();
 
         // Replace modules version variables in the template
@@ -627,9 +666,14 @@ class Application
 
         $menu = $this->getMenu();
 
-        if ($menu) $replacement['menu_top'] = $menu;
+        if ($menu) {
+            $replacement['menu_top'] = $menu;
+        }
+
         $sidebar = $this->getSidebar();
-        if ($sidebar) $replacement['MODULE_SIDEBAR'] = $sidebar;
+        if ($sidebar) {
+            $replacement['MODULE_SIDEBAR'] = $sidebar;
+        }
 
         if ($this->security && $this->security->isLoged()) {
             $replacement['username'] = strtolower($this->security->contact->getLogin());
@@ -641,10 +685,9 @@ class Application
 
                 foreach (self::$doctrineLogger->queries as $query) {
                     $this->debugger->addDoctrineLog(
-                            $query['sql'], $query['params'], $query['types'], $query['executionMS']
+                        $query['sql'], $query['params'], $query['types'], $query['executionMS']
                     );
                 }
-
 
                 $this->debugger->addDump($_GET, "_GET");
                 $this->debugger->addDump($_POST, "_POST");
@@ -659,7 +702,6 @@ class Application
                 $replacement['DEBUGGING_VARS'] = $this->debugger->getEvents();
             }
         }
-
 
         if ($return) {
             return $this->twigEnv->render($twigFile, $replacement);
@@ -680,7 +722,8 @@ class Application
      * @param array $variables Array of pear key/value to pass to the twig template
      * @return string Rendered content
      */
-    function renderFromString($string, $variables) {
+    public function renderFromString($string, $variables)
+    {
         if (!trim($string)) {
             return $string;
         }
@@ -691,7 +734,8 @@ class Application
     /**
      * Generate a 403 error
      */
-    public function throw403error() {
+    public function throw403error()
+    {
         header("HTTP/1.0 403 Forbidden");
         $this->is403error = true;
         $controller = new HomePageController($this);
@@ -702,7 +746,8 @@ class Application
     /**
      * Generate a 404 error
      */
-    public function throw404error() {
+    public function throw404error()
+    {
         $this->is404error = true;
         header("HTTP/1.0 404 Not Found");
         $controller = new HomePageController($this);
@@ -713,7 +758,8 @@ class Application
     /**
      * Generate a 401 error
      */
-    public function throw401error() {
+    public function throw401error()
+    {
         $this->is401error = true;
         header('HTTP/1.1 401 Unauthorized');
         //$controller = new HomePageController($this);
@@ -721,7 +767,8 @@ class Application
         exit;
     }
 
-    public function dieMessage($msg) {
+    public function dieMessage($msg)
+    {
         die($msg);
     }
 

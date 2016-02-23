@@ -12,12 +12,10 @@ $application->add(new Igestis\Bash\RegenLocales());
 
 $hookListener = \Igestis\Utils\Hook::getInstance();
 $hookListener->callHook(
-    "command",
-    new Igestis\Types\HookParameters(array(
-        "application" => $application
-    ))
+	"command",
+	new Igestis\Types\HookParameters(array(
+		"application" => $application,
+	))
 );
-
-
 
 $application->run();

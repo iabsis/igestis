@@ -9,7 +9,7 @@ Package: igestis
 Architecture: all
 Conflicts: igestis-ldap
 Replaces: igestis-ldap
-Suggests: igestis-samba, igestis-roundcube, igestis-ishare
+Suggests: igestis-samba, igestis-iframify, igestis-ishare
 Depends: libapache2-mod-php5 (>= 5.3) | libapache-mod-php5, mysql-server, php5-mysql, php5-mcrypt, dbconfig-common, php5-ldap, ldap-utils
 Description: Manage easily your small compagny.
  Igestis goal is to provide an easy way to manage your
