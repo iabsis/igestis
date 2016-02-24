@@ -3,15 +3,25 @@
 {% set title = {'logo': "emblem-people",
                 'title': "Home page"|trans} %}
 
+{% block javascriptFiles  %}
+    {{ parent() }}
+    <script src="{{ TEMPLATE_URL }}/js/tinymce/tinymce.min.js?{{ CORE_VERSION }}"></script>
+    <script type="text/javascript">
+    $(function() {
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'emmet',
+        });
+    });
+    </script>
+{% endblock %}
+
+
 {% block content %}
 <div class="container-fluid">
 
 <link href="{{ TEMPLATE_URL }}/css/prettify.css" rel="stylesheet">
 
-<script src="{{ TEMPLATE_URL }}/js/wysiwyg/wysihtml-toolbar.min.js"></script>
-<script src="{{ TEMPLATE_URL }}/js/wysiwyg/parser_rules/allow-all-html5.js"></script>
-
-<script src="{{ TEMPLATE_URL }}/js/prettify.js"></script>
 <!-- <script src="{{ TEMPLATE_URL }}/js/bootstrap-wysihtml5.js"></script>-->
 <script type="text/javascript">
     function core_restore_home_page() {
@@ -42,6 +52,9 @@
 }
 </script>
 
+
+
+
 {% if RIGHTS_LIST.CORE == "ADMIN" %}
     <div id="EditHomePage" class="modal hide fade">
         <form class="modal-form" action="{{ url('save_home_page') }}" method="post">
@@ -50,20 +63,6 @@
                 <h3>{% trans %}Edit the home page{% endtrans %}</h3>
             </div>
             <div class="modal-body">
-                <div id="toolbar" class="wysiwyg-toolbar">
-                  <a data-wysihtml5-command="bold" href="javascript:;" unselectable="on" class="btn">
-                    <i class="icon-bold"></i>
-                  </a>
-                  <a data-wysihtml5-command="italic" href="javascript:;" unselectable="on" class="btn">
-                    <i class="icon-italic"></i>
-                  </a>
-                  <a data-wysihtml5-command="underline" href="javascript:;" unselectable="on" class="btn">
-                    <i class="icon-underline"></i>
-                  </a>
-                  <a data-wysihtml5-action="change_view" title="Edit HTML source" class="btn">
-                    <i class="icon-code"></i>
-                  </a>
-                </div>
                 <textarea id="editor" name="content" class="textarea" placeholder="Enter text ..." style="width: 510px; height: 200px">{% if content_homepage is defined %}{{content_homepage }}{% endif %}</textarea>
             </div>
             <div class="modal-footer">
@@ -77,25 +76,7 @@
         {% if content_homepage is defined %}<a href="javascript:core_restore_home_page()" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i> {% trans %}Revert to original state{% endtrans %}</a>{% endif %}
     </div>
 
-<script>
-    /*$('.textarea').wysihtml5({
-        "html": true,
-        "cleanUp" : true,
-        "useLineBreaks": false,
-        "parser" : function(html) {
-            return html;
-        }
-    });*/
 
-    var editor = new wysihtml5.Editor('editor', {
-        toolbar: 'toolbar',
-        parserRules:  wysihtml5ParserRules
-      });
-</script>
-
-<script type="text/javascript" charset="utf-8">
-    $(prettyPrint);
-</script>
 
 <br />
 {% endif %}{# RIGHTS_LIST.CORE == "ADMIN" #}
