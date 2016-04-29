@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
+    '01b872096dad055849387e42d41a176d' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
 );

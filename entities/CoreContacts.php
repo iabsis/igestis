@@ -17,7 +17,7 @@ class CoreContacts
      * @Column(type="string")
      */
     private $password;
-    
+
     /**
      * @var string Password before MD5 (only if password changed or new Customer
      */
@@ -42,8 +42,7 @@ class CoreContacts
      * @Column(type="string")
      */
     private $email;
-    
-    
+
     /**
      * @Column(type="string", name="ad_sid")
      */
@@ -124,7 +123,7 @@ class CoreContacts
      */
     private $id;
 
-     /**
+    /**
      * @Column(name="civility_code")
      * @ManyToOne(targetEntity="CoreCivilities", inversedBy="code")
      */
@@ -141,7 +140,7 @@ class CoreContacts
      * @ManyToOne(targetEntity="CoreLanguages", inversedBy="code")
      */
     private $languageCode;
-    
+
     /**
      * @var boolean Tell if yes or not, we need to launch the postpersist so we can disable it for the login process
      */
@@ -152,7 +151,7 @@ class CoreContacts
      * @var string
      */
     private $consecutiveWrongLoginAttempts;
-    
+
     /**
      * @Column(type="datetime", name="locked_at")
      * @var string
@@ -165,13 +164,12 @@ class CoreContacts
      * @ManyToOne(targetEntity="CoreUsers", inversedBy="contacts")
      */
     private $user;
-    
+
     /**
      * @var bool Must hide quicktour from the homepage ?
      * @Column(type="boolean", name="hide_quicktour")
      */
     private $hideQuicktour;
-    
 
     private $initialPassword;
 
@@ -188,12 +186,12 @@ class CoreContacts
         $this->lockedAt = null;
         $this->consecutiveWrongLoginAttempts = 0;
     }
-    
+
     public function disablePostPersistProcess()
     {
         $this->postPersistDisabled = true;
     }
-    
+
     /**
      * Set login
      *
@@ -212,7 +210,7 @@ class CoreContacts
     /**
      * Get login
      *
-     * @return string 
+     * @return string
      */
     public function getLogin()
     {
@@ -231,20 +229,21 @@ class CoreContacts
         $this->password = $password;
         return $this;
     }
-    
+
     /**
      * Return plain password (only if a new password has been sent) or null
-     * 
+     *
      * @return mixxed Plain password (only if a new password has been sent) or null
      */
-    public function getPlainPassword() {
+    public function getPlainPassword()
+    {
         return $this->clearPassword;
     }
 
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -266,7 +265,7 @@ class CoreContacts
     /**
      * Get sshPassword
      *
-     * @return blob 
+     * @return blob
      */
     public function getSshPassword()
     {
@@ -288,7 +287,7 @@ class CoreContacts
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -310,7 +309,7 @@ class CoreContacts
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -332,7 +331,7 @@ class CoreContacts
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -354,7 +353,7 @@ class CoreContacts
     /**
      * Get nbLoginTry
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getNbLoginTry()
     {
@@ -376,7 +375,7 @@ class CoreContacts
     /**
      * Get lastLoginTry
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getLastLoginTry()
     {
@@ -398,7 +397,7 @@ class CoreContacts
     /**
      * Get changePasswordRequestId
      *
-     * @return string 
+     * @return string
      */
     public function getChangePasswordRequestId()
     {
@@ -420,7 +419,7 @@ class CoreContacts
     /**
      * Get changePasswordRequestDate
      *
-     * @return date 
+     * @return date
      */
     public function getChangePasswordRequestDate()
     {
@@ -442,7 +441,7 @@ class CoreContacts
     /**
      * Get address1
      *
-     * @return string 
+     * @return string
      */
     public function getAddress1()
     {
@@ -464,7 +463,7 @@ class CoreContacts
     /**
      * Get address2
      *
-     * @return string 
+     * @return string
      */
     public function getAddress2()
     {
@@ -486,7 +485,7 @@ class CoreContacts
     /**
      * Get postalCode
      *
-     * @return string 
+     * @return string
      */
     public function getPostalCode()
     {
@@ -508,13 +507,13 @@ class CoreContacts
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
         return $this->city;
     }
-    
+
     /**
      * Set Active directory SID
      *
@@ -530,7 +529,7 @@ class CoreContacts
     /**
      * Get Active directory SID
      *
-     * @return string 
+     * @return string
      */
     public function getAdSid()
     {
@@ -552,7 +551,7 @@ class CoreContacts
     /**
      * Get phone1
      *
-     * @return string 
+     * @return string
      */
     public function getPhone1()
     {
@@ -574,7 +573,7 @@ class CoreContacts
     /**
      * Get phone2
      *
-     * @return string 
+     * @return string
      */
     public function getPhone2()
     {
@@ -596,7 +595,7 @@ class CoreContacts
     /**
      * Get mobile
      *
-     * @return string 
+     * @return string
      */
     public function getMobile()
     {
@@ -618,7 +617,7 @@ class CoreContacts
     /**
      * Get fax
      *
-     * @return string 
+     * @return string
      */
     public function getFax()
     {
@@ -633,14 +632,14 @@ class CoreContacts
      */
     public function setMainContact($mainContact)
     {
-        $this->mainContact = (bool)$mainContact;
+        $this->mainContact = (bool) $mainContact;
         return $this;
     }
 
     /**
      * Get mainContact
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getMainContact()
     {
@@ -651,7 +650,8 @@ class CoreContacts
      * Return if contact is the main one or not
      * @return bool Is main contact or not
      */
-    public function isMainContact() {
+    public function isMainContact()
+    {
         return $this->getMainContact();
     }
 
@@ -663,10 +663,9 @@ class CoreContacts
      */
     public function setActive($active)
     {
-        if($active == false) {
+        if ($active == false) {
             $this->login = null;
-        }
-        else {
+        } else {
             $this->login = $this->initialLogin;
         }
         $this->active = $active;
@@ -676,7 +675,7 @@ class CoreContacts
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -686,7 +685,7 @@ class CoreContacts
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -708,7 +707,7 @@ class CoreContacts
     /**
      * Get civilityCode
      *
-     * @return string 
+     * @return string
      */
     public function getCivilityCode()
     {
@@ -730,7 +729,7 @@ class CoreContacts
     /**
      * Get countryCode
      *
-     * @return string 
+     * @return string
      */
     public function getCountryCode()
     {
@@ -752,7 +751,7 @@ class CoreContacts
     /**
      * Get languageCode
      *
-     * @return string 
+     * @return string
      */
     public function getLanguageCode()
     {
@@ -774,7 +773,7 @@ class CoreContacts
     /**
      * Get user
      *
-     * @return CoreUsers 
+     * @return CoreUsers
      */
     public function getUser()
     {
@@ -829,32 +828,35 @@ class CoreContacts
         return $this;
     }
 
-    public function newWrongLoginAttempt() {
+    public function newWrongLoginAttempt()
+    {
         $this->consecutiveWrongLoginAttempts++;
     }
-    
-    
-    
-    public function hideQuicktour() {
+
+    public function hideQuicktour()
+    {
         $this->hideQuicktour = true;
     }
-    
-    public function getQuicktourStatus() {
+
+    public function getQuicktourStatus()
+    {
         return $this->hideQuicktour;
     }
 
-    public function toArray() {
+    public function toArray()
+    {
         $array = get_object_vars($this);
         $buffer = array();
-        foreach($array as $key => $field) {
-            if(!is_object($field)) {
+        foreach ($array as $key => $field) {
+            if (!is_object($field)) {
                 $buffer[$key] = $field;
             }
         }
         return $buffer;
     }
-    
-    public function __toString() {
+
+    public function __toString()
+    {
         return $this->user->getUserLabel() . " (" . ($this->login ? $this->login : 'disabled') . ")";
     }
 
@@ -869,118 +871,130 @@ class CoreContacts
      * @PrePersist
      * @PreUpdate
      */
-    public function PrePersist() {
-        if($this->password === null) {
-            if(preg_match("/^[0-9a-z]{32}$/", $this->initialPassword)) {
+    public function PrePersist()
+    {
+        if ($this->password === null) {
+            if (preg_match("/^[0-9a-z]{32}$/", $this->initialPassword)) {
                 $this->password = $this->initialPassword;
-            }
-            else {
+            } else {
                 $this->password = IgestisSecurity::generatePassword(IgestisMisc::superRandomize(20));
             }
-        }
-        else {
-            if(!preg_match("/^[0-9a-z]{32}$/", $this->password)) {
+        } else {
+            if (!preg_match("/^[0-9a-z]{32}$/", $this->password)) {
                 $this->password = IgestisSecurity::generatePassword($this->password);
             }
         }
-        
-        if(\ConfigIgestisGlobalVars::useLdap()) {
+
+        if (\ConfigIgestisGlobalVars::useLdap()) {
             $ldap = \Igestis\Utils\IgestisLdap::getConnexion();
-            
-            if(!$this->adSid) {
+
+            if (!$this->adSid) {
                 // If the AD Sid has not already been set
                 $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapUserFilter()));
-                foreach($nodesList as $dn =>$entry){ // For each entry
-                    foreach($entry as $attr => $values){ // For each attribute
-                        foreach($values as $value){// For each value
+                foreach ($nodesList as $dn => $entry) {
+                    // For each entry
+                    foreach ($entry as $attr => $values) {
+                        // For each attribute
+                        foreach ($values as $value) { // For each value
                             switch (strtolower($attr)) {
-                                case "objectsid" :
+                                case "objectsid":
                                     $this->adSid = \Igestis\Utils\IgestisLdap::sidBinToString($value);
                                     break;
                             } // End switch
                         } // End for each value
-                    }// End for each attribute
-                }// End for each entry
-            }// Endif  adSid
+                    } // End for each attribute
+                } // End for each entry
+            } // Endif  adSid
             else {
                 // If AdSid is set, we get the login from the database
                 $nodesList = $ldap->find("(objectSid=" . $this->adSid . ")");
-                if(count($nodesList)) {
-                    foreach($nodesList as $dn =>$entry){ // For each entry
-                        foreach($entry as $attr => $values){ // For each attribute
-                            foreach($values as $value){// For each value
+                if (count($nodesList)) {
+                    foreach ($nodesList as $dn => $entry) {
+                        // For each entry
+                        foreach ($entry as $attr => $values) {
+                            // For each attribute
+                            foreach ($values as $value) { // For each value
                                 switch (strtolower($attr)) {
-                                    case "samaccountname" :                                    
-                                        if($this->active) $this->login = $this->initialLogin =  $value;
+                                    case "samaccountname":
+                                        if ($this->active) {
+                                            $this->login = $this->initialLogin = $value;
+                                        }
+
                                         break;
                                 } // End switch
                             } // End for each value
-                        }// End for each attribute
-                    }// End for each entry
-                }
-                else {
+                        } // End for each attribute
+                    } // End for each entry
+                } else {
                     $this->adSid = null;
                 }
-                
-                
+
             }
         }
     }
-    
+
     /**
      * @PostPersist
      * @PostUpdate
      */
-    public function PostPersist() {
-        if($this->postPersistDisabled) return;
-        
-        if(\ConfigIgestisGlobalVars::useLdap()) {
+    public function PostPersist()
+    {
+        if ($this->postPersistDisabled) {
+            return;
+        }
+
+        if (\ConfigIgestisGlobalVars::useLdap()) {
             $ldap = \Igestis\Utils\IgestisLdap::getConnexion();
-            
+
             $createLdapEntry = false;
             $deleteLdapEntry = false;
 
-            if ($this->user->getUserType() == "employee") { ////////////////// Manage employee on LDAP
-                
-                $ldapOu =  \ConfigIgestisGlobalVars::ldapUsersOu();
-                
+            if ($this->user->getUserType() == "employee") {
+                ////////////////// Manage employee on LDAP
+
+                $ldapOu = \ConfigIgestisGlobalVars::ldapUsersOu();
+
                 $nodesList = $ldap->find("(&(!(objectClass=posixAccount))(uid=" . $this->initialLogin . "))");
-                if(count($nodesList)) {
+                if (count($nodesList)) {
                     throw new Exception(_("This person already exists in LDAP and it's not an employee"));
                     return false;
                 }
-                
-                $userCompany = NULL;
-                if($this->login == \ConfigIgestisGlobalVars::igestisCoreAdmin()) return true;
-                
+
+                $userCompany = null;
+                if ($this->login == \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
+                    return true;
+                }
+
                 // Is the row already exists on LDAP ?
                 $nodesList = $ldap->find(str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapUserFilter()));
                 $createLdapEntry = !count($nodesList);
-                if($this->active == 0) {
+                if ($this->active == 0) {
                     $this->login = null;
                     $deleteLdapEntry = true;
                     $createLdapEntry = false;
                 }
-                
-                if(\ConfigIgestisGlobalVars::ldapAdMode()) {
-                  // Include here, the fields to add for an active directory user
-                  
+
+                if (\ConfigIgestisGlobalVars::ldapAdMode()) {
+                    // Include here, the fields to add for an active directory user
+
                     $newPassword = "\"" . $this->clearPassword . "\"";
                     $len = strlen($newPassword);
                     $newPassw = "";
-                    for($i=0;$i<$len;$i++) {
+                    for ($i = 0; $i < $len; $i++) {
                         $newPassw .= "{$newPassword{$i}}\000";
                     }
 
-
-                    $ldap_array['displayName'] = $this->firstname." ".$this->lastname;                    
+                    $ldap_array['displayName'] = $this->firstname . " " . $this->lastname;
                     $ldap_array['givenName'] = $this->firstname;
                     $ldap_array['sn'] = $this->lastname;
-                    $ldap_array['mail'] = $this->email;                    
+                    $ldap_array['mail'] = $this->email;
                     $ldap_array["sAMAccountName"] = $this->initialLogin;
-                    if($this->clearPassword) $ldap_array["unicodePwd"] = $newPassw;
-                    $ldap_array["userAccountControl"] = "544"; 
-                    $ldap_array["userPrincipalName"] = str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomBind()); 
+                    if ($this->clearPassword) {
+                        $ldap_array["unicodePwd"] = $newPassw;
+                    }
+
+                    $ldap_array["userAccountControl"] = "544";
+                    $ldap_array["userPrincipalName"] = str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapCustomBind());
                     $ldap_array['l'] = $this->city;
                     $ldap_array['o'] = $userCompany;
                     $ldap_array['telephoneNumber'] = $this->phone1;
@@ -988,234 +1002,270 @@ class CoreContacts
                     $ldap_array['mobile'] = $this->mobile;
                     $ldap_array['postalCode'] = $this->postalCode;
                     $ldap_array['facsimileTelephoneNumber'] = $this->fax;
-                    $ldap_array['streetAddress'] = \IgestisMisc::unsetEmptyValues(implode("\r\n",array($this->address1, $this->address2)));
-                  
-                  // Extra fields for the new entry in LDAP
-                  if($createLdapEntry) {
-                      $ldap_array['objectClass'] = array("top","person","organizationalPerson","user");
-                      $ldap_array['name'] = $this->firstname." ".$this->lastname;
-                      $ldap_array['cn'] = $this->firstname." ".$this->lastname;
-                  }
+                    $ldap_array['streetAddress'] = \IgestisMisc::unsetEmptyValues(implode("\r\n", array($this->address1, $this->address2)));
 
-                  
-                }
-                else {
+                    // Extra fields for the new entry in LDAP
+                    if ($createLdapEntry) {
+                        $ldap_array['objectClass'] = array("top", "person", "organizationalPerson", "user");
+                        $ldap_array['name'] = $this->firstname . " " . $this->lastname;
+                        $ldap_array['cn'] = $this->firstname . " " . $this->lastname;
+                    }
+
+                } else {
                     // Global datas to add to LDAP
                     $ldap_array = array(
-                        'objectClass'       => array("top", "posixAccount", "inetOrgPerson", "organizationalPerson"),
-                        'uid'               => $this->initialLogin,
-                        'userPassword'      => $this->clearPassword ? $ldap->hashPasswd($this->clearPassword) : "",
-                        'cn'                => $this->firstname . " " . $this->lastname,
-                        'sn'                => $this->lastname,
-                        'givenName'         => $this->firstname,
-                        'gidNumber'         => "513",
-                        'homeDirectory'     => "/home/" . $this->initialLogin,
-                        'l'                 => $this->city,
-                        'mail'              => $this->email,
-                        'o'                 => $userCompany,
-                        'telephoneNumber'   => $this->phone1,
-                        'homePhone'         => $this->phone2,
-                        'mobile'            => $this->mobile,
-                        'postalCode'        => $this->postalCode,
-                        'st'                => $this->countryCode,
-                        'Fax'               => $this->fax,
-                        'street'            => \IgestisMisc::unsetEmptyValues(array($this->address1, $this->address2))
+                        'objectClass' => array("top", "posixAccount", "inetOrgPerson", "organizationalPerson"),
+                        'uid' => $this->initialLogin,
+                        'userPassword' => $this->clearPassword ? $ldap->hashPasswd($this->clearPassword) : "",
+                        'cn' => $this->firstname . " " . $this->lastname,
+                        'sn' => $this->lastname,
+                        'givenName' => $this->firstname,
+                        'gidNumber' => "513",
+                        'homeDirectory' => "/home/" . $this->initialLogin,
+                        'l' => $this->city,
+                        'mail' => $this->email,
+                        'o' => $userCompany,
+                        'telephoneNumber' => $this->phone1,
+                        'homePhone' => $this->phone2,
+                        'mobile' => $this->mobile,
+                        'postalCode' => $this->postalCode,
+                        'st' => $this->countryCode,
+                        'Fax' => $this->fax,
+                        'street' => \IgestisMisc::unsetEmptyValues(array($this->address1, $this->address2)),
                     );
-                    
+
                     // Extra fields for the new entry in LDAP
-                    if($createLdapEntry) {
-                      $ldap_array['uidNumber'] = \Igestis\Utils\IgestisLdap::getNextUid();
+                    if ($createLdapEntry) {
+                        $ldap_array['uidNumber'] = \Igestis\Utils\IgestisLdap::getNextUid();
                     }
                 }
 
-                
-            } elseif ($this->user->getUserType() == "client") { ///////////////////// Manage customers in LDAP
-                
-                $ldapOu =  \ConfigIgestisGlobalVars::ldapCUstomersOu();
-                
+            } elseif ($this->user->getUserType() == "client") {
+                ///////////////////// Manage customers in LDAP
+
+                $ldapOu = \ConfigIgestisGlobalVars::ldapCUstomersOu();
+
                 $nodesList = $ldap->find("(&(objectClass=posixAccount)(uid=" . $this->login . "))");
-                if(count($nodesList)) {
+                if (count($nodesList)) {
                     throw new Exception(_("This login already exists in LDAP as employee"));
                     return false;
                 }
-                
+
                 // Is the row already exists on LDAP ?
                 $nodesList = $ldap->find("(uid=" . $this->login . ")");
                 $createLdapEntry = !count($nodesList);
-                if($this->active == 0) {                    
+                if ($this->active == 0) {
                     $deleteLdapEntry = true;
                     $createLdapEntry = false;
                 }
 
-                if(\ConfigIgestisGlobalVars::ldapAdMode()) {
+                if (\ConfigIgestisGlobalVars::ldapAdMode()) {
                     $ldap_array = array(
-                        'objectClass'           => array("top", "inetOrgPerson", "organizationalPerson"),
-                        'cn'                    => $this->firstname . " " . $this->lastname,
-                        'sn'                    => $this->lastname,
-                        'givenName'             => $this->firstname,
-                        'l'                     => $this->city,
-                        'mail'                  => $this->email,
-                        'o'                     => $this->user->getUserLabel(),
-                        'telephoneNumber'       => $this->phone1,
-                        'homePhone'             => $this->phone2,
-                        'mobile'                => $this->mobile,
-                        'postalCode'            => $this->postalCode,
-                        'st'                    => $this->countryCode,
-                        'Fax'                   => $this->fax,
-                        'street'                => array_filter(array($this->address1, $this->address2))
+                        'objectClass' => array("top", "inetOrgPerson", "organizationalPerson"),
+                        'cn' => $this->firstname . " " . $this->lastname,
+                        'sn' => $this->lastname,
+                        'givenName' => $this->firstname,
+                        'l' => $this->city,
+                        'mail' => $this->email,
+                        'o' => $this->user->getUserLabel(),
+                        'telephoneNumber' => $this->phone1,
+                        'homePhone' => $this->phone2,
+                        'mobile' => $this->mobile,
+                        'postalCode' => $this->postalCode,
+                        'st' => $this->countryCode,
+                        'Fax' => $this->fax,
+                        'street' => array_filter(array($this->address1, $this->address2)),
                     );
-                }
-                else {
+                } else {
                     // Global datas to add
                     $ldap_array = array(
-                        'objectClass'           => array("top", "inetOrgPerson", "organizationalPerson"),
-                        'uid'                   => $this->initialLogin,
-                        'cn'                    => $this->firstname . " " . $this->lastname,
-                        'sn'                    => $this->lastname,
-                        'givenName'             => $this->firstname,
-                        'l'                     => $this->city,
-                        'mail'                  => $this->email,
-                        'o'                     => $this->user->getUserLabel(),
-                        'telephoneNumber'       => $this->phone1,
-                        'homePhone'             => $this->phone2,
-                        'mobile'                => $this->mobile,
-                        'postalCode'            => $this->postalCode,
-                        'st'                    => $this->countryCode,
-                        'Fax'                   => $this->fax,
-                        'street'                => array_filter(array($this->address1, $this->address2))
-                    );      
+                        'objectClass' => array("top", "inetOrgPerson", "organizationalPerson"),
+                        'uid' => $this->initialLogin,
+                        'cn' => $this->firstname . " " . $this->lastname,
+                        'sn' => $this->lastname,
+                        'givenName' => $this->firstname,
+                        'l' => $this->city,
+                        'mail' => $this->email,
+                        'o' => $this->user->getUserLabel(),
+                        'telephoneNumber' => $this->phone1,
+                        'homePhone' => $this->phone2,
+                        'mobile' => $this->mobile,
+                        'postalCode' => $this->postalCode,
+                        'st' => $this->countryCode,
+                        'Fax' => $this->fax,
+                        'street' => array_filter(array($this->address1, $this->address2)),
+                    );
                 }
-            } 
-            elseif ($this->user->getUserType() == "supplier") { ///////////////////// Manage suppliers in LDAP
-                
-                $ldapOu =  \ConfigIgestisGlobalVars::ldapSuppliersOu();
-                
+            } elseif ($this->user->getUserType() == "supplier") {
+                ///////////////////// Manage suppliers in LDAP
+
+                $ldapOu = \ConfigIgestisGlobalVars::ldapSuppliersOu();
+
                 $nodesList = $ldap->find("(&(objectClass=posixAccount)(uid=" . $this->login . "))");
-                if(count($nodesList)) {
+                if (count($nodesList)) {
                     throw new Exception(_("This login already exists in LDAP as employee"));
                     return false;
                 }
-                
+
                 // Is the row already exists on LDAP ?
                 $nodesList = $ldap->find("(uid=" . $this->login . ")");
                 $createLdapEntry = !count($nodesList);
-                if($this->active == 0) {                    
+                if ($this->active == 0) {
                     $deleteLdapEntry = true;
                     $createLdapEntry = false;
                 }
-                
-                if(\ConfigIgestisGlobalVars::ldapAdMode()) {
+
+                if (\ConfigIgestisGlobalVars::ldapAdMode()) {
                     $ldap_array = array(
-                        'objectClass'           => array("top", "inetOrgPerson", "organizationalPerson"),
-                        'cn'                    => $this->firstname . " " . $this->lastname,
-                        'sn'                    => $this->lastname,
-                        'givenName'             => $this->firstname,
-                        'l'                     => $this->city,
-                        'mail'                  => $this->email,
-                        'o'                     => $this->user->getUserLabel(),
-                        'telephoneNumber'       => $this->phone1,
-                        'homePhone'             => $this->phone2,
-                        'mobile'                => $this->mobile,
-                        'postalCode'            => $this->postalCode,
-                        'st'                    => $this->countryCode,
-                        'Fax'                   => $this->fax,
-                        'street'                => array_filter(array($this->address1, $this->address2))
-                    );  
-                }
-                else {
+                        'objectClass' => array("top", "inetOrgPerson", "organizationalPerson"),
+                        'cn' => $this->firstname . " " . $this->lastname,
+                        'sn' => $this->lastname,
+                        'givenName' => $this->firstname,
+                        'l' => $this->city,
+                        'mail' => $this->email,
+                        'o' => $this->user->getUserLabel(),
+                        'telephoneNumber' => $this->phone1,
+                        'homePhone' => $this->phone2,
+                        'mobile' => $this->mobile,
+                        'postalCode' => $this->postalCode,
+                        'st' => $this->countryCode,
+                        'Fax' => $this->fax,
+                        'street' => array_filter(array($this->address1, $this->address2)),
+                    );
+                } else {
                     // Global datas to add
-                    
+
                     $ldap_array = array(
-                        'objectClass'           => array("top", "inetOrgPerson", "organizationalPerson"),
-                        'uid'                   => $this->initialLogin,
-                        'cn'                    => $this->firstname . " " . $this->lastname,
-                        'sn'                    => $this->lastname,
-                        'givenName'             => $this->firstname,
-                        'l'                     => $this->city,
-                        'mail'                  => $this->email,
-                        'o'                     => $this->user->getUserLabel(),
-                        'telephoneNumber'       => $this->phone1,
-                        'homePhone'             => $this->phone2,
-                        'mobile'                => $this->mobile,
-                        'postalCode'            => $this->postalCode,
-                        'st'                    => $this->countryCode,
-                        'Fax'                   => $this->fax,
-                        'street'                => array_filter(array($this->address1, $this->address2))
-                    );  
-                    
+                        'objectClass' => array("top", "inetOrgPerson", "organizationalPerson"),
+                        'uid' => $this->initialLogin,
+                        'cn' => $this->firstname . " " . $this->lastname,
+                        'sn' => $this->lastname,
+                        'givenName' => $this->firstname,
+                        'l' => $this->city,
+                        'mail' => $this->email,
+                        'o' => $this->user->getUserLabel(),
+                        'telephoneNumber' => $this->phone1,
+                        'homePhone' => $this->phone2,
+                        'mobile' => $this->mobile,
+                        'postalCode' => $this->postalCode,
+                        'st' => $this->countryCode,
+                        'Fax' => $this->fax,
+                        'street' => array_filter(array($this->address1, $this->address2)),
+                    );
+
                 }
-            }else {
+            } else {
                 new wizz(sprintf(_("Warning : Unknown '%s' user type"), $this->user->getUserType()), \wizz::$WIZZ_WARNING);
                 return false;
-            }// END IF USERTYPE
-            
+            } // END IF USERTYPE
+
             // Remove empty fields of the array
             $ldap_array = array_filter($ldap_array);
-            
+
             // Start LDAP saving ..
             \Igestis\Utils\Hook::callHook("beforeContactLdapSave", new \Igestis\Types\HookParameters(array(
                 "contact" => $this,
                 "ldap_array" => $ldap_array,
-                "ldap_object" => $ldap
+                "ldap_object" => $ldap,
             )));
-            
+
+            $userDn = "";
+
             try {
-                
-                if($deleteLdapEntry) { // Delete the ldap entry
+
+                if ($deleteLdapEntry) {
+                    // Delete the ldap entry
                     foreach ($nodesList as $dn => $entry) {
                         $ldap->deleteNode($dn);
                     }
-                }
-                elseif($createLdapEntry) { // Add to LDAP
+                } elseif ($createLdapEntry) {
+
+                    // Add to LDAP
                     foreach ($nodesList as $dn => $entry) {
                         $ldap->deleteNode($dn);
                     }
 
-                    if(defined("\ConfigIgestisGlobalVars::ldapUserRdn()") && \ConfigIgestisGlobalVars::ldapUserRdn() !== false) {
+                    if (defined("\ConfigIgestisGlobalVars::ldapUserRdn()") && \ConfigIgestisGlobalVars::ldapUserRdn() !== false) {
                         // If LDAP_USER_RDN is defined and not false
-                        if(\ConfigIgestisGlobalVars::ldapUserRdn() === true) {
+                        if (\ConfigIgestisGlobalVars::ldapUserRdn() === true) {
                             // LDAP_USER_RDN shouldn't have the value : true
                             throw new Exception(_("Error : LDAP_USER_RDN cannot be set to true. Please set to false or a custom value"));
                             return false;
-                        }
-                        else {
+                        } else {
 
                             // The LDAP_USER_RDN is correctly defined and setted
                             $rdn = str_replace(array('%username%',
-                                                     '%firstname%',
-                                                     '%lastname%'),
-                                               array($this->login,
-                                                     $this->firstname,
-                                                     $this->lastname),
-                                               \ConfigIgestisGlobalVars::ldapUserRdn());
+                                '%firstname%',
+                                '%lastname%'),
+                                array($this->login,
+                                    $this->firstname,
+                                    $this->lastname),
+                                \ConfigIgestisGlobalVars::ldapUserRdn());
                             list($param, $paramValue) = explode("=", $rdn);
                             $ldap_array[$param] = $paramValue;
-                            $ldap->addNode($rdn . "," . $ldapOu, $ldap_array);
+                            $bla = $ldap->addNode($rdn . "," . $ldapOu, $ldap_array);
+                            //$userDn
                         }
                     } else {
+
                         // LDAP_USER_RDN is false or undefined, use the default value
-                        if(\ConfigIgestisGlobalVars::ldapAdMode()) {
+                        if (\ConfigIgestisGlobalVars::ldapAdMode()) {
                             $cn = \Igestis\Utils\IgestisLdap::createCn($this->firstname . " " . $this->lastname);
                             $ldap_array['cn'] = $cn;
                             $ldap->addNode("cn=" . $cn . "," . $ldapOu, $ldap_array);
-                        }
-                        else {
+                        } else {
                             $ldap->addNode("uid=" . $this->login . "," . $ldapOu, $ldap_array);
                         }
                     }
-                
-                }
-                else { // Edit on LDAP
+
+                } else {
+                    // Edit on LDAP
                     foreach ($nodesList as $dn => $node) {
-                        if(\ConfigIgestisGlobalVars::ldapAdMode()) {
+                        if (\ConfigIgestisGlobalVars::ldapAdMode()) {
                             $node->modify($ldap_array);
-                        }
-                        else {
+                        } else {
                             $node->modify($ldap->mergeArrays($nodesList, $ldap_array));
                         }
-                        
-                    }                        
+                    }
                 }
+
+                if (!$deleteLdapEntry) {
+                    // Manage LDAP groups
+
+                    // LDAP connexion
+                    $igestisLdap = new \Igestis\Utils\IgestisLdap();
+                    $ldap = $igestisLdap->getStandardConnexion();
+                    $rdn = \ConfigIgestisGlobalVars::ldapBase();
+
+                    // Retrieve current user DN
+                    $search = ldap_search(
+                        $ldap, 
+                        $rdn, 
+                        str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapUserFilter())
+                    );
+                    $user = ldap_get_entries($ldap, $search);
+
+                    if (!empty($user[0]['dn'])) {
+                        $userDn = $user[0]['dn'];
+                        $departmentsMember = $this->user->getDepartments();
+                        $em = \Application::getEntityManager();
+                        $existingDepartments = $em->getRepository('CoreDepartments')->findAll();
+
+                        foreach ($existingDepartments as $currentDepartment) {
+                            if ($currentDepartment->getLdapObjectId()) {
+                                $search = ldap_search($ldap, $rdn, str_replace('*', $currentDepartment->getLdapObjectId(), '(|(objectSID=*)(gidNumber=*))'));
+                                $info = ldap_get_entries($ldap, $search);
+                                if ($info[0]['dn']) {
+                                    $igestisLdap->switchUserToGroup($userDn, $info[0]['dn'], $departmentsMember->contains($currentDepartment));
+                                }
+                                
+                            }
+                        }
+                    }
+
+                    
+                }
+
                 if (DEBUG) {
                     Igestis\Utils\Debug::addDump($ldap_array, "ldap_array");
                 }
@@ -1224,71 +1274,70 @@ class CoreContacts
                 throw $e;
                 return false;
             }
-            
-            
+
             \Igestis\Utils\Hook::callHook("afterContactLdapSave", new \Igestis\Types\HookParameters(array(
                 "contact" => $this,
                 "ldap_array" => $ldap_array,
-                "ldap_object" => $ldap
+                "ldap_object" => $ldap,
             )));
-            
-        }// END IF LDAP        
-        
-        
+
+        } // END IF LDAP
+
     }
-    
+
     /**
      * @PostRemove
      */
-    public function postRemove() {
+    public function postRemove()
+    {
         /*
-        if (\ConfigIgestisGlobalVars::useLdap()) {
-            $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase());
-            $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
+    if (\ConfigIgestisGlobalVars::useLdap()) {
+    $ldap = new \LDAP(\ConfigIgestisGlobalVars::ldapUris(), \ConfigIgestisGlobalVars::ldapBase());
+    $ldap->bind(\ConfigIgestisGlobalVars::ldapAdmin(), \ConfigIgestisGlobalVars::ldapPassword());
 
-            if ($this->user->getUserType() == "employee") {
-                $ldapOu = \ConfigIgestisGlobalVars::ldapUsersOu();
-            } else {
-                $ldapOu = \ConfigIgestisGlobalVars::ldapCUstomersOu();
-            }
+    if ($this->user->getUserType() == "employee") {
+    $ldapOu = \ConfigIgestisGlobalVars::ldapUsersOu();
+    } else {
+    $ldapOu = \ConfigIgestisGlobalVars::ldapCUstomersOu();
+    }
 
-            try {
-                $nodesList = $ldap->find("(uid=" . $this->login . ")");
-                if(count($nodesList)) {
-                    $ldap->deleteNode("uid=" . $this->initialLogin . "," . $ldapOu);
-                }
-                
-            } catch (Exception $e) {
-                // Placer le rollback ici
-                Igestis\Utils\Debug::addDump("Delete the user " . $this->initialLogin);
-                throw $e;
-                return false;
-            }
-        }*/
+    try {
+    $nodesList = $ldap->find("(uid=" . $this->login . ")");
+    if(count($nodesList)) {
+    $ldap->deleteNode("uid=" . $this->initialLogin . "," . $ldapOu);
+    }
+
+    } catch (Exception $e) {
+    // Placer le rollback ici
+    Igestis\Utils\Debug::addDump("Delete the user " . $this->initialLogin);
+    throw $e;
+    return false;
+    }
+    }*/
     }
 
     /**
      * Ask a reset password and set the contact fields in order to allow it
      */
-    public function resetPassword() {
+    public function resetPassword()
+    {
         $this->changePasswordRequestDate = new \DateTime();
         $this->changePasswordRequestId = IgestisMisc::superRandomize(50);
     }
 
 }
 
-
-
-
 // -----------------------------------------------------------------------------------------------------------
-class CoreContactsRepository extends Doctrine\ORM\EntityRepository {
+class CoreContactsRepository extends Doctrine\ORM\EntityRepository
+{
     /**
      *
      * @param type $login
      * @param type $password
      * @return CoreContacts User that match with login and password
      */
-    public function getFromLoginAndPassword ($login, $password) {
+    public function getFromLoginAndPassword($login, $password)
+    {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('c')
             ->from('CoreContacts', 'c')
@@ -1300,84 +1349,100 @@ class CoreContactsRepository extends Doctrine\ORM\EntityRepository {
             ->setMaxResults(1);
         return $qb->getQuery()->getOneOrNullResult();
     }
-    
-    public function getCustomersList($arrayMode = true, $showDisabled = false) {        
+
+    public function getCustomersList($arrayMode = true, $showDisabled = false)
+    {
         try {
             $userCompany = IgestisSecurity::init()->user->getCompany();
             $qb = $this->_em->createQueryBuilder();
             $qb->select("c", "u")
-               ->from("CoreContacts", "c")
-               ->leftJoin("c.user", "u")
-               ->where("c.mainContact = 1");
-            if(!$showDisabled) {
+                ->from("CoreContacts", "c")
+                ->leftJoin("c.user", "u")
+                ->where("c.mainContact = 1");
+            if (!$showDisabled) {
                 $qb->andWhere("u.isActive=1")
-                   ->andWhere("c.active=1");
+                    ->andWhere("c.active=1");
             }
             $qb->andWhere("u.userType = 'client'")
-               ->andWhere("u.company = :company")
-               ->setParameter("company", $userCompany);
-            if($arrayMode) return $qb->getQuery()->getArrayResult();
-            else return $qb->getQuery ()->getResult ();
-        } catch (Exception $e) {
-            \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
-            return null;
-        }        
-    }
-    
-    public function getSuppliersList($arrayMode = true, $showDisabled = false) {        
-        try {
-            $userCompany = IgestisSecurity::init()->user->getCompany();
-            $qb = $this->_em->createQueryBuilder();
-            $qb->select("c", "u")
-               ->from("CoreContacts", "c")
-               ->leftJoin("c.user", "u")
-               ->where("c.mainContact = 1");
-            if(!$showDisabled) {
-                $qb->andWhere("u.isActive=1")
-                   ->andWhere("c.active=1");
+                ->andWhere("u.company = :company")
+                ->setParameter("company", $userCompany);
+            if ($arrayMode) {
+                return $qb->getQuery()->getArrayResult();
+            } else {
+                return $qb->getQuery()->getResult();
             }
-            $qb->andWhere("u.userType = 'supplier'")
-               ->andWhere("u.company = :company")
-               ->setParameter("company", $userCompany);
-            if($arrayMode) return $qb->getQuery()->getArrayResult();
-            else return $qb->getQuery ()->getResult ();
-        } catch (Exception $e) {
-            \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
-            return null;
-        }        
-    }
-    
-    public function getEmployeesList($arrayMode = true, $showDisabled = false) {
-        try {
-            $userCompany = IgestisSecurity::init()->user->getCompany();
-            $qb = $this->_em->createQueryBuilder();
-            $qb->select("c", "u")
-               ->from("CoreContacts", "c")
-               ->leftJoin("c.user", "u")
-               ->where("c.mainContact = 1");
-            if(!$showDisabled) {
-                $qb->andWhere("u.isActive=1")
-                   ->andWhere("c.active=1");
-            }
-            $qb->andWhere("u.userType = 'employee'")
-               ->andWhere("COALESCE(c.login, :empty) != :admin")
-               ->setParameter("admin", \ConfigIgestisGlobalVars::igestisCoreAdmin())
-               ->setParameter("empty", "");
-            if(IgestisSecurity::init()->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
-                $qb->andWhere("u.company = :company")
-                   ->setParameter("company", $userCompany);
-            }
-            
-            if($arrayMode) return $qb->getQuery()->getArrayResult();
-            else return $qb->getQuery ()->getResult ();
+
         } catch (Exception $e) {
             \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
             return null;
         }
     }
-    
-    public function getMainContactForUserId ($user_id) {
-                 
+
+    public function getSuppliersList($arrayMode = true, $showDisabled = false)
+    {
+        try {
+            $userCompany = IgestisSecurity::init()->user->getCompany();
+            $qb = $this->_em->createQueryBuilder();
+            $qb->select("c", "u")
+                ->from("CoreContacts", "c")
+                ->leftJoin("c.user", "u")
+                ->where("c.mainContact = 1");
+            if (!$showDisabled) {
+                $qb->andWhere("u.isActive=1")
+                    ->andWhere("c.active=1");
+            }
+            $qb->andWhere("u.userType = 'supplier'")
+                ->andWhere("u.company = :company")
+                ->setParameter("company", $userCompany);
+            if ($arrayMode) {
+                return $qb->getQuery()->getArrayResult();
+            } else {
+                return $qb->getQuery()->getResult();
+            }
+
+        } catch (Exception $e) {
+            \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
+            return null;
+        }
+    }
+
+    public function getEmployeesList($arrayMode = true, $showDisabled = false)
+    {
+        try {
+            $userCompany = IgestisSecurity::init()->user->getCompany();
+            $qb = $this->_em->createQueryBuilder();
+            $qb->select("c", "u")
+                ->from("CoreContacts", "c")
+                ->leftJoin("c.user", "u")
+                ->where("c.mainContact = 1");
+            if (!$showDisabled) {
+                $qb->andWhere("u.isActive=1")
+                    ->andWhere("c.active=1");
+            }
+            $qb->andWhere("u.userType = 'employee'")
+                ->andWhere("COALESCE(c.login, :empty) != :admin")
+                ->setParameter("admin", \ConfigIgestisGlobalVars::igestisCoreAdmin())
+                ->setParameter("empty", "");
+            if (IgestisSecurity::init()->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin()) {
+                $qb->andWhere("u.company = :company")
+                    ->setParameter("company", $userCompany);
+            }
+
+            if ($arrayMode) {
+                return $qb->getQuery()->getArrayResult();
+            } else {
+                return $qb->getQuery()->getResult();
+            }
+
+        } catch (Exception $e) {
+            \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
+            return null;
+        }
+    }
+
+    public function getMainContactForUserId($user_id)
+    {
+
         $qb = $this->_em->createQueryBuilder();
         $qb->select('c')
             ->from('CoreContacts', 'c')
@@ -1386,19 +1451,21 @@ class CoreContactsRepository extends Doctrine\ORM\EntityRepository {
             ->setParameter('user_id', $user_id);
         return $qb->getQuery()->getOneOrNullResult();
     }
-    
-    public function getUserFromLogin($login) {
+
+    public function getUserFromLogin($login)
+    {
         $qb = $this->_em->createQueryBuilder();
         $qb->select("c")
-             ->from("CoreContacts", "c")
-             ->andWhere("c.active=1")
-             ->andWhere("c.login = :login")
-                ->setParameter("login", $login)
-             ->setMaxResults(1);
+            ->from("CoreContacts", "c")
+            ->andWhere("c.active=1")
+            ->andWhere("c.login = :login")
+            ->setParameter("login", $login)
+            ->setMaxResults(1);
         return $qb->getQuery()->getOneOrNullResult();
     }
 
-    public function findById($id) {
+    public function findById($id)
+    {
         $qb = $this->_em->createQueryBuilder();
         $qb->select("c")
             ->from("CoreContacts", "c")

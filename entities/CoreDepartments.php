@@ -17,12 +17,19 @@ class CoreDepartments
     private $label;
 
     /**
+     * @var string $ldapObjectId
+     *
+     * @Column(name="ldap_object_id", type="string", length=45)
+     */
+    private $ldapObjectId;
+
+    /**
      * @var text $description
      *
      * @Column(name="description", type="text")
      */
     private $description;
-    
+
     /**
      * @JoinColumn(name="company_id", referencedColumnName="id")
      * @OneToOne(targetEntity="CoreCompanies")
@@ -45,7 +52,7 @@ class CoreDepartments
      * @ManyToMany(targetEntity="CoreUsers", mappedBy="departments", orphanRemoval=true)
      */
     private $users;
-    
+
     /**
      * @OneToMany(targetEntity="CoreDepartmentsRights", mappedBy="department", cascade={"persist", "remove"}, indexBy="moduleName", orphanRemoval=true)
      */
@@ -56,7 +63,7 @@ class CoreDepartments
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->rightsList = new Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Set label
      *
@@ -72,7 +79,7 @@ class CoreDepartments
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -94,7 +101,7 @@ class CoreDepartments
     /**
      * Get description
      *
-     * @return text 
+     * @return text
      */
     public function getDescription()
     {
@@ -104,7 +111,7 @@ class CoreDepartments
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -126,13 +133,13 @@ class CoreDepartments
     /**
      * Get user
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {
         return $this->users;
     }
-    
+
     /**
      * Set company
      *
@@ -148,23 +155,25 @@ class CoreDepartments
     /**
      * Get company
      *
-     * @return CoreCompanies 
+     * @return CoreCompanies
      */
     public function getCompany()
     {
         return $this->company;
     }
-    
+
     /**
      * Liste des droits
      * @return Doctrine\Common\Collections\ArrayCollection()
      */
-    public function getRightsList() {
+    public function getRightsList()
+    {
         return $this->rightsList;
     }
-    
-    public function setRightsList() {
-        
+
+    public function setRightsList()
+    {
+
     }
 
     /**
@@ -178,64 +187,163 @@ class CoreDepartments
         $this->rightsList->add($right);
         return $this;
     }
-    
+
     /**
      * Remove all rights of the deparment
      * @return \CoreDepartments
      */
-    public function removeAllRights() {
+    public function removeAllRights()
+    {
         $this->rightsList->clear();
         return $this;
     }
-    
+
     /**
      * Remove a right to the department
      * @param \CoreDepartmentsRights $right
      */
-    public function removeRight(\CoreDepartmentsRights $right) {
+    public function removeRight(\CoreDepartmentsRights $right)
+    {
         $this->rightsList->removeElement($right);
         $right->unsetDepartment();
     }
-    
+
     /**
      * @Presave
      * @Prepersist
      */
-    public function PreSave() {        
-        if($this->getCompany() == null) {
+    public function PreSave()
+    {
+        if ($this->getCompany() == null) {
             $security = IgestisSecurity::init();
             $userCompany = $security->user->getCompany();
-            if($userCompany != null)
-            {
-                $this->company  = $userCompany;
+            if ($userCompany != null) {
+                $this->company = $userCompany;
             }
         }
     }
+
+    /**
+     * Gets the value of ldapObjectId.
+     *
+     * @return string $ldapObjectId
+     */
+    public function getLdapObjectId()
+    {
+        return $this->ldapObjectId;
+    }
+
+    /**
+     * Sets the value of ldapObjectId.
+     *
+     * @param string $ldapObjectId $ldapObjectId the ldap object id
+     *
+     * @return self
+     */
+    public function setLdapObjectId($ldapObjectId)
+    {
+        $this->ldapObjectId = $ldapObjectId;
+
+        return $this;
+    }
+
+    /**
+     * @PrePersist
+     * @PreUpdate
+     */
+    public function PrePersist()
+    {
+
+        if (\ConfigIgestisGlobalVars::useLdap()) {
+            $ldap = \Igestis\Utils\IgestisLdap::getStandardConnexion();
+            $rdn = \ConfigIgestisGlobalVars::ldapBase();
+
+            if ($this->ldapObjectId) {
+                $search = ldap_search($ldap, $rdn, str_replace('*', $this->ldapObjectId, '(|(objectSID=*)(gidNumber=*))'));
+                $info = ldap_get_entries($ldap, $search);
+            } else {
+                $searchString = str_replace("%g", $this->getLabel(), \ConfigIgestisGlobalVars::ldapGroupFilter());
+                $search = ldap_search($ldap, $rdn, $searchString);
+                $info = ldap_get_entries($ldap, $search);
+            }
+
+            $dn = "";
+
+            if (isset($info[0])) {
+                $group = $info[0];
+                ldap_modify($ldap, $group['dn'], array(
+                    "description" => array($this->description),
+                ));
+                preg_match('#(([a-z]+)=([\W\w]+?)),[\W\w]+#i', $group['dn'], $matches);
+
+                $newDn = str_replace($matches[0], $matches[2] . "=" . \Igestis\Utils\IgestisLdap::ldapEscapeString($this->label), $group['dn']);
+
+                ldap_rename($ldap, $group['dn'], $newDn, null, true);
+
+                $this->ldapObjectId = \Igestis\Utils\IgestisLdap::sidBinToString($group['objectsid'][0]);
+            } else {
+                $group = array(
+                    "objectclass" => array('top', 'group'),
+                    "name" => $this->label,
+                    "description" => array($this->description),
+                );
+
+                if (!\ConfigIgestisGlobalVars::ldapGroupsNewRdn() || !\ConfigIgestisGlobalVars::ldapGroupsOu()) {
+                    throw new \Exception(\Igestis\I18n\Translate::_("Please set the LDAP_GROUPS_OU value in the config.ini file"));
+                }
+
+                $rdn = str_replace('%groupname%', \Igestis\Utils\IgestisLdap::ldapEscapeString($this->label), \ConfigIgestisGlobalVars::ldapGroupsNewRdn());
+
+                ldap_add($ldap, $rdn, $group);
+
+                $searchString = str_replace("%g", $this->getLabel(), \ConfigIgestisGlobalVars::ldapGroupFilter());
+                $search = ldap_search($ldap, $rdn, $searchString);
+                $info = ldap_get_entries($ldap, $search);
+                if (!empty($info[0]['objectsid'][0])) {
+                    $this->ldapObjectId = \Igestis\Utils\IgestisLdap::sidBinToString($info[0]['objectsid'][0]);
+                }
+
+            }
+
+            if (ldap_errno($ldap)) {
+                throw new \Exception(sprintf(\Igestis\I18n\Translate::_("Ldap error : '%s'"), ldap_error($ldap)));
+            }
+
+        }
+    }
+
 }
 
 // ------------------------------------------------------
 
-class DepartmentsRepository extends Doctrine\ORM\EntityRepository {
+class DepartmentsRepository extends Doctrine\ORM\EntityRepository
+{
 
-    public function getDepartmentsList($arrayMode = true) {
+    public function getDepartmentsList($arrayMode = true)
+    {
         try {
             $userCompany = IgestisSecurity::init()->user->getCompany();
             $qb = $this->_em->createQueryBuilder();
             $qb->select("d")
-                    ->from("CoreDepartments", "d")
-                    ->where("d.company = :company")
-                    ->setParameter("company", $userCompany)
-                    ->orderBy("d.label", "ASC");
-            if($arrayMode) return $qb->getQuery()->getArrayResult();
-            else return $qb->getQuery()->getResult();
+                ->from("CoreDepartments", "d")
+                ->where("d.company = :company")
+                ->setParameter("company", $userCompany)
+                ->orderBy("d.label", "ASC");
+            if ($arrayMode) {
+                return $qb->getQuery()->getArrayResult();
+            } else {
+                return $qb->getQuery()->getResult();
+            }
+
         } catch (Exception $e) {
             \IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
             return null;
-        }    
+        }
     }
-    
-    public function getDepartmentRights() {
-        
+
+    public function getDepartmentRights()
+    {
+
     }
 
 }

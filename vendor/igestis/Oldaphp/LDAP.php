@@ -60,6 +60,10 @@ class LDAP extends LDAPNode {
 
             @ldap_set_option($this->lfd, LDAP_OPT_REFERRALS, 0);
 	}
+
+	public function getConnexion() {
+		return $this->lfd;
+	}
 	
 	/**
 	 * Set the default base DN

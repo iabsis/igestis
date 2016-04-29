@@ -218,6 +218,7 @@ class EmployeesController extends IgestisController {
                 
             } catch (Exception $e) {
                 // Show wizz to confirm the employee update
+
                 IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
                 $this->redirect(ConfigControllers::createUrl("employees_list"));
             }
