@@ -65,7 +65,7 @@ class wizz {
      * @param string $message Text to show
      * @param string $type SELF::WIZZ_ERROR | SELF::WIZZ_INFO | SELF::WIZZ_SUCCESS | SELF::WIZZ_WARNING
      */
-    public function __construct($message, $type=WIZZ_ERROR) {
+    public function __construct($message, $type=WIZZ_ERROR, $time=0) {
         // Constructor
 
         $message = str_replace("\n", "", $message);

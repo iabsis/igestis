@@ -59,12 +59,22 @@ class i18n extends Command {
             'cache' => $tmpDir,
             'auto_reload' => true
         ));
-        $twigEnv->addExtension(new \Twig_Extensions_Extension_I18nExtended());
-        $twigEnv->addExtension(new \Twig_Extensions_Extension_Url());
+        $twigEnv->addExtension(new \Igestis\Twig\Extensions\Extension\I18nExtended());
+        $twigEnv->addExtension(new \Igestis\Twig\Extensions\Extension\Url());
+
+        $twigEnv->getExtension('core')->setNumberFormat(3, '.', "'");
+        $twigEnv->addFunction(new \Twig_SimpleFunction('pad', 'str_pad'));
+        $twigEnv->addExtension(new \Twig_Extensions_Extension_Text());
+        $twigEnv->addGlobal("igestisConfig", new \ConfigIgestisGlobalVars());
+        $twigEnv->addFunction(new \Twig_SimpleFunction('currentLanguage', function() {
+            return "";
+        }));
+        $twigEnv->addExtension(new \Twig_Extension_Debug());
         
         // iterate over all your templates
         foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($tplDir), \RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
             // force compilation
+            
             if (!is_file($file)) {
                 continue;
             }
@@ -72,6 +82,7 @@ class i18n extends Command {
             $output->writeln("<info>" . sprintf(\Igestis\I18n\Translate::_("Compiling '%s' ..."), str_replace($tplDir, '', $file)) . "</info>");
             $twigEnv->loadTemplate(str_replace($tplDir, '', $file));
         }
+
         
         $potFileName = "messages-" . date("Y-m-m-h-i-s") . ".pot";
 

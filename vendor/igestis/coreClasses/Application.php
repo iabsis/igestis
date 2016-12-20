@@ -69,6 +69,9 @@ class Application
      */
     public $entityManager;
 
+
+    private static $currentLanguageCode;
+
     /**
      * Constructor is private. Use getInstance to create the singleton
      */
@@ -116,6 +119,11 @@ class Application
         $this->twigEnv->addFunction(new Twig_SimpleFunction('pad', 'str_pad'));
         $this->twigEnv->addExtension(new Twig_Extensions_Extension_Text());
         $this->twigEnv->addGlobal("igestisConfig", new ConfigIgestisGlobalVars());
+        $this->twigEnv->addFunction(new Twig_SimpleFunction('currentLanguage', function() {
+            $app = \Application::getInstance();
+            return $app->getCurrentLanguageCode();
+        }));
+
         if (\ConfigIgestisGlobalVars::debugMode()) {
             $this->twigEnv->addExtension(new Twig_Extension_Debug());
             $this->twigEnv->setCache(false);
@@ -145,6 +153,10 @@ class Application
         }
 
         self::$_instance = $this;
+    }
+
+    public function getCurrentLanguageCode() {
+        return self::$currentLanguageCode;
     }
 
     /**
@@ -352,6 +364,8 @@ class Application
     public function setLanguage($lang)
     {
 
+        self::$currentLanguageCode = $lang;
+
         if (isset($lang) == false || $lang == "") {
 
             if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
@@ -367,7 +381,16 @@ class Application
 
         // This is used by getext from Twig plugin
         // Set language to French
-        $langString = strtolower($lang) . "_" . strtoupper($lang);
+        switch (strtolower($lang)) {
+            case 'en':
+                $langString = "en_US";
+                break;
+            
+            default:
+                $langString = strtolower($lang) . "_" . strtoupper($lang);
+                break;
+        }
+
         putenv("LC_ALL=$langString.utf8");
         setlocale(LC_ALL, $langString . ".utf8");
         setlocale(LC_CTYPE, $langString . '.utf8');

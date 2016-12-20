@@ -31,12 +31,19 @@ class Translate {
             $activeRoute = \IgestisParseRequest::getActiveRoute();
             if($activeRoute['Module'] != "core") {
                 $configClass = "\\Igestis\\Modules\\" . $activeRoute['Module'] . "\\ConfigModuleVars";
-                if(class_exists($configClass) && defined("$configClass::textDomain")) {
-                    $translatedText = dgettext($configClass::textDomain, $text);
-                    if($translatedText != $text) return $translatedText;
+                if(class_exists($configClass)) {
+                    if (defined("$configClass::textDomain")) {
+                        $translatedText = dgettext($configClass::textDomain, $text);
+                        if($translatedText != $text) return $translatedText;
+                    }
+                    if (method_exists($configClass, "textDomain")) {
+                        $translatedText = dgettext($configClass::textDomain(), $text);
+                        if($translatedText != $text) return $translatedText;
+                    }
+                    
                 }
             }
-            
+
             return dgettext(\ConfigIgestisGlobalVars::textDomain(), $text);
         }
     }

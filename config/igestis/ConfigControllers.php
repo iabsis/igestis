@@ -697,18 +697,6 @@ class ConfigControllers extends IgestisConfigController
                 "Access" => array("CORE:ADMIN")
             ),        
             
-            /** Page = test **/
-            array(
-                "id" => "test",
-                "Parameters" => array(
-                    "Page" => "test",
-                    "Action" => "ldap"
-                ),
-                "Controller" => "TestController",
-                "Action" => "ldapAction",
-                "Access" => array("EVERYONE")
-            ),   
-            
             
         );
         

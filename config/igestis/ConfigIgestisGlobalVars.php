@@ -285,6 +285,12 @@ class ConfigIgestisGlobalVars
         return self::$params['MIN_UID_NUMBER'];
     }
 
+    public static function minGidNumber()
+    {
+        self::initConfigVars();
+        return self::$params['MIN_GID_NUMBER'];
+    }
+
     /**
      *
      * @return Template folder
