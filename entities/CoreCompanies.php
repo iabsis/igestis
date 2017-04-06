@@ -120,26 +120,56 @@ class CoreCompanies
      * @Id @Column(type="integer") @GeneratedValue
      */
     private $id;
-    
+
     /**
      * @Column(type="string", name="logo_file_name")
      * @var string The logo file name
      */
     private $logoFileName;
-    
+
     /**
      * @OneToMany(targetEntity="CoreCompanyRights", mappedBy="company", cascade={"persist", "remove"}, indexBy="company", orphanRemoval=true)
      */
     private $defaultRightsList;
-    
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ManyToMany(targetEntity="CoreUsers", mappedBy="departments", orphanRemoval=true)
+     */
+    private $users;
+
 
     /**
      * Constructor
      */
     public function __construct() {
         $this->defaultRightsList = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
+    /**
+     * Add user
+     *
+     * @param CoreUsers $user
+     * @return CoreDepartments
+     */
+    public function addUser(\CoreUsers $user)
+    {
+        $this->users[] = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
     /**
      * Return the list of the company's default rights
      * @return \Doctrine\Common\Collections\ArrayCollection
@@ -158,7 +188,7 @@ class CoreCompanies
         $this->defaultRightsList->add($right);
         return $this;
     }
-    
+
     public function removeRights(\CoreCompanyRights $right = null) {
         if($right === null) $this->defaultRightsList->clear();
         else {
@@ -181,7 +211,7 @@ class CoreCompanies
     /**
      * Get tvaRating
      *
-     * @return decimal 
+     * @return decimal
      */
     public function getTvaRating()
     {
@@ -203,7 +233,7 @@ class CoreCompanies
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -225,7 +255,7 @@ class CoreCompanies
     /**
      * Get address1
      *
-     * @return string 
+     * @return string
      */
     public function getAddress1()
     {
@@ -247,7 +277,7 @@ class CoreCompanies
     /**
      * Get address2
      *
-     * @return string 
+     * @return string
      */
     public function getAddress2()
     {
@@ -269,7 +299,7 @@ class CoreCompanies
     /**
      * Get postalCode
      *
-     * @return string 
+     * @return string
      */
     public function getPostalCode()
     {
@@ -291,7 +321,7 @@ class CoreCompanies
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -313,7 +343,7 @@ class CoreCompanies
     /**
      * Get phone1
      *
-     * @return string 
+     * @return string
      */
     public function getPhone1()
     {
@@ -335,7 +365,7 @@ class CoreCompanies
     /**
      * Get phone2
      *
-     * @return string 
+     * @return string
      */
     public function getPhone2()
     {
@@ -357,7 +387,7 @@ class CoreCompanies
     /**
      * Get mobile
      *
-     * @return string 
+     * @return string
      */
     public function getMobile()
     {
@@ -379,7 +409,7 @@ class CoreCompanies
     /**
      * Get fax
      *
-     * @return string 
+     * @return string
      */
     public function getFax()
     {
@@ -401,7 +431,7 @@ class CoreCompanies
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -423,7 +453,7 @@ class CoreCompanies
     /**
      * Get siteWeb
      *
-     * @return string 
+     * @return string
      */
     public function getSiteWeb()
     {
@@ -445,7 +475,7 @@ class CoreCompanies
     /**
      * Get tvaNumber
      *
-     * @return string 
+     * @return string
      */
     public function getTvaNumber()
     {
@@ -467,7 +497,7 @@ class CoreCompanies
     /**
      * Get banque
      *
-     * @return text 
+     * @return text
      */
     public function getBanque()
     {
@@ -489,7 +519,7 @@ class CoreCompanies
     /**
      * Get iban
      *
-     * @return string 
+     * @return string
      */
     public function getIban()
     {
@@ -511,7 +541,7 @@ class CoreCompanies
     /**
      * Get rib
      *
-     * @return string 
+     * @return string
      */
     public function getRib()
     {
@@ -533,7 +563,7 @@ class CoreCompanies
     /**
      * Get rcs
      *
-     * @return string 
+     * @return string
      */
     public function getRcs()
     {
@@ -555,7 +585,7 @@ class CoreCompanies
     /**
      * Get symbolMoney
      *
-     * @return string 
+     * @return string
      */
     public function getSymbolMoney()
     {
@@ -565,13 +595,13 @@ class CoreCompanies
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-    
+
     /**
      * Set the logo target
      * @param string $logoFileName Target of the logo file
@@ -579,7 +609,7 @@ class CoreCompanies
     public function setLogoFileName($logoFileName) {
         $this->logoFileName = $logoFileName;
     }
-    
+
     /**
      * Return the logo file target
      * @return string Target of the logo
@@ -596,7 +626,7 @@ class CoreCompanies
      */
     public function getLogoFolder() {
         $folder = \ConfigIgestisGlobalVars::dataFolder() . "/companies_logo/";
-        
+
         try {
             if (!is_dir($folder))
                 mkdir($folder);
@@ -606,7 +636,7 @@ class CoreCompanies
 
         return $folder;
     }
-    
+
     public function getLogo() {
         if($this->logoFileName == null) return null;
         return array(
@@ -617,7 +647,7 @@ class CoreCompanies
             "imagHeight" => "30"
         );
     }
-    
+
     public function __toString() {
         return $this->name;
     }
@@ -627,7 +657,7 @@ class CoreCompanies
 class CoreCompaniesRepository extends Doctrine\ORM\EntityRepository {
 
     public function getCompaniesList ($arrayFormat = true) {
-                 
+
         $qb = $this->_em->createQueryBuilder();
         $qb->select('c')
             ->from('CoreCompanies', 'c');
@@ -636,10 +666,10 @@ class CoreCompaniesRepository extends Doctrine\ORM\EntityRepository {
         else {
             return $qb->getQuery()->getResult();
         }
-    }    
-    
+    }
+
     public function getFirst() {
-                 
+
         $qb = $this->_em->createQueryBuilder();
         $qb->select('c')
             ->from('CoreCompanies', 'c')
@@ -647,6 +677,6 @@ class CoreCompaniesRepository extends Doctrine\ORM\EntityRepository {
             ->setMaxResults(1);
 
         return $qb->getQuery()->getOneOrNullResult();
-    }    
+    }
 
 }

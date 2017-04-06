@@ -12,25 +12,25 @@ class EmployeesController extends IgestisController {
      * Show the list of customers
      */
     public function indexAction() {
-        $employees = $this->context->entityManager->getRepository("CoreContacts")->getEmployeesList();     
+        $employees = $this->context->entityManager->getRepository("CoreContacts")->getEmployeesList();
         $this->context->render("pages/employeesList.twig", array(
             'table_data' => $employees)
         );
     }
-    
+
     /**
      * Get a form to edit or validate it if the form is received
      */
     public function editAction($Id) {
         // If the form has been received, manage the form...
-        $employee = $this->context->entityManager->getRepository("CoreUsers")->find($Id);    
-        
+        $employee = $this->context->entityManager->getRepository("CoreUsers")->find($Id);
+
         if(!$employee || $employee->getUserType() != "employee" || ($this->context->security->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin() && $employee->getCompany() != $this->context->security->user->getCompany())) {
             new wizz(_("The employee has not been found"), wizz::$WIZZ_ERROR);
             $this->redirect(ConfigControllers::createUrl("employees_list"));
         }
-        
-        if($this->request->IsPost()) {            
+
+        if($this->request->IsPost()) {
             // Check the form validity
             $this->context->entityManager->beginTransaction();
             $aDepartments = $this->request->getPost("departments");
@@ -39,28 +39,38 @@ class EmployeesController extends IgestisController {
                 foreach ($aDepartments as $department) {
                     $employee->addDepartment($this->context->entityManager->getRepository("CoreDepartments")->find($department));
                 }
-            }            
+            }
 
             foreach($employee->getRightsList() as $right) {
                 $employee->removeRight($right);
                 $this->context->entityManager->remove($right);
             }
-            
-            
+
+            $employee->removeCompanyMember();
+
+            $this->context->entityManager->persist($employee);
+
 
             // Set the new datas of the employee
             $parser = new IgestisFormParser();
             $employee = $parser->FillEntityFromForm($employee, $_POST);
+
             $company = $this->context->entityManager->getRepository("CoreCompanies")->find($_POST['company']);
-            $employee->setCompany($company);
+            $employee->setCompany($company)->addCompanyMember($company);
+
             $contact = $employee->getContacts()->get(0);
             $contact = $parser->FillEntityFromForm($contact, $_POST);
             $employee->setUserLabel($contact->getFirstName() . " " . $contact->getLastName());
             $employee->updateContact($contact);
-            
-            
 
-            // Save the employee into the database   
+            foreach ($this->request->getPost("companiesMember") as $currentAvailableCompany) {
+                $employee->addCompanyMember(
+                    $this->context->entityManager->getRepository("CoreCompanies")->find($currentAvailableCompany)
+                );
+            }
+
+
+            // Save the employee into the database
             try {
                 $this->context->entityManager->persist($employee);
                 $this->context->entityManager->flush();
@@ -68,8 +78,8 @@ class EmployeesController extends IgestisController {
                 IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
                 $this->redirect(ConfigControllers::createUrl("employees_list"));
             }
-            
-            
+
+
             try {
                 @reset($_POST);
                 foreach ($_POST as $key => $value) {
@@ -82,31 +92,36 @@ class EmployeesController extends IgestisController {
                 $this->context->entityManager->persist($employee);
                 $this->context->entityManager->flush();
                 $this->context->entityManager->commit();
-                
+
                 \Igestis\Utils\Hook::callHook("contactUpdated", new \Igestis\Types\HookParameters(array(
                     "contact" => $contact
                 )));
-                
+
             } catch (Exception $e) {
                 // Show wizz to confirm the employee update
                 new wizz($e->getMessage(), WIZZ_ERROR);
                 $this->redirect(ConfigControllers::createUrl("employees_list"));
             }
-            
+
             // Show wizz to confirm the employee update
             new wizz(_("The employee data have been successfully saved"), WIZZ::$WIZZ_SUCCESS);
 
             // Redirect to the employee list
             $this->redirect(ConfigControllers::createUrl("employees_list"));
         }
-        
 
-        
+
+
         $countries_list = $this->context->entityManager->getRepository("CoreCountries")->findAll();
         $civilities_list = $this->context->entityManager->getRepository("CoreCivilities")->findAll();
         $languages_list = $this->context->entityManager->getRepository("CoreLanguages")->findAll();
         $companies_list = $this->context->entityManager->getRepository("CoreCompanies")->findAll();
-        
+
+        $selectedCompanies = array();
+        foreach ($employee->getCompaniesMember() as $currentCompany) {
+            $selectedCompanies[] = $currentCompany->getId();
+        }
+
         $this->context->render("pages/employeesEdit.twig", array(
             'form_data' => $employee,
             'countries_list' => $countries_list,
@@ -114,10 +129,11 @@ class EmployeesController extends IgestisController {
             'companies_list' => $companies_list,
             'languages_list' => $languages_list,
             'departments_list'=>  $this->context->entityManager->getRepository("CoreDepartments")->getDepartmentsList(false),
-            'all_modules_rights' => $this->context->security->getAllModulesRights($Id))
-        );
+            'all_modules_rights' => $this->context->security->getAllModulesRights($Id),
+            'selectedCompanies' => $selectedCompanies
+        ));
     }
-    
+
     /**
      * Delete the employee
      */
@@ -127,9 +143,9 @@ class EmployeesController extends IgestisController {
             new wizz(_("The employee has not been found"), wizz::$WIZZ_ERROR);
             $this->redirect(ConfigControllers::createUrl("employees_list"));
         }
-        
+
         $this->context->entityManager->beginTransaction();
-        
+
         // Delete the employee from the database
         try {
             $user->disable();
@@ -137,11 +153,11 @@ class EmployeesController extends IgestisController {
             \Igestis\Utils\Debug::addDump($user, "user");
             $this->context->entityManager->flush();
             $this->context->entityManager->commit();
-            
+
             \Igestis\Utils\Hook::callHook("contactUpdated", new \Igestis\Types\HookParameters(array(
                 "contact" => $user->getMainContact()
             )));
-            
+
         } catch (Exception $e) {
             // Show wizz to alert user that the company deletion has not realy been deleted
             IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
@@ -154,12 +170,12 @@ class EmployeesController extends IgestisController {
         // Redirect to the employee list
         $this->redirect(ConfigControllers::createUrl("employees_list"));
     }
-    
+
     /**
      * Add the customer
      */
     public function newAction() {
-        
+
         if($this->request->IsPost()) {
             $this->context->entityManager->beginTransaction();
             $parser = new IgestisFormParser();
@@ -175,18 +191,18 @@ class EmployeesController extends IgestisController {
             $contact = $parser->FillEntityFromForm($contact, $_POST);
             $employee->setUserLabel($contact->getFirstName() . " " . $contact->getLastName());
             //$employee->setContact($contact);
-            $employee->AddOrEditContact($contact);   
-            
+            $employee->AddOrEditContact($contact);
+
             $aDepartments = $this->request->getPost("departments");
             if(is_array($aDepartments))  {
                 $employee->removeDepartments();
                 foreach ($aDepartments as $department) {
                     $employee->addDepartment($this->context->entityManager->getRepository("CoreDepartments")->find($department));
                 }
-            }            
+            }
 
-            
-            // Save the employee into the database   
+
+            // Save the employee into the database
             try {
                 $this->context->entityManager->persist($employee);
                 $this->context->entityManager->flush();
@@ -195,8 +211,8 @@ class EmployeesController extends IgestisController {
                 $this->redirect(ConfigControllers::createUrl("employees_list"));
             }
 
-                
-            // Save the employee into the database   
+
+            // Save the employee into the database
             try {
                 @reset($_POST);
                 foreach ($_POST as $key => $value) {
@@ -208,30 +224,30 @@ class EmployeesController extends IgestisController {
                 }
                 $this->context->entityManager->persist($employee);
                 $this->context->entityManager->flush();
-                
+
                 \Igestis\Utils\Hook::callHook("contactUpdated", new \Igestis\Types\HookParameters(array(
                     "contact" => $employee->getMainContact()
                 )));
-            
-                
+
+
                 $this->context->entityManager->commit();
-                
+
             } catch (Exception $e) {
                 // Show wizz to confirm the employee update
 
                 IgestisErrors::createWizz($e, IgestisErrors::TYPE_ANY);
                 $this->redirect(ConfigControllers::createUrl("employees_list"));
             }
-            
+
             // Show wizz to confirm the employee update
             new wizz(_("The employee data have been successfully saved"), WIZZ::$WIZZ_SUCCESS);
 
             // Redirect to the employee list
-            $this->redirect(ConfigControllers::createUrl("employees_list"));   
-            
+            $this->redirect(ConfigControllers::createUrl("employees_list"));
+
          }// End of post treatment...
-         
-         
+
+
         $countries_list = $this->context->entityManager->getRepository("CoreCountries")->findAll();
         $civilities_list = $this->context->entityManager->getRepository("CoreCivilities")->findAll();
         $companies_list = $this->context->entityManager->getRepository("CoreCompanies")->findAll();
@@ -245,7 +261,7 @@ class EmployeesController extends IgestisController {
             'all_modules_rights' => $this->context->security->getAllModulesRights())
         );
     }
-    
+
     /**
      * Show a customer in read only
      */
@@ -255,7 +271,7 @@ class EmployeesController extends IgestisController {
             new wizz(_("The Employee has not been found"), wizz::$WIZZ_ERROR);
             $this->redirect(ConfigControllers::createUrl("employees_list"));
         }
-        
+
         $this->context->render("pages/employeesShow.twig", array(
             'show_data' => $employee)
         );

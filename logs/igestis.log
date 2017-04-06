@@ -1,0 +1,27 @@
+2017-04-04 12:01:30 -  - array(4) {
+  ["type"]=>
+  int(64)
+  ["message"]=>
+  string(51) "Cannot use 'String' as class name as it is reserved"
+  ["file"]=>
+  string(82) "/home/gillesh/Documents/github/igestis/vendor/igestis/coreClasses/Types/String.php"
+  ["line"]=>
+  int(9)
+}
+
+2017-04-04 12:07:31 -  - array(4) {
+  ["type"]=>
+  int(1)
+  ["message"]=>
+  string(1024) "Uncaught Error: Class 'Igestis\Types\EnhancedString' not found in /home/gillesh/Documents/github/igestis/vendor/igestis/coreClasses/Bash/CreateMigrationFile.php:40
+Stack trace:
+#0 /home/gillesh/Documents/github/igestis/vendor/symfony/console/Command/Command.php(256): Igestis\Bash\CreateMigrationFile->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#1 /home/gillesh/Documents/github/igestis/vendor/symfony/console/Application.php(838): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /home/gillesh/Documents/github/igestis/vendor/symfony/console/Application.php(189): Symfony\Component\Console\Application->doRunCommand(Object(Igestis\Bash\CreateMigrationFile), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /home/gillesh/Documents/github/igestis/vendor/symfony/console/Application.php(120):"
+  ["file"]=>
+  string(94) "/home/gillesh/Documents/github/igestis/vendor/igestis/coreClasses/Bash/CreateMigrationFile.php"
+  ["line"]=>
+  int(40)
+}
+

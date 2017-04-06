@@ -10,7 +10,7 @@ class CoreUsers
     const USER_TYPE_EMPLOYEE = "employee";
     const USER_TYPE_CUSTOMER = "client";
     const USER_TYPE_SUPPLIER = "supplier";
-    
+
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
@@ -24,8 +24,23 @@ class CoreUsers
      *   }
      * )
      */
-    private $departments;    
-    
+    private $departments;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ManyToMany(targetEntity="CoreCompanies", inversedBy="users", cascade={"persist"})
+     * @JoinTable(name="CORE_ASSOC_USERS_COMPANIES",
+     *   joinColumns={
+     *     @JoinColumn(name="user_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @JoinColumn(name="company_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $companiesMember;
+
     /**
      * @var string $userLabel
      * @Column(type="string", name="user_label")
@@ -69,8 +84,8 @@ class CoreUsers
     private $isActive;
 
     /**
-     * @Id 
-     * @Column(type="integer") 
+     * @Id
+     * @Column(type="integer")
      * @GeneratedValue
      */
     private $id;
@@ -88,13 +103,13 @@ class CoreUsers
      * @var CoreCompanies
      */
     private $company;
-    
+
     /**
      * @OneToMany(targetEntity="CoreUsersRights", mappedBy="user", cascade={"remove"}, indexBy="moduleName")
      */
     private $rightsList;
-    
-    
+
+
     /**
      * @OneToMany(targetEntity="CoreContacts", mappedBy="user",cascade={"all"}, orphanRemoval=true)
      * @OrderBy({"mainContact" = "DESC", "lastname" = "ASC", "firstname" = "ASC"})
@@ -105,14 +120,15 @@ class CoreUsers
         $this->contacts = new Doctrine\Common\Collections\ArrayCollection();
         $this->rightsList = new Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->companiesMember = new \Doctrine\Common\Collections\ArrayCollection();
 
-        // Default values
+        // Default valuesc
         $this->tvaNumber = "";
         $this->tvaInvoice = true;
         $this->accountCode = "";
         $this->isActive = true;
     }
-    
+
     /**
      * Crée un nouvel employé
      * @return CoreUsers Un CoreUser définit en tant qu'employé
@@ -122,7 +138,7 @@ class CoreUsers
         $employee->setUserType("employee");
         return $employee;
     }
-    
+
     /**
      * Crée un nouveau client
      * @return CoreUsers Un CoreUser définit en tant que client
@@ -132,7 +148,7 @@ class CoreUsers
         $customer->setUserType("client");
         return $customer;
     }
-    
+
     public static function newSupplier() {
         $supplier = new self;
         $supplier->setUserType("supplier");
@@ -154,7 +170,7 @@ class CoreUsers
     /**
      * Get userLabel
      *
-     * @return string 
+     * @return string
      */
     public function getUserLabel()
     {
@@ -176,7 +192,7 @@ class CoreUsers
     /**
      * Get userType
      *
-     * @return string 
+     * @return string
      */
     public function getUserType()
     {
@@ -198,7 +214,7 @@ class CoreUsers
     /**
      * Get tvaNumber
      *
-     * @return string 
+     * @return string
      */
     public function getTvaNumber()
     {
@@ -220,7 +236,7 @@ class CoreUsers
     /**
      * Get tvaInvoice
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getTvaInvoice()
     {
@@ -242,7 +258,7 @@ class CoreUsers
     /**
      * Get rib
      *
-     * @return string 
+     * @return string
      */
     public function getRib()
     {
@@ -264,7 +280,7 @@ class CoreUsers
     /**
      * Get accountCode
      *
-     * @return string 
+     * @return string
      */
     public function getAccountCode()
     {
@@ -286,7 +302,7 @@ class CoreUsers
     /**
      * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -296,7 +312,7 @@ class CoreUsers
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -318,7 +334,7 @@ class CoreUsers
     /**
      * Get clientTypeCode
      *
-     * @return CoreClientType 
+     * @return CoreClientType
      */
     public function getClientTypeCode()
     {
@@ -340,21 +356,21 @@ class CoreUsers
     /**
      * Get company
      *
-     * @return CoreCompanies 
+     * @return CoreCompanies
      */
     public function getCompany()
     {
         return $this->company;
     }
-    
+
     /**
      * Get list of contacts
      * @return @return Doctrine\Common\Collections\Collection List of contacts
      */
     public function getContacts() {
         return $this->contacts;
-    }   
-    
+    }
+
     public function __toString() {
         return $this->userLabel;
     }
@@ -437,7 +453,7 @@ class CoreUsers
         $index = $this->contacts->indexOf($contact);
         $this->contacts->set($index, $contact);
     }
-    
+
     /**
      * Liste des droits
      * @return Doctrine\Common\Collections\ArrayCollection()
@@ -452,19 +468,19 @@ class CoreUsers
         $this->rightsList->add($right);
         return $this;
     }
-    
+
     public function removeRight(\CoreUsersRights $right) {
         $this->rightsList->removeElement($right);
         $right->unsetUser();
     }
-    
+
     public function disable() {
         $this->isActive = 0;
         foreach ($this->contacts as $currentContact) {
             $currentContact->setActive(0);
         }
     }
-    
+
     /**
      * Add department
      *
@@ -480,15 +496,50 @@ class CoreUsers
     /**
      * Get department
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getDepartments()
     {
         return $this->departments;
     }
-    
+
     public function removeDepartments() {
         $this->departments->clear();
+        return $this;
+    }
+
+    /**
+     * Add CoreCompany
+     *
+     * @param CoreCompany $company
+     * @return CoreUsers
+     */
+    public function addCompanyMember(\CoreCompanies $company = null)
+    {
+        if ($company) {
+            foreach ($this->companiesMember as $currentCompany) {
+                if ($currentCompany->getId() == $company->getId()) {
+                    return $this;
+                }
+            }
+            $this->companiesMember[] = $company;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get companies
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getCompaniesMember()
+    {
+        return $this->companiesMember;
+    }
+
+    public function removeCompanyMember() {
+        $this->companiesMember->clear();
         return $this;
     }
 
@@ -497,7 +548,7 @@ class CoreUsers
      * @PrePersist
      */
     public function PreSave() {
-        
+
         if($this->getCompany() == null) {
             $security = IgestisSecurity::init();
             $userCompany = $security->user->getCompany();
@@ -507,12 +558,12 @@ class CoreUsers
             }
         }
         //$mainContact = $this->getMainContact();
-        
+
         /*if($this->getUserType() == "client" && $this->getClientTypeCode() == "PART") {
             $this->setUserLabel($mainContact->getFirstname() . " " . $mainContact->getLastname());
         }*/
     }
-    
+
     /**
      * Return the main contact associated to this user.
      * @return \CoreContacts
@@ -525,7 +576,7 @@ class CoreUsers
             }
         }
     }
-    
+
     /**
      * @PrePersist
      * @PreUpdate
@@ -546,7 +597,7 @@ class CoreUsers
             $this->userLabel = $mainContact->getFirstname() . " " . $mainContact->getLastname();
         }
     }
-    
+
 }
 
 // -----------------------------------------------------------------------------------------------------------
@@ -562,18 +613,18 @@ class CoreUsersRepository extends Doctrine\ORM\EntityRepository {
             ->setMaxResults(1);
         return $qb->getQuery()->getOneOrNullResult();
     }
-    
+
     public function find($id, $lockMode = null, $lockVersion = null) {
         $user = parent::find($id, $lockMode, $lockVersion);
         if(!$user) return null;
-        
+
         $userCompany = \IgestisSecurity::init()->user->getCompany();
         if(\IgestisSecurity::init()->contact->getLogin() != \ConfigIgestisGlobalVars::igestisCoreAdmin() && $user->getCompany()->getId() != $userCompany->getId()) {
             return null;
         }
         return $user;
     }
-    
+
     public function findAll($includeDisabledUsers=true) {
         try {
             $userCompany = \IgestisSecurity::init()->user->getCompany();
@@ -589,6 +640,31 @@ class CoreUsersRepository extends Doctrine\ORM\EntityRepository {
         catch (\Exception $e) {
             throw $e;
         }
-        return $qb->getQuery()->getResult();         
+        return $qb->getQuery()->getResult();
     }
+
+    /**
+     * Get the value of Companies Member
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getCompaniesMember()
+    {
+        return $this->companiesMember;
+    }
+
+    /**
+     * Set the value of Companies Member
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection companiesMember
+     *
+     * @return self
+     */
+    public function setCompaniesMember(\Doctrine\Common\Collections\ArrayCollection $companiesMember)
+    {
+        $this->companiesMember = $companiesMember;
+
+        return $this;
+    }
+
 }

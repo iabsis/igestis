@@ -1239,8 +1239,8 @@ class CoreContacts
 
                     // Retrieve current user DN
                     $search = ldap_search(
-                        $ldap, 
-                        $rdn, 
+                        $ldap,
+                        $rdn,
                         str_replace("%u", $this->initialLogin, \ConfigIgestisGlobalVars::ldapUserFilter())
                     );
                     $user = ldap_get_entries($ldap, $search);
@@ -1258,12 +1258,12 @@ class CoreContacts
                                 if ($info[0]['dn']) {
                                     $igestisLdap->switchUserToGroup($userDn, $info[0]['dn'], $departmentsMember->contains($currentDepartment));
                                 }
-                                
+
                             }
                         }
                     }
 
-                    
+
                 }
 
                 if (DEBUG) {

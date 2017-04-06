@@ -57,7 +57,7 @@ class Scanner {
                     $server .= $tmp[$i];
                     $i++;
                 }
-                $scannersList[] = array("fullName" => $scannerAddress, "displayName" => \Igestis\Types\String::cutSentencee($scannerLabel, 25) . " (" . $server . ")");
+                $scannersList[] = array("fullName" => $scannerAddress, "displayName" => \Igestis\Types\EnhancedString::cutSentencee($scannerLabel, 25) . " (" . $server . ")");
             }
         }
         return $scannersList;

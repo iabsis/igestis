@@ -2,7 +2,7 @@
 
 namespace Igestis\Bash;
 
-use Igestis\Types\String as IgestisString;
+use Igestis\Types\EnhancedString as IgestisString;
 
 /**
  * Description of IgestisScripts
@@ -30,8 +30,8 @@ class CreateMigrationFile extends Command {
                 'migrationReason',
                 InputArgument::REQUIRED,
                 'Short migration descripion (included in file name)'
-            );       
-        
+            );
+
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -39,14 +39,14 @@ class CreateMigrationFile extends Command {
         $moduleName = $input->getArgument('moduleName');
         $migrationReason = IgestisString::slug($input->getArgument('migrationReason'));
 
-        
+
         $modulesList = \IgestisModulesList::getInstance();
-        
+
         if($moduleName != "core" && (!$modulesList->moduleExists($moduleName) || !$modulesList->getFolder($moduleName))) {
             $output->writeln("<error>" . sprintf(\Igestis\I18n\Translate::_("The '%s' module doest not exist"), $moduleName) . "</error>");
             exit(1);
         }
-        
+
         $file = $modulesList->getFolder($moduleName) . '/install/database/mysql/' . date("Ymd-Hi-") . $migrationReason;
         $pathInfo = pathinfo($file);
 
@@ -61,7 +61,7 @@ class CreateMigrationFile extends Command {
                 $output->writeln("<error>Error during folder creation : " . $e->getMessage() . "</error>");
                 exit(2);
             }
-            
+
         }
 
         $output->writeln('Create file : ' . $file);
@@ -71,7 +71,7 @@ class CreateMigrationFile extends Command {
             $output->writeln("<error>Error during folder creation : " . $e->getMessage() . "</error>");
             exit(3);
         }
-        
+
         $output->writeln("<info>Done</info>");
     }
 }

@@ -6,41 +6,41 @@ namespace Igestis\Types;
  *
  * @author Gilles Hemmerlé (iabsis) <giloux@gmail.com>
  */
-class String {
+class EnhancedString {
     /**
      *
      * @var string The calculated string
      */
     private $string;
-    
+
     /**
-     * 
+     *
      * @param string $string Initialize string
      */
     public function __construct($string) {
         $this->string = $string;
     }
-    
+
     /**
      * Replace whole string
      * @param string $string Initialize string
-     * @return \String 
+     * @return \String
      */
     public function set($string) {
         $this->string = $string;
         return $this;
-    }    
+    }
 
     /**
      * Concatains the passed string with the sotred one
      * @param type $string
-     * @return \String 
+     * @return \String
      */
     public function concatains($string) {
         $this->string .= $string;
         return $this;
     }
-    
+
     /**
      * Return complete string
      * @return string Complete string
@@ -48,20 +48,20 @@ class String {
     public function __toString() {
         return $this->string;
     }
-    
+
     /**
      * Suppress all accents from the string
-     * @return \String 
+     * @return \String
      */
     public function stripAccents() {
         $this->string = htmlentities($this->string, ENT_NOQUOTES, 'utf-8');
         $this->string = preg_replace('#\&([A-za-z])(?:uml|circ|tilde|acute|grave|cedil|ring)\;#', '\1', $this->string);
         $this->string = preg_replace('#\&([A-za-z]{2})(?:lig)\;#', '\1', $this->string);
         $this->string = preg_replace('#\&[^;]+\;#', '', $this->string);
-        
+
         return $this;
     }
-    
+
     /**
      * This function crop a text and return a text corresponding to $nbcar first caracters. It try to stop after a blank character
      * @param string $string Text to crop

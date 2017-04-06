@@ -2,7 +2,7 @@
 
 namespace Igestis\Bash;
 
-use Igestis\Types\String as IgestisString;
+use Igestis\Types\EnhancedString as IgestisString;
 
 /**
  * Description of IgestisScripts
