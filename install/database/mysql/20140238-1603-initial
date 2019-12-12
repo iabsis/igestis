@@ -197,7 +197,7 @@ CREATE TABLE `CORE_CONTACTS` (
 --
 
 INSERT INTO `CORE_CONTACTS` (`id`, `user_id`, `login`, `password`, `ssh_password`, `civility_code`, `firstname`, `lastname`, `email`, `nb_login_try`, `last_login_try`, `change_password_request_id`, `change_password_request_date`, `language_code`, `address1`, `address2`, `postal_code`, `city`, `country_code`, `phone1`, `phone2`, `mobile`, `fax`, `main_contact`, `active`) VALUES
-(1, 1, 'root', MD5('password'), '', 'MR', 'admin', 'admin', '', 0, '0000-00-00 00:00:00', '', '0000-00-00', 'FR', '', '', '', '', 'FR', '', '', '', '', 0, 1);
+(1, 1, 'root', MD5('password'), '', 'MR', 'admin', 'admin', '', 0, '0000-00-00 00:00:00', '', '0000-00-00', NULL, '', '', '', '', 'FR', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -749,7 +749,6 @@ CREATE TABLE `CORE_USERS` (
   `tva_number` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tva_invoice` tinyint(4) DEFAULT NULL,
   `rib` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `symbol_money` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `account_code` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
@@ -761,8 +760,8 @@ CREATE TABLE `CORE_USERS` (
 -- Contenu de la table `CORE_USERS`
 --
 
-INSERT INTO `CORE_USERS` (`id`, `company_id`, `client_type_code`, `user_label`, `user_type`, `tva_number`, `tva_invoice`, `rib`, `symbol_money`, `account_code`, `is_active`) VALUES
-(1, NULL, NULL, 'admin admin', 'employee', '', 0, '', '', '', 1);
+INSERT INTO `CORE_USERS` (`id`, `company_id`, `client_type_code`, `user_label`, `user_type`, `tva_number`, `tva_invoice`, `rib`, `account_code`, `is_active`) VALUES
+(1, NULL, NULL, 'admin admin', 'employee', '', 0, '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -847,7 +846,6 @@ CREATE TABLE `USERS` (
 ,`tva_number` varchar(20)
 ,`tva_invoice` tinyint(4)
 ,`rib` varchar(60)
-,`symbol_money` varchar(30)
 ,`account_code` varchar(30)
 ,`is_active` tinyint(1)
 );
@@ -940,7 +938,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `USERPREFS` AS select `CORE
 --
 DROP TABLE IF EXISTS `USERS`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `USERS` AS select `CORE_USERS`.`id` AS `id`,`CORE_USERS`.`company_id` AS `company_id`,`CORE_USERS`.`client_type_code` AS `client_type_code`,`CORE_USERS`.`user_label` AS `user_label`,`CORE_USERS`.`user_type` AS `user_type`,`CORE_USERS`.`tva_number` AS `tva_number`,`CORE_USERS`.`tva_invoice` AS `tva_invoice`,`CORE_USERS`.`rib` AS `rib`,`CORE_USERS`.`symbol_money` AS `symbol_money`,`CORE_USERS`.`account_code` AS `account_code`,`CORE_USERS`.`is_active` AS `is_active` from `CORE_USERS`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `USERS` AS select `CORE_USERS`.`id` AS `id`,`CORE_USERS`.`company_id` AS `company_id`,`CORE_USERS`.`client_type_code` AS `client_type_code`,`CORE_USERS`.`user_label` AS `user_label`,`CORE_USERS`.`user_type` AS `user_type`,`CORE_USERS`.`tva_number` AS `tva_number`,`CORE_USERS`.`tva_invoice` AS `tva_invoice`,`CORE_USERS`.`rib` AS `rib`,`CORE_USERS`.`account_code` AS `account_code`,`CORE_USERS`.`is_active` AS `is_active` from `CORE_USERS`;
 
 -- --------------------------------------------------------
 

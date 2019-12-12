@@ -7,7 +7,6 @@
  */
 class InstallController extends IgestisController {
     public function checkAction() {
-        
         // Disable cache to avoid issue during install (if user has not set the write yet)
         $this->context->getTwigEnvironnement()->setCache(false);
         $requestUri = $_SERVER['REQUEST_URI'];
@@ -32,6 +31,7 @@ class InstallController extends IgestisController {
         try {
             /* Check databas connexion and table existance */
             $em = $this->context->getEntityManager();
+
             /* Try to connect with the given credentials */
             $connexion = $em->getConnection()->connect();
             $dbCredentialsOk = true;
@@ -47,6 +47,7 @@ class InstallController extends IgestisController {
             
         } catch (Exception $ex) {
             /* If any exception, the database is marked as "no working" */
+            new \Wizz($ex->getMessage());
             $databaseWork = false;
         }
 
@@ -145,14 +146,14 @@ class InstallController extends IgestisController {
     
     public function updateDbAction() {
  
-        \Igestis\Utils\DBUpdater::init($this->_em);
-        $importStatus = \Igestis\Utils\DBUpdater::startUpdate();
         
-        if($importStatus) {
-            new wizz(\Igestis\I18n\Translate::_("The mysql database has been successfully imported"), WIZZ_SUCCESS);
-        }
-        else {
-            new wizz(\Igestis\I18n\Translate::_("An error has occured during the import process. Try to import the sql file manually."), WIZZ_SUCCESS);
+
+        try {
+            \Igestis\Utils\DBUpdater::init($this->_em);
+            $importStatus = \Igestis\Utils\DBUpdater::startUpdate();
+            new wizz(\Igestis\I18n\Translate::_("The mysql database has been successfully imported"), \wizz::WIZZ_SUCCESS);
+        } catch (\Exception $e) {
+            new wizz($e->getMessage(), \wizz::WIZZ_ERROR);
         }
         
         $this->redirect(ConfigControllers::createUrl("igestis_install"));

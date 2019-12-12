@@ -89,3 +89,15 @@ Description: Error while trying to communicate with your directory.
  .
  The error was :
  ${error}
+
+Template: igestis/directory/custombind
+Type: string
+Default: cn=%u,dc=example,dc=local
+Description: Specify the way that iGestis will bind you directory
+ iGestis needs to know the username format to be used with your directory.
+ OpenLDAP commonly uses cn=%u,dc=example,dc=local while Active
+ Directory uses %u@example.local.
+ .
+ The %u variable represents the iGestis username.
+ .
+ If you are unsure of this value, keep the recommanded chosen for you.

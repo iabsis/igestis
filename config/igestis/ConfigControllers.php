@@ -5,14 +5,16 @@
  *
  * @author Gilles Hemmerlé
  */
-class ConfigControllers extends IgestisConfigController {
-    //put your code here    
+class ConfigControllers extends IgestisConfigController
+{
+    public static function get()
+    {
+        if (count(self::$routes)) {
+            return self::$routes;
+        }
 
-    public static function get() {
-        if(count(self::$routes)) return self::$routes;
-        
         $routes = array(
-            
+
             array(
                 "id" => "igestis_update_db",
                 "Parameters" => array(
@@ -23,7 +25,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "updateDbAction",
                 "Access" => array("EVERYONE")
             ),
-            
+
             array(
                 "id" => "igestis_install",
                 "Parameters" => array(
@@ -33,8 +35,8 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "checkAction",
                 "Access" => array("EVERYONE")
             ),
-            
-            
+
+
             /************* Script ajax **********************************/
             array(
                 "id" => "ajax_is_login_exist",
@@ -47,7 +49,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "LoginExists",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),
-            
+
             array(
                 "id" => "ajax_progress_file_upload",
                 "Parameters" => array(
@@ -58,7 +60,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "uploadProgress",
                 "Access" => array("EVERYONE")
             ),
-            
+
             array(
                 "id" => "ajax_hide_quicktour",
                 "Parameters" => array(
@@ -69,7 +71,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "hideQuicktour",
                 "Access" => array("AUTHENTICATED")
             ),
-            
+
             array(
                 "id" => "ajax_edit_contact",
                 "Parameters" => array(
@@ -81,8 +83,8 @@ class ConfigControllers extends IgestisConfigController {
                 "Controller" => "CustomersAjaxController",
                 "Action" => "editContact",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
-            ),        
-            
+            ),
+
 
             array(
                 "id" => "start_customer_import",
@@ -94,7 +96,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "startCustomerImportAction",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),
-            
+
             array(
                 "id" => "get_scanners_list",
                 "Parameters" => array(
@@ -105,7 +107,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "scannersList",
                 "Access" => array("AUTHENTICATED")
             ),
-            
+
             array(
                 "id" => "customer_import_step2",
                 "Parameters" => array(
@@ -116,7 +118,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "showImportResult",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),
-            
+
             array(
                 "id" => "customer_import_step3",
                 "Parameters" => array(
@@ -151,10 +153,10 @@ class ConfigControllers extends IgestisConfigController {
                 "Controller" => "CustomersAjaxController",
                 "Action" => "getContactDatas",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
-            ),            
-            
+            ),
+
             /************* Scripts traditionnels ************************/
-            
+
             /** About page **/
             array(
                 "id" => "about",
@@ -165,7 +167,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "about",
                 "Access" => array("EVERYONE")
             ),
-            
+
             /** Demo page **/
             array(
                 "id" => "demo",
@@ -176,7 +178,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "demo",
                 "Access" => array("EVERYONE")
             ),
-            
+
             /** Error 404 **/
             array(
                 "id" => "error404",
@@ -187,7 +189,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "error404",
                 "Access" => array("EVERYONE")
             ),
-            
+
             /** Error 404 **/
             array(
                 "id" => "error403",
@@ -198,7 +200,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "error403",
                 "Access" => array("EVERYONE")
             ),
-            
+
             /** Bug report page **/
             array(
                 "id" => "bugReport",
@@ -278,8 +280,8 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "indexAction",
                 "Access" => array("AUTHENTICATED")
             ),
-            
-            
+
+
             /** Page = restore_home_page **/
             array(
                 "id" => "restore_home_page",
@@ -290,7 +292,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "restoreAction",
                 "Access" => array("CORE:ADMIN")
             ),
-            
+
             /** Page = save_home_page **/
             array(
                 "id" => "save_home_page",
@@ -301,8 +303,8 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "saveAction",
                 "Access" => array("CORE:ADMIN")
             ),
-            
-            
+
+
             // ------------------------------------------------------
             /** Page = companies_show **/
             array(
@@ -438,8 +440,8 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "indexAction",
                 "Access" => array("CORE:ADMIN")
             ),
-            
-            
+
+
             /** Page = employees_show **/
             array(
                 "id" => "employees_show",
@@ -560,7 +562,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "indexAction",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),
-            // ------------------------------------------------------            
+            // ------------------------------------------------------
             /** Page = suppliers_show **/
             array(
                 "id" => "suppliers_show",
@@ -609,7 +611,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "deleteAction",
                 "Access" => array("CORE:ADMIN", "CORE:TECH"),
                 "CsrfProtection" => true
-            ), 
+            ),
 
             /** Page = suppliers **/
             array(
@@ -620,8 +622,8 @@ class ConfigControllers extends IgestisConfigController {
                 "Controller" => "SuppliersController",
                 "Action" => "indexAction",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
-            ),       
-            
+            ),
+
             array(
                 "id" => "suppliers_import_step2",
                 "Parameters" => array(
@@ -632,7 +634,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "showImportResult",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),
-            
+
             array(
                 "id" => "suppliers_import_step3",
                 "Parameters" => array(
@@ -643,7 +645,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Action" => "validImport",
                 "Access" => array("CORE:ADMIN", "CORE:TECH")
             ),
-            
+
             // ------------------------------------------------------
             /** Page = old_module_with_only_admin **/
             array(
@@ -656,7 +658,7 @@ class ConfigControllers extends IgestisConfigController {
                 "Controller" => "OldModulesController",
                 "Action" => "indexAction",
                 "Access" => array("AUTHENTICATED")
-            ),   
+            ),
             // ------------------------------------------------------
             /** Page = my_account **/
             array(
@@ -666,6 +668,17 @@ class ConfigControllers extends IgestisConfigController {
                 ),
                 "Controller" => "MyAccountController",
                 "Action" => "editAction",
+                "Access" => array("AUTHENTICATED")
+            ),
+            array(
+                "id" => "switch_company",
+                "Parameters" => array(
+                    "Page" => "core_switch_company",
+                    "Action" => "switch",
+                    "companyId" => "{VAR}[0-9]+"
+                ),
+                "Controller" => "MyAccountController",
+                "Action" => "switchCompany",
                 "Access" => array("AUTHENTICATED")
             ),
             // ------------------------------------------------------
@@ -681,8 +694,8 @@ class ConfigControllers extends IgestisConfigController {
                 "Controller" => "DlFileController",
                 "Action" => "downloadAction",
                 "Access" => array("EVERYONE")
-            ),            
-            // ------------------------------------------------------            
+            ),
+            // ------------------------------------------------------
             /** Page = admin **/
             array(
                 "id" => "admin",
@@ -693,42 +706,29 @@ class ConfigControllers extends IgestisConfigController {
                 "Controller" => "AdminController",
                 "Action" => "generalAction",
                 "Access" => array("CORE:ADMIN")
-            ),        
-            
-            /** Page = test **/
-            array(
-                "id" => "test",
-                "Parameters" => array(
-                    "Page" => "test",
-                    "Action" => "ldap"
-                ),
-                "Controller" => "TestController",
-                "Action" => "ldapAction",
-                "Access" => array("EVERYONE")
-            ),   
-            
-            
+            ),
+
         );
-        
+
         self::addParam($routes, array("Module" => "core"));
-        
+
         // Check all modules (which match with igestis v2.0 standards)
         $modulesList = IgestisModulesList::getInstance();
         foreach ($modulesList->get() as $module_name => $module) {
             if($module['igestisVersion'] == 2) {
                 // Manage the concerned module
                 $moduleConfigController = "\\Igestis\\Modules\\" . $module_name . "\\ConfigControllers";
-                
+
                 if(class_exists($moduleConfigController)) {
                     $array = $moduleConfigController::get();
                     self::addParam($array, array("Module" => $module_name));
                     $routes = array_merge($routes, $array);
                 }
-                
+
             }
         }
-        
+
         self::$routes = $routes;
         return $routes;
-    }   
+    }
 }

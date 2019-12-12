@@ -1,3 +1,10 @@
+build-stamp
+configure-stamp
+debian/files
+debian/igestis.debhelper.log
+debian/igestis.postrm.debhelper
+debian/igestis.substvars
+debian/igestis
 *~
 sftp-config.json.buildpath
 .project
@@ -5,4 +12,5 @@ sftp-config.json.buildpath
 .buildpath
 sftp-config.json
 debian/igestis
-configure-stamp
+.remote-sync.json
+.sync-config.cson

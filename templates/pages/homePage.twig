@@ -3,22 +3,33 @@
 {% set title = {'logo': "emblem-people",
                 'title': "Home page"|trans} %}
 
-{% block content %}
-<div class="container">
+{% block javascriptFiles  %}
+    {{ parent() }}
+    <script src="{{ TEMPLATE_URL }}/js/tinymce/tinymce.min.js?{{ CORE_VERSION }}"></script>
+    <script type="text/javascript">
+    $(function() {
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'emmet',
+        });
+    });
+    </script>
+{% endblock %}
 
-<link href="{{ TEMPLATE_URL }}/css/bootstrap-wysihtml5.css" rel="stylesheet">
+
+{% block content %}
+<div class="container-fluid">
+
 <link href="{{ TEMPLATE_URL }}/css/prettify.css" rel="stylesheet">
 
-<script src="{{ TEMPLATE_URL }}/js/wysihtml5-0.3.0.js"></script>
-<script src="{{ TEMPLATE_URL }}/js/prettify.js"></script>
-<script src="{{ TEMPLATE_URL }}/js/bootstrap-wysihtml5.js"></script>
+<!-- <script src="{{ TEMPLATE_URL }}/js/bootstrap-wysihtml5.js"></script>-->
 <script type="text/javascript">
     function core_restore_home_page() {
         bootbox.confirm("{% trans %}Are you sure that you want to restore the default page ?{% endtrans %}", "{% trans %}No{% endtrans %}", "{% trans %}Yes{% endtrans %}", function(result) {
             if(result) window.location.href="{{ url('restore_home_page') }}";
          });
     }
-    
+
     function hide_quicktour()  {
     $.ajax({
             url: "{{ url('ajax_hide_quicktour') }}",
@@ -41,6 +52,9 @@
 }
 </script>
 
+
+
+
 {% if RIGHTS_LIST.CORE == "ADMIN" %}
     <div id="EditHomePage" class="modal hide fade">
         <form class="modal-form" action="{{ url('save_home_page') }}" method="post">
@@ -49,7 +63,7 @@
                 <h3>{% trans %}Edit the home page{% endtrans %}</h3>
             </div>
             <div class="modal-body">
-                <textarea name="content" class="textarea" placeholder="Enter text ..." style="width: 510px; height: 200px">{% if content_homepage is defined %}{{content_homepage }}{% endif %}</textarea>
+                <textarea id="editor" name="content" class="textarea" placeholder="Enter text ..." style="width: 510px; height: 200px">{% if content_homepage is defined %}{{content_homepage }}{% endif %}</textarea>
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal" >Close</a>
@@ -62,13 +76,7 @@
         {% if content_homepage is defined %}<a href="javascript:core_restore_home_page()" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i> {% trans %}Revert to original state{% endtrans %}</a>{% endif %}
     </div>
 
-<script>
-    $('.textarea').wysihtml5();
-</script>
 
-<script type="text/javascript" charset="utf-8">
-    $(prettyPrint);
-</script>
 
 <br />
 {% endif %}{# RIGHTS_LIST.CORE == "ADMIN" #}
@@ -132,7 +140,6 @@
         <div class="well">
             <div class="row-fluid">
                 <div class="span3 hidden-phone home-icons">
-                    <!-- <img class="img-polaroid" src="{{ TEMPLATE_URL }}/images/emblem-employees.png" width="90%"> -->
                     <i class="icon-user "></i>
                 </div>
                 <div class="span9">
@@ -146,7 +153,6 @@
         <div class="well">
             <div class="row-fluid">
                 <div class="span3 hidden-phone home-icons">
-                    <!-- <img class="img-polaroid" src="{{ TEMPLATE_URL }}/images/emblem-employees.png" width="90%"> -->
                     <i class="icon-truck "></i>
                 </div>
                 <div class="span9">
@@ -166,7 +172,6 @@
         <div class="well">
             <div class="row-fluid">
                 <div class="span3 hidden-phone home-icons">
-                    <!-- <img class="img-polaroid" src="{{ TEMPLATE_URL }}/images/emblem-employees.png" width="90%"> -->
                     <i class="icon-cogs "></i>
                 </div>
                 <div class="span9">
@@ -191,9 +196,9 @@
     <div class="span6">
         <div class="well">
             <div class="row-fluid">
-                <div class="span3 hidden-phone">
-                    <img class="img-polaroid" src="{{ TEMPLATE_URL }}/images/emblem-myaccount.png" width="90%">
-                </div>
+              <div class="span3 hidden-phone home-icons">
+                  <i class="icon-cogs "></i>
+              </div>
                 <div class="span9">
                     <h2>{% trans %}My account{% endtrans %}</h2>
                     <a href="{{ url('my_account') }}">{% trans %}Update my personnal details{% endtrans %}</a>

@@ -24,7 +24,7 @@ class CompaniesController extends IgestisController {
         // If the form has been received, manage the form...
         if($this->request->IsPost()) {            
             // Check the form validity
-            if($this->request->getPost("email") != "" && !is_email($this->request->getPost("email"))) $this->context->invalid_form("Invalid email format");
+            if($this->request->getPost("email") != "" && !\Igestis\Utils\FormatChecker::isEmail($this->request->getPost("email"))) $this->context->invalid_form("Invalid email format");
             if(!$this->request->getPost("name")) $this->context->invalid_form(_("The company name is a required field" ));
             
             $this->context->entityManager->beginTransaction();

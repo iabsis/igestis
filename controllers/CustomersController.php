@@ -42,11 +42,11 @@ class CustomersController extends IgestisController {
             $parser = new IgestisFormParser();
             $customer = $parser->FillEntityFromForm($customer, $_POST);
             $customer->setCompany(null);
-            
+
             // Save the employee into the database  
             try {
                 $this->context->entityManager->persist($customer);
-                $this->context->entityManager->flush();                
+                $this->context->entityManager->flush();
                 
             } catch (Exception $e) {
                 // Show wizz to confirm the employee update

@@ -1,7 +1,6 @@
 *.php		usr/share/igestis
 version		usr/share/igestis
 
-includes	usr/share/igestis
 lang		usr/share/igestis
 modules		usr/share/igestis
 templates	usr/share/igestis
@@ -9,9 +8,10 @@ config		usr/share/igestis
 entities	usr/share/igestis
 controllers	usr/share/igestis
 public		usr/share/igestis
+vendor		usr/share/igestis
+install/database	usr/share/igestis/install
 
 debian/database/mysql/upgrade/*	usr/share/dbconfig-common/data/igestis/upgrade/mysql
 debian/database/mysql/install/*	usr/share/dbconfig-common/data/igestis/install
 install/ldap				usr/share/doc/igestis/
 install/apache2/apache.conf		etc/igestis/
-install/regenLocales.php    usr/share/doc/igestis/

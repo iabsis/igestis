@@ -2,7 +2,7 @@ Source: igestis
 Section: web
 Priority: extra
 Maintainer: Olivier Bitsch <olivier.b@iabsis.com>
-Build-Depends: debhelper (>= 5), po-debconf, yui-compressor
+Build-Depends: debhelper (>= 5), po-debconf
 Standards-Version: 3.7.2
 
 Package: igestis
@@ -10,7 +10,7 @@ Architecture: all
 Conflicts: igestis-ldap
 Replaces: igestis-ldap
 Suggests: igestis-samba, igestis-roundcube, igestis-ishare
-Depends: libapache2-mod-php5 (>= 5.3) | libapache-mod-php5, mysql-server, php5-mysql, php5-mcrypt, dbconfig-common, php5-ldap, ldap-utils
+Depends: libapache2-mod-php5 (>= 5.3) | libapache-mod-php5, mysql-server | mariadb-server, php5-mysql, php5-mcrypt, dbconfig-common, php5-ldap, ldap-utils
 Description: Manage easily your small compagny.
  Igestis goal is to provide an easy way to manage your
  small business. It's working with many modules you can

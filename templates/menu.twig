@@ -1,5 +1,5 @@
-<div class="navbar navbar-fixed-top navbar-inverse">
-    
+<div class="navbar navbar-fixed-top navbar-inverse" id="general-menu">
+
         <div class="navbar-inner">
             <div class="container-fluid">
                 {% if username is defined %}
@@ -9,14 +9,14 @@
                     <span class="icon-bar"></span>
                 </a>
                 {% endif %}
-                
-                
+
+
                 <a href="{{ url("home_page") }}" class="brand">iGestis </a>
                 <div class="nav-collapse">
                     <ul class="nav">
                         {% for menu_item in menu_top %}
                             {% if menu_item.submenu is not defined %}
-                                {% set menu_name = menu_item.name %}                                
+                                {% set menu_name = menu_item.name %}
                                 <li {% if (menu_item.active == true or CURRENT_URL == menu_item.url) %}class="active"{% endif %}><a href="{{ menu_item.url }}">{% trans from "Module:core" menu_name %}</a></li>
                             {% else %}
                             {% set menu_name = menu_item.name %}
@@ -57,6 +57,21 @@
                                 <a class="dropdown-toggle">{% trans from "Module:core" %}Not Logged in{% endtrans %}</a>
                             </li>
                         </ul>
+                    {% endif %}
+                    {% if CONTACT.user.companiesMember|length > 1 %}
+                    <ul class="nav pull-right">
+                        <li class="dropdown " >
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-building icon-white"></i> {{ CONTACT.user.company }}<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                {% for item in CONTACT.user.companiesMember %}
+                                    <li>
+                                        <a href="{{ url('switch_company', {companyId : item.id}) }}">{{ item }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+
                     {% endif %}
             </div><!--/.nav-collapse -->
         </div>

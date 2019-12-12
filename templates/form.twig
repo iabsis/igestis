@@ -42,7 +42,7 @@
           value="{% if type == "checkbox" %}1{% else %}{{ selected_value|e }}{% endif %}"
           {% if type == "checkbox" %}{% if selected_value == true %}checked="checked"{% endif %}{% endif %}
           id="id-{{ name }}"
-          {% if autocomplete == false %}autocomplete="off"{% endif %}
+          {% if not autocomplete == true %}autocomplete="off"{% endif %}
         />
 
   </div>
@@ -86,7 +86,7 @@
  # state : state of the field, can be "disabled" (greyed up) or "readonly".
 #}
 {% macro date(name, label, selected_value, data_original_title, data_content, type, autocomplete, state) %}
-    
+
     <div class="control-group">
         <label class="control-label" for="{{ name }}">{{ label }}</label>
         <div class="controls">
@@ -133,7 +133,7 @@
   {% if state == "uneditable"%}readonly="true"{% endif %}
   type="file"
   name="{{ name }}{% if multiple == true %}[]{% endif %}"
-                      
+
   id="id-{{ name }}"
   {% if autocomplete == false %}autocomplete="off"{% endif %}
   style="display:none" />
@@ -160,7 +160,7 @@
         <img src="{{ files_list }}" />
       </div>
       <div>
-      
+
         <span class="btn btn-file">
             {% if not files_list %}
               <span class="fileupload-new">{% trans %}Select image{% endtrans %}</span>
@@ -207,15 +207,15 @@
                   {% else %}
                       <select {% if placeholder %}data-placeholder="{{ placeholder }}"{% elseif state == "required" %}data-placeholder="{% trans %}Required{% endtrans %}"{% else %}data-placeholder="{% trans %}Choose a value{% endtrans %}"{% endif %} {% if multiple %} multiple="multiple" {% endif %} id="id-{{ name }}" name="{{ name }}{% if multiple %}[]{% endif %}" class="span12 select2" {% if state == "disabled"%}disabled="true"{% endif %} {% if state == "readonly"%}readonly="true"{% endif %}>
                           {% if not multiple %}<option></option>{% endif %}
-                          
-                          {% for item in value %}                                
+
+                          {% for item in value %}
                               {% set show = attribute(item, showed_name_column) %}
                               {% if show is null or show is empty %}{% set show = " " %}{% endif %}
-                          
+
                               {% if multiple %}
-                                <option {% if attribute(item, value_column) in selected_value %}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{% trans show %}</option>
+                                <option {% if attribute(item, value_column) in selected_value %}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{{ show|trans }}</option>
                               {% else %}
-                                <option {% if attribute(item, selected_value) %}selected="selected"{% endif %}{% if attribute(item, value_column) == selected_value or (loop.last and loop.first and state == "required")%}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{% trans show %}</option>
+                                <option {% if attribute(item, selected_value) %}selected="selected"{% endif %}{% if attribute(item, value_column) == selected_value or (loop.last and loop.first and state == "required")%}selected="selected"{% endif %} value="{{ attribute(item, value_column) }}">{% if show_value == true %}{{ attribute(item, value_column) }} - {% endif %}{{ show|trans }}</option>
                            {% endif %}
                         {% endfor %}
                       </select>
@@ -223,29 +223,29 @@
             </div>
     </div>
 {% endmacro %}
-    
+
 {% macro tagfield(name, label, list_of_available_tags, selected_tags, data_original_title, data_content, state, max_tags) %}
     {% if max_tags is null or max_tags is not defined %}
         {% set max_tags = 0 %}
     {% endif %}
-    
+
     <div class="control-group">
             <label class="control-label" for="{{ name }}">{{ label }}</label>
             <div class="controls">
                 {% set arrayAvailableTags = [] %}
                 {% set arraySelectedTags = [] %}
 
-                    
+
                 {% for tag in list_of_available_tags %}
                     {% set value = tag %}
                     {% if tag.__toString is defined %}{% set value = tag.__toString %}{% endif %}
-                    {% set arrayAvailableTags=arrayAvailableTags|merge({ (loop.index0): value}) %} 
+                    {% set arrayAvailableTags=arrayAvailableTags|merge({ (loop.index0): value}) %}
                 {% endfor %}
 
                 {% for tag in selected_tags %}
                     {% set value = tag %}
                     {% if tag.__toString is defined %}{% set value = tag.__toString %}{% endif %}
-                    {% set arraySelectedTags=arraySelectedTags|merge({ (loop.index0): value}) %} 
+                    {% set arraySelectedTags=arraySelectedTags|merge({ (loop.index0): value}) %}
                 {% endfor %}
                 <input value="{{ arraySelectedTags|join(",") }}" data-max-selectable-tags="{{ max_tags }}" data-available-tags="{{ arrayAvailableTags|json_encode() }}" data-selected-tags="{{ arraySelectedTags|json_encode() }}" type="text"  id="id-{{ name }}" name="{{ name }}" {% if data_original_title is not null %}class="span11 taglist"{% else %}class="span12 taglist"{% endif %} {% if state == "disabled"%}disabled="true"{% endif %} {% if state == "readonly"%}readonly="true"{% endif %} />
 
@@ -351,7 +351,7 @@
     <label class="control-label" for="{{ name }}">{{ label }}</label>
     <div class="controls">
         <div id="id-{{ name }}-time" class="input-append">
-          	<input 
+          	<input
           		class="span9"
           	    {% if state == "disabled"%}disabled="true"{% endif %}
                 {% if state == "uneditable" or state == "readonly" %}readonly="true"{% endif %}
@@ -377,7 +377,7 @@
     }).on('changeDate', function(e) {
         $(this).find("input").trigger("keyup");
     });
-    
+
   });
 </script>
 

@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class CoreClientType
 {
     /**
-     * @Id @var string $code
+     * @Id 
+     * @var string $code
      * @Column(type="string")
      */
     private $code;
@@ -37,7 +38,8 @@ class CoreClientType
      * Get Label
      * @return String label 
      */
-    public function getLabel() {
+    public function getLabel()
+    {
         return $this->label;
     }
     
@@ -45,7 +47,13 @@ class CoreClientType
      * Set label
      * @param String $label 
      */
-    public function setLabel($label) {
+    public function setLabel($label)
+    {
         $this->label = $label;
+    }
+
+    public function __toString()
+    {
+        return $this->label;
     }
 }

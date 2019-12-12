@@ -10,7 +10,7 @@
 GLOBALVARS=/etc/igestis/config.ini
 CACHE_FOLDER="/var/cache/igestis/"
 LOG_FILE="/var/log/igestis/igestis.log"
-
+DATA_FOLDER="/var/lib/igestis/"
 
 replace_value_global_vars()
 {
@@ -43,8 +43,6 @@ dd if=/dev/urandom bs=1 count=62 2> /dev/null | tr -c -d '[A-Za-z0-9]'
 }
 
 
-
-
 #DEBHELPER#
 
 
@@ -62,7 +60,7 @@ case "$1" in
 		touch $GLOBALVARS
 		ln -sf $GLOBALVARS /usr/share/igestis/config/igestis/config.ini
 	fi
-	
+
 	# We generate a random encrypt key.
 	if [ -z "$(get_value_global_vars ENCRYPT_KEY)" ] ; then
 		replace_value_global_vars ENCRYPT_KEY \"$(generate_random_key)\"
@@ -73,7 +71,7 @@ case "$1" in
 	chown www-data -R $(dirname $LOG_FILE)
 	chmod 750 -R $(dirname $LOG_FILE)
 	replace_value_global_vars LOG_FILE \"$LOG_FILE\"
-	
+
 	# Ensure that the root folder is correctly defined
 	replace_value_global_vars ROOT_FOLDER \"/usr/share/igestis\"
 
@@ -81,11 +79,22 @@ case "$1" in
 	mkdir -p $CACHE_FOLDER
 	if [ ! -z "$CACHE_FOLDER" ] ; then rm -rf $CACHE_FOLDER/* ; fi
 
+	# New script to automatically apply SQL updates.
+	php /usr/share/igestis/command.php  databases:update
+	rm -rf /usr/share/igestis/install/
+
 	## We regenerate the language cache
 	replace_value_global_vars CACHE_FOLDER \"$CACHE_FOLDER\"
-	php /usr/share/doc/igestis/regenLocales.php /usr/share/igestis
+        php /usr/share/igestis/command.php i18n:regen-locales
 	chown www-data -R $CACHE_FOLDER
 	chmod 700 -R $CACHE_FOLDER
+
+	# We create data folder
+	replace_value_global_vars DATA_FOLDER \"$DATA_FOLDER\"
+	mkdir -p $DATA_FOLDER
+	chown www-data -R $DATA_FOLDER
+	chmod 700 -R $DATA_FOLDER
+
 
 	# On corrige les droits pour les fichiers de configuration.
 	chown root:www-data -R /etc/igestis/
@@ -106,7 +115,10 @@ case "$1" in
 
 	db_get igestis/directory/admin
 	LDAP_ADMIN="${RET}"
-	
+
+	db_get igestis/directory/custombind
+	LDAP_CUSTOM_BIND="${RET}"
+
 	if [ -z "$(get_value_global_vars LDAP_PASSWORD)" ] && [ ! "$AUTHENTICATION" = "Internal" ] ; then
 #		db_fset igestis/directory/password seen false ;; Commented to see if useful or not
 		db_input high igestis/directory/password || true
@@ -135,7 +147,7 @@ case "$1" in
 		AUTO_IMPORT="true"
 	fi
 
-	# Retrive right values
+	# Retrive right values (disable because whe need suffix for Admin.
 	LDAP_LOGIN=$(echo ${LDAP_ADMIN} | cut -d'@' -f1)
 
 	case "$AUTHENTICATION" in
@@ -153,7 +165,7 @@ case "$1" in
 			replace_value_global_vars USE_LDAP true
 			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
 			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
-			replace_value_global_vars LDAP_ADMIN \"${LDAP_LOGIN}\"
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
 			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
 			replace_value_global_vars LDAP_USERS_OU \"cn=Users,${LDAP_BASE}\"
 			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"
@@ -161,7 +173,7 @@ case "$1" in
 			replace_value_global_vars LDAP_VERSION 2
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE true
-			replace_value_global_vars LDAP_CUSTOM_BIND \"%u@${LDAP_DOMAIN}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
 		;;
 
@@ -183,12 +195,12 @@ case "$1" in
 			  /usr/share/doc/igestis/ldap/root-pw-ch.ldif
 
 			# Small patch avoid the password expiring in old igestis version.
-			ldapmodify -cxD "${LDAP_ADMIN}" -w ${LDAP_PASSWORD} -f /usr/share/doc/igestis/ldap/root-pw-exp.ldif > /dev/null 2>&1 || true			
+			ldapmodify -cxD "${LDAP_ADMIN}" -w ${LDAP_PASSWORD} -f /usr/share/doc/igestis/ldap/root-pw-exp.ldif > /dev/null 2>&1 || true
 
 			replace_value_global_vars USE_LDAP true
 			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
 			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
-			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"	
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
 			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
 			replace_value_global_vars LDAP_USERS_OU \"ou=Users,${LDAP_BASE}\"
 			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"
@@ -197,14 +209,14 @@ case "$1" in
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE false
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
-			replace_value_global_vars LDAP_CUSTOM_BIND \"cn=%u,ou=Users,${LDAP_BASE}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
 		;;
 
 		"Active Directory")
 			replace_value_global_vars USE_LDAP true
 			replace_value_global_vars LDAP_URIS \"${LDAP_URIS}\"
 			replace_value_global_vars LDAP_BASE \"${LDAP_BASE}\"
-			replace_value_global_vars LDAP_ADMIN \"${LDAP_LOGIN}\"
+			replace_value_global_vars LDAP_ADMIN \"${LDAP_ADMIN}\"
 			[ ! -z "${LDAP_PASSWORD}" ] && replace_value_global_vars LDAP_PASSWORD \"${LDAP_PASSWORD}\"
 			replace_value_global_vars LDAP_USERS_OU \"cn=Users,${LDAP_BASE}\"
 			replace_value_global_vars LDAP_CUSTOMERS_OU \"ou=Customers,${LDAP_BASE}\"
@@ -212,7 +224,7 @@ case "$1" in
 			replace_value_global_vars LDAP_VERSION 3
 			replace_value_global_vars LDAP_AUTO_IMPORT_USER ${AUTO_IMPORT}
 			replace_value_global_vars LDAP_AD_MODE true
-			replace_value_global_vars LDAP_CUSTOM_BIND \"%u@${LDAP_DOMAIN}\"
+			replace_value_global_vars LDAP_CUSTOM_BIND \"${LDAP_CUSTOM_BIND}\"
 			replace_value_global_vars IGESTIS_CORE_ADMIN \"${IGESTIS_CORE_ADMIN}\"
 		;;
 
@@ -227,12 +239,18 @@ case "$1" in
 	db_reset igestis/directory/password || true
 
 	# Configure Apache
-    db_get igestis/reconfigure-webserver
-    webservers="$RET"
+	db_get igestis/reconfigure-webserver
+	webservers="$RET"
+
 
 	for webserver in $webservers; do
 		webserver=${webserver%,}
-		ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis
+
+		if [ -e /etc/$webserver/conf.d/igestis ] ; then rm /etc/$webserver/conf.d/igestis ; fi
+		if [ -d /etc/$webserver/conf.d/ ] ; then ln -sf /etc/igestis/apache.conf /etc/$webserver/conf.d/igestis.conf ; fi
+    if [ -d /etc/$webserver/conf-available/ ] ; then ln -sf /etc/igestis/apache.conf /etc/$webserver/conf-available/igestis.conf ; fi
+
+    a2enconf=$(which a2enconf) && ${a2enconf} igestis
 
 		invoke-rc.d $webserver reload 3>/dev/null || true
 	done
@@ -255,5 +273,3 @@ esac
 #DEBHELPER#
 
 exit 0
-
-

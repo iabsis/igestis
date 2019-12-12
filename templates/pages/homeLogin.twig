@@ -6,9 +6,9 @@
 <div class="container">
 
         <div class="span6 offset3">
-            <form class="well allow-to-quit" action="" method="post">
+            <form class="well allow-to-quit" action="" method="post" {% if not autocomplete == true %}autocomplete="off"{% endif %}>
 
-           
+
                     <div class="row-fluid">
                         <div class="span4">
                             <img class="hidden-phone" src="{{ TEMPLATE_URL }}/images/emblem-personal.png" width="100%" >
@@ -18,13 +18,17 @@
                             <h3>{% trans %}Authentication{% endtrans %}</h3>
                             <input id="id-login" type="text" class="input-small" placeholder="{% trans %}Login{% endtrans %}" name="sess_login">
                             <input type="password" class="input-small" placeholder="{% trans %}Password{% endtrans %}" name="sess_password">
+                            {% if not igestisConfig.disableRememberMe %}
                             <label class="checkbox">
                                 <input type="checkbox" name="use_cookie"> {% trans %}Remember me{% endtrans %}
                             </label>
+                            {% else %}
+                              <br />
+                            {% endif %}
                             <button type="submit" class="btn btn-info">{% trans %}Sign in{% endtrans %}</button>
                             <a href="{{ url("reset_password") }}">{% trans %} Lost password{% endtrans %}</a>
                         </div>
-           
+
 
                 </div>
             </form>

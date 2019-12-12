@@ -13,8 +13,8 @@
 <div class="well">
     <form id="form_data" method='post' action=''>
         <fieldset>
-            <legend>General information</legend>
-        {{ forms.select('clientTypeCode', 'Customer type'|trans, client_type, form_data.clientTypeCode, 'code', 'label') }}
+            <legend>{% trans %} General information{% endtrans %}</legend>
+        {{ forms.select('clientTypeCode', 'Customer type'|trans, client_type, form_data.clientTypeCode.code, 'code', 'label') }}
         {{ forms.input('userLabel', 'Showed name'|trans, form_data.userLabel, "Set the showed name"|trans, "The showed named is the company name in this case."|trans, null, null, "required") }}
         {{ forms.input('accountCode', 'Client ID'|trans, form_data.accountCode, "Set the client ID"|trans, "This field can be used to set a customized identifier linked with an external software"|trans) }}
         {{ forms.input('tvaNumber', 'VAT number'|trans, form_data.tvaNumber) }}
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <br />
-            
+
             <div class="row-fluid">
                 <div id="contact_edit">
                     {% include 'ajax/tableContactsList.twig' %}
@@ -185,7 +185,7 @@
                             $(element).parents('.control-group').removeClass('error');
                             $(element).parents('.control-group').addClass('success');
                         },
-                        submitHandler: function(form) {                    
+                        submitHandler: function(form) {
                             var url = "{{ url('ajax_edit_contact', {'UserId' : form_data.id, 'ContactId' : ''}) }}";
                             url += $("#CurrentContactId").val();
                             console.log(url);

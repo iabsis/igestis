@@ -138,9 +138,11 @@ class HomePageController extends IgestisController {
     }
 
     public function loginAction($Force=0) {
+
         if($Force == 1) {
             $this->context->security->logout();
         }
+        
         $this->context->render("pages/homeLogin.twig", array());
     }
     
